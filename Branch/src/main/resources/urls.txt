@@ -1,0 +1,5 @@
+URLS
+
+localhost:63636/h2-console
+localhost:63636/api/v1/listAll
+localhost:63636/api/v1/save

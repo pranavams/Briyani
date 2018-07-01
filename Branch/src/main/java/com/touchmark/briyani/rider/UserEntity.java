@@ -1,4 +1,4 @@
-package com.touchmark.briyani.user;
+package com.touchmark.briyani.rider;
 
 import java.util.HashSet;
 import java.util.Set;

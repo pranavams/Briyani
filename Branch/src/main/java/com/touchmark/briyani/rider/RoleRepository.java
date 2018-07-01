@@ -1,4 +1,4 @@
-package com.touchmark.briyani.user;
+package com.touchmark.briyani.rider;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

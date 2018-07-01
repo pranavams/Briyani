@@ -10,8 +10,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.touchmark.briyani.user.UserEntity;
-import com.touchmark.briyani.user.UserRepository;
+import com.touchmark.briyani.rider.UserEntity;
+import com.touchmark.briyani.rider.UserRepository;
 
 @Service(value = "userService")
 public class UserService implements UserDetailsService {

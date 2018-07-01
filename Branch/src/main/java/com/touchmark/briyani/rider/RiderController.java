@@ -22,14 +22,14 @@ public class RiderController {
 
 	@GetMapping
 	@RequestMapping("/listAll")
-	@PreAuthorize("hasAuthority('STANDARD_USER)")
+	@PreAuthorize("hasAuthority('STANDARD_USER')")
 	public ResponseEntity<RiderResponse> getAll() {
 		return ResponseEntity.ok(RiderResponse.builder().rider(this.service.getAll()).build());
 	}
 
 	@PostMapping
 	@RequestMapping("/save")
-	@PreAuthorize("hasAuthority('STANDARD_USER)")
+	@PreAuthorize("hasAuthority('STANDARD_USER')")
 	public ResponseEntity<RiderEntity> saveBranch(@RequestBody Rider object) {
 		RiderEntity created = this.service.save(object);
 		return ResponseEntity.ok(created);

@@ -3,8 +3,8 @@ package com.touchmark.briyani.rider;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.touchmark.briyani.branch.Address;
-import com.touchmark.briyani.branch.AddressEntity;
+import com.touchmark.briyani.commons.Address;
+import com.touchmark.briyani.commons.AddressEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -3,6 +3,9 @@ package com.touchmark.briyani.branch;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.touchmark.briyani.commons.Address;
+import com.touchmark.briyani.commons.AddressEntity;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

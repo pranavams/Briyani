@@ -1,6 +1,7 @@
 package com.touchmark.briyani.app;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,14 +11,13 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.touchmark.briyani.rider.UserEntity;
-import com.touchmark.briyani.rider.UserRepository;
+import com.touchmark.briyani.user.UserEntity;
 
 @Service(value = "userService")
 public class UserService implements UserDetailsService {
 	
 	@Autowired
-	private UserRepository userRepository;
+	private com.touchmark.briyani.user.UserRepository userRepository;
 
 	private List<SimpleGrantedAuthority> getAuthority(String roles) {
 		List<SimpleGrantedAuthority> authorities = new ArrayList<>();

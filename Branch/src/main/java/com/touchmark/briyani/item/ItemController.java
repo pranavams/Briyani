@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(path = "/api/v1/items/")
+@RequestMapping(path = "/api/v1/item/")
 public class ItemController {
 
 	private ItemService service;
@@ -23,14 +23,14 @@ public class ItemController {
 	@GetMapping
 	@RequestMapping("/listAll")
 	//@PreAuthorize("hasAuthority('STANDARD_USER') or hasAuthority('ADMIN_USER')")
-	@PreAuthorize("hasAuthority('ROLE_USER')")
+	@PreAuthorize("hasAuthority('STANDARD_USER')")
 	public ResponseEntity<ItemResponse> getAllBranch() {
 		return ResponseEntity.ok(ItemResponse.builder().branch(this.service.getAll()).build());
 	}
 
 	@PostMapping
 	@RequestMapping("/save")
-	@PreAuthorize("hasAuthority('ROLE_USER')")
+	@PreAuthorize("hasAuthority('STANDARD_USER)")
 	public ResponseEntity<ItemEntity> saveBranch(@RequestBody Item object) {
 		ItemEntity created = this.service.save(object);
 		return ResponseEntity.ok(created);

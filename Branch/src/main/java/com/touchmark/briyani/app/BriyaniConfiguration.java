@@ -8,12 +8,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@ComponentScan(basePackages = { "com.touchmark.briyani.branch", "com.touchmark.briyani.user",
-		"com.touchmark.briyani.rider" })
-@EnableJpaRepositories(basePackages = { "com.touchmark.briyani.branch", "com.touchmark.briyani.user",
-		"com.touchmark.briyani.rider" })
-@EntityScan(basePackages = { "com.touchmark.briyani.branch", "com.touchmark.briyani.user",
-		"com.touchmark.briyani.rider" })
+@ComponentScan(basePackages = { "com.touchmark.briyani" })
+@EnableJpaRepositories(basePackages = { "com.touchmark.briyani" })
+@EntityScan(basePackages = { "com.touchmark.briyani" })
 @EnableTransactionManagement
 @EnableAutoConfiguration
 public class BriyaniConfiguration {

@@ -2,6 +2,7 @@ package com.touchmark.briyani.order;
 
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import com.touchmark.briyani.commons.Address;
@@ -37,10 +38,22 @@ public class Order {
 				.city(deliveryAddress.getCity()).country(deliveryAddress.getCountry())
 				.doorNumber(deliveryAddress.getDoorNumber()).state(deliveryAddress.getState())
 				.street(deliveryAddress.getStreet()).zipcode(deliveryAddress.getZipcode()).build();
+		
+		Collection<OrderDetailEntity> orders = new ArrayList<>();
+		
+		
+		for (OrderDetail orderDetail : orderDetails) {
+			
+			orders.add(OrderDetailEntity.builder()
+					.quantity(orderDetail.getQuantity())
+					.unitPrice(orderDetail.getUnitPrice())
+					.build()
+			);
+		}
 		return OrderEntity.builder().couponCode(couponCode).dateAndTime(dateAndTime).deliveryAddress(addressEntity)
 				.paymentStatus(paymentStatus).taxPercentage(taxPercentage).taxAmount(taxAmount).totalAmount(totalAmount)
 				.userName(userName)
-				// .orderDetails(orderDetails)
+				.orderDetails(orders)
 				.build();
 	}
 

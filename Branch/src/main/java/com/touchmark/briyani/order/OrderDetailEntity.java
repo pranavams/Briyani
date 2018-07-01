@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -46,4 +47,7 @@ public class OrderDetailEntity implements Serializable{
 	@Column(name = "unitPrice")
 	private float unitPrice;
 	
+	@ManyToOne
+	@JoinColumn(name = "orderId")
+	private OrderEntity order;
 }

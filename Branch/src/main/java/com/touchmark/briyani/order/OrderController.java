@@ -32,12 +32,10 @@ public class OrderController {
 	@PostMapping
 	@RequestMapping("/save")
 	@PreAuthorize("hasAuthority('STANDARD_USER')")
-	public ResponseEntity<OrderEntity> save(@RequestBody Order object) {
-
+	public ResponseEntity<Order> save(@RequestBody Order object) {
 		Log.log("OrderController", "save", "Object Received To Save " + object);
-
 		OrderEntity created = this.service.save(object);
-		return ResponseEntity.ok(created);
+		return ResponseEntity.ok(Order.builder().build().transformEntity(created));
 	}
 
 }

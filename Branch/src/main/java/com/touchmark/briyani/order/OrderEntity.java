@@ -65,8 +65,8 @@ public class OrderEntity implements Serializable {
 	@JoinColumn(name = "addressId")
 	private AddressEntity deliveryAddress;
 	
-	@OneToMany
-	@JoinTable(name = "orderDetail", joinColumns = @JoinColumn(name = "orderId"), inverseJoinColumns = @JoinColumn(name = "orderDetailsId"))
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
+	//@JoinTable(name = "orderDetail", joinColumns = @JoinColumn(name = "orderId"), inverseJoinColumns = @JoinColumn(name = "orderDetailsId"))
 	private Collection<OrderDetailEntity> orderDetails;
 	
 }

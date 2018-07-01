@@ -22,7 +22,6 @@ public class ItemController {
 
 	@GetMapping
 	@RequestMapping("/listAll")
-	//@PreAuthorize("hasAuthority('STANDARD_USER') or hasAuthority('ADMIN_USER')")
 	@PreAuthorize("hasAuthority('STANDARD_USER')")
 	public ResponseEntity<ItemResponse> getAllBranch() {
 		return ResponseEntity.ok(ItemResponse.builder().branch(this.service.getAll()).build());
@@ -30,7 +29,7 @@ public class ItemController {
 
 	@PostMapping
 	@RequestMapping("/save")
-	@PreAuthorize("hasAuthority('STANDARD_USER)")
+	@PreAuthorize("hasAuthority('STANDARD_USER')")
 	public ResponseEntity<ItemEntity> saveBranch(@RequestBody Item object) {
 		ItemEntity created = this.service.save(object);
 		return ResponseEntity.ok(created);

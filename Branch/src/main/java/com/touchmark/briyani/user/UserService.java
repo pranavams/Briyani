@@ -1,4 +1,4 @@
-package com.touchmark.briyani.app;
+package com.touchmark.briyani.user;
 
 import java.util.ArrayList;
 
@@ -10,8 +10,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
-import com.touchmark.briyani.user.UserEntity;
 
 @Service(value = "userService")
 public class UserService implements UserDetailsService {

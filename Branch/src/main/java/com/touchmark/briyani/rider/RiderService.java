@@ -7,19 +7,19 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class RiderService {
-	private RiderRepository riderRepository;
+	private RiderRepository repository;
 	
 	@Autowired
-	public RiderService(RiderRepository branchRepository) {
-		this.riderRepository = branchRepository;
+	public RiderService(RiderRepository repository) {
+		this.repository = repository;
 	}
 	
-	public List<Rider> getAllBranch() {
-		return Rider.builder().build().transformEntities(riderRepository.findAll());
+	public List<Rider> getAll() {
+		return Rider.builder().build().transformEntities(repository.findAll());
 	}
 	
-	public RiderEntity saveBranch(Rider branch) {
-		return this.riderRepository.save(branch.createEntity());
+	public RiderEntity save(Rider object) {
+		return this.repository.save(object.createEntity());
 	}
 	
 }

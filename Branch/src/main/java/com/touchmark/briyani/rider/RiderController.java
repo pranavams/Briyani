@@ -12,24 +12,24 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(path = "/api/v1/")
 public class RiderController {
 
-	private RiderService riderService;
+	private RiderService service;
 
 	@Autowired
-	public RiderController(RiderService branchService) {
-		this.riderService = branchService;
+	public RiderController(RiderService service) {
+		this.service = service;
 	}
 
 	@GetMapping
 	@RequestMapping("/listAll")
-	public ResponseEntity<RiderResponse> getAllBranch() {
-		return ResponseEntity.ok(RiderResponse.builder().rider(this.riderService.getAllBranch()).build());
+	public ResponseEntity<RiderResponse> getAll() {
+		return ResponseEntity.ok(RiderResponse.builder().rider(this.service.getAll()).build());
 	}
 
 	@PostMapping
 	@RequestMapping("/save")
-	public ResponseEntity<RiderEntity> saveBranch(@RequestBody Rider branch) {
-		RiderEntity createdBranch = this.riderService.saveBranch(branch);
-		return ResponseEntity.ok(createdBranch);
+	public ResponseEntity<RiderEntity> saveBranch(@RequestBody Rider object) {
+		RiderEntity created = this.service.save(object);
+		return ResponseEntity.ok(created);
 	}
 
 }

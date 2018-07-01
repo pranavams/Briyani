@@ -2,7 +2,7 @@ package com.touchmark.briyani.branch.controller;
 
 import java.util.List;
 
-import com.touchmark.briyani.branch.entities.BranchEntity;
+import com.touchmark.briyani.branch.bo.Branch;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,5 +14,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BranchResponse {
-	private List<BranchEntity> branch;
+	private List<Branch> branch;
 }

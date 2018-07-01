@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.touchmark.briyani.branch.bo.Branch;
 import com.touchmark.briyani.branch.entities.BranchEntity;
 import com.touchmark.briyani.branch.entities.BranchRepository;
 
@@ -17,12 +18,12 @@ public class BranchService {
 		this.branchRepository = branchRepository;
 	}
 	
-	public List<BranchEntity> getAllBranch() {
-		return branchRepository.findAll();
+	public List<Branch> getAllBranch() {
+		return Branch.builder().build().transformEntities(branchRepository.findAll());
 	}
 	
-	public BranchEntity saveBranch(BranchEntity branch) {
-		return this.branchRepository.save(branch);
+	public BranchEntity saveBranch(Branch branch) {
+		return this.branchRepository.save(branch.createEntity());
 	}
 	
 }

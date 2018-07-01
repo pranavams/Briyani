@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.touchmark.briyani.branch.biz.BranchService;
+import com.touchmark.briyani.branch.bo.Branch;
 import com.touchmark.briyani.branch.entities.BranchEntity;
 
 @RestController
@@ -16,21 +17,21 @@ import com.touchmark.briyani.branch.entities.BranchEntity;
 public class BranchController {
 
 	private BranchService branchService;
-	
+
 	@Autowired
 	public BranchController(BranchService branchService) {
 		this.branchService = branchService;
 	}
-	
+
 	@GetMapping
 	@RequestMapping("/listAll")
 	public ResponseEntity<BranchResponse> getAllBranch() {
 		return ResponseEntity.ok(BranchResponse.builder().branch(this.branchService.getAllBranch()).build());
 	}
-	
+
 	@PostMapping
 	@RequestMapping("/save")
-	public ResponseEntity<BranchEntity> saveBranch(@RequestBody BranchEntity branch) {
+	public ResponseEntity<BranchEntity> saveBranch(@RequestBody Branch branch) {
 		BranchEntity createdBranch = this.branchService.saveBranch(branch);
 		return ResponseEntity.ok(createdBranch);
 	}

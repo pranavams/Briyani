@@ -1,7 +1,7 @@
 
 buildscript {
     repositories {
-        mavenCentral()
+        maven { url 'http://repo1.maven.org/maven2/'}
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.3.RELEASE")
@@ -19,7 +19,7 @@ bootJar {
 }
 
 repositories {
-    mavenCentral()
+    maven { url 'http://repo1.maven.org/maven2/'}
 }
 
 sourceCompatibility = 1.8

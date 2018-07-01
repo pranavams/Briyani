@@ -24,7 +24,7 @@ public class ItemController {
 	@RequestMapping("/listAll")
 	@PreAuthorize("hasAuthority('STANDARD_USER')")
 	public ResponseEntity<ItemResponse> getAllBranch() {
-		return ResponseEntity.ok(ItemResponse.builder().branch(this.service.getAll()).build());
+		return ResponseEntity.ok(ItemResponse.builder().items(this.service.getAll()).build());
 	}
 
 	@PostMapping

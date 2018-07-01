@@ -3,8 +3,6 @@ package com.touchmark.briyani.item;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Column;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,20 +18,16 @@ public class Item {
 	private String name;
 	private String description;
 	private float price;
+	private String menuName;
 
 	public ItemEntity createEntity() {
-		return ItemEntity.builder().description(description)
-				.name(name)
-				.price(price)
-				.build();
+		return ItemEntity.builder().description(description).name(name).price(price).build();
 	}
 
 	public Item transformEntity(ItemEntity entity) {
-		this.id = transformId(entity.getId());
-		this.name = entity.getName();
-		this.description = entity.getDescription();
-		this.price = entity.getPrice();
-		return this;
+		return Item.builder().id(transformId(entity.getId())).name(entity.getName())
+				.description(entity.getDescription()).price(entity.getPrice()).menuName(entity.getMenu().getName())
+				.build();
 	}
 
 	private String transformId(long id) {
@@ -41,10 +35,10 @@ public class Item {
 	}
 
 	public List<Item> transformEntities(List<ItemEntity> entities) {
-		List<Item> branches = new ArrayList<>(entities.size());
-		for (ItemEntity branchEntity : entities) {
-			branches.add(transformEntity(branchEntity));
+		List<Item> items = new ArrayList<>(entities.size());
+		for (ItemEntity itemEntity : entities) {
+			items.add(transformEntity(itemEntity));
 		}
-		return branches;
+		return items;
 	}
 }

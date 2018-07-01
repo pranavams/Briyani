@@ -12,5 +12,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ItemResponse {
-	private List<Item> branch;
+	private List<Item> items;
 }

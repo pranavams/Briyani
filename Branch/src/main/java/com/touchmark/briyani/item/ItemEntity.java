@@ -38,8 +38,12 @@ public class ItemEntity implements Serializable {
 
 	@Column(name = "description")
 	private String description;
-	
+
 	@Column(name = "price")
 	private float price;
-	
+
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "menuId", nullable = false)
+	private MenuEntity menu;
+
 }

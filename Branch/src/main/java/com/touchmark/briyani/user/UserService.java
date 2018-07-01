@@ -1,21 +1,23 @@
 package com.touchmark.briyani.user;
 
 import java.util.ArrayList;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.touchmark.briyani.commons.Log;
+
 @Service(value = "userService")
 public class UserService implements UserDetailsService {
-	
+
 	@Autowired
-	private com.touchmark.briyani.user.UserRepository userRepository;
+	private UserRepository userRepository;
 
 	private List<SimpleGrantedAuthority> getAuthority(String roles) {
 		List<SimpleGrantedAuthority> authorities = new ArrayList<>();
@@ -25,16 +27,15 @@ public class UserService implements UserDetailsService {
 		return authorities;
 	}
 
-	public List<UserEntity> findAll() {
-		List<UserEntity> list = new ArrayList<>();
-		userRepository.findAll().iterator().forEachRemaining(list::add);
-		return list;
-	}
-
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		List<UserEntity> findByUserName = userRepository.findByUserName(username);
-		UserEntity user = findByUserName.get(0);
-		return new org.springframework.security.core.userdetails.User(user.getUserName(), user.getPassword(), getAuthority(user.getRoles()));
+		try {
+			List<UserEntity> findByUserName = userRepository.findByUserName(username);
+			UserEntity user = findByUserName.get(0);
+			return new User(user.getUserName(), user.getPassword(), getAuthority(user.getRoles()));
+		} catch (Exception ex) {
+			Log.log("UserService", "loadUserByUserName", "Exception while Fetching User Details", ex);
+			throw new UsernameNotFoundException("User Not Found");
+		}
 	}
 }

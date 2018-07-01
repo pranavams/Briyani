@@ -6,4 +6,9 @@ public class Log {
 		System.out.println(classname + " - " + methodname + " - " + message);
 	}
 
+	public static void log(String classname, String methodname, String message, Throwable ex) {
+		System.out.println(classname + " - " + methodname + " - " + message);
+		ex.printStackTrace();
+	}
+
 }

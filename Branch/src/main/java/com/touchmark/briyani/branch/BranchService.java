@@ -1,13 +1,9 @@
-package com.touchmark.briyani.branch.biz;
+package com.touchmark.briyani.branch;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.touchmark.briyani.branch.bo.Branch;
-import com.touchmark.briyani.branch.entities.BranchEntity;
-import com.touchmark.briyani.branch.entities.BranchRepository;
 
 @Service
 public class BranchService {

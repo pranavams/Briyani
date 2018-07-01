@@ -1,4 +1,4 @@
-package com.touchmark.briyani.branch.entities;
+package com.touchmark.briyani.branch;
 
 import java.io.Serializable;
 

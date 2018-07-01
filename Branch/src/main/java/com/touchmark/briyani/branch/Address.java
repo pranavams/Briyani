@@ -1,4 +1,4 @@
-package com.touchmark.briyani.branch.bo;
+package com.touchmark.briyani.branch;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

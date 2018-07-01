@@ -1,10 +1,7 @@
-package com.touchmark.briyani.branch.bo;
+package com.touchmark.briyani.branch;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.touchmark.briyani.branch.entities.AddressEntity;
-import com.touchmark.briyani.branch.entities.BranchEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

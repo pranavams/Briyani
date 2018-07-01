@@ -1,8 +1,6 @@
-package com.touchmark.briyani.branch.controller;
+package com.touchmark.briyani.item;
 
 import java.util.List;
-
-import com.touchmark.briyani.branch.bo.Branch;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,6 +11,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class BranchResponse {
-	private List<Branch> branch;
+public class ItemResponse {
+	private List<Item> branch;
 }

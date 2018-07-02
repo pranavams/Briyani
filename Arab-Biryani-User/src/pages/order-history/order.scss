@@ -1,0 +1,111 @@
+page-order {
+    .clearfix:before,
+    .clearfix:after {
+        content: "";
+        display: table;
+    }
+    .clearfix:after {
+        clear: both;
+    }
+    ion-toolbar{
+        .toolbar-content{
+            display: flex;
+            .filter{
+                background: transparent;
+                box-shadow: none;
+                ion-badge.badge-md{
+                    padding: 4px 0;
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 50%;
+                    font-size: 1.1rem;
+                    position: absolute;
+                    top: 0;
+                    right: 2px;
+                }
+            }
+        }
+    }
+    ion-content {
+        .scroll-content {
+            background: #efefef;
+        }
+    }
+    ion-card.card-md{
+        rating {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        ul {
+            margin: 5px 0px;
+            padding: 0px;
+            &.rating li {
+              padding: 5px 2px !important;
+              background: none;
+              color: #ffb400;
+              ion-icon {
+                font-size: 24px;
+              }
+            }
+          }
+        width: 100%;
+        // border: 1px solid #ccc;
+        margin-bottom: 1rem;
+        ion-card-header{
+            position: relative;
+            h1{
+                font-weight: bold;
+                padding-bottom: 10px;
+                border-bottom: 1px solid #ccc;
+            }
+            ion-badge.badge-md{
+                position: absolute;
+                right: 16px;
+                background: #9d3aff;
+                color: white;
+                top: 16px;
+                padding: 5px 16px;
+                text-transform: uppercase;
+                &.success {
+                    background: #2ba700;
+                }
+            }
+        }
+    }
+    ion-card-content {
+        table {
+            text-align: center;
+            font-size: 2.25rem;
+            th{
+                font-weight: normal;
+                color: #95989a;
+                // width: 30%;
+            }
+            td {
+                color: #5e5e5e;
+                font-weight: 700;
+                font-size: 2.5rem;
+                vertical-align: bottom;
+                &.small-font {
+                    font-size: 2.2rem;
+                }
+            }
+            th:last-child {
+                text-align: right;
+                // width: 40%;
+            }
+            td:last-child {
+                text-align: right;
+            }
+        }
+        .completed-datetime {
+            
+        }
+        button.button-md.button-round-md{
+            background: #fea20f;
+            color: #000;
+            font-weight: bold;
+            vertical-align: middle;
+        }
+    }
+}

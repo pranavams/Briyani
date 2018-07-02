@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title text-center>Chat</ion-title>
+    <button ion-button icon-only class="exit disable-hover" (click)="presentPopover()">
+      <ion-icon name="md-close"></ion-icon>
+    </button>
+  </ion-toolbar>
+</ion-header>
+<ion-content no-padding>
+  <ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig">
+    <ion-item ngxSlickItem no-padding class="slide menuItem" *ngFor="let slide of slides">
+      <ion-card no-margin>
+        <img src="{{ slide.img }}" />
+        <ion-card-content>
+          <ion-card-title no-padding>
+            {{slide.title}}
+            <p>{{slide.subhead}}</p>
+          </ion-card-title>
+          <p class="price">
+            SGD $ {{slide.price}}
+          </p>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+  </ngx-slick>
+  <div class="replySupport">
+    <div class="image" padding text-center>
+      <div></div>Branch Manager</div>
+    <div class="reply">
+      <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
+      </p>
+    </div>
+  </div>
+  <div class="replyYou">
+    <div class="image" padding text-center>
+      <div></div>YOU</div>
+    <div class="reply">
+      <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
+      </p>
+    </div>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-toolbar no-padding>
+    <ion-list no-margin>
+      <ion-item no-padding float-right>
+        <ion-input type="text" placeholder="Type here..."></ion-input>
+        <button ion-button clear item-right>SEND</button>
+      </ion-item>
+    </ion-list>
+  </ion-toolbar>
+</ion-footer>

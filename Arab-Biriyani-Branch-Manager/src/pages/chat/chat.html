@@ -1,0 +1,46 @@
+<ion-header no-border>
+    <ion-toolbar>
+        <button ion-button icon-only menuToggle>
+            <ion-icon name="menu"></ion-icon>
+            <ion-badge item-end>{{notification}}</ion-badge>
+        </button>
+        <ion-title text-center>Chat</ion-title>
+        <button ion-button icon-only class="notification" (click)="presentpopover($event)">
+            <ion-icon name="ios-notifications-outline"></ion-icon>
+            <ion-badge item-end>{{customerQueue.length}}</ion-badge>
+        </button>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-segment [(ngModel)]="currentChat">
+        <div *ngFor="let customer of customers; index as i" (click)="changeChat(i)">
+            <ion-segment-button [value]="customer.name" >
+                {{customer.name}}
+            </ion-segment-button>
+        </div>
+    </ion-segment>
+    <div [ngSwitch]="currentChat">
+        <div *ngFor="let customer of customers; index as i">
+            <ng-container *ngSwitchCase="customer.name" >
+                <ion-card class="customer-text">
+                    <ion-card-header>
+                        {{customer.name}}
+                    </ion-card-header>
+                    <ion-card-content>
+                        {{customer.custChat}}
+                    </ion-card-content>
+                </ion-card>
+                <ion-card class="biriyani-text">
+                    <ion-card-content>
+                        {{customer.branchChat}}
+                    </ion-card-content>
+                </ion-card>
+                <ion-footer>
+                    <ion-input type="text" placeholder="Type Here..." class="chat-text"></ion-input>
+                    <button ion-button class="chat-reply">Reply</button>
+                </ion-footer>
+            </ng-container>
+        </div>
+    </div>
+    <div *ngIf="customers.length == 0" class="largeFont" padding margin text-center>Tap the Notification bell to chat with the customers in the Chat Queue</div>
+</ion-content>

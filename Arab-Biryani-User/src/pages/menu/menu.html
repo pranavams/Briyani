@@ -1,0 +1,41 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title text-center>Book Biriyani</ion-title>
+    <button ion-button icon-only class="cart disable-hover" (click)="placeOrder(menuItems)">
+      <ion-icon name="md-basket"></ion-icon>
+      <ion-badge item-end>{{cart}}</ion-badge>
+    </button>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item no-padding class="menuItem" *ngFor="let item of menuItems; index as i" (click)="showConfirm(i)">
+      <ion-card>
+        <img [src]="item.imgSrc" />
+        <ion-card-content>
+          <ion-card-title no-padding>
+            {{item.title}}
+            <p>{{item.subhead}}</p>
+          </ion-card-title>
+          <p class="price">
+            SGD $ {{item.price}}
+          </p>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons left padding-horizontal *ngIf="cart == 0">
+      <button ion-button (click)="findBiriyani()">Find Biriyani</button>
+    </ion-buttons>
+    <ion-buttons right padding-horizontal active *ngIf="cart == 0">
+      <button ion-button>Book Biryani</button>
+    </ion-buttons>
+    <button ion-button block class="disable-hover" (click)="placeOrder(menuItems)" *ngIf="cart != 0">Proceed to checkout</button>
+  </ion-toolbar>
+</ion-footer>

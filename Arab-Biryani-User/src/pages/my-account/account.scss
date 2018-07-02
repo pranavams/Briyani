@@ -1,0 +1,90 @@
+.alert-md .alert-message{
+    padding-bottom: 0 !important;
+}
+page-my-account {
+    ion-header {
+        ion-toolbar {
+            .toolbar-content {
+                ion-title {
+                    padding-right: 56px;
+                }
+            }
+        }
+    }
+    ion-footer {
+        ion-toolbar.toolbar-md {
+            padding: 0px;
+            .toolbar-content{
+                button {
+                    background: #fea20f;
+                    color: #333;
+                    font-size: 2rem;
+                    font-weight: 700;
+                    height: 56px;
+                    margin:0px;
+                    position: static;
+                }  
+            }
+        }
+    }
+    ion-content {
+        .scroll-content {
+            background: #efefef;
+            .street-food-bg {
+                background: url(../../assets/imgs/singapore-street-food.jpg) no-repeat center;
+                background-size: cover;
+                width: 100%;
+                height: 45%;
+            }
+            ion-card.card-md.myAccount-details {
+                width: 100%;
+                ion-card-header {
+                    ion-toolbar {
+                        .toolbar-background-md {
+                            background: #fff;
+                            border-bottom: 3px solid #e5e5e5;
+                        }
+                        ion-buttons {
+                            text-transform: uppercase;
+                            .bar-button-default-md {
+                                color: #000;
+                            }
+                        }
+                    }
+                }
+                ion-card-content {
+                    ion-label {
+                        font-size: 1.8rem;
+                        color: #95989a;
+                        span {
+                            color: #fea20f;
+                        }
+                    }
+                    h1 {
+                        font-size: 2rem;
+                        margin-bottom: 1rem
+                    }
+                }
+            }
+            ion-card.profile-pic {
+                width: 100%;
+                text-align: center;
+                position: static;
+                button.button-md {
+                    background: transparent;
+                    width: auto;
+                    height: auto;
+                    box-shadow: none;
+                    img{
+                        width: auto;
+                        height: 200px;
+                    }
+                }
+                .toolbar-content-md {
+                    padding: 10px 0;
+                }
+            }
+        }
+        
+    }
+}

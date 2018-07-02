@@ -1,0 +1,60 @@
+.customModal{
+    background: rgba(0,0,0,0.5);
+}
+page-menu-popup {
+    ion-content{
+        background: transparent !important;
+        .scroll-content{
+            padding: 5px;
+            .popup-bg {
+                background: #fff;
+            }
+            .subhead{
+                border-bottom: 1px solid #ccc;
+            }
+            .flexbox{
+                display: flex;
+                padding: 10px;
+                align-items: center;
+                .label{
+                    margin: 0;
+                    flex-grow: 1;
+                    span {
+                        display: inline-block;
+                        min-width: 70px;
+                    }
+                }
+            }
+            .quantity-group {
+                height: 3.6rem;
+                border: 1px solid #95989a;
+                border-radius: 10px;
+                display: inline-block;
+                overflow: hidden;
+                bottom: 1rem;
+                right: 1rem;
+                background: #fff;
+                .quantity {
+                    width: 40px;
+                    border: 0px solid #ccc;
+                    text-align: center;
+                    font-size: 1.8rem;
+                    height: 3.6rem;
+                }
+                .button-md {
+                    background: #fff;
+                    color: #333;
+                    margin: 0px;
+                    vertical-align: top;
+                    box-shadow: none;
+                    font-size: 1rem
+                }
+            }
+            .button-group button {
+                width: 49.5%;
+                margin: 0;
+                background: #6b0082;
+            }
+        }
+    }
+}

@@ -1,0 +1,145 @@
+ion-modal.customModal{
+    position: relative;
+    .modal-wrapper{
+        width: 90%;
+        top: 25%;
+        left: 5%;
+        position: absolute;
+    }
+}
+page-menu {
+    ion-toolbar{
+        .toolbar-content{
+            display: flex;
+            .cart{
+                background: transparent;
+                box-shadow: none;
+                ion-badge.badge-md{
+                    padding: 4px 0;
+                    width: 2rem;
+                    height: 2rem;
+                    border-radius: 50%;
+                    font-size: 1.1rem;
+                    position: absolute;
+                    top: 0;
+                    right: 2px;
+                }
+            }
+        }
+    }
+    ion-footer {
+        ion-toolbar.toolbar-md {
+            padding: 0px;
+            .toolbar-background-md {
+                background: #fea20f;
+            }
+            ion-buttons {
+                width: 50%;
+                //display: none;
+                &.bar-buttons-md{
+                    text-align: center;
+                }
+                &[active] {
+                    background: #e68f03;
+                    button {
+                        background: #e68f03;
+                    }
+                }
+            }
+            button.button-md {
+                background: #fea20f;
+                color: #333;
+                font-size: 2rem;
+                font-weight: 700;
+                height: 6rem;
+                position: static;
+                box-shadow: none;
+            } 
+        }
+    }
+    ion-list.list-md {
+        margin-bottom: 0;        
+    }
+    .time-left.item-md.item-block {
+        background: #fefa8d;
+        text-align: center;
+        .item-inner {
+            padding: 0px;
+            .label-md {
+                margin: 0px;
+            }
+        }
+    }
+    ion-card  {
+        img {
+            height: 200px;
+        }
+    }
+    ion-card-content.card-content-md {
+        padding: 10px;
+        .price {
+            width: 150px;
+            font-size: 2rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            white-space: initial;
+            direction: rtl;
+            color: white;
+        }
+    }
+    .menuItem.item-md.item-block {
+        .item-inner {
+            padding-right: 0px;
+            border: 0px;
+            .label.label-md {
+                margin: 0px;
+                .card-md{
+                    margin: 0px;
+                    width: 100%;
+                    position: relative;
+                    ion-card-content{
+                        display: flex;
+                        position: absolute;
+                        bottom: 0;
+                        width: 100%;
+                        background: rgba(0, 0, 0, 0.5);
+                        ion-card-title{
+                            width: calc(100% - 150px);
+                            color: white;
+                            p{
+                                color: white;
+                            }
+                        }
+                    }
+                    .quantity-group {
+                        border: 1px solid #95989a;
+                        border-radius: 10px;
+                        display: inline-block;
+                        overflow: hidden;
+                        position: absolute;
+                        bottom: 1rem;
+                        right: 1rem;
+                        background: #fff;
+                        .quantity {
+                            width: 40px;
+                            border: 0px solid #ccc;
+                            text-align: center;
+                            font-size: 1.8rem;
+                            height: 3.6rem;
+                        }
+                        .button-md {
+                            background: #fff;
+                            color: #333;
+                            margin: 0px;
+                            vertical-align: top;
+                            box-shadow: none;
+                            font-size: 1rem
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}

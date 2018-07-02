@@ -1,0 +1,40 @@
+page-login {
+    ion-content.content-md{
+        background: #6b0082;
+        .scroll-content{
+            h1 {
+                color: #fff;
+                text-transform: uppercase;
+                text-align: center;
+                padding: 2rem 0;
+            }
+            .loginForm{
+                padding-top: 15rem;
+                ion-item.item-md{
+                    background-color: transparent; 
+                    display: inline-block;
+                    width: calc(100% - 50px);
+                    color: #fff;
+                }
+                .button-md-primary.login {
+                    color: #000;
+                    background-color: #fea20f;
+                    font-weight: bold;
+                    font-size: 1.6rem;
+                    border-radius: 15px;
+                    height: 52px;
+                }
+                .create-account {
+                    text-align: center;
+                    color: #fea20f;
+                }
+                .forgot-password {
+                    text-align: right;
+                    color: #fff;
+                    text-transform: uppercase;
+                    padding: 2rem 0 0;
+                }
+            }
+        }
+    }
+}

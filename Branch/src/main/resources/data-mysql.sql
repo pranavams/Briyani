@@ -1,19 +1,26 @@
-INSERT INTO role (role_id, name, description) VALUES (0, 'DUMMY_USER', 'Dummy User - Has no rights');
-INSERT INTO role (role_id, name, description) VALUES (1, 'STANDARD_USER', 'Standard User - Has no admin rights');
-INSERT INTO role (role_id, name, description) VALUES (2, 'ADMIN_USER', 'Admin User - Has permission to perform admin tasks');
+--INSERT INTO role (role_id, name, description) VALUES (0, 'DUMMY_USER', 'Dummy User - Has no rights');
+--INSERT INTO role (role_id, name, description) VALUES (1, 'STANDARD_USER', 'Standard User - Has no admin rights');
 
+--INSERT INTO role (role_id, name, description) VALUES (2, 'ADMIN_USER', 'Admin User - Has permission to perform admin tasks');
 -- USER
--- non-encrypted password: jwtpass
+
+--INSERT INTO actor_role(actor_id, role_id) VALUES(1, 1);
+--INSERT INTO actor_role(actor_id, role_id) VALUES(2, 1);
+--INSERT INTO actor_role(actor_id, role_id) VALUES(2, 2);
+--INSERT INTO actor_role(actor_id, role_id) VALUES(3, 2);
 
 
+--DELETE
 
-INSERT INTO actor_role(actor_id, role_id) VALUES(1, 1);
-INSERT INTO actor_role(actor_id, role_id) VALUES(2, 1);
-INSERT INTO actor_role(actor_id, role_id) VALUES(2, 2);
-INSERT INTO actor_role(actor_id, role_id) VALUES(3, 2);
+TRUNCATE TABLE ORDER_DETAIL;
+TRUNCATE TABLE ORDER_INFO;
+TRUNCATE TABLE ITEM;
+TRUNCATE TABLE MENU;
+TRUNCATE TABLE BRANCH;
+TRUNCATE TABLE ADDRESS;
+TRUNCATE TABLE ACTOR;
 
-
-//Address
+--Address
 INSERT INTO ADDRESS (ADDRESS_ID, AREA,  	CITY,  	COUNTRY,  	DOOR_NUMBER,  	STATE,  	STREET,  	ZIPCODE  )
 VALUES (1, 'dunton', 'dunton', 'England', '5', 'GB', 'x Street', '444555');
 
@@ -26,7 +33,7 @@ INSERT INTO ACTOR (roles, actor_id, FIRST_NAME, LAST_NAME, user_name, password) 
 INSERT INTO ACTOR (roles, actor_id, FIRST_NAME, LAST_NAME, user_name, password) VALUES ('ADMIN_USER', 2, 'TOM', 'TOM', 'Tom234', '$2a$04$PCIX2hYrve38M7eOcqAbCO9UqjYg7gfFNpKsinAxh99nms9e.8HwK');
 INSERT INTO ACTOR (roles, actor_id, FIRST_NAME, LAST_NAME, user_name, password) VALUES ('STANDARD_USER', 3, 'ADAM', 'ADAM', 'Adam', '$2a$04$I9Q2sDc4QGGg5WNTLmsz0.fvGv3OjoZyj81PrSFyGOqMphqfS2qKu');
 
-//menu * item
+--menu * item
 INSERT INTO MENU (ID, NAME) VALUES (1, 'Chicken');
 INSERT INTO MENU (ID, NAME) VALUES (2, 'Mutton');
 INSERT INTO MENU (ID, NAME) VALUES (3, 'Steak');
@@ -42,7 +49,7 @@ INSERT INTO ITEM  (ID,  	DESCRIPTION,  	NAME,  	PRICE,  	MENU_ID)
 VALUES (3, 'With Chilli Sauce and Tobasco Sauce', 'Fried Rice', 10, 3);
 
 
-//Order
+--Order
 
 INSERT INTO ORDER_INFO (ORDER_ID, COUPON_CODE,  	DATE_AND_TIME,  	PAYMENT_STATUS,  	TAX_AMOUNT,  	TAX_PERCENTAGE,  	TOTAL_AMOUNT,  	USER_NAME, ADDRESS_ID)
 values (1, '', current_timestamp, 'completed', 6, 6, 106, 'Alex123', 1);

@@ -1,0 +1,21 @@
+Download MySQL from 
+	https://dev.mysql.com/get/Downloads/MySQL-5.5/mysql-5.5.60-winx64.zip
+
+unzip to a location
+open command prompt
+Goto the unzipped location and get into bin directory
+execute mysqld
+
+Download the arab-biriyani-0.1.0.jar
+open command prompt
+go to the downloaded directory
+key in the command 
+
+	java -jar arab-biriyani-0.1.0.jar
+	
+the background application starts to run in port 63636 and gets itself connected to mysql db
+
+user created for using purpose
+
+User ID: Alex123
+Pwd:$2a$04$I9Q2sDc4QGGg5WNTLmsz0.fvGv3OjoZyj81PrSFyGOqMphqfS2qKu

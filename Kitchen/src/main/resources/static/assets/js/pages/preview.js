@@ -9,14 +9,10 @@ $.urlParam = function (name) {
     return (results !== null) ? results[1] || 0 : false;
 }
 
-console.log("Order List " + getOrderList());
-console.log("Customer ID " + $.urlParam('id'));
-
 function getOrderList(id) {
 	// The baseURI variable is created by the result.base_server_base_uri 
 	// which is returned when getting a token and should be used to 
 	// create the url_base.
-	console.log("Inside Order List");
 	var url_base = baseURI;
 	//accessToken = getToken();
 	$.ajax({
@@ -25,11 +21,6 @@ function getOrderList(id) {
 		'content-Type' : 'x-www-form-urlencoded',
 		'crossDomain' : true,
 		'success' : function(result) {
-			console.log('getOrder - Success!\r\n' + result);
-			//Process success actions
-			var returnResult = JSON.stringify(result);
-			console.log('getOrder - Success!\r\n' + returnResult);
-			//document.getElementById('callResults').innerHTML = returnResult;
 			displayOrder(result);
 			return result;
 		},

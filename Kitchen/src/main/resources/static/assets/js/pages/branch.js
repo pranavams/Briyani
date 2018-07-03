@@ -8,20 +8,15 @@ function getBranchList() {
 	// The baseURI variable is created by the result.base_server_base_uri 
 	// which is returned when getting a token and should be used to 
 	// create the url_base.
-	console.log("Inside Branch List");
 	var url_base = baseURI;
 	//accessToken = getToken();
 	$.ajax({
 		'url' : baseURI + 'branch/listAll',
 		'type' : 'GET',
-		'content-Type' : 'x-www-form-urlencoded',
+		'contentType' : 'x-www-form-urlencoded',
 		'crossDomain' : true,
 		'success' : function(result) {
-			console.log('getBranch - Success!\r\n' + result);
-			//Process success actions
 			var returnResult = JSON.stringify(result);
-			console.log('getBranch - Success!\r\n' + returnResult);
-			//document.getElementById('callResults').innerHTML = returnResult;
 			displayBranch(result);
 			return result;
 		},
@@ -112,39 +107,3 @@ function saveBranch() {
 		}
 	});
 }
-
-/// Table Format
-$('#contacts_list').DataTable({
-	columns : [
-		{
-			data : "nte_addnew_mark"
-		}, //0-0
-		{
-			data : "name"
-		}, //1
-		{
-			data : "mobile"
-		}, //2
-		{
-			data : "emailid"
-		}, //3
-		{
-			data : "address"
-		}, //4
-		{
-			data : "Name_contact"
-		}, //5
-		{
-			data : "category"
-		}, //5
-		{
-			data : "modify"
-		} //6
-	],
-	dom : 'lBfrtip',
-	buttons : [
-		'excelHtml5',
-		'csvHtml5',
-		'pdfHtml5'
-	]
-});

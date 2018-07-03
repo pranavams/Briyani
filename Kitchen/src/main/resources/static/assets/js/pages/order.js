@@ -8,20 +8,14 @@ function getOrderList() {
 	// The baseURI variable is created by the result.base_server_base_uri 
 	// which is returned when getting a token and should be used to 
 	// create the url_base.
-	console.log("Inside Order List");
 	var url_base = baseURI;
 	//accessToken = getToken();
 	$.ajax({
 		'url' : baseURI + 'order/listAll',
 		'type' : 'GET',
-		'content-Type' : 'x-www-form-urlencoded',
+		'contentType' : 'x-www-form-urlencoded',
 		'crossDomain' : true,
 		'success' : function(result) {
-			console.log('getOrder - Success!\r\n' + result);
-			//Process success actions
-			var returnResult = JSON.stringify(result);
-			console.log('getOrder - Success!\r\n' + returnResult);
-			//document.getElementById('callResults').innerHTML = returnResult;
 			displayOrder(result);
 			return result;
 		},

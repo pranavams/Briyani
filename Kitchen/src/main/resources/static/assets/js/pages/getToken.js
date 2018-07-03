@@ -24,7 +24,7 @@ function getToken() {
 	$.ajax({
 		'url' : url_base,
 		'type' : 'POST',
-		'content-Type' : 'x-www-form-urlencoded',
+		'contentType' : 'x-www-form-urlencoded',
 		'dataType' : 'json',
 		"crossDomain" : true,
 		'headers' : {

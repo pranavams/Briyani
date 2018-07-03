@@ -14,7 +14,7 @@ function getMenuList() {
 	$.ajax({
 		'url' : baseURI + 'item/listAll',
 		'type' : 'GET',
-		'content-Type' : 'x-www-form-urlencoded',
+		'contentType' : 'x-www-form-urlencoded',
 		'crossDomain' : true,
 		'success' : function(result) {
 			displayMenu(result);
@@ -119,6 +119,12 @@ function getItemData() {
 	return jsonObject;	
 }
 
+function clearItem(){
+	document.getElementById('item_name').value = '';
+	document.getElementById('item_descri').value = '';
+	document.getElementById('item_price').value = '';
+}
+
 function saveItem(){
 	var jsonObj = getItemData();
 	console.log("JSON ITEM Object " + JSON.stringify(jsonObj));
@@ -136,7 +142,8 @@ function saveItem(){
 				class_name: 'gritter-success',
 				title: 'Success!',
 				text: '<p style="font-size: 14px;">Item Saved successfully!</p>',
-			});	
+			});
+			clearItem();
 			return result;
 		},
 		'error' : function(XMLHttpRequest, textStatus, errorThrown) {

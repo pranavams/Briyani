@@ -1,10 +1,4 @@
 
-$.gritter.add({
-	class_name : 'gritter-success',
-	title : 'Success!',
-	text : '<p style="font-size: 14px;">Your contact has been submitted successfully!</p>',
-});
-
 /// Table And Form Hide Show hide_add
 $(".form_hide").hide();
 $(".hide_add").hide();

@@ -93,10 +93,9 @@ function saveBranch() {
 	$.ajax({
 		'url' : baseURI + 'branch/save',
 		'type' : 'POST',
-		'content-Type' : 'application/json; charset=utf-8',
 		'crossDomain' : true,
 		'data' : JSON.stringify(jsonObj),
-		'dataType' : 'jsonp',
+		'dataType' : 'json',
 		'success' : function(result) {
 			console.log('Save Branch - Success!\r\n' + result);
 			//Process success actions

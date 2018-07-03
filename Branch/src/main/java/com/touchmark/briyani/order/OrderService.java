@@ -26,6 +26,11 @@ public class OrderService {
 
 	public List<Order> getAll() {
 		List<OrderEntity> orders = repository.findAll();
+		List<OrderEntity> allOrders = getItemsInOrder(orders);
+		return Order.builder().build().transformEntities(allOrders);
+	}
+
+	private List<OrderEntity> getItemsInOrder(List<OrderEntity> orders) {
 		List<OrderEntity> allOrders = new ArrayList<>();
 		for (int i = 0; i < orders.size(); i++) {
 			OrderEntity tempOrder = orders.get(i);
@@ -35,7 +40,7 @@ public class OrderService {
 			tempOrder.setOrderDetails(orderDetails);
 			allOrders.add(tempOrder);
 		}
-		return Order.builder().build().transformEntities(allOrders);
+		return allOrders;
 	}
 
 	public OrderEntity save(Order object) {
@@ -58,6 +63,12 @@ public class OrderService {
 		if (items == null || items.isEmpty())
 			throw new RuntimeException("Item Not Found");
 		return items.get(0);
+	}
+
+	public List<Order> getOrdersForCustomer(String id) {
+		long customerID = Long.parseLong(id.substring(4));
+		List<OrderEntity> orders = getItemsInOrder(repository.findByCustomerId(customerID));
+		return Order.builder().build().transformEntities(orders);
 	}
 
 }

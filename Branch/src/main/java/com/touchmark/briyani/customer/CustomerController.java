@@ -26,6 +26,7 @@ public class CustomerController {
 		return ResponseEntity.ok(CustomerResponse.builder().customer(this.service.getAll()).build());
 	}
 
+	
 	@PostMapping
 	@RequestMapping("/save")
 	//@PreAuthorize("hasAuthority('STANDARD_USER')")

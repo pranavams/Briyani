@@ -2,33 +2,41 @@
  * 
  */
 
-console.log("Customer List " + getCustomerList());
+$.urlParam = function (name) {
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)')
+                      .exec(window.location.search);
 
-function getCustomerList() {
+    return (results !== null) ? results[1] || 0 : false;
+}
+
+console.log("Order List " + getOrderList());
+console.log("Customer ID " + $.urlParam('id'));
+
+function getOrderList(id) {
 	// The baseURI variable is created by the result.base_server_base_uri 
 	// which is returned when getting a token and should be used to 
 	// create the url_base.
-	console.log("Inside Customer List");
+	console.log("Inside Order List");
 	var url_base = baseURI;
 	//accessToken = getToken();
 	$.ajax({
-		'url' : baseURI + 'customer/listAll',
+		'url' : baseURI + 'order/listForCustomer/' + $.urlParam('id'),
 		'type' : 'GET',
 		'content-Type' : 'x-www-form-urlencoded',
 		'crossDomain' : true,
 		'dataType' : 'jsonp',
 		'success' : function(result) {
-			console.log('getCustomer - Success!\r\n' + result);
+			console.log('getOrder - Success!\r\n' + result);
 			//Process success actions
 			var returnResult = JSON.stringify(result);
-			console.log('getCustomer - Success!\r\n' + returnResult);
+			console.log('getOrder - Success!\r\n' + returnResult);
 			//document.getElementById('callResults').innerHTML = returnResult;
-			displayCustomer(result);
+			displayOrder(result);
 			return result;
 		},
 		'error' : function(XMLHttpRequest, textStatus, errorThrown) {
 			//Process error actions
-			console.log('getCustomer - Error: ' + errorThrown);
+			console.log('getOrder - Error: ' + errorThrown);
 			console.log(XMLHttpRequest.status + ' ' +
 				XMLHttpRequest.statusText);
 			return false;
@@ -36,40 +44,40 @@ function getCustomerList() {
 	});
 }
 
-function displayCustomer(CustomerResult) {
-	console.log('Customer Received ' + CustomerResult);
-	var Customer = CustomerResult['customer'];
-	var table = document.getElementById("contacts_list");
-	for (var i = 0; i < Customer.length; i++) {
+function displayOrder(OrderResult) {
+	console.log('Order Received ' + OrderResult);
+	var Order = OrderResult['order'];
+	var table = document.getElementById("contacts_list_preview");
+	for (var i = 0; i < Order.length; i++) {
 
 		tr = table.insertRow(-1);
 
 		var tabCell = tr.insertCell(-1);
 		tabCell.innerHTML = (i + 1);
 
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = Customer[i]['salutation'] + ' ' + Customer[i]['firstName'] + ' ' + Customer[i]['middleName'] + ' ' + Customer[i]['lastName'];
+		var tabCell = tr.insertCell(-1);
+		tabCell.innerHTML = Order[i]['orderId'];
 
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = Customer[i]['email'];
+		for (var j = 0; j < Order[i]['orderDetails'].length; j++) {
+			tabCell = tr.insertCell(-1);
+			tabCell.innerHTML = Order[i]['orderDetails'][j]['item']['menuName'] + " " + Order[i]['orderDetails'][j]['item']['name'];
 
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = Customer[i]['mobileNumber'];
+			tabCell = tr.insertCell(-1);
+			tabCell.innerHTML = '';
 
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = Customer[i]['dateOfBirth'];
+			tabCell = tr.insertCell(-1);
+			tabCell.innerHTML = Order[i]['orderDetails'][j]['quantity'];
 
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = Customer[i]['address']['doorNumber'] + ', ' +
-		Customer[i]['address']['street'] + ', ' +
-		Customer[i]['address']['area'] + ', ' +
-		Customer[i]['address']['city'] + ', ' +
-		Customer[i]['address']['state'] + ', ' +
-		Customer[i]['address']['country'] + ', ' +
-		Customer[i]['address']['zipcode'];
+			tabCell = tr.insertCell(-1);
+			tabCell.innerHTML = '$' + Order[i]['orderDetails'][j]['quantity'] * Order[i]['orderDetails'][j]['unitPrice'];
 
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = '<a href="#" class="btn btn-xs btn-default"><i class="fa fa-pencil"></i></a> <a href="#" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#deleteDATA"><i class="fa fa-remove"></i></a> <a href="preview.html?id=' + Customer[i]['id'] + '" class="btn btn-xs btn-info"><i class="fa fa-eye"></i></a>';
+			tr = table.insertRow(-1);
+			tabCell = tr.insertCell(-1);
+			tabCell.innerHTML = '';
+		
+			tabCell = tr.insertCell(-1);
+			tabCell.innerHTML = '';
+		}
 	}
 }
 
@@ -77,11 +85,11 @@ function getJSONData() {
 	console.log("Inside Get JSON Data");
 	var jsonObject = {
 		"id" : "",
-		"name" : "Nungambakkam Customer",
+		"name" : "Nungambakkam Order",
 		"email" : "ajith.roy@gmail.com",
 		"latitude" : "234234",
 		"longitude" : "234234",
-		"notes" : "Customer in omr",
+		"notes" : "Order in omr",
 		"address" : {
 			"doorNumber" : "5",
 			"street" : "x Street",
@@ -103,31 +111,31 @@ function getJSONData() {
 	return jsonObject;
 }
 
-function saveCustomer() {
-	console.log("Inside Save Customer");
+function saveOrder() {
+	console.log("Inside Save Order");
 
 	var jsonObj = getJSONData();
 
 	var url_base = baseURI;
 	//accessToken = getToken();
 	$.ajax({
-		'url' : baseURI + 'customer/save',
+		'url' : baseURI + 'order/save',
 		'type' : 'POST',
 		'content-Type' : 'application/json; charset=utf-8',
 		'crossDomain' : true,
 		'data' : JSON.stringify(jsonObj),
 		'dataType' : 'jsonp',
 		'success' : function(result) {
-			console.log('Save Customer - Success!\r\n' + result);
+			console.log('Save Order - Success!\r\n' + result);
 			//Process success actions
 			var returnResult = JSON.stringify(result);
-			console.log('Save Customer - Success!\r\n' + returnResult);
+			console.log('Save Order - Success!\r\n' + returnResult);
 			document.getElementById('callResults').innerHTML = returnResult;
 			return result;
 		},
 		'error' : function(XMLHttpRequest, textStatus, errorThrown) {
 			//Process error actions
-			console.log('getCustomer - Error: ' + errorThrown + " - " + textStatus);
+			console.log('getOrder - Error: ' + errorThrown + " - " + textStatus);
 			console.log(XMLHttpRequest.status + ' ' +
 				XMLHttpRequest.statusText);
 			return false;

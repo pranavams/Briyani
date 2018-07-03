@@ -16,7 +16,6 @@ function getOrderList() {
 		'type' : 'GET',
 		'content-Type' : 'x-www-form-urlencoded',
 		'crossDomain' : true,
-		'dataType' : 'jsonp',
 		'success' : function(result) {
 			console.log('getOrder - Success!\r\n' + result);
 			//Process success actions

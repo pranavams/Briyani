@@ -2,7 +2,7 @@
  * 
  */
 
-console.log("Menu List " + getMenuList());
+getMenuList();
 
 function getMenuList() {
 	// The baseURI variable is created by the result.base_server_base_uri 
@@ -16,7 +16,6 @@ function getMenuList() {
 		'type' : 'GET',
 		'content-Type' : 'x-www-form-urlencoded',
 		'crossDomain' : true,
-		'dataType' : 'jsonp',
 		'success' : function(result) {
 			console.log('getMenu - Success!\r\n' + result);
 			//Process success actions
@@ -69,48 +68,30 @@ function displayMenu(MenuResult) {
 
 function getJSONData() {
 	console.log("Inside Get JSON Data");
-	var jsonObject = {
-		"id" : "",
-		"name" : "Nungambakkam Menu",
-		"email" : "ajith.roy@gmail.com",
-		"latitude" : "234234",
-		"longitude" : "234234",
-		"notes" : "Menu in omr",
-		"address" : {
-			"doorNumber" : "5",
-			"street" : "x Street",
-			"area" : "dunton",
-			"city" : "dunton",
-			"state" : "GB",
-			"country" : "England",
-			"zipcode" : "444555"
-		},
-		"contactPersonFirstName" : "Ajith",
-		"contactPersonLastName" : "Roy",
-		"contactPersonMiddleName" : "M",
-		"contactPersonSalutation" : "Mr.",
-		"mobileNumber" : "123234234",
-		"telephone" : "323234234",
-		"contactPersonNumber" : "123455"
-	};
-
+	jsonObject = {};
+	jsonObject['id'] = '';
+	jsonObject['name'] = 'Tandoori';
+	
 	return jsonObject;
 }
 
 function saveMenu() {
-	console.log("Inside Save Menu");
+	console.log("Inside Save Menu Before calling JSONData");
 
 	var jsonObj = getJSONData();
+	console.log("Received JSON Object ");
+	
+	console.log("JSON DATA for Save " + jsonObj);
 
 	var url_base = baseURI;
 	//accessToken = getToken();
 	$.ajax({
-		'url' : baseURI + 'Menu/save',
+		'url' : baseURI + 'menu/save',
 		'type' : 'POST',
-		'content-Type' : 'application/json; charset=utf-8',
+		'content-Type' : 'application/json',
 		'crossDomain' : true,
 		'data' : JSON.stringify(jsonObj),
-		'dataType' : 'jsonp',
+		'dataType' : 'json',
 		'success' : function(result) {
 			console.log('Save Menu - Success!\r\n' + result);
 			//Process success actions

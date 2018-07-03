@@ -16,7 +16,6 @@ function getRiderList() {
 		'type' : 'GET',
 		'content-Type' : 'x-www-form-urlencoded',
 		'crossDomain' : true,
-		'dataType' : 'jsonp',
 		'success' : function(result) {
 			console.log('getRider - Success!\r\n' + result);
 			//Process success actions

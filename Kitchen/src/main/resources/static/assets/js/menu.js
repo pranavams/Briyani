@@ -17,11 +17,6 @@ function getMenuList() {
 		'content-Type' : 'x-www-form-urlencoded',
 		'crossDomain' : true,
 		'success' : function(result) {
-			console.log('getMenu - Success!\r\n' + result);
-			//Process success actions
-			var returnResult = JSON.stringify(result);
-			console.log('getMenu - Success!\r\n' + returnResult);
-			//document.getElementById('callResults').innerHTML = returnResult;
 			displayMenu(result);
 			return result;
 		},
@@ -104,6 +99,11 @@ function saveMenu() {
 			console.log('getMenu - Error: ' + errorThrown + " - " + textStatus);
 			console.log(XMLHttpRequest.status + ' ' +
 				XMLHttpRequest.statusText);
+			$.gritter.add({
+				class_name: 'gritter-error',
+				title: 'Success!',
+				text: '<p style="font-size: 14px;">Menu Not Saved!</p>',
+			});	
 			return false;
 		}
 	});
@@ -144,6 +144,11 @@ function saveItem(){
 			console.log('getMenu - Error: ' + errorThrown + " - " + textStatus);
 			console.log(XMLHttpRequest.status + ' ' +
 				XMLHttpRequest.statusText);
+			$.gritter.add({
+				class_name: 'gritter-error',
+				title: 'Success!',
+				text: '<p style="font-size: 14px;">Item Not Saved!</p>',
+			});	
 			return false;
 		}
 	});

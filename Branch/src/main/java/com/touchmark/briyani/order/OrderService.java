@@ -1,12 +1,12 @@
 package com.touchmark.briyani.order;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.touchmark.briyani.commons.Log;
 import com.touchmark.briyani.item.ItemEntity;
 import com.touchmark.briyani.item.ItemRepository;
 
@@ -14,15 +14,28 @@ import com.touchmark.briyani.item.ItemRepository;
 public class OrderService {
 	private OrderRepository repository;
 	private ItemRepository iRepository;
+	private OrderDetailRepository orderDetailRepository;
 
 	@Autowired
-	public OrderService(OrderRepository repository, ItemRepository iRepository) {
+	public OrderService(OrderRepository repository, ItemRepository iRepository,
+			OrderDetailRepository orderDetailRepository) {
 		this.repository = repository;
 		this.iRepository = iRepository;
+		this.orderDetailRepository = orderDetailRepository;
 	}
 
 	public List<Order> getAll() {
-		return Order.builder().build().transformEntities(repository.findAll());
+		List<OrderEntity> orders = repository.findAll();
+		List<OrderEntity> allOrders = new ArrayList<>();
+		for (int i = 0; i < orders.size(); i++) {
+			OrderEntity tempOrder = orders.get(i);
+			List<OrderDetailEntity> orderDetails = orderDetailRepository.findByOrderId(tempOrder.getOrderId());
+			Log.log("OrderService", "getAll", "Order ID " + tempOrder.getOrderId());
+			Log.log("OrderService", "getAll", "Order details " + orderDetails);
+			tempOrder.setOrderDetails(orderDetails);
+			allOrders.add(tempOrder);
+		}
+		return Order.builder().build().transformEntities(allOrders);
 	}
 
 	public OrderEntity save(Order object) {
@@ -31,8 +44,8 @@ public class OrderService {
 		return this.repository.save(orderEntity);
 	}
 
-	private Collection<OrderDetailEntity> getOrderDetails(Order object) {
-		Collection<OrderDetailEntity> orderDetails = new ArrayList<>();
+	private List<OrderDetailEntity> getOrderDetails(Order object) {
+		List<OrderDetailEntity> orderDetails = new ArrayList<>();
 		for (OrderDetail orderDetail : object.getOrderDetails()) {
 			orderDetails.add(OrderDetailEntity.builder().quantity(orderDetail.getQuantity())
 					.unitPrice(orderDetail.getUnitPrice()).item(getItemEntity(orderDetail)).build());

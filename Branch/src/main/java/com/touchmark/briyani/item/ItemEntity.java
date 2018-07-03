@@ -29,7 +29,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "item")
 public class ItemEntity implements Serializable {
 
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	private long id;
 

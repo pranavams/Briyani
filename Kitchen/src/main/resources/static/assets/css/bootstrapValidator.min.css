@@ -1,0 +1,39 @@
+$(document).ready(function() {
+$("#form1").validate({
+rules: {
+participations: {
+required: function() {
+return $('#days').val() == '' ? true : false;
+}
+},
+days: {
+required: function() {
+return $('#participations').val() =='' ? true: false;
+}
+},
+title: {
+    required: true,
+     minlength:40
+} ,
+content: {
+    required: true,
+     minlength:100,
+     maxlength:600
+},
+evaluation: {
+    required: true,
+     minlength:50,
+     maxlength:300
+},
+price: {
+    required: true,
+    digits:true
+},
+multi:{
+    required:true
+}
+     },
+messages: {
+}
+     });
+     });

@@ -19,6 +19,7 @@ public class Item {
 	private String description;
 	private float price;
 	private String menuName;
+	private String menuId;
 
 	public ItemEntity createEntity() {
 		return ItemEntity.builder().description(description).name(name).price(price).build();
@@ -27,11 +28,16 @@ public class Item {
 	public Item transformEntity(ItemEntity entity) {
 		return Item.builder().id(transformId(entity.getId())).name(entity.getName())
 				.description(entity.getDescription()).price(entity.getPrice()).menuName(entity.getMenu().getName())
+				.menuId(transformMenuId(entity.getMenu().getId()))
 				.build();
 	}
 
+	private String transformMenuId(long id) {
+		return "CHBI" + id;
+	}
+
 	private String transformId(long id) {
-		return "ITM-" + id;
+		return "CHBIR" + id;
 	}
 
 	public List<Item> transformEntities(List<ItemEntity> entities) {

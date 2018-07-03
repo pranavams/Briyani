@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 public class UserEntity {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "actorId")
 	private Long actorId;
 

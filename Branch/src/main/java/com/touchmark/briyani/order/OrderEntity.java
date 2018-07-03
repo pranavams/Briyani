@@ -2,7 +2,7 @@ package com.touchmark.briyani.order;
 
 import java.io.Serializable;
 import java.time.OffsetDateTime;
-import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,11 +12,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.touchmark.briyani.branch.BranchEntity;
 import com.touchmark.briyani.commons.AddressEntity;
 
 import lombok.AllArgsConstructor;
@@ -35,7 +35,7 @@ import lombok.ToString;
 @Table(name = "orderInfo")
 public class OrderEntity implements Serializable {
 
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	@Column(name = "orderId")
 	private long orderId;
@@ -61,12 +61,16 @@ public class OrderEntity implements Serializable {
 	@Column(name = "paymentStatus")
 	private String paymentStatus;
 
+	@OneToOne(fetch=FetchType.LAZY, cascade= CascadeType.ALL)
+	@JoinColumn(name = "branchId")
+	private BranchEntity branch;
+	
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "addressId")
 	private AddressEntity deliveryAddress;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
+	@OneToMany(cascade = CascadeType.ALL)
 	//@JoinTable(name = "orderDetail", joinColumns = @JoinColumn(name = "orderId"), inverseJoinColumns = @JoinColumn(name = "orderDetailsId"))
-	private Collection<OrderDetailEntity> orderDetails;
+	private List<OrderDetailEntity> orderDetails;
 	
 }

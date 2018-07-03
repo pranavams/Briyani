@@ -29,7 +29,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "branch")
 public class BranchEntity implements Serializable {
 
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	private long id;
 
@@ -67,7 +67,7 @@ public class BranchEntity implements Serializable {
 	@Column(name = "telephone")
 	private String telephone;
 	
-	@Column(name = "contactPersonNumnber")
+	@Column(name = "contactPersonNumber")
 	private String contactPersonNumber;
 	
 }

@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class Branch {
-
+	private String id;
 	private String name;
 	private String email;
 	private String latitude;
@@ -41,29 +41,25 @@ public class Branch {
 				.latitude(latitude).longitude(longitude).mobileNumber(mobileNumber).name(name).notes(notes)
 				.telephone(telephone).address(addressEntity).build();
 	}
-	
+
 	public Branch transformEntity(BranchEntity entity) {
-		this.name = entity.getName();
-		this.email = entity.getEmail();
-		this.latitude = entity.getLatitude();
-		this.longitude = entity.getLongitude();
-		this.notes = entity.getNotes();
-		this.contactPersonFirstName = entity.getContactPersonFirstName();
-		this.contactPersonLastName = entity.getContactPersonLastName();
-		this.contactPersonMiddleName = entity.getContactPersonMiddleName();
-		this.contactPersonNumber = entity.getContactPersonNumber();
-		this.contactPersonSalutation = entity.getContactPersonSalutation();
-		this.mobileNumber= entity.getMobileNumber();
-		this.telephone = entity.getTelephone();
-		this.address = Address.builder().area(entity.getAddress().getArea())
-				.city(entity.getAddress().getCity())
-				.country(entity.getAddress().getCountry())
-				.doorNumber(entity.getAddress().getDoorNumber())
-				.state(entity.getAddress().getState())
-				.street(entity.getAddress().getStreet())
-				.zipcode(entity.getAddress().getZipcode())
+		return Branch.builder().id(transformID(entity.getId())).name(entity.getName()).email(entity.getEmail())
+				.latitude(entity.getLatitude()).longitude(entity.getLongitude()).notes(entity.getNotes())
+				.contactPersonFirstName(entity.getContactPersonFirstName())
+				.contactPersonLastName(entity.getContactPersonLastName())
+				.contactPersonMiddleName(entity.getContactPersonMiddleName())
+				.contactPersonNumber(entity.getContactPersonNumber())
+				.contactPersonSalutation(entity.getContactPersonSalutation()).mobileNumber(entity.getMobileNumber())
+				.telephone(entity.getTelephone())
+				.address(Address.builder().area(entity.getAddress().getArea()).city(entity.getAddress().getCity())
+						.country(entity.getAddress().getCountry()).doorNumber(entity.getAddress().getDoorNumber())
+						.state(entity.getAddress().getState()).street(entity.getAddress().getStreet())
+						.zipcode(entity.getAddress().getZipcode()).build())
 				.build();
-		return this;
+	}
+
+	private String transformID(long id) {
+		return "BRAN" + id;
 	}
 
 	public List<Branch> transformEntities(List<BranchEntity> entities) {

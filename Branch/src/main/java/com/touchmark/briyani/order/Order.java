@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import com.touchmark.briyani.branch.Branch;
 import com.touchmark.briyani.commons.Address;
 import com.touchmark.briyani.commons.AddressEntity;
 import com.touchmark.briyani.commons.Log;
@@ -30,6 +31,7 @@ public class Order {
 	private String paymentStatus;
 	private Address deliveryAddress;
 	private OffsetDateTime dateAndTime;
+	private Branch branch;
 
 	private List<OrderDetail> orderDetails;
 
@@ -38,54 +40,35 @@ public class Order {
 				.city(deliveryAddress.getCity()).country(deliveryAddress.getCountry())
 				.doorNumber(deliveryAddress.getDoorNumber()).state(deliveryAddress.getState())
 				.street(deliveryAddress.getStreet()).zipcode(deliveryAddress.getZipcode()).build();
-		
-		Collection<OrderDetailEntity> orders = new ArrayList<>();
-		
-		
+
+		List<OrderDetailEntity> orders = new ArrayList<>();
+
 		for (OrderDetail orderDetail : orderDetails) {
-			
-			orders.add(OrderDetailEntity.builder()
-					.quantity(orderDetail.getQuantity())
-					.unitPrice(orderDetail.getUnitPrice())
-					.build()
-			);
+
+			orders.add(OrderDetailEntity.builder().quantity(orderDetail.getQuantity())
+					.unitPrice(orderDetail.getUnitPrice()).build());
 		}
 		return OrderEntity.builder().couponCode(couponCode).dateAndTime(dateAndTime).deliveryAddress(addressEntity)
 				.paymentStatus(paymentStatus).taxPercentage(taxPercentage).taxAmount(taxAmount).totalAmount(totalAmount)
-				.userName(userName)
-				.orderDetails(orders)
-				.build();
+				.userName(userName).orderDetails(orders).build();
 	}
 
 	public Order transformEntity(OrderEntity entity) {
 		Log.log("Order", "transformEntity", "Order Received " + entity);
 
-		deliveryAddress = Address.builder().area(entity.getDeliveryAddress().getArea())
-				.city(entity.getDeliveryAddress().getCity()).country(entity.getDeliveryAddress().getCountry())
-				.doorNumber(entity.getDeliveryAddress().getDoorNumber()).state(entity.getDeliveryAddress().getState())
-				.street(entity.getDeliveryAddress().getStreet()).zipcode(entity.getDeliveryAddress().getZipcode())
-				.build();
+		deliveryAddress = Address.builder().build().transform(entity.getDeliveryAddress());
 
 		List<OrderDetail> orderDetails = new ArrayList<>();
-		for (OrderDetailEntity item : entity.getOrderDetails()) {
-			orderDetails.add(OrderDetail.builder()
-					.item(Item.builder().menuName(item.getItem().getMenu().getName())
-							.description(item.getItem().getDescription()).id(transformItemId(item.getItem().getId()))
-							.name(item.getItem().getName()).price(item.getItem().getPrice()).build())
-					.quantity(item.getQuantity()).unitPrice(item.getUnitPrice()).build());
+		for (OrderDetailEntity orderDetail : entity.getOrderDetails()) {
+			orderDetails.add(OrderDetail.builder().item(Item.builder().build().transformEntity(orderDetail.getItem()))
+					.quantity(orderDetail.getQuantity()).unitPrice(orderDetail.getUnitPrice()).build());
 		}
-		return Order.builder()
-				.deliveryAddress(deliveryAddress)
-				.couponCode(entity.getCouponCode()).dateAndTime(entity.getDateAndTime())
-				.orderId(transformId(entity.getOrderId())).paymentStatus(entity.getPaymentStatus())
-				.taxAmount(entity.getTaxAmount()).taxPercentage(entity.getTaxPercentage())
-				.totalAmount(entity.getTotalAmount()).userName(entity.getUserName()).deliveryAddress(deliveryAddress)
-				.orderDetails(orderDetails).build();
-
-	}
-
-	private String transformItemId(long id) {
-		return "ITM-" + id;
+		return Order.builder().branch(Branch.builder().build().transformEntity(entity.getBranch()))
+				.deliveryAddress(deliveryAddress).couponCode(entity.getCouponCode())
+				.dateAndTime(entity.getDateAndTime()).orderId(transformId(entity.getOrderId()))
+				.paymentStatus(entity.getPaymentStatus()).taxAmount(entity.getTaxAmount())
+				.taxPercentage(entity.getTaxPercentage()).totalAmount(entity.getTotalAmount())
+				.userName(entity.getUserName()).deliveryAddress(deliveryAddress).orderDetails(orderDetails).build();
 	}
 
 	private String transformId(long orderId) {

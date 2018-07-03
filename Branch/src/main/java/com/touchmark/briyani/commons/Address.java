@@ -19,5 +19,10 @@ public class Address {
 	private String state;
 	private String country;
 	private String zipcode;
-	
+
+	public Address transform(AddressEntity entity) {
+		return Address.builder().area(entity.getArea()).city(entity.getCity()).country(entity.getCountry())
+				.doorNumber(entity.getDoorNumber()).state(entity.getState()).street(entity.getStreet())
+				.zipcode(entity.getZipcode()).build();
+	}
 }

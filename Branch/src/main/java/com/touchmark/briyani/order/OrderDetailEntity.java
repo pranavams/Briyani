@@ -32,7 +32,7 @@ import lombok.ToString;
 @Table(name = "orderDetail")
 public class OrderDetailEntity implements Serializable{
 
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	@Column(name = "orderDetailsId")
 	private long orderDetailsId;
@@ -47,7 +47,6 @@ public class OrderDetailEntity implements Serializable{
 	@Column(name = "unitPrice")
 	private float unitPrice;
 	
-	@ManyToOne
-	@JoinColumn(name = "orderId")
-	private OrderEntity order;
+	@Column(name = "orderId")
+	private Long orderId;
 }

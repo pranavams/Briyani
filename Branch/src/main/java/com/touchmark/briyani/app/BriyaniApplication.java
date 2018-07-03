@@ -29,7 +29,7 @@ public class BriyaniApplication {
 		return new WebMvcConfigurerAdapter() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/api/**").allowedOrigins("http://localhost:36363");
+				registry.addMapping("/api/**").allowedOrigins("http://localhost:36363").allowedMethods("GET", "POST");
 			}
 		};
 	}

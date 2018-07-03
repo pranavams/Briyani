@@ -29,7 +29,6 @@ public class MenuController {
 		return ResponseEntity.ok(MenuResponse.builder().menu(this.service.getAll()).build());
 	}
 
-	@CrossOrigin(origins = "http://localhost:36363")
 	@PostMapping
 	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE, path = "/save", produces = MediaType.APPLICATION_JSON_VALUE)
 	//@PreAuthorize("hasAuthority('STANDARD_USER')")

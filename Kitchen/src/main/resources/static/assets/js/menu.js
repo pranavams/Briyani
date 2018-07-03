@@ -69,8 +69,7 @@ function displayMenu(MenuResult) {
 function getJSONData() {
 	console.log("Inside Get JSON Data");
 	jsonObject = {};
-	jsonObject['id'] = '';
-	jsonObject['name'] = 'Tandoori';
+	jsonObject['name'] = document.getElementById('menu_name').value;
 	
 	return jsonObject;
 }
@@ -81,23 +80,23 @@ function saveMenu() {
 	var jsonObj = getJSONData();
 	console.log("Received JSON Object ");
 	
-	console.log("JSON DATA for Save " + jsonObj);
+	console.log("JSON DATA for Save " + JSON.stringify(jsonObj));
 
 	var url_base = baseURI;
 	//accessToken = getToken();
 	$.ajax({
 		'url' : baseURI + 'menu/save',
 		'type' : 'POST',
-		'content-Type' : 'application/json',
+		'contentType' : 'application/json',
 		'crossDomain' : true,
 		'data' : JSON.stringify(jsonObj),
 		'dataType' : 'json',
 		'success' : function(result) {
-			console.log('Save Menu - Success!\r\n' + result);
-			//Process success actions
-			var returnResult = JSON.stringify(result);
-			console.log('Save Menu - Success!\r\n' + returnResult);
-			document.getElementById('callResults').innerHTML = returnResult;
+			$.gritter.add({
+				class_name: 'gritter-success',
+				title: 'Success!',
+				text: '<p style="font-size: 14px;">Menu Saved successfully!</p>',
+			});	
 			return result;
 		},
 		'error' : function(XMLHttpRequest, textStatus, errorThrown) {
@@ -110,3 +109,43 @@ function saveMenu() {
 	});
 }
 
+function getItemData() {
+	jsonObject = {};
+	jsonObject['menuName'] = document.getElementById('menu_name').value;
+	jsonObject['name'] = document.getElementById('item_name').value;
+	jsonObject['description'] = document.getElementById('item_descri').value;
+	jsonObject['price'] = document.getElementById('item_price').value;
+	
+	return jsonObject;	
+}
+
+function saveItem(){
+	var jsonObj = getItemData();
+	console.log("JSON ITEM Object " + JSON.stringify(jsonObj));
+	var url_base = baseURI;
+	//accessToken = getToken();
+	$.ajax({
+		'url' : baseURI + 'item/save',
+		'type' : 'POST',
+		'contentType' : 'application/json',
+		'crossDomain' : true,
+		'data' : JSON.stringify(jsonObj),
+		'dataType' : 'json',
+		'success' : function(result) {
+			$.gritter.add({
+				class_name: 'gritter-success',
+				title: 'Success!',
+				text: '<p style="font-size: 14px;">Item Saved successfully!</p>',
+			});	
+			return result;
+		},
+		'error' : function(XMLHttpRequest, textStatus, errorThrown) {
+			//Process error actions
+			console.log('getMenu - Error: ' + errorThrown + " - " + textStatus);
+			console.log(XMLHttpRequest.status + ' ' +
+				XMLHttpRequest.statusText);
+			return false;
+		}
+	});
+	
+}

@@ -369,3 +369,437 @@ Hibernate: select branchenti0_.id as id1_2_, branchenti0_.address_id as address1
 Hibernate: select addressent0_.address_id as address_1_1_0_, addressent0_.area as area2_1_0_, addressent0_.city as city3_1_0_, addressent0_.country as country4_1_0_, addressent0_.door_number as door_num5_1_0_, addressent0_.state as state6_1_0_, addressent0_.street as street7_1_0_, addressent0_.zipcode as zipcode8_1_0_ from address addressent0_ where addressent0_.address_id=?
 Hibernate: select addressent0_.address_id as address_1_1_0_, addressent0_.area as area2_1_0_, addressent0_.city as city3_1_0_, addressent0_.country as country4_1_0_, addressent0_.door_number as door_num5_1_0_, addressent0_.state as state6_1_0_, addressent0_.street as street7_1_0_, addressent0_.zipcode as zipcode8_1_0_ from address addressent0_ where addressent0_.address_id=?
 BranchController - getAllBranch - Branch To Send BranchResponse(branch=[Branch(id=BRAN1, name=OMR Branch, email=ajith.roy@gmail.com, latitude=234234, longitude=234234, notes=Branch in omr, address=Address(doorNumber=5, street=x Street, area=dunton, city=dunton, state=GB, country=England, zipcode=444555), contactPersonFirstName=Ajith, contactPersonLastName=Roy, contactPersonMiddleName=M, contactPersonSalutation=Mr., mobileNumber=123234234, telephone=323234234, contactPersonNumber=123455), Branch(id=BRAN2, name=ECR Branch, email=prabhas.roy@gmail.com, latitude=234234, longitude=234234, notes=Branch in EC, address=Address(doorNumber=5, street=x Street, area=dearborn, city=dearborn, state=Michigan, country=United States, zipcode=42186), contactPersonFirstName=Prabhas, contactPersonLastName=Roy, contactPersonMiddleName=M, contactPersonSalutation=Mr., mobileNumber=123234234, telephone=323234234, contactPersonNumber=123455)])
+Hibernate: select branchenti0_.id as id1_2_, branchenti0_.address_id as address14_2_, branchenti0_.contact_person_first_name as contact_2_2_, branchenti0_.contact_person_last_name as contact_3_2_, branchenti0_.contact_person_middle_name as contact_4_2_, branchenti0_.contact_person_number as contact_5_2_, branchenti0_.contact_person_salutation as contact_6_2_, branchenti0_.email as email7_2_, branchenti0_.latitude as latitude8_2_, branchenti0_.longitude as longitud9_2_, branchenti0_.mobile_number as mobile_10_2_, branchenti0_.name as name11_2_, branchenti0_.notes as notes12_2_, branchenti0_.telephone as telepho13_2_ from branch branchenti0_
+Hibernate: select addressent0_.address_id as address_1_1_0_, addressent0_.area as area2_1_0_, addressent0_.city as city3_1_0_, addressent0_.country as country4_1_0_, addressent0_.door_number as door_num5_1_0_, addressent0_.state as state6_1_0_, addressent0_.street as street7_1_0_, addressent0_.zipcode as zipcode8_1_0_ from address addressent0_ where addressent0_.address_id=?
+Hibernate: select addressent0_.address_id as address_1_1_0_, addressent0_.area as area2_1_0_, addressent0_.city as city3_1_0_, addressent0_.country as country4_1_0_, addressent0_.door_number as door_num5_1_0_, addressent0_.state as state6_1_0_, addressent0_.street as street7_1_0_, addressent0_.zipcode as zipcode8_1_0_ from address addressent0_ where addressent0_.address_id=?
+BranchController - getAllBranch - Branch To Send BranchResponse(branch=[Branch(id=BRAN1, name=OMR Branch, email=ajith.roy@gmail.com, latitude=234234, longitude=234234, notes=Branch in omr, address=Address(doorNumber=5, street=x Street, area=dunton, city=dunton, state=GB, country=England, zipcode=444555), contactPersonFirstName=Ajith, contactPersonLastName=Roy, contactPersonMiddleName=M, contactPersonSalutation=Mr., mobileNumber=123234234, telephone=323234234, contactPersonNumber=123455), Branch(id=BRAN2, name=ECR Branch, email=prabhas.roy@gmail.com, latitude=234234, longitude=234234, notes=Branch in EC, address=Address(doorNumber=5, street=x Street, area=dearborn, city=dearborn, state=Michigan, country=United States, zipcode=42186), contactPersonFirstName=Prabhas, contactPersonLastName=Roy, contactPersonMiddleName=M, contactPersonSalutation=Mr., mobileNumber=123234234, telephone=323234234, contactPersonNumber=123455)])
+Terminate batch job (Y/N)? 
+Terminate batch job (Y/N)? 
+Terminate batch job (Y/N)? 
+Terminate batch job (Y/N)? 
+Terminate batch job (Y/N)? 
+Starting a Gradle Daemon, 1 busy Daemon could not be reused, use --status for details
+:clean
+:compileJava
+:processResources
+:classes
+:bootJar
+:jar SKIPPED
+:assemble
+:compileTestJava NO-SOURCE
+:processTestResources NO-SOURCE
+:testClasses UP-TO-DATE
+:test NO-SOURCE
+:check UP-TO-DATE
+:build
+:bootRun
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.0.3.RELEASE)
+
+2018-07-03 18:59:10.043  INFO 8084 --- [           main] c.t.briyani.app.BriyaniApplication       : Starting BriyaniApplication on WGC1007LBGL72 with PID 8084 (C:\Xigma\Accurev\Briyani\Branch\build\classes\java\main started by SPRANAVA in C:\Xigma\Accurev\Briyani\Branch)
+2018-07-03 18:59:10.043  INFO 8084 --- [           main] c.t.briyani.app.BriyaniApplication       : No active profile set, falling back to default profiles: default
+2018-07-03 18:59:10.311  INFO 8084 --- [           main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@c0cf0ded: startup date [Tue Jul 03 18:59:10 IST 2018]; root of context hierarchy
+2018-07-03 18:59:12.905  INFO 8084 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$bf3c1d8b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-07-03 18:59:13.626  INFO 8084 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 63636 (http)
+2018-07-03 18:59:13.680  INFO 8084 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-07-03 18:59:13.680  INFO 8084 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.31
+2018-07-03 18:59:13.702  INFO 8084 --- [ost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\ford\jdk\ibm\ibm-jdk8u151-b12\jre\bin\compressedrefs;C:\ford\jdk\ibm\ibm-jdk8u151-b12\jre\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Xigma\Personal\APPS\Python27;C:\Xigma\Personal\APPS\mysql-5.5.60-winx64\bin;C:\Xigma\Personal\APPS\apache-maven-3.5.4\bin;C:\Xigma\Personal\APPS\OC;C:\ford\jdk\ibm\ibm-jdk8u151-b12\bin;C:\Xigma\Personal\APPS\Gradle\gradle-4.6\bin;C:\Xigma\Personal\APPS\node-v4.8.3-win-x64;C:\Windows\Microsoft.NET\Framework64\v4.0.30319;C:\Program Files\CloudFoundry;C:\Program Files (x86)\RSA SecurID Token Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\7-Zip;C:\Program Files (x86)\AccuRev\bin;C:\Program Files\Adobe\Adobe PDF iFilter 11 for 64-bit platforms\bin\;C:\Program Files\Git\cmd;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Program Files (x86)\WebEx\Productivity Tools;C:\Program Files\PuTTY\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Xigma\Personal\APPS\NodeJS\;C:\Program Files (x86)\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\130\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\130\Tools\Binn\ManagementStudio\;C:\Users\spranava\AppData\Local\GitHubDesktop\bin;C:\Users\spranava\AppData\Roaming\npm;.]
+2018-07-03 18:59:13.882  INFO 8084 --- [ost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-07-03 18:59:13.882  INFO 8084 --- [ost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3586 ms
+2018-07-03 18:59:14.135  INFO 8084 --- [ost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2018-07-03 18:59:14.139  INFO 8084 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-07-03 18:59:14.140  INFO 8084 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-07-03 18:59:14.140  INFO 8084 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-07-03 18:59:14.140  INFO 8084 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-07-03 18:59:14.476  INFO 8084 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2018-07-03 18:59:14.701  INFO 8084 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2018-07-03 18:59:14.769  INFO 8084 --- [           main] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2018-07-03 18:59:14.800  INFO 8084 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-07-03 18:59:14.936  INFO 8084 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.2.17.Final}
+2018-07-03 18:59:14.952  INFO 8084 --- [           main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2018-07-03 18:59:14.992  INFO 8084 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-07-03 18:59:15.201  INFO 8084 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+Hibernate: create table actor (actor_id bigint not null auto_increment, first_name varchar(255), last_name varchar(255), middle_name varchar(255), password varchar(255), roles varchar(255), user_name varchar(255), primary key (actor_id)) engine=MyISAM
+Hibernate: create table address (address_id bigint not null auto_increment, area varchar(255), city varchar(255), country varchar(255), door_number varchar(255), state varchar(255), street varchar(255), zipcode varchar(255), primary key (address_id)) engine=MyISAM
+Hibernate: create table branch (id bigint not null auto_increment, contact_person_first_name varchar(255), contact_person_last_name varchar(255), contact_person_middle_name varchar(255), contact_person_number varchar(255), contact_person_salutation varchar(255), email varchar(255), latitude varchar(255), longitude varchar(255), mobile_number varchar(255), name varchar(255), notes varchar(255), telephone varchar(255), address_id bigint, primary key (id)) engine=MyISAM
+Hibernate: create table customer (id bigint not null auto_increment, date_of_birth datetime, first_name varchar(255), last_name varchar(255), middle_name varchar(255), mobile_number varchar(255), salutation varchar(255), address_id bigint, primary key (id)) engine=MyISAM
+Hibernate: create table item (id bigint not null auto_increment, description varchar(255), name varchar(255), price float, menu_id bigint not null, primary key (id)) engine=MyISAM
+Hibernate: create table menu (id bigint not null auto_increment, name varchar(255), primary key (id)) engine=MyISAM
+Hibernate: create table order_detail (order_details_id bigint not null auto_increment, order_id bigint, quantity integer, unit_price float, item_id bigint, primary key (order_details_id)) engine=MyISAM
+Hibernate: create table order_info (order_id bigint not null auto_increment, coupon_code varchar(255), date_and_time datetime, payment_status varchar(255), tax_amount float, tax_percentage float, total_amount float, user_name varchar(255), branch_id bigint, customer_id bigint, address_id bigint, primary key (order_id)) engine=MyISAM
+Hibernate: create table rider (id bigint not null auto_increment, date_of_birth datetime, department_type varchar(255), email varchar(255), gender varchar(255), mobile_number varchar(255), rider_id_card_no varchar(255), rider_person_first_name varchar(255), rider_person_last_name varchar(255), rider_person_middle_name varchar(255), rider_person_number varchar(255), rider_person_salutation varchar(255), zone varchar(255), address_id bigint, primary key (id)) engine=MyISAM
+Hibernate: alter table branch add constraint FKr5n331c13dyb3kbq1jlo53mh5 foreign key (address_id) references address (address_id)
+Hibernate: alter table customer add constraint FKglkhkmh2vyn790ijs6hiqqpi foreign key (address_id) references address (address_id)
+Hibernate: alter table item add constraint FKimdwniosg0e3m5t5qksxyd5vb foreign key (menu_id) references menu (id)
+Hibernate: alter table order_detail add constraint FK4dtqbi7ilse9x730y087wagm2 foreign key (item_id) references item (id)
+Hibernate: alter table order_info add constraint FKjkef7c200omqon2cy66hopchn foreign key (branch_id) references branch (id)
+Hibernate: alter table order_info add constraint FKkgr3op99u82sgutpyys8klgl0 foreign key (customer_id) references customer (id)
+Hibernate: alter table order_info add constraint FKcypxtb62kv6rakqkjuapurib3 foreign key (address_id) references address (address_id)
+Hibernate: alter table order_info_order_details add constraint FKhfq0u4791d974oph5g0fcpa7v foreign key (order_details_order_details_id) references order_detail (order_details_id)
+Hibernate: alter table order_info_order_details add constraint FKcypmhwiyttp0tjftylifrns5k foreign key (order_entity_order_id) references order_info (order_id)
+Hibernate: alter table rider add constraint FK6h4puhdxui02p93hew7j880ld foreign key (address_id) references address (address_id)
+2018-07-03 18:59:16.655  INFO 8084 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-07-03 18:59:16.771  INFO 8084 --- [           main] o.s.jdbc.datasource.init.ScriptUtils     : Executing SQL script from URL [file:/C:/Xigma/Accurev/Briyani/Branch/build/resources/main/data-mysql.sql]
+2018-07-03 18:59:16.837  INFO 8084 --- [           main] o.s.jdbc.datasource.init.ScriptUtils     : Executed SQL script from URL [file:/C:/Xigma/Accurev/Briyani/Branch/build/resources/main/data-mysql.sql] in 66 ms.
+2018-07-03 18:59:18.232  INFO 8084 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-07-03 18:59:19.070  INFO 8084 --- [           main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@c0cf0ded: startup date [Tue Jul 03 18:59:10 IST 2018]; root of context hierarchy
+2018-07-03 18:59:19.077  INFO 8084 --- [           main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Detected ResponseBodyAdvice bean in briyaniApplication.JsonpAdvice
+2018-07-03 18:59:19.155  WARN 8084 --- [           main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2018-07-03 18:59:19.202  INFO 8084 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/branch/listAll]}" onto public org.springframework.http.ResponseEntity<com.touchmark.briyani.branch.BranchResponse> com.touchmark.briyani.branch.BranchController.getAllBranch()
+2018-07-03 18:59:19.237  INFO 8084 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/branch/save]}" onto public org.springframework.http.ResponseEntity<com.touchmark.briyani.branch.BranchEntity> com.touchmark.briyani.branch.BranchController.saveBranch(com.touchmark.briyani.branch.Branch)
+2018-07-03 18:59:19.238  INFO 8084 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/customer/listAll]}" onto public org.springframework.http.ResponseEntity<com.touchmark.briyani.customer.CustomerResponse> com.touchmark.briyani.customer.CustomerController.getAll()
+2018-07-03 18:59:19.239  INFO 8084 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/customer/save]}" onto public org.springframework.http.ResponseEntity<com.touchmark.briyani.customer.CustomerEntity> com.touchmark.briyani.customer.CustomerController.saveBranch(com.touchmark.briyani.customer.Customer)
+2018-07-03 18:59:19.240  INFO 8084 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/item/listAll]}" onto public org.springframework.http.ResponseEntity<com.touchmark.briyani.item.ItemResponse> com.touchmark.briyani.item.ItemController.getAllBranch()
+2018-07-03 18:59:19.241  INFO 8084 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/item/save]}" onto public org.springframework.http.ResponseEntity<com.touchmark.briyani.item.ItemEntity> com.touchmark.briyani.item.ItemController.saveBranch(com.touchmark.briyani.item.Item)
+2018-07-03 18:59:19.242  INFO 8084 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/order/listAll]}" onto public org.springframework.http.ResponseEntity<com.touchmark.briyani.order.OrderResponse> com.touchmark.briyani.order.OrderController.getAll()
+2018-07-03 18:59:19.243  INFO 8084 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/order/save]}" onto public org.springframework.http.ResponseEntity<com.touchmark.briyani.order.Order> com.touchmark.briyani.order.OrderController.save(com.touchmark.briyani.order.Order)
+2018-07-03 18:59:19.244  INFO 8084 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/rider/listAll]}" onto public org.springframework.http.ResponseEntity<com.touchmark.briyani.rider.RiderResponse> com.touchmark.briyani.rider.RiderController.getAll()
+2018-07-03 18:59:19.244  INFO 8084 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/rider/save]}" onto public org.springframework.http.ResponseEntity<com.touchmark.briyani.rider.RiderEntity> com.touchmark.briyani.rider.RiderController.saveBranch(com.touchmark.briyani.rider.Rider)
+2018-07-03 18:59:19.244  INFO 8084 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-07-03 18:59:19.244  INFO 8084 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-07-03 18:59:19.291  INFO 8084 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-07-03 18:59:19.291  INFO 8084 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-07-03 18:59:19.322  INFO 8084 --- [           main] .m.m.a.ExceptionHandlerExceptionResolver : Detected ResponseBodyAdvice implementation in briyaniApplication.JsonpAdvice
+2018-07-03 18:59:19.973  INFO 8084 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2018-07-03 18:59:19.975  INFO 8084 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2018-07-03 18:59:19.982  INFO 8084 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2018-07-03 18:59:20.031  INFO 8084 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 63636 (http) with context path ''
+2018-07-03 18:59:20.031  INFO 8084 --- [           main] c.t.briyani.app.BriyaniApplication       : Started BriyaniApplication in 10.69 seconds (JVM running for 11.398)
+2018-07-03 18:59:37.630  INFO 8084 --- [io-63636-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-07-03 18:59:37.630  INFO 8084 --- [io-63636-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2018-07-03 18:59:37.662  INFO 8084 --- [io-63636-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 32 ms
+2018-07-03 18:59:37.744  INFO 8084 --- [io-63636-exec-1] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+Hibernate: select customeren0_.id as id1_3_, customeren0_.address_id as address_8_3_, customeren0_.date_of_birth as date_of_2_3_, customeren0_.first_name as first_na3_3_, customeren0_.last_name as last_nam4_3_, customeren0_.middle_name as middle_n5_3_, customeren0_.mobile_number as mobile_n6_3_, customeren0_.salutation as salutati7_3_ from customer customeren0_
+Hibernate: select addressent0_.address_id as address_1_1_0_, addressent0_.area as area2_1_0_, addressent0_.city as city3_1_0_, addressent0_.country as country4_1_0_, addressent0_.door_number as door_num5_1_0_, addressent0_.state as state6_1_0_, addressent0_.street as street7_1_0_, addressent0_.zipcode as zipcode8_1_0_ from address addressent0_ where addressent0_.address_id=?
+Hibernate: select addressent0_.address_id as address_1_1_0_, addressent0_.area as area2_1_0_, addressent0_.city as city3_1_0_, addressent0_.country as country4_1_0_, addressent0_.door_number as door_num5_1_0_, addressent0_.state as state6_1_0_, addressent0_.street as street7_1_0_, addressent0_.zipcode as zipcode8_1_0_ from address addressent0_ where addressent0_.address_id=?
+Hibernate: select orderentit0_.order_id as order_id1_7_, orderentit0_.branch_id as branch_i9_7_, orderentit0_.coupon_code as coupon_c2_7_, orderentit0_.customer_id as custome10_7_, orderentit0_.date_and_time as date_and3_7_, orderentit0_.address_id as address11_7_, orderentit0_.payment_status as payment_4_7_, orderentit0_.tax_amount as tax_amou5_7_, orderentit0_.tax_percentage as tax_perc6_7_, orderentit0_.total_amount as total_am7_7_, orderentit0_.user_name as user_nam8_7_ from order_info orderentit0_
+Hibernate: select orderdetai0_.order_details_id as order_de1_6_, orderdetai0_.item_id as item_id5_6_, orderdetai0_.order_id as order_id2_6_, orderdetai0_.quantity as quantity3_6_, orderdetai0_.unit_price as unit_pri4_6_ from order_detail orderdetai0_ where orderdetai0_.order_id=?
+OrderService - getAll - Order ID 1
+Hibernate: select itementity0_.id as id1_4_0_, itementity0_.description as descript2_4_0_, itementity0_.menu_id as menu_id5_4_0_, itementity0_.name as name3_4_0_, itementity0_.price as price4_4_0_ from item itementity0_ where itementity0_.id=?
+Hibernate: select menuentity0_.id as id1_5_0_, menuentity0_.name as name2_5_0_ from menu menuentity0_ where menuentity0_.id=?
+Hibernate: select itementity0_.id as id1_4_0_, itementity0_.description as descript2_4_0_, itementity0_.menu_id as menu_id5_4_0_, itementity0_.name as name3_4_0_, itementity0_.price as price4_4_0_ from item itementity0_ where itementity0_.id=?
+Hibernate: select menuentity0_.id as id1_5_0_, menuentity0_.name as name2_5_0_ from menu menuentity0_ where menuentity0_.id=?
+Hibernate: select itementity0_.id as id1_4_0_, itementity0_.description as descript2_4_0_, itementity0_.menu_id as menu_id5_4_0_, itementity0_.name as name3_4_0_, itementity0_.price as price4_4_0_ from item itementity0_ where itementity0_.id=?
+Hibernate: select menuentity0_.id as id1_5_0_, menuentity0_.name as name2_5_0_ from menu menuentity0_ where menuentity0_.id=?
+OrderService - getAll - Order details [OrderDetailEntity(orderDetailsId=1, item=ItemEntity(id=1, name=Briyani, description=With Onions Marinated in Curd, price=10.0, menu=MenuEntity(id=1, name=Chicken)), quantity=5, unitPrice=10.0, orderId=1), OrderDetailEntity(orderDetailsId=2, item=ItemEntity(id=2, name=Briyani, description=With Onions Marinated in Curd, price=10.0, menu=MenuEntity(id=2, name=Mutton)), quantity=3, unitPrice=10.0, orderId=1), OrderDetailEntity(orderDetailsId=3, item=ItemEntity(id=3, name=Fried Rice, description=With Chilli Sauce and Tobasco Sauce, price=10.0, menu=MenuEntity(id=3, name=Steak)), quantity=2, unitPrice=10.0, orderId=1)]
+Hibernate: select orderdetai0_.order_details_id as order_de1_6_, orderdetai0_.item_id as item_id5_6_, orderdetai0_.order_id as order_id2_6_, orderdetai0_.quantity as quantity3_6_, orderdetai0_.unit_price as unit_pri4_6_ from order_detail orderdetai0_ where orderdetai0_.order_id=?
+OrderService - getAll - Order ID 2
+OrderService - getAll - Order details [OrderDetailEntity(orderDetailsId=4, item=ItemEntity(id=1, name=Briyani, description=With Onions Marinated in Curd, price=10.0, menu=MenuEntity(id=1, name=Chicken)), quantity=6, unitPrice=10.0, orderId=2), OrderDetailEntity(orderDetailsId=5, item=ItemEntity(id=3, name=Fried Rice, description=With Chilli Sauce and Tobasco Sauce, price=10.0, menu=MenuEntity(id=3, name=Steak)), quantity=4, unitPrice=10.0, orderId=2)]
+Hibernate: select branchenti0_.id as id1_2_0_, branchenti0_.address_id as address14_2_0_, branchenti0_.contact_person_first_name as contact_2_2_0_, branchenti0_.contact_person_last_name as contact_3_2_0_, branchenti0_.contact_person_middle_name as contact_4_2_0_, branchenti0_.contact_person_number as contact_5_2_0_, branchenti0_.contact_person_salutation as contact_6_2_0_, branchenti0_.email as email7_2_0_, branchenti0_.latitude as latitude8_2_0_, branchenti0_.longitude as longitud9_2_0_, branchenti0_.mobile_number as mobile_10_2_0_, branchenti0_.name as name11_2_0_, branchenti0_.notes as notes12_2_0_, branchenti0_.telephone as telepho13_2_0_ from branch branchenti0_ where branchenti0_.id=?
+Hibernate: select addressent0_.address_id as address_1_1_0_, addressent0_.area as area2_1_0_, addressent0_.city as city3_1_0_, addressent0_.country as country4_1_0_, addressent0_.door_number as door_num5_1_0_, addressent0_.state as state6_1_0_, addressent0_.street as street7_1_0_, addressent0_.zipcode as zipcode8_1_0_ from address addressent0_ where addressent0_.address_id=?
+Hibernate: select customeren0_.id as id1_3_0_, customeren0_.address_id as address_8_3_0_, customeren0_.date_of_birth as date_of_2_3_0_, customeren0_.first_name as first_na3_3_0_, customeren0_.last_name as last_nam4_3_0_, customeren0_.middle_name as middle_n5_3_0_, customeren0_.mobile_number as mobile_n6_3_0_, customeren0_.salutation as salutati7_3_0_ from customer customeren0_ where customeren0_.id=?
+Order - transformEntity - Order Received OrderEntity(orderId=1, dateAndTime=2018-07-03T18:59:16+05:30, couponCode=, taxPercentage=6.0, taxAmount=6.0, totalAmount=106.0, userName=Alex123, paymentStatus=completed, branch=BranchEntity(id=1, name=OMR Branch, email=ajith.roy@gmail.com, latitude=234234, longitude=234234, notes=Branch in omr, address=AddressEntity(addressId=1, doorNumber=5, street=x Street, area=dunton, city=dunton, state=GB, country=England, zipcode=444555), contactPersonFirstName=Ajith, contactPersonLastName=Roy, contactPersonMiddleName=M, contactPersonSalutation=Mr., mobileNumber=123234234, telephone=323234234, contactPersonNumber=123455), customer=CustomerEntity(id=1, firstName=Devaki, lastName=Vengadesh, middleName=V, salutation=Mrs., mobileNumber=3423423, dateOfBirth=1991-12-12T00:00+05:30, address=AddressEntity(addressId=1, doorNumber=5, street=x Street, area=dunton, city=dunton, state=GB, country=England, zipcode=444555)), deliveryAddress=AddressEntity(addressId=1, doorNumber=5, street=x Street, area=dunton, city=dunton, state=GB, country=England, zipcode=444555), orderDetails=[OrderDetailEntity(orderDetailsId=1, item=ItemEntity(id=1, name=Briyani, description=With Onions Marinated in Curd, price=10.0, menu=MenuEntity(id=1, name=Chicken)), quantity=5, unitPrice=10.0, orderId=1), OrderDetailEntity(orderDetailsId=2, item=ItemEntity(id=2, name=Briyani, description=With Onions Marinated in Curd, price=10.0, menu=MenuEntity(id=2, name=Mutton)), quantity=3, unitPrice=10.0, orderId=1), OrderDetailEntity(orderDetailsId=3, item=ItemEntity(id=3, name=Fried Rice, description=With Chilli Sauce and Tobasco Sauce, price=10.0, menu=MenuEntity(id=3, name=Steak)), quantity=2, unitPrice=10.0, orderId=1)])
+Hibernate: select customeren0_.id as id1_3_0_, customeren0_.address_id as address_8_3_0_, customeren0_.date_of_birth as date_of_2_3_0_, customeren0_.first_name as first_na3_3_0_, customeren0_.last_name as last_nam4_3_0_, customeren0_.middle_name as middle_n5_3_0_, customeren0_.mobile_number as mobile_n6_3_0_, customeren0_.salutation as salutati7_3_0_ from customer customeren0_ where customeren0_.id=?
+Hibernate: select addressent0_.address_id as address_1_1_0_, addressent0_.area as area2_1_0_, addressent0_.city as city3_1_0_, addressent0_.country as country4_1_0_, addressent0_.door_number as door_num5_1_0_, addressent0_.state as state6_1_0_, addressent0_.street as street7_1_0_, addressent0_.zipcode as zipcode8_1_0_ from address addressent0_ where addressent0_.address_id=?
+Order - transformEntity - Order Received OrderEntity(orderId=2, dateAndTime=2018-07-03T18:59:16+05:30, couponCode=, taxPercentage=6.0, taxAmount=6.0, totalAmount=106.0, userName=Alex123, paymentStatus=completed, branch=BranchEntity(id=1, name=OMR Branch, email=ajith.roy@gmail.com, latitude=234234, longitude=234234, notes=Branch in omr, address=AddressEntity(addressId=1, doorNumber=5, street=x Street, area=dunton, city=dunton, state=GB, country=England, zipcode=444555), contactPersonFirstName=Ajith, contactPersonLastName=Roy, contactPersonMiddleName=M, contactPersonSalutation=Mr., mobileNumber=123234234, telephone=323234234, contactPersonNumber=123455), customer=CustomerEntity(id=2, firstName=Jyothi, lastName=Kumari, middleName=A, salutation=Miss., mobileNumber=3423423, dateOfBirth=1991-01-01T00:00+05:30, address=AddressEntity(addressId=2, doorNumber=5, street=x Street, area=dearborn, city=dearborn, state=Michigan, country=United States, zipcode=42186)), deliveryAddress=AddressEntity(addressId=2, doorNumber=5, street=x Street, area=dearborn, city=dearborn, state=Michigan, country=United States, zipcode=42186), orderDetails=[OrderDetailEntity(orderDetailsId=4, item=ItemEntity(id=1, name=Briyani, description=With Onions Marinated in Curd, price=10.0, menu=MenuEntity(id=1, name=Chicken)), quantity=6, unitPrice=10.0, orderId=2), OrderDetailEntity(orderDetailsId=5, item=ItemEntity(id=3, name=Fried Rice, description=With Chilli Sauce and Tobasco Sauce, price=10.0, menu=MenuEntity(id=3, name=Steak)), quantity=4, unitPrice=10.0, orderId=2)])
+Terminate batch job (Y/N)? 
+Terminate batch job (Y/N)? 
+Terminate batch job (Y/N)? 
+Terminate batch job (Y/N)? 
+Starting a Gradle Daemon, 1 busy Daemon could not be reused, use --status for details
+:clean
+:compileJava
+:processResources
+:classes
+:bootJar
+:jar SKIPPED
+:assemble
+:compileTestJava NO-SOURCE
+:processTestResources NO-SOURCE
+:testClasses UP-TO-DATE
+:test NO-SOURCE
+:check UP-TO-DATE
+:build
+:bootRun
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.0.3.RELEASE)
+
+2018-07-03 19:02:49.628  INFO 4908 --- [           main] c.t.briyani.app.BriyaniApplication       : Starting BriyaniApplication on WGC1007LBGL72 with PID 4908 (C:\Xigma\Accurev\Briyani\Branch\build\classes\java\main started by SPRANAVA in C:\Xigma\Accurev\Briyani\Branch)
+2018-07-03 19:02:49.648  INFO 4908 --- [           main] c.t.briyani.app.BriyaniApplication       : No active profile set, falling back to default profiles: default
+2018-07-03 19:02:49.921  INFO 4908 --- [           main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@519b28ef: startup date [Tue Jul 03 19:02:49 IST 2018]; root of context hierarchy
+2018-07-03 19:02:52.713  INFO 4908 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$689472a4] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-07-03 19:02:53.303  INFO 4908 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 63636 (http)
+2018-07-03 19:02:53.347  INFO 4908 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-07-03 19:02:53.347  INFO 4908 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.31
+2018-07-03 19:02:53.359  INFO 4908 --- [ost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\ford\jdk\ibm\ibm-jdk8u151-b12\jre\bin\compressedrefs;C:\ford\jdk\ibm\ibm-jdk8u151-b12\jre\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Xigma\Personal\APPS\Python27;C:\Xigma\Personal\APPS\mysql-5.5.60-winx64\bin;C:\Xigma\Personal\APPS\apache-maven-3.5.4\bin;C:\Xigma\Personal\APPS\OC;C:\ford\jdk\ibm\ibm-jdk8u151-b12\bin;C:\Xigma\Personal\APPS\Gradle\gradle-4.6\bin;C:\Xigma\Personal\APPS\node-v4.8.3-win-x64;C:\Windows\Microsoft.NET\Framework64\v4.0.30319;C:\Program Files\CloudFoundry;C:\Program Files (x86)\RSA SecurID Token Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\7-Zip;C:\Program Files (x86)\AccuRev\bin;C:\Program Files\Adobe\Adobe PDF iFilter 11 for 64-bit platforms\bin\;C:\Program Files\Git\cmd;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Program Files (x86)\WebEx\Productivity Tools;C:\Program Files\PuTTY\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Xigma\Personal\APPS\NodeJS\;C:\Program Files (x86)\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\130\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\130\Tools\Binn\ManagementStudio\;C:\Users\spranava\AppData\Local\GitHubDesktop\bin;C:\Users\spranava\AppData\Roaming\npm;.]
+2018-07-03 19:02:53.517  INFO 4908 --- [ost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-07-03 19:02:53.517  INFO 4908 --- [ost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3612 ms
+2018-07-03 19:02:53.735  INFO 4908 --- [ost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2018-07-03 19:02:53.739  INFO 4908 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-07-03 19:02:53.739  INFO 4908 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-07-03 19:02:53.740  INFO 4908 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-07-03 19:02:53.741  INFO 4908 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-07-03 19:02:54.076  INFO 4908 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2018-07-03 19:02:54.271  INFO 4908 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2018-07-03 19:02:54.379  INFO 4908 --- [           main] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2018-07-03 19:02:54.422  INFO 4908 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-07-03 19:02:54.641  INFO 4908 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.2.17.Final}
+2018-07-03 19:02:54.644  INFO 4908 --- [           main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2018-07-03 19:02:54.724  INFO 4908 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-07-03 19:02:54.961  INFO 4908 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+Hibernate: alter table branch add constraint FKr5n331c13dyb3kbq1jlo53mh5 foreign key (address_id) references address (address_id)
+Hibernate: alter table customer add constraint FKglkhkmh2vyn790ijs6hiqqpi foreign key (address_id) references address (address_id)
+Hibernate: alter table item add constraint FKimdwniosg0e3m5t5qksxyd5vb foreign key (menu_id) references menu (id)
+Hibernate: alter table order_detail add constraint FK4dtqbi7ilse9x730y087wagm2 foreign key (item_id) references item (id)
+Hibernate: alter table order_info add constraint FKjkef7c200omqon2cy66hopchn foreign key (branch_id) references branch (id)
+Hibernate: alter table order_info add constraint FKkgr3op99u82sgutpyys8klgl0 foreign key (customer_id) references customer (id)
+Hibernate: alter table order_info add constraint FKcypxtb62kv6rakqkjuapurib3 foreign key (address_id) references address (address_id)
+Hibernate: alter table order_info_order_details add constraint FKhfq0u4791d974oph5g0fcpa7v foreign key (order_details_order_details_id) references order_detail (order_details_id)
+Hibernate: alter table order_info_order_details add constraint FKcypmhwiyttp0tjftylifrns5k foreign key (order_entity_order_id) references order_info (order_id)
+Hibernate: alter table rider add constraint FK6h4puhdxui02p93hew7j880ld foreign key (address_id) references address (address_id)
+2018-07-03 19:02:56.240  INFO 4908 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-07-03 19:02:56.334  INFO 4908 --- [           main] o.s.jdbc.datasource.init.ScriptUtils     : Executing SQL script from URL [file:/C:/Xigma/Accurev/Briyani/Branch/build/resources/main/data-mysql.sql]
+2018-07-03 19:02:56.388  INFO 4908 --- [           main] o.s.jdbc.datasource.init.ScriptUtils     : Executed SQL script from URL [file:/C:/Xigma/Accurev/Briyani/Branch/build/resources/main/data-mysql.sql] in 53 ms.
+2018-07-03 19:02:57.343  INFO 4908 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-07-03 19:02:57.880  INFO 4908 --- [           main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@519b28ef: startup date [Tue Jul 03 19:02:49 IST 2018]; root of context hierarchy
+2018-07-03 19:02:57.898  INFO 4908 --- [           main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Detected ResponseBodyAdvice bean in briyaniApplication.JsonpAdvice
+2018-07-03 19:02:57.967  WARN 4908 --- [           main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2018-07-03 19:02:58.064  INFO 4908 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/branch/listAll]}" onto public org.springframework.http.ResponseEntity<com.touchmark.briyani.branch.BranchResponse> com.touchmark.briyani.branch.BranchController.getAllBranch()
+2018-07-03 19:02:58.066  INFO 4908 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/branch/save]}" onto public org.springframework.http.ResponseEntity<com.touchmark.briyani.branch.BranchEntity> com.touchmark.briyani.branch.BranchController.saveBranch(com.touchmark.briyani.branch.Branch)
+2018-07-03 19:02:58.068  INFO 4908 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/customer/listAll]}" onto public org.springframework.http.ResponseEntity<com.touchmark.briyani.customer.CustomerResponse> com.touchmark.briyani.customer.CustomerController.getAll()
+2018-07-03 19:02:58.069  INFO 4908 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/customer/save]}" onto public org.springframework.http.ResponseEntity<com.touchmark.briyani.customer.CustomerEntity> com.touchmark.briyani.customer.CustomerController.saveBranch(com.touchmark.briyani.customer.Customer)
+2018-07-03 19:02:58.071  INFO 4908 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/item/listAll]}" onto public org.springframework.http.ResponseEntity<com.touchmark.briyani.item.ItemResponse> com.touchmark.briyani.item.ItemController.getAllBranch()
+2018-07-03 19:02:58.072  INFO 4908 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/item/save]}" onto public org.springframework.http.ResponseEntity<com.touchmark.briyani.item.ItemEntity> com.touchmark.briyani.item.ItemController.saveBranch(com.touchmark.briyani.item.Item)
+2018-07-03 19:02:58.073  INFO 4908 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/order/listAll]}" onto public org.springframework.http.ResponseEntity<com.touchmark.briyani.order.OrderResponse> com.touchmark.briyani.order.OrderController.getAll()
+2018-07-03 19:02:58.074  INFO 4908 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/order/save]}" onto public org.springframework.http.ResponseEntity<com.touchmark.briyani.order.Order> com.touchmark.briyani.order.OrderController.save(com.touchmark.briyani.order.Order)
+2018-07-03 19:02:58.076  INFO 4908 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/rider/listAll]}" onto public org.springframework.http.ResponseEntity<com.touchmark.briyani.rider.RiderResponse> com.touchmark.briyani.rider.RiderController.getAll()
+2018-07-03 19:02:58.076  INFO 4908 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/rider/save]}" onto public org.springframework.http.ResponseEntity<com.touchmark.briyani.rider.RiderEntity> com.touchmark.briyani.rider.RiderController.saveBranch(com.touchmark.briyani.rider.Rider)
+2018-07-03 19:02:58.076  INFO 4908 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-07-03 19:02:58.076  INFO 4908 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-07-03 19:02:58.130  INFO 4908 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-07-03 19:02:58.131  INFO 4908 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-07-03 19:02:58.160  INFO 4908 --- [           main] .m.m.a.ExceptionHandlerExceptionResolver : Detected ResponseBodyAdvice implementation in briyaniApplication.JsonpAdvice
+2018-07-03 19:02:58.519  INFO 4908 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2018-07-03 19:02:58.519  INFO 4908 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2018-07-03 19:02:58.535  INFO 4908 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2018-07-03 19:02:58.592  INFO 4908 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 63636 (http) with context path ''
+2018-07-03 19:02:58.592  INFO 4908 --- [           main] c.t.briyani.app.BriyaniApplication       : Started BriyaniApplication in 9.805 seconds (JVM running for 10.462)
+2018-07-03 19:04:00.742  INFO 4908 --- [io-63636-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-07-03 19:04:00.743  INFO 4908 --- [io-63636-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2018-07-03 19:04:00.777  INFO 4908 --- [io-63636-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 34 ms
+2018-07-03 19:04:00.896  INFO 4908 --- [io-63636-exec-1] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+Hibernate: select customeren0_.id as id1_3_, customeren0_.address_id as address_8_3_, customeren0_.date_of_birth as date_of_2_3_, customeren0_.first_name as first_na3_3_, customeren0_.last_name as last_nam4_3_, customeren0_.middle_name as middle_n5_3_, customeren0_.mobile_number as mobile_n6_3_, customeren0_.salutation as salutati7_3_ from customer customeren0_
+Hibernate: select addressent0_.address_id as address_1_1_0_, addressent0_.area as area2_1_0_, addressent0_.city as city3_1_0_, addressent0_.country as country4_1_0_, addressent0_.door_number as door_num5_1_0_, addressent0_.state as state6_1_0_, addressent0_.street as street7_1_0_, addressent0_.zipcode as zipcode8_1_0_ from address addressent0_ where addressent0_.address_id=?
+Hibernate: select addressent0_.address_id as address_1_1_0_, addressent0_.area as area2_1_0_, addressent0_.city as city3_1_0_, addressent0_.country as country4_1_0_, addressent0_.door_number as door_num5_1_0_, addressent0_.state as state6_1_0_, addressent0_.street as street7_1_0_, addressent0_.zipcode as zipcode8_1_0_ from address addressent0_ where addressent0_.address_id=?
+Hibernate: select customeren0_.id as id1_3_, customeren0_.address_id as address_8_3_, customeren0_.date_of_birth as date_of_2_3_, customeren0_.first_name as first_na3_3_, customeren0_.last_name as last_nam4_3_, customeren0_.middle_name as middle_n5_3_, customeren0_.mobile_number as mobile_n6_3_, customeren0_.salutation as salutati7_3_ from customer customeren0_
+Hibernate: select addressent0_.address_id as address_1_1_0_, addressent0_.area as area2_1_0_, addressent0_.city as city3_1_0_, addressent0_.country as country4_1_0_, addressent0_.door_number as door_num5_1_0_, addressent0_.state as state6_1_0_, addressent0_.street as street7_1_0_, addressent0_.zipcode as zipcode8_1_0_ from address addressent0_ where addressent0_.address_id=?
+Hibernate: select addressent0_.address_id as address_1_1_0_, addressent0_.area as area2_1_0_, addressent0_.city as city3_1_0_, addressent0_.country as country4_1_0_, addressent0_.door_number as door_num5_1_0_, addressent0_.state as state6_1_0_, addressent0_.street as street7_1_0_, addressent0_.zipcode as zipcode8_1_0_ from address addressent0_ where addressent0_.address_id=?
+Terminate batch job (Y/N)? 
+Terminate batch job (Y/N)? 
+Starting a Gradle Daemon, 1 busy Daemon could not be reused, use --status for details
+:clean
+:compileJava
+:processResources
+:classes
+:bootJar
+:jar SKIPPED
+:assemble
+:compileTestJava NO-SOURCE
+:processTestResources NO-SOURCE
+:testClasses UP-TO-DATE
+:test NO-SOURCE
+:check UP-TO-DATE
+:build
+:bootRun
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.0.3.RELEASE)
+
+2018-07-03 19:10:56.404  INFO 13588 --- [           main] c.t.briyani.app.BriyaniApplication       : Starting BriyaniApplication on WGC1007LBGL72 with PID 13588 (C:\Xigma\Accurev\Briyani\Branch\build\classes\java\main started by SPRANAVA in C:\Xigma\Accurev\Briyani\Branch)
+2018-07-03 19:10:56.420  INFO 13588 --- [           main] c.t.briyani.app.BriyaniApplication       : No active profile set, falling back to default profiles: default
+2018-07-03 19:10:56.676  INFO 13588 --- [           main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@f30aad5e: startup date [Tue Jul 03 19:10:56 IST 2018]; root of context hierarchy
+2018-07-03 19:10:59.652  INFO 13588 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$e22cba69] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-07-03 19:11:00.303  INFO 13588 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 63636 (http)
+2018-07-03 19:11:00.377  INFO 13588 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-07-03 19:11:00.377  INFO 13588 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.31
+2018-07-03 19:11:00.390  INFO 13588 --- [ost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\ford\jdk\ibm\ibm-jdk8u151-b12\jre\bin\compressedrefs;C:\ford\jdk\ibm\ibm-jdk8u151-b12\jre\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Xigma\Personal\APPS\Python27;C:\Xigma\Personal\APPS\mysql-5.5.60-winx64\bin;C:\Xigma\Personal\APPS\apache-maven-3.5.4\bin;C:\Xigma\Personal\APPS\OC;C:\ford\jdk\ibm\ibm-jdk8u151-b12\bin;C:\Xigma\Personal\APPS\Gradle\gradle-4.6\bin;C:\Xigma\Personal\APPS\node-v4.8.3-win-x64;C:\Windows\Microsoft.NET\Framework64\v4.0.30319;C:\Program Files\CloudFoundry;C:\Program Files (x86)\RSA SecurID Token Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\7-Zip;C:\Program Files (x86)\AccuRev\bin;C:\Program Files\Adobe\Adobe PDF iFilter 11 for 64-bit platforms\bin\;C:\Program Files\Git\cmd;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Program Files (x86)\WebEx\Productivity Tools;C:\Program Files\PuTTY\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Xigma\Personal\APPS\NodeJS\;C:\Program Files (x86)\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\130\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\130\Tools\Binn\ManagementStudio\;C:\Users\spranava\AppData\Local\GitHubDesktop\bin;C:\Users\spranava\AppData\Roaming\npm;.]
+2018-07-03 19:11:00.694  INFO 13588 --- [ost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-07-03 19:11:00.695  INFO 13588 --- [ost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 4037 ms
+2018-07-03 19:11:00.953  INFO 13588 --- [ost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2018-07-03 19:11:00.958  INFO 13588 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-07-03 19:11:00.958  INFO 13588 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-07-03 19:11:00.958  INFO 13588 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-07-03 19:11:00.958  INFO 13588 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-07-03 19:11:01.290  INFO 13588 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2018-07-03 19:11:01.518  INFO 13588 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2018-07-03 19:11:01.592  INFO 13588 --- [           main] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2018-07-03 19:11:01.632  INFO 13588 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-07-03 19:11:01.781  INFO 13588 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.2.17.Final}
+2018-07-03 19:11:01.781  INFO 13588 --- [           main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2018-07-03 19:11:01.834  INFO 13588 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-07-03 19:11:02.028  INFO 13588 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+Hibernate: alter table test.customer add column email varchar(255)
+Hibernate: alter table branch add constraint FKr5n331c13dyb3kbq1jlo53mh5 foreign key (address_id) references address (address_id)
+Hibernate: alter table customer add constraint FKglkhkmh2vyn790ijs6hiqqpi foreign key (address_id) references address (address_id)
+Hibernate: alter table item add constraint FKimdwniosg0e3m5t5qksxyd5vb foreign key (menu_id) references menu (id)
+Hibernate: alter table order_detail add constraint FK4dtqbi7ilse9x730y087wagm2 foreign key (item_id) references item (id)
+Hibernate: alter table order_info add constraint FKjkef7c200omqon2cy66hopchn foreign key (branch_id) references branch (id)
+Hibernate: alter table order_info add constraint FKkgr3op99u82sgutpyys8klgl0 foreign key (customer_id) references customer (id)
+Hibernate: alter table order_info add constraint FKcypxtb62kv6rakqkjuapurib3 foreign key (address_id) references address (address_id)
+Hibernate: alter table order_info_order_details add constraint FKhfq0u4791d974oph5g0fcpa7v foreign key (order_details_order_details_id) references order_detail (order_details_id)
+Hibernate: alter table order_info_order_details add constraint FKcypmhwiyttp0tjftylifrns5k foreign key (order_entity_order_id) references order_info (order_id)
+Hibernate: alter table rider add constraint FK6h4puhdxui02p93hew7j880ld foreign key (address_id) references address (address_id)
+2018-07-03 19:11:03.436  INFO 13588 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-07-03 19:11:03.574  INFO 13588 --- [           main] o.s.jdbc.datasource.init.ScriptUtils     : Executing SQL script from URL [file:/C:/Xigma/Accurev/Briyani/Branch/build/resources/main/data-mysql.sql]
+2018-07-03 19:11:03.609  INFO 13588 --- [           main] o.s.jdbc.datasource.init.ScriptUtils     : Executed SQL script from URL [file:/C:/Xigma/Accurev/Briyani/Branch/build/resources/main/data-mysql.sql] in 35 ms.
+2018-07-03 19:11:04.519  INFO 13588 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-07-03 19:11:04.981  INFO 13588 --- [           main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@f30aad5e: startup date [Tue Jul 03 19:10:56 IST 2018]; root of context hierarchy
+2018-07-03 19:11:04.992  INFO 13588 --- [           main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Detected ResponseBodyAdvice bean in briyaniApplication.JsonpAdvice
+2018-07-03 19:11:05.039  WARN 13588 --- [           main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2018-07-03 19:11:05.106  INFO 13588 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/branch/listAll]}" onto public org.springframework.http.ResponseEntity<com.touchmark.briyani.branch.BranchResponse> com.touchmark.briyani.branch.BranchController.getAllBranch()
+2018-07-03 19:11:05.107  INFO 13588 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/branch/save]}" onto public org.springframework.http.ResponseEntity<com.touchmark.briyani.branch.BranchEntity> com.touchmark.briyani.branch.BranchController.saveBranch(com.touchmark.briyani.branch.Branch)
+2018-07-03 19:11:05.109  INFO 13588 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/customer/listAll]}" onto public org.springframework.http.ResponseEntity<com.touchmark.briyani.customer.CustomerResponse> com.touchmark.briyani.customer.CustomerController.getAll()
+2018-07-03 19:11:05.111  INFO 13588 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/customer/save]}" onto public org.springframework.http.ResponseEntity<com.touchmark.briyani.customer.CustomerEntity> com.touchmark.briyani.customer.CustomerController.saveBranch(com.touchmark.briyani.customer.Customer)
+2018-07-03 19:11:05.113  INFO 13588 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/item/listAll]}" onto public org.springframework.http.ResponseEntity<com.touchmark.briyani.item.ItemResponse> com.touchmark.briyani.item.ItemController.getAllBranch()
+2018-07-03 19:11:05.114  INFO 13588 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/item/save]}" onto public org.springframework.http.ResponseEntity<com.touchmark.briyani.item.ItemEntity> com.touchmark.briyani.item.ItemController.saveBranch(com.touchmark.briyani.item.Item)
+2018-07-03 19:11:05.115  INFO 13588 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/order/listAll]}" onto public org.springframework.http.ResponseEntity<com.touchmark.briyani.order.OrderResponse> com.touchmark.briyani.order.OrderController.getAll()
+2018-07-03 19:11:05.116  INFO 13588 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/order/save]}" onto public org.springframework.http.ResponseEntity<com.touchmark.briyani.order.Order> com.touchmark.briyani.order.OrderController.save(com.touchmark.briyani.order.Order)
+2018-07-03 19:11:05.117  INFO 13588 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/rider/listAll]}" onto public org.springframework.http.ResponseEntity<com.touchmark.briyani.rider.RiderResponse> com.touchmark.briyani.rider.RiderController.getAll()
+2018-07-03 19:11:05.117  INFO 13588 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/rider/save]}" onto public org.springframework.http.ResponseEntity<com.touchmark.briyani.rider.RiderEntity> com.touchmark.briyani.rider.RiderController.saveBranch(com.touchmark.briyani.rider.Rider)
+2018-07-03 19:11:05.123  INFO 13588 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-07-03 19:11:05.124  INFO 13588 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-07-03 19:11:05.173  INFO 13588 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-07-03 19:11:05.173  INFO 13588 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-07-03 19:11:05.209  INFO 13588 --- [           main] .m.m.a.ExceptionHandlerExceptionResolver : Detected ResponseBodyAdvice implementation in briyaniApplication.JsonpAdvice
+2018-07-03 19:11:05.658  INFO 13588 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2018-07-03 19:11:05.660  INFO 13588 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2018-07-03 19:11:05.674  INFO 13588 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2018-07-03 19:11:05.724  INFO 13588 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 63636 (http) with context path ''
+2018-07-03 19:11:05.728  INFO 13588 --- [           main] c.t.briyani.app.BriyaniApplication       : Started BriyaniApplication in 9.987 seconds (JVM running for 10.613)
+2018-07-03 19:11:05.824  INFO 13588 --- [io-63636-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-07-03 19:11:05.824  INFO 13588 --- [io-63636-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2018-07-03 19:11:05.864  INFO 13588 --- [io-63636-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 40 ms
+2018-07-03 19:11:05.944  INFO 13588 --- [io-63636-exec-1] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+Hibernate: select customeren0_.id as id1_3_, customeren0_.address_id as address_9_3_, customeren0_.date_of_birth as date_of_2_3_, customeren0_.email as email3_3_, customeren0_.first_name as first_na4_3_, customeren0_.last_name as last_nam5_3_, customeren0_.middle_name as middle_n6_3_, customeren0_.mobile_number as mobile_n7_3_, customeren0_.salutation as salutati8_3_ from customer customeren0_
+Hibernate: select addressent0_.address_id as address_1_1_0_, addressent0_.area as area2_1_0_, addressent0_.city as city3_1_0_, addressent0_.country as country4_1_0_, addressent0_.door_number as door_num5_1_0_, addressent0_.state as state6_1_0_, addressent0_.street as street7_1_0_, addressent0_.zipcode as zipcode8_1_0_ from address addressent0_ where addressent0_.address_id=?
+Hibernate: select addressent0_.address_id as address_1_1_0_, addressent0_.area as area2_1_0_, addressent0_.city as city3_1_0_, addressent0_.country as country4_1_0_, addressent0_.door_number as door_num5_1_0_, addressent0_.state as state6_1_0_, addressent0_.street as street7_1_0_, addressent0_.zipcode as zipcode8_1_0_ from address addressent0_ where addressent0_.address_id=?
+Terminate batch job (Y/N)? 
+Terminate batch job (Y/N)? 
+Starting a Gradle Daemon, 1 busy Daemon could not be reused, use --status for details
+:clean
+:compileJava
+:processResources
+:classes
+:bootJar
+:jar SKIPPED
+:assemble
+:compileTestJava NO-SOURCE
+:processTestResources NO-SOURCE
+:testClasses UP-TO-DATE
+:test NO-SOURCE
+:check UP-TO-DATE
+:build
+:bootRun
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.0.3.RELEASE)
+
+2018-07-03 19:12:26.838  INFO 7036 --- [           main] c.t.briyani.app.BriyaniApplication       : Starting BriyaniApplication on WGC1007LBGL72 with PID 7036 (C:\Xigma\Accurev\Briyani\Branch\build\classes\java\main started by SPRANAVA in C:\Xigma\Accurev\Briyani\Branch)
+2018-07-03 19:12:26.844  INFO 7036 --- [           main] c.t.briyani.app.BriyaniApplication       : No active profile set, falling back to default profiles: default
+2018-07-03 19:12:27.068  INFO 7036 --- [           main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@452f3d7c: startup date [Tue Jul 03 19:12:27 IST 2018]; root of context hierarchy
+2018-07-03 19:12:29.488  INFO 7036 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$a9833cfa] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-07-03 19:12:30.107  INFO 7036 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 63636 (http)
+2018-07-03 19:12:30.154  INFO 7036 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-07-03 19:12:30.154  INFO 7036 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.31
+2018-07-03 19:12:30.167  INFO 7036 --- [ost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\ford\jdk\ibm\ibm-jdk8u151-b12\jre\bin\compressedrefs;C:\ford\jdk\ibm\ibm-jdk8u151-b12\jre\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Xigma\Personal\APPS\Python27;C:\Xigma\Personal\APPS\mysql-5.5.60-winx64\bin;C:\Xigma\Personal\APPS\apache-maven-3.5.4\bin;C:\Xigma\Personal\APPS\OC;C:\ford\jdk\ibm\ibm-jdk8u151-b12\bin;C:\Xigma\Personal\APPS\Gradle\gradle-4.6\bin;C:\Xigma\Personal\APPS\node-v4.8.3-win-x64;C:\Windows\Microsoft.NET\Framework64\v4.0.30319;C:\Program Files\CloudFoundry;C:\Program Files (x86)\RSA SecurID Token Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\7-Zip;C:\Program Files (x86)\AccuRev\bin;C:\Program Files\Adobe\Adobe PDF iFilter 11 for 64-bit platforms\bin\;C:\Program Files\Git\cmd;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Program Files (x86)\WebEx\Productivity Tools;C:\Program Files\PuTTY\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Xigma\Personal\APPS\NodeJS\;C:\Program Files (x86)\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\130\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\130\Tools\Binn\ManagementStudio\;C:\Users\spranava\AppData\Local\GitHubDesktop\bin;C:\Users\spranava\AppData\Roaming\npm;.]
+2018-07-03 19:12:30.319  INFO 7036 --- [ost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-07-03 19:12:30.319  INFO 7036 --- [ost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3257 ms
+2018-07-03 19:12:30.518  INFO 7036 --- [ost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2018-07-03 19:12:30.534  INFO 7036 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-07-03 19:12:30.534  INFO 7036 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-07-03 19:12:30.534  INFO 7036 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-07-03 19:12:30.534  INFO 7036 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-07-03 19:12:30.888  INFO 7036 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2018-07-03 19:12:31.107  INFO 7036 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2018-07-03 19:12:31.196  INFO 7036 --- [           main] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2018-07-03 19:12:31.215  INFO 7036 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-07-03 19:12:31.336  INFO 7036 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.2.17.Final}
+2018-07-03 19:12:31.337  INFO 7036 --- [           main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2018-07-03 19:12:31.390  INFO 7036 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-07-03 19:12:31.577  INFO 7036 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+Hibernate: alter table branch add constraint FKr5n331c13dyb3kbq1jlo53mh5 foreign key (address_id) references address (address_id)
+Hibernate: alter table customer add constraint FKglkhkmh2vyn790ijs6hiqqpi foreign key (address_id) references address (address_id)
+Hibernate: alter table item add constraint FKimdwniosg0e3m5t5qksxyd5vb foreign key (menu_id) references menu (id)
+Hibernate: alter table order_detail add constraint FK4dtqbi7ilse9x730y087wagm2 foreign key (item_id) references item (id)
+Hibernate: alter table order_info add constraint FKjkef7c200omqon2cy66hopchn foreign key (branch_id) references branch (id)
+Hibernate: alter table order_info add constraint FKkgr3op99u82sgutpyys8klgl0 foreign key (customer_id) references customer (id)
+Hibernate: alter table order_info add constraint FKcypxtb62kv6rakqkjuapurib3 foreign key (address_id) references address (address_id)
+Hibernate: alter table order_info_order_details add constraint FKhfq0u4791d974oph5g0fcpa7v foreign key (order_details_order_details_id) references order_detail (order_details_id)
+Hibernate: alter table order_info_order_details add constraint FKcypmhwiyttp0tjftylifrns5k foreign key (order_entity_order_id) references order_info (order_id)
+Hibernate: alter table rider add constraint FK6h4puhdxui02p93hew7j880ld foreign key (address_id) references address (address_id)
+2018-07-03 19:12:32.846  INFO 7036 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-07-03 19:12:32.936  INFO 7036 --- [           main] o.s.jdbc.datasource.init.ScriptUtils     : Executing SQL script from URL [file:/C:/Xigma/Accurev/Briyani/Branch/build/resources/main/data-mysql.sql]
+2018-07-03 19:12:32.983  INFO 7036 --- [           main] o.s.jdbc.datasource.init.ScriptUtils     : Executed SQL script from URL [file:/C:/Xigma/Accurev/Briyani/Branch/build/resources/main/data-mysql.sql] in 47 ms.
+2018-07-03 19:12:33.803  INFO 7036 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-07-03 19:12:34.225  INFO 7036 --- [           main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@452f3d7c: startup date [Tue Jul 03 19:12:27 IST 2018]; root of context hierarchy
+2018-07-03 19:12:34.236  INFO 7036 --- [           main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Detected ResponseBodyAdvice bean in briyaniApplication.JsonpAdvice
+2018-07-03 19:12:34.272  WARN 7036 --- [           main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2018-07-03 19:12:34.337  INFO 7036 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/branch/listAll]}" onto public org.springframework.http.ResponseEntity<com.touchmark.briyani.branch.BranchResponse> com.touchmark.briyani.branch.BranchController.getAllBranch()
+2018-07-03 19:12:34.339  INFO 7036 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/branch/save]}" onto public org.springframework.http.ResponseEntity<com.touchmark.briyani.branch.BranchEntity> com.touchmark.briyani.branch.BranchController.saveBranch(com.touchmark.briyani.branch.Branch)
+2018-07-03 19:12:34.341  INFO 7036 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/customer/listAll]}" onto public org.springframework.http.ResponseEntity<com.touchmark.briyani.customer.CustomerResponse> com.touchmark.briyani.customer.CustomerController.getAll()
+2018-07-03 19:12:34.341  INFO 7036 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/customer/save]}" onto public org.springframework.http.ResponseEntity<com.touchmark.briyani.customer.CustomerEntity> com.touchmark.briyani.customer.CustomerController.saveBranch(com.touchmark.briyani.customer.Customer)
+2018-07-03 19:12:34.342  INFO 7036 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/item/listAll]}" onto public org.springframework.http.ResponseEntity<com.touchmark.briyani.item.ItemResponse> com.touchmark.briyani.item.ItemController.getAllBranch()
+2018-07-03 19:12:34.343  INFO 7036 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/item/save]}" onto public org.springframework.http.ResponseEntity<com.touchmark.briyani.item.ItemEntity> com.touchmark.briyani.item.ItemController.saveBranch(com.touchmark.briyani.item.Item)
+2018-07-03 19:12:34.344  INFO 7036 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/order/listAll]}" onto public org.springframework.http.ResponseEntity<com.touchmark.briyani.order.OrderResponse> com.touchmark.briyani.order.OrderController.getAll()
+2018-07-03 19:12:34.345  INFO 7036 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/order/save]}" onto public org.springframework.http.ResponseEntity<com.touchmark.briyani.order.Order> com.touchmark.briyani.order.OrderController.save(com.touchmark.briyani.order.Order)
+2018-07-03 19:12:34.346  INFO 7036 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/rider/listAll]}" onto public org.springframework.http.ResponseEntity<com.touchmark.briyani.rider.RiderResponse> com.touchmark.briyani.rider.RiderController.getAll()
+2018-07-03 19:12:34.347  INFO 7036 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/v1/rider/save]}" onto public org.springframework.http.ResponseEntity<com.touchmark.briyani.rider.RiderEntity> com.touchmark.briyani.rider.RiderController.saveBranch(com.touchmark.briyani.rider.Rider)
+2018-07-03 19:12:34.353  INFO 7036 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-07-03 19:12:34.353  INFO 7036 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-07-03 19:12:34.395  INFO 7036 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-07-03 19:12:34.396  INFO 7036 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-07-03 19:12:34.413  INFO 7036 --- [           main] .m.m.a.ExceptionHandlerExceptionResolver : Detected ResponseBodyAdvice implementation in briyaniApplication.JsonpAdvice
+2018-07-03 19:12:34.789  INFO 7036 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2018-07-03 19:12:34.789  INFO 7036 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2018-07-03 19:12:34.789  INFO 7036 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2018-07-03 19:12:34.857  INFO 7036 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 63636 (http) with context path ''
+2018-07-03 19:12:34.861  INFO 7036 --- [           main] c.t.briyani.app.BriyaniApplication       : Started BriyaniApplication in 8.677 seconds (JVM running for 9.358)
+2018-07-03 19:13:14.311  INFO 7036 --- [io-63636-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-07-03 19:13:14.311  INFO 7036 --- [io-63636-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2018-07-03 19:13:14.354  INFO 7036 --- [io-63636-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 43 ms
+2018-07-03 19:13:14.437  INFO 7036 --- [io-63636-exec-1] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+Hibernate: select customeren0_.id as id1_3_, customeren0_.address_id as address_9_3_, customeren0_.date_of_birth as date_of_2_3_, customeren0_.email as email3_3_, customeren0_.first_name as first_na4_3_, customeren0_.last_name as last_nam5_3_, customeren0_.middle_name as middle_n6_3_, customeren0_.mobile_number as mobile_n7_3_, customeren0_.salutation as salutati8_3_ from customer customeren0_
+Hibernate: select addressent0_.address_id as address_1_1_0_, addressent0_.area as area2_1_0_, addressent0_.city as city3_1_0_, addressent0_.country as country4_1_0_, addressent0_.door_number as door_num5_1_0_, addressent0_.state as state6_1_0_, addressent0_.street as street7_1_0_, addressent0_.zipcode as zipcode8_1_0_ from address addressent0_ where addressent0_.address_id=?
+Hibernate: select addressent0_.address_id as address_1_1_0_, addressent0_.area as area2_1_0_, addressent0_.city as city3_1_0_, addressent0_.country as country4_1_0_, addressent0_.door_number as door_num5_1_0_, addressent0_.state as state6_1_0_, addressent0_.street as street7_1_0_, addressent0_.zipcode as zipcode8_1_0_ from address addressent0_ where addressent0_.address_id=?
+Hibernate: select customeren0_.id as id1_3_, customeren0_.address_id as address_9_3_, customeren0_.date_of_birth as date_of_2_3_, customeren0_.email as email3_3_, customeren0_.first_name as first_na4_3_, customeren0_.last_name as last_nam5_3_, customeren0_.middle_name as middle_n6_3_, customeren0_.mobile_number as mobile_n7_3_, customeren0_.salutation as salutati8_3_ from customer customeren0_
+Hibernate: select addressent0_.address_id as address_1_1_0_, addressent0_.area as area2_1_0_, addressent0_.city as city3_1_0_, addressent0_.country as country4_1_0_, addressent0_.door_number as door_num5_1_0_, addressent0_.state as state6_1_0_, addressent0_.street as street7_1_0_, addressent0_.zipcode as zipcode8_1_0_ from address addressent0_ where addressent0_.address_id=?
+Hibernate: select addressent0_.address_id as address_1_1_0_, addressent0_.area as area2_1_0_, addressent0_.city as city3_1_0_, addressent0_.country as country4_1_0_, addressent0_.door_number as door_num5_1_0_, addressent0_.state as state6_1_0_, addressent0_.street as street7_1_0_, addressent0_.zipcode as zipcode8_1_0_ from address addressent0_ where addressent0_.address_id=?
+Hibernate: select customeren0_.id as id1_3_, customeren0_.address_id as address_9_3_, customeren0_.date_of_birth as date_of_2_3_, customeren0_.email as email3_3_, customeren0_.first_name as first_na4_3_, customeren0_.last_name as last_nam5_3_, customeren0_.middle_name as middle_n6_3_, customeren0_.mobile_number as mobile_n7_3_, customeren0_.salutation as salutati8_3_ from customer customeren0_
+Hibernate: select addressent0_.address_id as address_1_1_0_, addressent0_.area as area2_1_0_, addressent0_.city as city3_1_0_, addressent0_.country as country4_1_0_, addressent0_.door_number as door_num5_1_0_, addressent0_.state as state6_1_0_, addressent0_.street as street7_1_0_, addressent0_.zipcode as zipcode8_1_0_ from address addressent0_ where addressent0_.address_id=?
+Hibernate: select addressent0_.address_id as address_1_1_0_, addressent0_.area as area2_1_0_, addressent0_.city as city3_1_0_, addressent0_.country as country4_1_0_, addressent0_.door_number as door_num5_1_0_, addressent0_.state as state6_1_0_, addressent0_.street as street7_1_0_, addressent0_.zipcode as zipcode8_1_0_ from address addressent0_ where addressent0_.address_id=?
+Hibernate: select customeren0_.id as id1_3_, customeren0_.address_id as address_9_3_, customeren0_.date_of_birth as date_of_2_3_, customeren0_.email as email3_3_, customeren0_.first_name as first_na4_3_, customeren0_.last_name as last_nam5_3_, customeren0_.middle_name as middle_n6_3_, customeren0_.mobile_number as mobile_n7_3_, customeren0_.salutation as salutati8_3_ from customer customeren0_
+Hibernate: select addressent0_.address_id as address_1_1_0_, addressent0_.area as area2_1_0_, addressent0_.city as city3_1_0_, addressent0_.country as country4_1_0_, addressent0_.door_number as door_num5_1_0_, addressent0_.state as state6_1_0_, addressent0_.street as street7_1_0_, addressent0_.zipcode as zipcode8_1_0_ from address addressent0_ where addressent0_.address_id=?
+Hibernate: select addressent0_.address_id as address_1_1_0_, addressent0_.area as area2_1_0_, addressent0_.city as city3_1_0_, addressent0_.country as country4_1_0_, addressent0_.door_number as door_num5_1_0_, addressent0_.state as state6_1_0_, addressent0_.street as street7_1_0_, addressent0_.zipcode as zipcode8_1_0_ from address addressent0_ where addressent0_.address_id=?
+Hibernate: select customeren0_.id as id1_3_, customeren0_.address_id as address_9_3_, customeren0_.date_of_birth as date_of_2_3_, customeren0_.email as email3_3_, customeren0_.first_name as first_na4_3_, customeren0_.last_name as last_nam5_3_, customeren0_.middle_name as middle_n6_3_, customeren0_.mobile_number as mobile_n7_3_, customeren0_.salutation as salutati8_3_ from customer customeren0_
+Hibernate: select addressent0_.address_id as address_1_1_0_, addressent0_.area as area2_1_0_, addressent0_.city as city3_1_0_, addressent0_.country as country4_1_0_, addressent0_.door_number as door_num5_1_0_, addressent0_.state as state6_1_0_, addressent0_.street as street7_1_0_, addressent0_.zipcode as zipcode8_1_0_ from address addressent0_ where addressent0_.address_id=?
+Hibernate: select addressent0_.address_id as address_1_1_0_, addressent0_.area as area2_1_0_, addressent0_.city as city3_1_0_, addressent0_.country as country4_1_0_, addressent0_.door_number as door_num5_1_0_, addressent0_.state as state6_1_0_, addressent0_.street as street7_1_0_, addressent0_.zipcode as zipcode8_1_0_ from address addressent0_ where addressent0_.address_id=?

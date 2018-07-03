@@ -25,4 +25,10 @@ public class Address {
 				.doorNumber(entity.getDoorNumber()).state(entity.getState()).street(entity.getStreet())
 				.zipcode(entity.getZipcode()).build();
 	}
+
+	public AddressEntity createEntity() {
+		return AddressEntity.builder().area(area).city(city).country(country).doorNumber(doorNumber).state(state)
+				.street(street).zipcode(zipcode).build();
+	}
+
 }

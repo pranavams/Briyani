@@ -18,6 +18,7 @@ import javax.persistence.Table;
 
 import com.touchmark.briyani.branch.BranchEntity;
 import com.touchmark.briyani.commons.AddressEntity;
+import com.touchmark.briyani.customer.CustomerEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -65,6 +66,10 @@ public class OrderEntity implements Serializable {
 	@JoinColumn(name = "branchId")
 	private BranchEntity branch;
 	
+	@OneToOne(fetch=FetchType.LAZY, cascade= CascadeType.ALL)
+	@JoinColumn(name = "customerId")
+	private CustomerEntity customer;
+
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "addressId")
 	private AddressEntity deliveryAddress;

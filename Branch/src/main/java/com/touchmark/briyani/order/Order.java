@@ -61,7 +61,8 @@ public class Order {
 		List<OrderDetail> orderDetails = new ArrayList<>();
 		for (OrderDetailEntity orderDetail : entity.getOrderDetails()) {
 			orderDetails.add(OrderDetail.builder().item(Item.builder().build().transformEntity(orderDetail.getItem()))
-					.quantity(orderDetail.getQuantity()).unitPrice(orderDetail.getUnitPrice()).build());
+					.quantity(orderDetail.getQuantity()).unitPrice(orderDetail.getUnitPrice())
+					.build());
 		}
 		return Order.builder().branch(Branch.builder().build().transformEntity(entity.getBranch()))
 				.deliveryAddress(deliveryAddress).couponCode(entity.getCouponCode())

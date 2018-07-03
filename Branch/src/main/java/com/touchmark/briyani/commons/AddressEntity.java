@@ -30,25 +30,25 @@ public class AddressEntity implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "addressId")
 	private Long addressId;
-	
+
 	@Column(name = "doorNumber")
 	private String doorNumber;
-	
+
 	@Column(name = "street")
 	private String street;
-	
+
 	@Column(name = "area")
 	private String area;
-	
+
 	@Column(name = "city")
 	private String city;
-	
+
 	@Column(name = "state")
 	private String state;
-	
+
 	@Column(name = "country")
 	private String country;
-	
+
 	@Column(name = "zipcode")
 	private String zipcode;
 }

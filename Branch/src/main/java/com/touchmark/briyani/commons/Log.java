@@ -11,4 +11,9 @@ public class Log {
 		ex.printStackTrace();
 	}
 
+	public static void error(String classname, String methodname, String message, Throwable ex) {
+		System.err.println(classname + " - " + methodname + " - " + message);
+		ex.printStackTrace();		
+	}
+
 }

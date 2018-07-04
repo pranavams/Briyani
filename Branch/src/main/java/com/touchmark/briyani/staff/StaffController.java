@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -30,9 +31,14 @@ public class StaffController {
 	
 	@PostMapping
 	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE, path = "/save", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<StaffEntity> saveBranch(@RequestBody Staff object) {
+	public ResponseEntity<StaffEntity> save(@RequestBody Staff object) {
 		StaffEntity created = this.service.save(object);
 		return ResponseEntity.ok(created);
 	}
 
+	@GetMapping
+	@RequestMapping(path = "/delete", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<String> delete(@RequestParam(name="id") String id) {
+		return ResponseEntity.ok(this.service.delete(id));
+	}
 }

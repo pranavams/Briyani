@@ -32,6 +32,10 @@ public class Staff {
 	private String notes;
 	private Address address;
 
+	public Long getDatabaseID() {
+		return Long.parseLong(id.substring(5));
+	}
+
 	public StaffEntity createEntity() {
 		return StaffEntity.builder().dateOfBirth(dateOfBirth).firstName(firstName).email(email).lastName(lastName)
 				.middleName(middleName).mobileNumber(mobileNumber).salutation(salutation).gender(gender).notes(notes)

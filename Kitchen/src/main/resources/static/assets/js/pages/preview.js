@@ -9,7 +9,9 @@ $.urlParam = function (name) {
     return (results !== null) ? results[1] || 0 : false;
 }
 
-function getOrderList(id) {
+console.log("Order List " + getOrderList());
+
+function getOrderList() {
 	// The baseURI variable is created by the result.base_server_base_uri 
 	// which is returned when getting a token and should be used to 
 	// create the url_base.

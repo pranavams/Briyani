@@ -1,11 +1,6 @@
 package com.touchmark.briyani.order;
 
-import java.time.OffsetDateTime;
-import java.util.List;
-
-import com.touchmark.briyani.commons.Address;
 import com.touchmark.briyani.item.Item;
-import com.touchmark.briyani.order.Order.OrderBuilder;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

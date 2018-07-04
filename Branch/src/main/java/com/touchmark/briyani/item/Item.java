@@ -47,4 +47,8 @@ public class Item {
 		}
 		return items;
 	}
+
+	public Long getDatabaseID() {
+		return Long.parseLong(id.substring(5));
+	}
 }

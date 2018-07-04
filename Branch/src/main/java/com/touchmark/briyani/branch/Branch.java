@@ -69,4 +69,8 @@ public class Branch {
 		}
 		return branches;
 	}
+
+	public Long getDatabaseID() {
+		return Long.parseLong(id.substring(4));
+	}
 }

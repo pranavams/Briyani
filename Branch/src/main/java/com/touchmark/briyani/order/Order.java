@@ -9,6 +9,7 @@ import com.touchmark.briyani.branch.Branch;
 import com.touchmark.briyani.commons.Address;
 import com.touchmark.briyani.commons.AddressEntity;
 import com.touchmark.briyani.commons.Log;
+import com.touchmark.briyani.customer.Customer;
 import com.touchmark.briyani.item.Item;
 
 import lombok.AllArgsConstructor;
@@ -29,9 +30,10 @@ public class Order {
 	private float taxPercentage, taxAmount, totalAmount;
 	private String userName;
 	private String paymentStatus;
-	private Address deliveryAddress;
 	private OffsetDateTime dateAndTime;
 	private Branch branch;
+	private Customer customer;
+	private Address deliveryAddress;
 
 	private List<OrderDetail> orderDetails;
 

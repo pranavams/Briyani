@@ -16,6 +16,7 @@ function getOrderList() {
 		'contentType' : 'x-www-form-urlencoded',
 		'crossDomain' : true,
 		'success' : function(result) {
+			console.log(JSON.stringify(result));
 			displayOrder(result);
 			return result;
 		},
@@ -52,11 +53,11 @@ function displayOrder(OrderResult) {
 		for (var j = 0; j < Order[i]['orderDetails'].length; j++) {
 			tabCell = tr.insertCell(-1);
 			tabCell.innerHTML = Order[i]['orderDetails'][j]['item']['menuName'] + " " + Order[i]['orderDetails'][j]['item']['name'];
-		
+
 			var tabCell = tr.insertCell(-1);
 			tabCell.innerHTML = Order[i]['orderDetails'][j]['quantity'];
 
-			if(j == 0){
+			if (j == 0) {
 				tabCell = tr.insertCell(-1);
 				tabCell.innerHTML = Order[i]['branch']['contactPersonSalutation'] + ' ' + Order[i]['branch']['contactPersonFirstName'] + ' ' + Order[i]['branch']['contactPersonMiddleName'] + ' ' + Order[i]['branch']['contactPersonLastName'];
 
@@ -69,7 +70,7 @@ function displayOrder(OrderResult) {
 				Order[i]['branch']['address']['country'] + ', ' +
 				Order[i]['branch']['address']['zipcode'];
 			}
-			
+
 			tr = table.insertRow(-1);
 
 			var tabCell = tr.insertCell(-1);
@@ -87,64 +88,70 @@ function displayOrder(OrderResult) {
 	}
 }
 
-function getJSONData() {
-	console.log("Inside Get JSON Data");
-	var jsonObject = {
-		"id" : "",
-		"name" : "Nungambakkam Order",
-		"email" : "ajith.roy@gmail.com",
-		"latitude" : "234234",
-		"longitude" : "234234",
-		"notes" : "Order in omr",
-		"address" : {
-			"doorNumber" : "5",
-			"street" : "x Street",
-			"area" : "dunton",
-			"city" : "dunton",
-			"state" : "GB",
-			"country" : "England",
-			"zipcode" : "444555"
+
+function createOrder() {
+	var jsonObj = {
+		"branchID" : "BRAN1",
+		"customerID" : "CUST1",
+		"deliveryAddress" : {
+			"doorNumber" : "10",
+			"street" : "First Cross Street",
+			"area" : "Inner Circle",
+			"state" : "Tamil Nadu",
+			"city" : "Chennai",
+			"country" : "India",
+			"zipcode" : "600001"
 		},
-		"contactPersonFirstName" : "Ajith",
-		"contactPersonLastName" : "Roy",
-		"contactPersonMiddleName" : "M",
-		"contactPersonSalutation" : "Mr.",
-		"mobileNumber" : "123234234",
-		"telephone" : "323234234",
-		"contactPersonNumber" : "123455"
+		"orderDetails" : [
+			{
+				"item" : {
+					"id" : "CHBIR1"
+				},
+				"quantity" : 10
+			},
+			{
+				"item" : {
+					"id" : "CHBIR2"
+				},
+				"quantity" : 20
+			},
+			{
+				"item" : {
+					"id" : "CHBIR3"
+				},
+				"quantity" : 30
+			}
+		]
 	};
 
-	return jsonObject;
-}
-
-function saveOrder() {
-	console.log("Inside Save Order");
-
-	var jsonObj = getJSONData();
+	console.log("Order to Create " + jsonObj);
 
 	var url_base = baseURI;
 	//accessToken = getToken();
 	$.ajax({
-		'url' : baseURI + 'order/save',
+		'url' : baseURI + 'order/createOrder',
 		'type' : 'POST',
-		'content-Type' : 'application/json; charset=utf-8',
+		'contentType' : 'application/json',
 		'crossDomain' : true,
 		'data' : JSON.stringify(jsonObj),
-		'dataType' : 'jsonp',
+		'dataType' : 'json',
 		'success' : function(result) {
-			console.log('Save Order - Success!\r\n' + result);
-			//Process success actions
-			var returnResult = JSON.stringify(result);
-			console.log('Save Order - Success!\r\n' + returnResult);
-			document.getElementById('callResults').innerHTML = returnResult;
-			return result;
+			$.gritter.add({
+				class_name : 'gritter-success',
+				title : 'Success!',
+				text : '<p style="font-size: 14px;">Order Created successfully!</p>',
+			});
 		},
 		'error' : function(XMLHttpRequest, textStatus, errorThrown) {
 			//Process error actions
-			console.log('getOrder - Error: ' + errorThrown + " - " + textStatus);
-			console.log(XMLHttpRequest.status + ' ' +
-				XMLHttpRequest.statusText);
+			console.log('createOrder - Error: ' + errorThrown + " - " + textStatus);
+			$.gritter.add({
+				class_name : 'gritter-error',
+				title : 'Success!',
+				text : '<p style="font-size: 14px;">Order Not Created</p>',
+			});
 			return false;
 		}
 	});
+
 }

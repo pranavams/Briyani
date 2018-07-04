@@ -7,11 +7,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(path = "/api/v1/customer/")
-//@PreAuthorize("hasAuthority('STANDARD_USER')")
+// @PreAuthorize("hasAuthority('STANDARD_USER')")
 public class CustomerController {
 
 	private CustomerService service;
@@ -27,7 +28,6 @@ public class CustomerController {
 		return ResponseEntity.ok(CustomerResponse.builder().customer(this.service.getAll()).build());
 	}
 
-	
 	@PostMapping
 	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE, path = "/save", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<CustomerEntity> saveBranch(@RequestBody Customer object) {
@@ -35,4 +35,9 @@ public class CustomerController {
 		return ResponseEntity.ok(created);
 	}
 
+	@GetMapping
+	@RequestMapping(path = "/delete", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<String> delete(@RequestParam(name = "id") String id) {
+		return ResponseEntity.ok(this.service.delete(id));
+	}
 }

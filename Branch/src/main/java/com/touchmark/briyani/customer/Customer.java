@@ -50,4 +50,8 @@ public class Customer {
 	private String transformId(long id) {
 		return "CUST" + id;
 	}
+
+	public Long getDatabaseID() {
+		return Long.parseLong(id.substring(4));
+	}
 }

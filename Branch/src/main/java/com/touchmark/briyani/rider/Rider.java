@@ -29,7 +29,7 @@ public class Rider {
 
 	private String mobileNumber;
 	private String riderPersonNumber;
-	
+
 	private OffsetDateTime dateOfBirth;
 
 	private String email;
@@ -44,8 +44,7 @@ public class Rider {
 		AddressEntity addressEntity = AddressEntity.builder().area(address.getArea()).city(address.getCity())
 				.country(address.getCountry()).doorNumber(address.getDoorNumber()).state(address.getState())
 				.street(address.getStreet()).zipcode(address.getZipcode()).build();
-		return RiderEntity.builder().riderPersonFirstName(riderPersonFirstName)
-				.dateOfBirth(dateOfBirth)
+		return RiderEntity.builder().riderPersonFirstName(riderPersonFirstName).dateOfBirth(dateOfBirth)
 				.riderPersonLastName(riderPersonLastName).riderPersonMiddleName(riderPersonMiddleName)
 				.riderPersonNumber(riderPersonNumber).riderPersonSalutation(riderPersonSalutation).email(email)
 				.mobileNumber(mobileNumber).address(addressEntity).build();
@@ -53,8 +52,7 @@ public class Rider {
 
 	public Rider transformEntity(RiderEntity entity) {
 		return Rider.builder().id(transformId(entity.getId(), entity.getDepartmentType())).email(entity.getEmail())
-				.dateOfBirth(entity.getDateOfBirth())
-				.riderPersonSalutation(entity.getRiderPersonSalutation())
+				.dateOfBirth(entity.getDateOfBirth()).riderPersonSalutation(entity.getRiderPersonSalutation())
 				.riderPersonFirstName(entity.getRiderPersonFirstName())
 				.riderPersonLastName(entity.getRiderPersonLastName())
 				.riderPersonMiddleName(entity.getRiderPersonMiddleName())
@@ -81,5 +79,15 @@ public class Rider {
 			riders.add(transformEntity(rdierEntity));
 		}
 		return riders;
+	}
+
+	public Long getDatabaseID() {
+		if (id.contains("BRRI"))
+			return Long.parseLong(id.substring(4));
+		else if (id.contains("ENDRI"))
+			return Long.parseLong(id.substring(5));
+		else
+			return 0L;
+
 	}
 }

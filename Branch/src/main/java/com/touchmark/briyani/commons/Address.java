@@ -2,11 +2,11 @@ package com.touchmark.briyani.commons;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
-@Data
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -29,6 +29,34 @@ public class Address {
 	public AddressEntity createEntity() {
 		return AddressEntity.builder().area(area).city(city).country(country).doorNumber(doorNumber).state(state)
 				.street(street).zipcode(zipcode).build();
+	}
+
+	public String getDoorNumber() {
+		return doorNumber == null ? "" : doorNumber;
+	}
+
+	public String getStreet() {
+		return street == null ? "" : street;
+	}
+
+	public String getArea() {
+		return area == null ? "" : area;
+	}
+
+	public String getCity() {
+		return city == null ? "" : city;
+	}
+
+	public String getState() {
+		return state == null ? "" : state;
+	}
+
+	public String getCountry() {
+		return country == null ? "" : country;
+	}
+
+	public String getZipcode() {
+		return zipcode == null ? "" : zipcode;
 	}
 
 }

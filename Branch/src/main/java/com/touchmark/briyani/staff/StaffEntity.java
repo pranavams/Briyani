@@ -1,4 +1,4 @@
-package com.touchmark.briyani.customer;
+package com.touchmark.briyani.staff;
 
 import java.io.Serializable;
 import java.time.OffsetDateTime;
@@ -27,8 +27,8 @@ import lombok.NoArgsConstructor;
 @Builder
 
 @Entity
-@Table(name = "customer")
-public class CustomerEntity implements Serializable {
+@Table(name = "staff")
+public class StaffEntity implements Serializable {
 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
@@ -47,18 +47,29 @@ public class CustomerEntity implements Serializable {
 	
 	@Column(name = "mobileNumber")
 	private String mobileNumber;
+
+	@Column(name = "gender")
+	private String gender;
 	
-	@Column(name = "telephoneNumber")
-	private String telephoneNumber;
+	@Column(name = "email")
+	private String email;
 	
 	@Column(name = "dateOfBirth")
 	private OffsetDateTime dateOfBirth;
 	
-	@Column(name="email")
-	private String email;
+	@Column(name = "dateOfJoin")
+	private OffsetDateTime dateOfJoin;
+
+	@Column(name = "role")
+	private String role;
+
+	@Column(name = "password")
+	private String password;
+
+	@Column(name = "notes")
+	private String notes;
 
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "address_id")
 	private AddressEntity address;
-
 }

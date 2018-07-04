@@ -53,13 +53,13 @@ function displayCustomer(CustomerResult) {
 		tabCell.innerHTML = Customer[i]['dateOfBirth'];
 
 		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = Customer[i]['address']['doorNumber'] + ', ' +
-		Customer[i]['address']['street'] + ', ' +
-		Customer[i]['address']['area'] + ', ' +
-		Customer[i]['address']['city'] + ', ' +
-		Customer[i]['address']['state'] + ', ' +
-		Customer[i]['address']['country'] + ', ' +
-		Customer[i]['address']['zipcode'];
+		tabCell.innerHTML = (Customer[i]['address']['doorNumber'] + ' ' +
+		Customer[i]['address']['street'] + ' ' +
+		Customer[i]['address']['area'] + ' ' +
+		Customer[i]['address']['city'] + ' ' +
+		Customer[i]['address']['state'] + ' ' +
+		Customer[i]['address']['country'] + ' ' +
+		Customer[i]['address']['zipcode']).trim();
 
 		tabCell = tr.insertCell(-1);
 		tabCell.innerHTML = '<a href="#" class="btn btn-xs btn-default"><i class="fa fa-pencil"></i></a> <a href="#" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#deleteDATA"><i class="fa fa-remove"></i></a> <a href="preview.html?id=' + Customer[i]['id'] + '" class="btn btn-xs btn-info"><i class="fa fa-eye"></i></a>';
@@ -67,33 +67,36 @@ function displayCustomer(CustomerResult) {
 }
 
 function getJSONData() {
-	console.log("Inside Get JSON Data");
-	var jsonObject = {
-		"id" : "",
-		"name" : "Nungambakkam Customer",
-		"email" : "ajith.roy@gmail.com",
-		"latitude" : "234234",
-		"longitude" : "234234",
-		"notes" : "Customer in omr",
-		"address" : {
-			"doorNumber" : "5",
-			"street" : "x Street",
-			"area" : "dunton",
-			"city" : "dunton",
-			"state" : "GB",
-			"country" : "England",
-			"zipcode" : "444555"
-		},
-		"contactPersonFirstName" : "Ajith",
-		"contactPersonLastName" : "Roy",
-		"contactPersonMiddleName" : "M",
-		"contactPersonSalutation" : "Mr.",
-		"mobileNumber" : "123234234",
-		"telephone" : "323234234",
-		"contactPersonNumber" : "123455"
+	jsonObject = {
+		'firstName' : document.getElementById('customer_fname').value,
+		'middleName' : document.getElementById('customer_mname').value,
+		'lastName' : document.getElementById('customer_lname').value,
+		'salutation' : ' ',
+		'telephoneNumber' : document.getElementById('customer_telephone_no').value,
+		'mobileNumber' : document.getElementById('customer_mobile_no').value,
+		'email' : document.getElementById('customer_email').value,
+		'dateOfBirth' : stringToDate(document.getElementById('customer_dob').value, 'dd/mm/yyyy', '/'),
+		'address' : {
+			'area' : document.getElementById('cust_delivery_address').value
+		}
 	};
 
+	console.log("Inside Get JSON Data " + jsonObject);
 	return jsonObject;
+}
+
+function clearItem() {
+	document.getElementById('customer_fname').value = '';
+	document.getElementById('customer_fname').value = '';
+	document.getElementById('customer_fname').value = '';
+	document.getElementById('customer_telephone_no').value = '';
+	document.getElementById('customer_mobile_no').value = '';
+	document.getElementById('customer_email').value = '';
+	document.getElementById('cust_delivery_address').value = '';
+}
+
+function saveCloseCustomer() {
+	saveCustomer();
 }
 
 function saveCustomer() {
@@ -106,23 +109,29 @@ function saveCustomer() {
 	$.ajax({
 		'url' : baseURI + 'customer/save',
 		'type' : 'POST',
-		'content-Type' : 'application/json; charset=utf-8',
+		'contentType' : 'application/json',
 		'crossDomain' : true,
 		'data' : JSON.stringify(jsonObj),
-		'dataType' : 'jsonp',
+		'dataType' : 'json',
 		'success' : function(result) {
-			console.log('Save Customer - Success!\r\n' + result);
-			//Process success actions
-			var returnResult = JSON.stringify(result);
-			console.log('Save Customer - Success!\r\n' + returnResult);
-			document.getElementById('callResults').innerHTML = returnResult;
+			$.gritter.add({
+				class_name : 'gritter-success',
+				title : 'Success!',
+				text : '<p style="font-size: 14px;">Customer Saved successfully!</p>',
+			});
+			clearItem();
 			return result;
 		},
 		'error' : function(XMLHttpRequest, textStatus, errorThrown) {
 			//Process error actions
-			console.log('getCustomer - Error: ' + errorThrown + " - " + textStatus);
+			console.log('getMenu - Error: ' + errorThrown + " - " + textStatus);
 			console.log(XMLHttpRequest.status + ' ' +
 				XMLHttpRequest.statusText);
+			$.gritter.add({
+				class_name : 'gritter-error',
+				title : 'Success!',
+				text : '<p style="font-size: 14px;">Customer Not Saved!</p>',
+			});
 			return false;
 		}
 	});

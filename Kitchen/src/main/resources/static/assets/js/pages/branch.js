@@ -9,7 +9,7 @@ function getBranchList() {
 	// which is returned when getting a token and should be used to 
 	// create the url_base.
 	var url_base = baseURI;
-	//accessToken = getToken();
+	accessToken = getToken();
 	$.ajax({
 		'url' : baseURI + 'branch/listAll',
 		'type' : 'GET',
@@ -72,9 +72,42 @@ function displayBranch(branchResult) {
 
 function getJSONData() {
 	console.log("Inside Get JSON Data");
-	var jsonObject = {"id": "", "name":"Nungambakkam Branch","email":"ajith.roy@gmail.com","latitude":"234234","longitude":"234234","notes":"Branch in omr","address":{"doorNumber":"5","street":"x Street","area":"dunton","city":"dunton","state":"GB","country":"England","zipcode":"444555"},"contactPersonFirstName":"Ajith","contactPersonLastName":"Roy","contactPersonMiddleName":"M","contactPersonSalutation":"Mr.","mobileNumber":"123234234","telephone":"323234234","contactPersonNumber":"123455"};
 	
+	jsonObject = {			
+		'name' : document.getElementById('branch_name').value,
+		'email' : document.getElementById('branch_email').value,
+		'latitude' : document.getElementById('branch_latitude_no').value,
+		'longitude' : document.getElementById('branch_longitude_no').value,
+		'notes' : document.getElementById('branch_notes').value,
+		'contactPersonFirstName' : document.getElementById('branch_contact_person').value,
+		'contactPersonLastName' : ' ',
+		'contactPersonMiddleName' : ' ',
+		'contactPersonSalutation' : ' ',
+		'mobileNumber' : ' ',
+		'telephone' : document.getElementById('branch_contact_no').value,
+		'contactPersonNumber' : document.getElementById('branch_contact_person_no').value,
+		'address' : {
+			'area' : document.getElementById('branch_address').value	
+		}
+	};
+
 	return jsonObject;
+}
+
+function clearItem(){
+	document.getElementById('branch_name').value = '';
+	document.getElementById('branch_email').value = '';
+	document.getElementById('branch_latitude_no').value = '';
+	document.getElementById('branch_longitude_no').value = '';
+	document.getElementById('branch_notes').value = '';
+	document.getElementById('branch_contact_person').value = '';
+	document.getElementById('branch_contact_no').value = '';
+	document.getElementById('branch_address').value = '';
+	document.getElementById('branch_contact_person_no').value = '';
+}
+
+function saveCloseBranch() {
+	saveBranch();
 }
 
 function saveBranch() {
@@ -91,18 +124,24 @@ function saveBranch() {
 		'data' : JSON.stringify(jsonObj),
 		'dataType' : 'json',
 		'success' : function(result) {
-			console.log('Save Branch - Success!\r\n' + result);
-			//Process success actions
-			var returnResult = JSON.stringify(result);
-			console.log('Save Branch - Success!\r\n' + returnResult);
-			document.getElementById('callResults').innerHTML = returnResult;
+			$.gritter.add({
+				class_name: 'gritter-success',
+				title: 'Success!',
+				text: '<p style="font-size: 14px;">Branch Saved successfully!</p>',
+			});
+			clearItem();
 			return result;
 		},
 		'error' : function(XMLHttpRequest, textStatus, errorThrown) {
 			//Process error actions
-			console.log('getBranch - Error: ' + errorThrown + " - " + textStatus);
+			console.log('getMenu - Error: ' + errorThrown + " - " + textStatus);
 			console.log(XMLHttpRequest.status + ' ' +
 				XMLHttpRequest.statusText);
+			$.gritter.add({
+				class_name: 'gritter-error',
+				title: 'Success!',
+				text: '<p style="font-size: 14px;">Branch Not Saved!</p>',
+			});	
 			return false;
 		}
 	});

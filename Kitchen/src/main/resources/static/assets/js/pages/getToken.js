@@ -5,66 +5,68 @@
 //Get inContact Token
 var accessToken = '';
 var baseURI = 'http://localhost:63636/api/v1/';
+var tokenURL = 'http://localhost:63636/oauth/token';
+
+var postData = {
+	grant_type : 'client_credentials',
+	client_id : 'arab-briyani-client',
+	client_secret : 'devglan-secret'
+};
+
+function getAuthToken() {
+	var auth_token = 'arab-briyani-client:devglan-secret';
+	auth_token = window.btoa(auth_token);
+	return auth_token;
+}
 
 function getToken() {
-	var url_base = 'http://localhost:63636/oauth/token';
+	return $.post(tokenURL, postData, null, 'json')
+		.done(function(data) {
+			appAuthToken = data.access_token;
+		})
+		.fail(function(jqXHR, status, error) {
+			console.log('Token Failure ' + error);
+		});
+}
+
+function getTokens() {
 
 	// The auth_token is the base64 encoded string for the API 
 	// application.
-	var auth_token = 'AppName@VendorName:BusinessUnit';
+	var auth_token = 'arab-briyani-client:devglan-secret';
 	auth_token = window.btoa(auth_token);
-	var requestPayload = {
-		// Enter your inContact credentials for the 'username' and 
-		// 'password' fields.
-		'grant_type' : 'authorization_code',
-		'username' : 'arab-briyani-client',
-		'password' : 'devglan-secret',
-		'scope' : ''
-	}
+	console.log("GetToken -AuthToken " + auth_token);
+
 	$.ajax({
-		'url' : url_base,
-		'type' : 'POST',
-		'contentType' : 'x-www-form-urlencoded',
-		'dataType' : 'json',
+		'url' : tokenURL,
+		'method' : 'POST',
+		"contentType" : "application/x-www-form-urlencoded",
 		"crossDomain" : true,
-		'headers' : {
-			// Use access_token previously retrieved from inContact token 
-			// service.
-			'Authorization' : 'basic ' + auth_token
+		"headers" : {
+			"content-type" : "application/x-www-form-urlencoded",
+			"authorization" : "Basic YXJhYi1icml5YW5pLWNsaWVudDpkZXZnbGFuLXNlY3JldA==",
+			"cache-control" : "no-cache",
+			"postman-token" : "1e2d2395-5567-d8f9-9f59-be919dc956b4"
 		},
-		'data' : requestPayload,
+		"data" : {
+			"username" : "Alex123",
+			"password" : "$2a$04$I9Q2sDc4QGGg5WNTLmsz0.fvGv3OjoZyj81PrSFyGOqMphqfS2qKu",
+			"grant_type" : "authorization_code"
+		},
 		'success' : function(result) {
 			//Process success actions
 			accessToken = result.access_token;
 			baseURI = result.resource_server_base_uri;
 			console.log('getToken - Success!\r\nAccess Token:\r' + accessToken +
 				'\r\nBase URI:\r' + baseURI)
-			document.getElementById('pageDiv').innerHTML = result.access_token;
 			return result;
 		},
 		'error' : function(XMLHttpRequest, textStatus, errorThrown) {
 			//Process error actions
-			console.log('getToken - Error: ' + errorThrown);
+			console.log('getToken - Error: ' + errorThrown + ", " + JSON.stringify(XMLHttpRequest) + ", " + textStatus);
 			console.log(XMLHttpRequest.status + ' ' +
 				XMLHttpRequest.statusText);
 			return false;
 		}
 	});
 }
-
-// PUT CALL BELOW HERE!!!
-
-// BU Branch List
-
-function setHeader(xhr) {
-	//xhr.setRequestHeader('Authorization', 'token');
-
-	//'headers' : {
-	//	// Use access_token previously retrieved from inContact token 
-	//	// service.
-	//	'Authorization' : 'bearer ' + accessToken
-	//},
-
-}
-
-//END CALL ABOVE HERE

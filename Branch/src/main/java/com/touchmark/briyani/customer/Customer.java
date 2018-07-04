@@ -23,20 +23,22 @@ public class Customer {
 	private String middleName;
 	private String salutation;
 	private String mobileNumber;
+	private String telephoneNumber;
 	private String email;
 	private OffsetDateTime dateOfBirth;
 	private Address address;
 
 	public CustomerEntity createEntity() {
 		return CustomerEntity.builder().address(address.createEntity()).dateOfBirth(dateOfBirth).firstName(firstName)
-				.lastName(lastName).middleName(middleName).mobileNumber(mobileNumber).salutation(salutation).build();
+				.email(email).telephoneNumber(telephoneNumber).lastName(lastName).middleName(middleName)
+				.mobileNumber(mobileNumber).salutation(salutation).build();
 	}
 
 	public List<Customer> transformEntities(List<CustomerEntity> customers) {
 		ArrayList<Customer> responseCustomers = new ArrayList<Customer>();
 		for (CustomerEntity customerEntity : customers) {
 			responseCustomers.add(Customer.builder().id(transformId(customerEntity.getId()))
-					.email(customerEntity.getEmail())
+					.email(customerEntity.getEmail()).telephoneNumber(customerEntity.getTelephoneNumber())
 					.address(Address.builder().build().transform(customerEntity.getAddress()))
 					.dateOfBirth(customerEntity.getDateOfBirth()).firstName(customerEntity.getFirstName())
 					.lastName(customerEntity.getLastName()).middleName(customerEntity.getMiddleName())

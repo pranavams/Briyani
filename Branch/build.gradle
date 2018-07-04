@@ -42,7 +42,9 @@ dependencies {
 	//Security
 	compile('org.springframework.boot:spring-boot-starter-actuator')
 	compile('org.springframework.boot:spring-boot-starter-data-rest')
-	//compile('org.springframework.cloud:spring-cloud-starter-oauth2')
+	compile('org.springframework.boot:spring-boot-starter-security')
+	compile('org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.0.0.RELEASE')
+	compile('org.springframework.security:spring-security-core')
 	
 	//Corss
 	

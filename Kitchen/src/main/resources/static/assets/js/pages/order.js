@@ -54,7 +54,7 @@ function displayOrder(OrderResult) {
 			tabCell = tr.insertCell(-1);
 			tabCell.innerHTML = Order[i]['orderDetails'][j]['item']['menuName'] + " " + Order[i]['orderDetails'][j]['item']['name'];
 
-			var tabCell = tr.insertCell(-1);
+			tabCell = tr.insertCell(-1);
 			tabCell.innerHTML = Order[i]['orderDetails'][j]['quantity'];
 
 			if (j == 0) {
@@ -69,14 +69,24 @@ function displayOrder(OrderResult) {
 				Order[i]['branch']['address']['state'] + ', ' +
 				Order[i]['branch']['address']['country'] + ', ' +
 				Order[i]['branch']['address']['zipcode'];
-				
+
 				tabCell = tr.insertCell(-1);
 				tabCell.innerHTML = '<a href="#" class="btn btn-xs btn-default" >Not Approve</a>';
+			} else {
+
+				tabCell = tr.insertCell(-1);
+				tabCell.innerHTML = '';
+
+				tabCell = tr.insertCell(-1);
+				tabCell.innerHTML = '';
+
+				tabCell = tr.insertCell(-1);
+				tabCell.innerHTML = '';
 			}
 
 			tr = table.insertRow(-1);
 
-			var tabCell = tr.insertCell(-1);
+			tabCell = tr.insertCell(-1);
 			tabCell.innerHTML = '';
 
 			tabCell = tr.insertCell(-1);

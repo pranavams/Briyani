@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.touchmark.briyani.commons.Address;
+import com.touchmark.briyani.staff.Staff;
+import com.touchmark.briyani.staff.StaffEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,6 +33,7 @@ public class Customer {
 	public CustomerEntity createEntity() {
 		return CustomerEntity.builder().address(address.createEntity()).dateOfBirth(dateOfBirth).firstName(firstName)
 				.email(email).telephoneNumber(telephoneNumber).lastName(lastName).middleName(middleName)
+				.lastUpdatedDate(OffsetDateTime.now())
 				.mobileNumber(mobileNumber).salutation(salutation).build();
 	}
 

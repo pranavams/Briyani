@@ -28,6 +28,11 @@ public class StaffController {
 		return ResponseEntity.ok(StaffResponse.builder().staff(this.service.getAll()).build());
 	}
 
+	@GetMapping
+	@RequestMapping("/listRecent")
+	public ResponseEntity<StaffResponse> getRecent() {
+		return ResponseEntity.ok(StaffResponse.builder().staff(this.service.getRecent()).build());
+	}
 	
 	@PostMapping
 	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE, path = "/save", produces = MediaType.APPLICATION_JSON_VALUE)

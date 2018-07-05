@@ -36,4 +36,8 @@ public class StaffService {
 		}
 	}
 
+	public List<Staff> getRecent() {
+		return Staff.builder().build().transformEntities(repository.findRecent());
+	}
+
 }

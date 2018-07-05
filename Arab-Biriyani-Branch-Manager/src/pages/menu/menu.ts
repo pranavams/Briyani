@@ -1,5 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, Nav, NavController } from 'ionic-angular';
+import { HttpClient, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+
+import { ItemService } from 'itemservice'
 
 export interface CountdownTimer {
   seconds: number;
@@ -12,10 +15,12 @@ export interface CountdownTimer {
 
 @IonicPage()
 @Component({
+  providers: [ItemService],
   selector: 'page-menu',
   templateUrl: 'menu.html'
 })
 export class MenuPage {
+	private itemListALLURL = 'http://localhost:63636/api/v1/item/listAll';  
   timer: CountdownTimer;
   counter: any = '00:00:00';
   seconds: number;
@@ -55,10 +60,19 @@ export class MenuPage {
       imgSrc: "assets/imgs/veg-biryani.jpg"
     }
   ]
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, private itemService:ItemService) {
     
   }
+  
+  public loginData = {username: "user id from screen", password: "password from screen"};
 
+  getAllItems(){
+	this.itemService.getResource(this.itemListALLURL, this.loginData)
+	  .subscribe(
+		data => this.menuItems = data,
+		error =>  this.menuItems.name = 'Error');
+  }
+        
   ionViewDidLoad() {
     this.initTimer();
     this.cartCount();

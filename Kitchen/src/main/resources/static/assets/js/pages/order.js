@@ -69,6 +69,9 @@ function displayOrder(OrderResult) {
 				Order[i]['branch']['address']['state'] + ', ' +
 				Order[i]['branch']['address']['country'] + ', ' +
 				Order[i]['branch']['address']['zipcode'];
+				
+				tabCell = tr.insertCell(-1);
+				tabCell.innerHTML = '<a href="#" class="btn btn-xs btn-default" >Not Approve</a>';
 			}
 
 			tr = table.insertRow(-1);

@@ -15,8 +15,11 @@ apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
-group = 'com.touchmark.briyani'
-version = '0.0.1-SNAPSHOT'
+bootJar {
+	group = 'com.touchmark.briyani'
+    baseName = 'arab-biriyani-kitchen'
+    version = '0.1.0'
+}
 sourceCompatibility = 1.8
 
 repositories {

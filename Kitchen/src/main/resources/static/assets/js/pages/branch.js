@@ -108,6 +108,7 @@ function clearItem(){
 
 function saveCloseBranch() {
 	saveBranch();
+	window.location.href = kitchenBaseURI + "branch.html";
 }
 
 function saveBranch() {

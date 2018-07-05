@@ -4,6 +4,7 @@
 
 //Get inContact Token
 var accessToken = '';
+var kitchenBaseURI = 'http://localhost:36363/'
 var baseURI = 'http://localhost:63636/api/v1/';
 var tokenURL = 'http://localhost:63636/oauth/token';
 

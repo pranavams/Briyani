@@ -59,7 +59,6 @@ dependencies {
 
 	//other
 	compileOnly 'org.projectlombok:lombok'
-compile("org.springframework.boot:spring-boot-devtools")
 	/*********** TEST ***********/
 
 	testCompile 'org.springframework.boot:spring-boot-starter-test'

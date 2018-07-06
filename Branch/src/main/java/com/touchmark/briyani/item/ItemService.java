@@ -5,8 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.touchmark.briyani.staff.Staff;
-
 @Service
 public class ItemService {
 	private ItemRepository repository;
@@ -39,5 +37,4 @@ public class ItemService {
 	public List<Item> getRecent() {
 		return Item.builder().build().transformEntities(repository.findRecent());
 	}
-
 }

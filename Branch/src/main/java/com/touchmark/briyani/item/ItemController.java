@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(path = "/api/v1/item/")
-//@PreAuthorize("hasAuthority('STANDARD_USER')")
+// @PreAuthorize("hasAuthority('STANDARD_USER')")
 public class ItemController {
 
 	private ItemService service;
@@ -38,5 +38,5 @@ public class ItemController {
 	public ResponseEntity<ItemResponse> getRecent() {
 		return ResponseEntity.ok(ItemResponse.builder().items(this.service.getRecent()).build());
 	}
-	
+
 }

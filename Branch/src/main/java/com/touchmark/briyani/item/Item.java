@@ -3,6 +3,9 @@ package com.touchmark.briyani.item;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -28,8 +31,7 @@ public class Item {
 	public Item transformEntity(ItemEntity entity) {
 		return Item.builder().id(transformId(entity.getId())).name(entity.getName())
 				.description(entity.getDescription()).price(entity.getPrice()).menuName(entity.getMenu().getName())
-				.menuId(transformMenuId(entity.getMenu().getId()))
-				.build();
+				.menuId(transformMenuId(entity.getMenu().getId())).build();
 	}
 
 	private String transformMenuId(long id) {

@@ -482,8 +482,7 @@ a:focus, a:hover {
 												class="text-muted">(Last 5 Record)</span>
 										</h3>
 										<div class="widget-header-toolbar">
-											<a href="staff.html" class="label label-danger">View
-												all</a>
+											<a href="staff.html" class="label label-danger">View all</a>
 										</div>
 									</div>
 									<div class="widget-content">
@@ -517,13 +516,12 @@ a:focus, a:hover {
 												class="text-muted">(Last 5 Record)</span>
 										</h3>
 										<div class="widget-header-toolbar">
-											<a href="rider.html" class="label label-danger">View
-												all</a>
+											<a href="rider.html" class="label label-danger">View all</a>
 										</div>
 									</div>
 									<div class="widget-content">
 										<div class="table-responsive">
-											<table id="contacts_list"
+											<table id="recent_rider_list"
 												class="table table-responsive table-hover tablefontsize cell-border">
 												<thead class="table_heading_color">
 													<tr>
@@ -537,24 +535,6 @@ a:focus, a:hover {
 														<th>Modify</th>
 													</tr>
 												</thead>
-												<tbody>
-													<tr>
-														<td>1</td>
-														<td>STAFF001</td>
-														<td>Thomas</td>
-														<td>No234, Thomas Street,<br>Singapore-600056
-														</td>
-														<td>9876543210</td>
-														<td>Male</td>
-														<td>2018-06-25</td>
-														<td><a href="#" class="btn btn-xs btn-default"><i
-																class="fa fa-pencil"></i></a> <a href="#"
-															class="btn btn-xs btn-danger" data-toggle="modal"
-															data-target="#deleteDATA"><i class="fa fa-remove"></i></a>
-															<a href="#" class="btn btn-xs btn-info"><i
-																class="fa fa-eye"></i></a></td>
-													</tr>
-												</tbody>
 											</table>
 										</div>
 									</div>
@@ -569,13 +549,12 @@ a:focus, a:hover {
 												class="text-muted">(Last 5 Record)</span>
 										</h3>
 										<div class="widget-header-toolbar">
-											<a href="menu.html" class="label label-danger">View
-												all</a>
+											<a href="menu.html" class="label label-danger">View all</a>
 										</div>
 									</div>
 									<div class="widget-content">
 										<div class="table-responsive">
-											<table id="contacts_list"
+											<table id="items_recent_list"
 												class="table table-responsive table-hover tablefontsize cell-border">
 												<thead class="table_heading_color">
 													<tr>
@@ -588,24 +567,6 @@ a:focus, a:hover {
 														<th>Modify</th>
 													</tr>
 												</thead>
-												<tbody>
-													<tr>
-														<td>1</td>
-														<td>STAFF001</td>
-														<td>Thomas</td>
-														<td>No234, Thomas Street,<br>Singapore-600056
-														</td>
-														<td>Thomas@gmail.com</td>
-														<td>9876543210</td>
-
-														<td><a href="#" class="btn btn-xs btn-default"><i
-																class="fa fa-pencil"></i></a> <a href="#"
-															class="btn btn-xs btn-danger" data-toggle="modal"
-															data-target="#deleteDATA"><i class="fa fa-remove"></i></a>
-															<a href="#" class="btn btn-xs btn-info"><i
-																class="fa fa-eye"></i></a></td>
-													</tr>
-												</tbody>
 											</table>
 										</div>
 									</div>
@@ -625,6 +586,8 @@ a:focus, a:hover {
 
 	<!-- Javascript -->
 	<?php include 'footer.php'; ?>
+	<script src="assets/js/jquery/jquery-2.1.0.min.js"></script>
+	<script src="assets/js/bootstrap/bootstrap.js"></script>
 	<script src="assets/js/plugins/bootstrap-tour/bootstrap-tour.custom.js"></script>
 	<script src="assets/js/jquery.buttonLoader.js"></script>
 	<script src="assets/js/plugins/jquery-gritter/jquery.gritter.min.js"></script>
@@ -639,102 +602,76 @@ a:focus, a:hover {
 	<script src="assets/js/typeahead.min.js"></script>
 	<script src="assets/js/bootstrap-select.min.js"></script>
 	<script src="assets/js/jquery/autocomplete.js"></script>
-    <script src="assets/js/pages/getToken.js"></script>	
+	<script src="assets/js/pages/getToken.js"></script>
 	<script src="assets/js/pages/index.js"></script>
 
 	<script type="text/javascript">
-					var stock_record = {
-					url: function(phrase) {
-					return "data/JSON_CONTACT_NAMED.php?phrase=" + phrase + "&format=json";
+		var stock_record = {
+			url : function(phrase) {
+				return "data/JSON_CONTACT_NAMED.php?phrase=" + phrase + "&format=json";
+			},
+			getValue : "nte_addnew_id",
+			list : {
+				onChooseEvent : function() {
+					checkcustomer_List(); //calling second function based on selecting record.
+				},
+				match : {
+					enabled : true
+				},
+				hideOnEmptyPhrase : true
+			},
+			theme : "square"
+		};
+		$("#nte_addnew_id").easyAutocomplete(stock_record);
+	
+	
+		function checkcustomer_List() {
+			var customer_mob = document.getElementById("nte_addnew_id").value;
+			//alert(customer_id);              
+			var customer_name = document.getElementById("nte_addnew_lastname").value;
+			$('#loading_customerrecord').show();
+			if (customer_mob) {
+				//   alert(customer_name);     
+				$.ajax({
+					type : 'POST',
+					url : 'ajax_contact_name.php',
+					data : {
+						customer_name_data : customer_mob,
 					},
-					getValue: "nte_addnew_id",
-					list: {
-					onChooseEvent: function() {
-						checkcustomer_List(); //calling second function based on selecting record.
-					},            
-					match: {
-					enabled: true
-					},
-					hideOnEmptyPhrase: true
-					},
-					theme: "square"
-					};
-					$("#nte_addnew_id").easyAutocomplete(stock_record);
-					
-					
-					function checkcustomer_List ()
-					{
-					   var customer_mob  =document.getElementById( "nte_addnew_id" ).value;
-					  //alert(customer_id);              
-					  var customer_name =document.getElementById("nte_addnew_lastname").value;
-					   $('#loading_customerrecord').show(); 
-					   if(customer_mob)
-
-					   { 
-					 //   alert(customer_name);     
-						   $.ajax({
-						   
-							   type: 'POST', url: 'ajax_contact_name.php',
-							   data: { customer_name_data:customer_mob, },
-							   
-							   success: function (response) {							  
-									$('#customerlist_status').html(response);
-									$('#loading_customerrecord').hide();
-									$('#forming').remove();
-												
-									  }
-								   
-							});
-						}
+	
+					success : function(response) {
+						$('#customerlist_status').html(response);
+						$('#loading_customerrecord').hide();
+						$('#forming').remove();
+	
 					}
-									
-					$(window).keydown(function(e){
-						if(e.which == 10 || e.keyCode == 13) {
-						  //alert("working");
-						  //search_selected_branch_product();
-						  //location.reload();
-						  checkcustomer_List();
-						  e.preventDefault();
-						  //return false;
-						}
-					});
-			<?php if($_GET['msg'] == 'added') {  ?>
-			$.gritter.add({
-				class_name: 'gritter-success',
-				title: 'Success!',
-				text: '<p style="font-size: 14px;">Your notes has been submitted successfully!</p>',
-			});	
-			
-		<?php } ?>
-		
-		<?php if($_GET['msg'] == 'updated') {  ?>
-			$.gritter.add({
-				class_name: 'gritter-success',
-				title: 'Success!',
-				text: '<p style="font-size: 14px;">Your notes has been submitted successfully!</p>',
-			});	
-		<?php } ?>
-		
-		<?php if(!empty($err)) {  ?>
-			$.gritter.add({
-				class_name: 'gritter-danger',
-				title: 'Error!',
-				text: '<?php foreach ($err as $e) { echo "$e <br>"; } ?>',
-			});	
-		<?php } ?>
-		
-		
-		function  deleteITEM(deleting_id) { 
-		var SELECTED_ID = deleting_id;
-		
-		$('#progress_deletion').show();
-		$('.receiving-delete-data').load('check_delete_data.php?type=contact_delete&delete_id='+SELECTED_ID+'',function(){
-			$('#progress_deletion').hide();
-			$('#deleteDATA').modal({show:true});
+				});
+			}
+		}
+	
+		$(window).keydown(function(e) {
+			if (e.which == 10 || e.keyCode == 13) {
+				//alert("working");
+				//search_selected_branch_product();
+				//location.reload();
+				checkcustomer_List();
+				e.preventDefault();
+			//return false;
+			}
 		});
-	}
-		
-		</script>
+	
+		function deleteITEM(deleting_id) {
+			var SELECTED_ID = deleting_id;
+	
+			$('#progress_deletion').show();
+			$('.receiving-delete-data').load('check_delete_data.php?type=contact_delete&delete_id=' + SELECTED_ID + '', function() {
+				$('#progress_deletion').hide();
+				$('#deleteDATA').modal({
+					show : true
+				});
+			});
+		}
+	</script>
 	<script>
 		$(document).ready(function() {
 			document.getElementById("uploadBtn").onchange = function() {

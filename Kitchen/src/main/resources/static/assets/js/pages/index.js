@@ -2,7 +2,7 @@
  * 
  */
 
-console.log("Staff List " + getStaffList());
+getStaffList();
 
 function getStaffList() {
 	// The baseURI variable is created by the result.base_server_base_uri 
@@ -16,7 +16,6 @@ function getStaffList() {
 		'contentType' : 'x-www-form-urlencoded',
 		'crossDomain' : true,
 		'success' : function(result) {
-			console.log("Staff " + JSON.stringify(result));
 			displayStaff(result);
 			return result;
 		},
@@ -31,7 +30,6 @@ function getStaffList() {
 }
 
 function displayStaff(StaffResult) {
-	console.log('Staff Received ' + StaffResult);
 	var Staff = StaffResult['staff'];
 	var table = document.getElementById("recent_staff_list");
 	for (var i = 0; i < Staff.length; i++) {
@@ -74,7 +72,7 @@ function displayStaff(StaffResult) {
 	}
 }
 
-console.log("Rider List " + getRiderList());
+getRiderList();
 function getRiderList() {
 	// The baseURI variable is created by the result.base_server_base_uri 
 	// which is returned when getting a token and should be used to 
@@ -87,7 +85,6 @@ function getRiderList() {
 		'contentType' : 'x-www-form-urlencoded',
 		'crossDomain' : true,
 		'success' : function(result) {
-			console.log("Rider " + JSON.stringify(result));
 			displayRider(result);
 			return result;
 		},
@@ -102,7 +99,6 @@ function getRiderList() {
 }
 
 function displayRider(riderResult) {
-	console.log('Rider Received ' + riderResult);
 	var rider = riderResult['rider'];
 	var table = document.getElementById("recent_rider_list");
 	for (var i = 0; i < rider.length; i++) {
@@ -142,14 +138,12 @@ function displayRider(riderResult) {
 	}
 }
 
-
 getMenuList();
 
 function getMenuList() {
 	// The baseURI variable is created by the result.base_server_base_uri 
 	// which is returned when getting a token and should be used to 
 	// create the url_base.
-	console.log("Inside Menu List");
 	var url_base = baseURI;
 	//accessToken = getToken();
 	$.ajax({
@@ -172,7 +166,6 @@ function getMenuList() {
 }
 
 function displayMenu(MenuResult) {
-	console.log('Menu Received ' + MenuResult);
 	var Menu = MenuResult['items'];
 	var table = document.getElementById("items_recent_list");
 	for (var i = 0; i < Menu.length; i++) {
@@ -199,5 +192,104 @@ function displayMenu(MenuResult) {
 
 		tabCell = tr.insertCell(-1);
 		tabCell.innerHTML = '<a href="#" class="btn btn-xs btn-default"><i class="fa fa-pencil"></i></a> <a href="#" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#deleteDATA"><i class="fa fa-remove"></i></a> <a href="#" class="btn btn-xs btn-info"><i class="fa fa-eye"></i></a>';
+	}
+}
+
+getStatistics();
+
+function getStatistics() {
+	// The baseURI variable is created by the result.base_server_base_uri 
+	// which is returned when getting a token and should be used to 
+	// create the url_base.
+	var url_base = baseURI;
+	//accessToken = getToken();
+	$.ajax({
+		'url' : baseURI + 'statistics/get',
+		'type' : 'GET',
+		'contentType' : 'x-www-form-urlencoded',
+		'crossDomain' : true,
+		'success' : function(result) {
+			displayStatistics(result);
+			return result;
+		},
+		'error' : function(XMLHttpRequest, textStatus, errorThrown) {
+			//Process error actions
+			console.log('getMenu - Error: ' + errorThrown);
+			console.log(XMLHttpRequest.status + ' ' +
+				XMLHttpRequest.statusText);
+			return false;
+		}
+	});
+}
+
+function displayStatistics(result){
+	document.getElementById("todayOrders").innerHTML = '<strong>' + result['todayOrders'] + '</strong>';
+	document.getElementById("todaySales").innerHTML = '<strong>' + result['todaySales'] + '</strong>';
+	document.getElementById("todayPaid").innerHTML = '<strong>' + result['todayPaid'] + '</strong>';
+	document.getElementById("todayDue").innerHTML = '<strong>' + result['todayDue'] + '</strong>';
+	document.getElementById("todayOrderRequest").innerHTML = '<strong>' + result['todayNumberOfOrders'] + '</strong>';
+	document.getElementById("todayPurchaseRequest").innerHTML = '<strong>' + result['todayNumberOfPurchaseRequest'] + '</strong>';
+	
+	document.getElementById("overallOrders").innerHTML = '<strong>' + result['overallOrders'] + '</strong>';
+	document.getElementById("overallSales").innerHTML = '<strong>' + result['overallSales'] + '</strong>';
+	document.getElementById("overallPaid").innerHTML = '<strong>' + result['overallPaid'] + '</strong>';
+	document.getElementById("overallDue").innerHTML = '<strong>' + result['overallDue'] + '</strong>';
+	document.getElementById("overallNumberOfOrders").innerHTML = '<strong>' + result['overallNumberOfOrders'] + '</strong>';
+	document.getElementById("overallNumberOfPurchaseRequest").innerHTML = '<strong>' + result['overallNumberOfPurchaseRequest'] + '</strong>';
+}
+
+
+getOrderList();
+
+function getOrderList() {
+	// The baseURI variable is created by the result.base_server_base_uri 
+	// which is returned when getting a token and should be used to 
+	// create the url_base.
+	var url_base = baseURI;
+	//accessToken = getToken();
+	$.ajax({
+		'url' : baseURI + 'order/listTodayOrders',
+		'type' : 'GET',
+		'contentType' : 'x-www-form-urlencoded',
+		'crossDomain' : true,
+		'success' : function(result) {
+			displayOrder(result);
+			return result;
+		},
+		'error' : function(XMLHttpRequest, textStatus, errorThrown) {
+			//Process error actions
+			console.log('getOrder - Error: ' + errorThrown);
+			console.log(XMLHttpRequest.status + ' ' +
+				XMLHttpRequest.statusText);
+			return false;
+		}
+	});
+}
+
+function displayOrder(OrderResult) {
+	var Order = OrderResult['order'];
+	var table = document.getElementById("today_orders");
+	for (var i = 0; i < Order.length; i++) {
+
+		tr = table.insertRow(-1);
+
+		tabCell = tr.insertCell(-1);
+		tabCell.innerHTML = Order[i]['dateAndTime'];
+
+		tabCell = tr.insertCell(-1);
+		tabCell.innerHTML = Order[i]['orderId'];
+
+		tabCell = tr.insertCell(-1);
+		tabCell.innerHTML = ' ';
+
+		tabCell = tr.insertCell(-1);
+		tabCell.innerHTML = Order[i]['branch']['id'];
+
+		tabCell = tr.insertCell(-1);
+		tabCell.innerHTML = Order[i]['branch']['name'];
+
+		tabCell = tr.insertCell(-1);
+		tabCell.innerHTML = Order[i]['paymentStatus'];
+
 	}
 }

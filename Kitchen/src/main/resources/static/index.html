@@ -168,45 +168,47 @@ a:focus, a:hover {
 									</div>
 									<div class="col-md-4">
 										<div class="investment-summary text-center">
-											<span class="info-label">Today Orders</span> <strong>
-												25 </strong>
-										</div>
-									</div>
-									<div class="col-md-4">
-										<div class="investment-summary text-center">
-											<span class="info-label">Today Sales</span> <strong>
-												$85 </strong>
-										</div>
-									</div>
-									<div class="col-md-4">
-										<div class="investment-summary text-center">
-											<span class="info-label">Today Paid</span> <span
-												class="inv-green"> <strong> $60 </strong>
+											<span class="info-label">Today Orders</span> 
+											<span id="todayOrders"class="info-label">
 											</span>
 										</div>
 									</div>
 									<div class="col-md-4">
 										<div class="investment-summary text-center">
-											<span class="info-label">Today <br>Due
-											</span> <span class="inv-red"> <strong> $25 </strong>
-											</span>
+											<span class="info-label">Today Sales</span> 
+											<span id="todaySales"class="info-label">
+											</span>											
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="investment-summary text-center">
+											<span class="info-label">Today Paid</span>
+											<span id="todayPaid"class="info-label">
+											</span>											
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="investment-summary text-center">
+											<span class="info-label">Today <br>Due</span> 
+											<span id="todayDue"class="info-label">	
+											</span>											
 										</div>
 									</div>
 									<div class="col-md-4">
 										<div class="investment-summary text-center">
 											<span class="info-label">Today Order <br>Request
-											</span> <span class="inv-red"> <strong> 25 </strong>
 											</span>
+											<span id="todayOrderRequest"class="info-label">
+											</span>																						
 										</div>
 									</div>
 									<div class="col-md-4">
 										<div class="investment-summary text-center">
-											<span class="info-label">Today Purchase Request</span> <span
-												class="inv-red"> <strong> 25 </strong>
-											</span>
+											<span class="info-label">Today Purchase Request</span> 
+											<span id="todayPurchaseRequest"class="info-label">
+											</span>											
 										</div>
 									</div>
-
 
 								</div>
 
@@ -217,42 +219,50 @@ a:focus, a:hover {
 									</div>
 									<div class="col-md-4">
 										<div class="investment-summary text-center">
-											<span class="info-label">Total Orders</span> <strong>
-												70 </strong>
+											<span class="info-label">Total Orders</span> 
+											<span id="overallOrders"class="info-label">
+											</span>											
+											
 										</div>
 									</div>
 									<div class="col-md-4">
 										<div class="investment-summary text-center">
-											<span class="info-label">Total Sales</span> <strong>
-												$470 </strong>
+											<span class="info-label">Total Sales</span>
+											<span id="overallSales"class="info-label">
+											</span> 
+
 										</div>
 									</div>
 									<div class="col-md-4">
 										<div class="investment-summary text-center">
-											<span class="info-label">Total Paid</span> <span
-												class="inv-green"> <strong> $220 </strong>
+											<span class="info-label">Total Paid</span> 
+											<span id="overallPaid"class="info-label">
 											</span>
 										</div>
 									</div>
 									<div class="col-md-4">
 										<div class="investment-summary text-center">
 											<span class="info-label">Total <br>Due
-											</span> <span class="inv-red"> <strong> $250 </strong>
+											</span>
+											<span id="overallDue"class="info-label">
 											</span>
 										</div>
 									</div>
 									<div class="col-md-4">
 										<div class="investment-summary text-center">
 											<span class="info-label">Total Order <br>Request
-											</span> <span class="inv-red"> <strong> 50 </strong>
+											</span>
+											<span id="overallNumberOfOrders"class="info-label">
 											</span>
 										</div>
 									</div>
 									<div class="col-md-4">
 										<div class="investment-summary text-center">
 											<span class="info-label">Total Purchase <br>Request
-											</span> <span class="inv-red"> <strong> 50 </strong>
 											</span>
+											<span id="overallNumberOfPurchaseRequest"class="info-label">
+											</span>
+											
 										</div>
 									</div>
 								</div>
@@ -375,7 +385,7 @@ a:focus, a:hover {
 											</div>
 											<div class="widget-content">
 												<div class="table-responsive">
-													<table class="table table-condensed">
+													<table class="table table-condensed" id = "today_orders">
 														<thead>
 															<tr>
 																<th>Date</th>

@@ -56,4 +56,9 @@ public class OrderController {
 		return ResponseEntity.ok(OrderResponse.builder().order(this.service.getRecent()).build());
 	}
 	
+	@GetMapping
+	@RequestMapping("/listTodayOrders")
+	public ResponseEntity<OrderResponse> getTodayOrders() {
+		return ResponseEntity.ok(OrderResponse.builder().order(this.service.getTodayOrders()).build());
+	}
 }

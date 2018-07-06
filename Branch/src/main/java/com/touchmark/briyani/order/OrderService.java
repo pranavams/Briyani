@@ -17,7 +17,6 @@ import com.touchmark.briyani.customer.CustomerRepository;
 import com.touchmark.briyani.item.Item;
 import com.touchmark.briyani.item.ItemEntity;
 import com.touchmark.briyani.item.ItemRepository;
-import com.touchmark.briyani.staff.Staff;
 
 @Service
 public class OrderService {
@@ -124,6 +123,10 @@ public class OrderService {
 
 	public List<Order> getRecent() {
 		return Order.builder().build().transformEntities(repository.findRecent());
+	}
+	
+	public List<Order> getTodayOrders() {
+		return Order.builder().build().transformEntities(repository.findTodayOrders());		
 	}
 
 }

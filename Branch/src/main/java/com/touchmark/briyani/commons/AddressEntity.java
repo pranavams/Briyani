@@ -51,4 +51,7 @@ public class AddressEntity implements Serializable {
 
 	@Column(name = "zipcode")
 	private String zipcode;
+
+	@Column(name = "lastUpdatedDate")
+	private OffsetDateTime lastUpdatedDate;
 }

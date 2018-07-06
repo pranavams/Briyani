@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.touchmark.briyani.staff.StaffResponse;
+
 @RestController
 @RequestMapping(path = "/api/v1/customer/")
 // @PreAuthorize("hasAuthority('STANDARD_USER')")
@@ -40,4 +42,10 @@ public class CustomerController {
 	public ResponseEntity<String> delete(@RequestParam(name = "id") String id) {
 		return ResponseEntity.ok(this.service.delete(id));
 	}
+	@GetMapping
+	@RequestMapping("/listRecent")
+	public ResponseEntity<CustomerResponse> getRecent() {
+		return ResponseEntity.ok(CustomerResponse.builder().customer(this.service.getRecent()).build());
+	}
+	
 }

@@ -50,4 +50,10 @@ public class OrderController {
 		}
 	}
 
+	@GetMapping
+	@RequestMapping("/listRecent")
+	public ResponseEntity<OrderResponse> getRecent() {
+		return ResponseEntity.ok(OrderResponse.builder().order(this.service.getRecent()).build());
+	}
+	
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.touchmark.briyani.commons.Log;
+import com.touchmark.briyani.staff.Staff;
 
 @Service
 public class CustomerService {
@@ -35,4 +36,9 @@ public class CustomerService {
 			return "Failure - Customer Not Deleted";
 		}
 	}
+
+	public List<Customer> getRecent() {
+		return Customer.builder().build().transformEntities(repository.findRecent());
+	}
+
 }

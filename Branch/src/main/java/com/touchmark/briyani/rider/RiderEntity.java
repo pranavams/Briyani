@@ -72,4 +72,6 @@ public class RiderEntity implements Serializable {
 	@JoinColumn(name = "address_id")
 	private AddressEntity address;
 
+	@Column(name = "lastUpdatedDate")
+	private OffsetDateTime lastUpdatedDate;
 }

@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.touchmark.briyani.staff.StaffResponse;
+
 @RestController
 @RequestMapping(path = "/api/v1/menu/")
 //@PreAuthorize("hasAuthority('STANDARD_USER')")
@@ -35,4 +37,10 @@ public class MenuController {
 		return ResponseEntity.ok(created);
 	}
 
+	@GetMapping
+	@RequestMapping("/listRecent")
+	public ResponseEntity<MenuResponse> getRecent() {
+		return ResponseEntity.ok(MenuResponse.builder().menu(this.service.getRecent()).build());
+	}
+	
 }

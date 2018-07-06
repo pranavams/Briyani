@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.touchmark.briyani.staff.Staff;
+
 @Service
 public class MenuService {
 	private MenuRepository mRepository;
@@ -21,4 +23,9 @@ public class MenuService {
 	public MenuEntity save(Menu object) {
 		return mRepository.save(MenuEntity.builder().name(object.getName()).build());
 	}
+
+	public List<Menu> getRecent() {
+		return Menu.builder().build().transformEntities(mRepository.findRecent());
+	}
+
 }

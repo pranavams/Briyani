@@ -1,6 +1,7 @@
 package com.touchmark.briyani.order;
 
 import java.io.Serializable;
+import java.time.OffsetDateTime;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -49,4 +50,7 @@ public class OrderDetailEntity implements Serializable{
 	
 	@Column(name = "orderId")
 	private Long orderId;
+
+	@Column(name = "lastUpdatedDate")
+	private OffsetDateTime lastUpdatedDate;
 }

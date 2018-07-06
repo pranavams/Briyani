@@ -1,6 +1,7 @@
 package com.touchmark.briyani.item;
 
 import java.io.Serializable;
+import java.time.OffsetDateTime;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -48,4 +49,6 @@ public class ItemEntity implements Serializable {
 	@JoinColumn(name = "menuId", nullable = false)
 	private MenuEntity menu;
 
+	@Column(name = "lastUpdatedDate")
+	private OffsetDateTime lastUpdatedDate;
 }

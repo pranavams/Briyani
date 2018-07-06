@@ -78,4 +78,6 @@ public class OrderEntity implements Serializable {
 	//@JoinTable(name = "orderDetail", joinColumns = @JoinColumn(name = "orderId"), inverseJoinColumns = @JoinColumn(name = "orderDetailsId"))
 	private List<OrderDetailEntity> orderDetails;
 	
+	@Column(name = "lastUpdatedDate")
+	private OffsetDateTime lastUpdatedDate;
 }

@@ -1,5 +1,7 @@
 package com.touchmark.briyani.item;
 
+import java.time.OffsetDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,4 +32,6 @@ public class MenuEntity {
 	@Column(name = "name")
 	private String name;
 
+	@Column(name = "lastUpdatedDate")
+	private OffsetDateTime lastUpdatedDate;
 }

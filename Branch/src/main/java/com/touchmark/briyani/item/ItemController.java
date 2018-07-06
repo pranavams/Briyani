@@ -2,7 +2,6 @@ package com.touchmark.briyani.item;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,4 +33,10 @@ public class ItemController {
 		return ResponseEntity.ok(created);
 	}
 
+	@GetMapping
+	@RequestMapping("/listRecent")
+	public ResponseEntity<ItemResponse> getRecent() {
+		return ResponseEntity.ok(ItemResponse.builder().items(this.service.getRecent()).build());
+	}
+	
 }

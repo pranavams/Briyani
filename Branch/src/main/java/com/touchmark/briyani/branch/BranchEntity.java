@@ -1,6 +1,7 @@
 package com.touchmark.briyani.branch;
 
 import java.io.Serializable;
+import java.time.OffsetDateTime;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -72,4 +73,6 @@ public class BranchEntity implements Serializable {
 	@Column(name = "contactPersonNumber")
 	private String contactPersonNumber;
 	
+	@Column(name = "lastUpdatedDate")
+	private OffsetDateTime lastUpdatedDate;
 }

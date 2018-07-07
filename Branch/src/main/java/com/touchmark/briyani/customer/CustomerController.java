@@ -1,5 +1,9 @@
 package com.touchmark.briyani.customer;
 
+import java.util.Arrays;
+
+import javax.websocket.server.PathParam;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -9,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.touchmark.briyani.staff.StaffResponse;
 
 @RestController
 @RequestMapping(path = "/api/v1/customer/")
@@ -28,6 +30,12 @@ public class CustomerController {
 	@RequestMapping("/listAll")
 	public ResponseEntity<CustomerResponse> getAll() {
 		return ResponseEntity.ok(CustomerResponse.builder().customer(this.service.getAll()).build());
+	}
+
+	@GetMapping
+	@RequestMapping("/get/{id}")
+	public ResponseEntity<CustomerResponse> get(@PathParam("id") String id) {
+		return ResponseEntity.ok(CustomerResponse.builder().customer(Arrays.asList(this.service.get(id))).build());
 	}
 
 	@PostMapping

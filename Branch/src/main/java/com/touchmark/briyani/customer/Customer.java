@@ -3,6 +3,7 @@ package com.touchmark.briyani.customer;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import com.touchmark.briyani.commons.Address;
 import com.touchmark.briyani.staff.Staff;
@@ -33,19 +34,13 @@ public class Customer {
 	public CustomerEntity createEntity() {
 		return CustomerEntity.builder().address(address.createEntity()).dateOfBirth(dateOfBirth).firstName(firstName)
 				.email(email).telephoneNumber(telephoneNumber).lastName(lastName).middleName(middleName)
-				.lastUpdatedDate(OffsetDateTime.now())
-				.mobileNumber(mobileNumber).salutation(salutation).build();
+				.lastUpdatedDate(OffsetDateTime.now()).mobileNumber(mobileNumber).salutation(salutation).build();
 	}
 
 	public List<Customer> transformEntities(List<CustomerEntity> customers) {
 		ArrayList<Customer> responseCustomers = new ArrayList<Customer>();
 		for (CustomerEntity customerEntity : customers) {
-			responseCustomers.add(Customer.builder().id(transformId(customerEntity.getId()))
-					.email(customerEntity.getEmail()).telephoneNumber(customerEntity.getTelephoneNumber())
-					.address(Address.builder().build().transform(customerEntity.getAddress()))
-					.dateOfBirth(customerEntity.getDateOfBirth()).firstName(customerEntity.getFirstName())
-					.lastName(customerEntity.getLastName()).middleName(customerEntity.getMiddleName())
-					.mobileNumber(customerEntity.getMobileNumber()).salutation(customerEntity.getSalutation()).build());
+			responseCustomers.add(transformEntities(customerEntity));
 		}
 		return responseCustomers;
 	}
@@ -56,5 +51,14 @@ public class Customer {
 
 	public Long getDatabaseID() {
 		return Long.parseLong(id.substring(4));
+	}
+
+	public Customer transformEntities(CustomerEntity customerEntity) {
+		return Customer.builder().id(transformId(customerEntity.getId())).email(customerEntity.getEmail())
+				.telephoneNumber(customerEntity.getTelephoneNumber())
+				.address(Address.builder().build().transform(customerEntity.getAddress()))
+				.dateOfBirth(customerEntity.getDateOfBirth()).firstName(customerEntity.getFirstName())
+				.lastName(customerEntity.getLastName()).middleName(customerEntity.getMiddleName())
+				.mobileNumber(customerEntity.getMobileNumber()).salutation(customerEntity.getSalutation()).build();
 	}
 }

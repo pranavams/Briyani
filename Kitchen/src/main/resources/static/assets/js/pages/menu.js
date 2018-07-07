@@ -56,7 +56,7 @@ function displayMenu(MenuResult) {
 		tabCell.innerHTML = '$' + Menu[i]['price'];
 
 		tabCell = tr.insertCell(-1);
-			tabCell.innerHTML = '<a href="#" class="btn btn-xs btn-default"><i class="fa fa-pencil"></i></a> <a href="#" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#deleteDATA"><i class="fa fa-remove"></i></a> <a id="link" data-imgid="'+Menu[i]['id']+'" onClick ="invoicePreview();" href="item_id='+Menu[i]['id']+'" class="btn btn-xs btn-info" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a>';
+		tabCell.innerHTML = '<a href="#" class="btn btn-xs btn-default"><i class="fa fa-pencil"></i></a> <a href="#" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#deleteDATA"><i class="fa fa-remove"></i></a> <a id="link" data-imgid="' + Menu[i]['id'] + '" onClick ="invoicePreview();" href="item_id=' + Menu[i]['id'] + '" class="btn btn-xs btn-info" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a>';
 	}
 }
 

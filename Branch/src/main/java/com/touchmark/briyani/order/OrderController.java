@@ -128,4 +128,10 @@ public class OrderController {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("");
 		}
 	}
+
+	@GetMapping
+	@RequestMapping("/listOrdersByVesselStatus/{status}")
+	public ResponseEntity<OrderResponse> getOrdersByVesselStatus(@PathVariable("status") String status) {
+		return ResponseEntity.ok(OrderResponse.builder().order(this.service.getOrdersByVesselStatus(status.toUpperCase())).build());
+	}
 }

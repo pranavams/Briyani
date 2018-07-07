@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.touchmark.briyani.branch.Branch;
 import com.touchmark.briyani.branch.BranchEntity;
 import com.touchmark.briyani.branch.BranchRepository;
+import com.touchmark.briyani.commons.Case;
 import com.touchmark.briyani.commons.Log;
 import com.touchmark.briyani.customer.Customer;
 import com.touchmark.briyani.customer.CustomerEntity;
@@ -148,20 +149,24 @@ public class OrderService {
 
 	public void updateOrderStatus(String id, String orderStatus) {
 		OrderEntity order = this.repository.findById(Order.builder().orderId(id).build().getDatabaseID()).get();
-		order.setOrderStatus(orderStatus);
+		order.setOrderStatus(Case.upper(orderStatus));
 		this.repository.saveAndFlush(order);
 	}
 
 	public void updatePaymentStatus(String id, String paymentStatus) {
 		OrderEntity order = this.repository.findById(Order.builder().orderId(id).build().getDatabaseID()).get();
-		order.setPaymentStatus(paymentStatus);
+		order.setPaymentStatus(Case.upper(paymentStatus));
 		this.repository.saveAndFlush(order);
 	}
 
 	public void updateVesselStatus(String id, String vesselStatus) {
 		OrderEntity order = this.repository.findById(Order.builder().orderId(id).build().getDatabaseID()).get();
-		order.setPaymentStatus(vesselStatus);
+		order.setVesselStatus(Case.upper(vesselStatus));
 		this.repository.saveAndFlush(order);		
+	}
+
+	public List<Order> getOrdersByVesselStatus(String status) {
+		return Order.builder().build().transformEntities(repository.findByVesselStatus(status));
 	}
 
 }

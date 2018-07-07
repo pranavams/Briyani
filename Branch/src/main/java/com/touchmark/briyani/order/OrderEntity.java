@@ -35,6 +35,7 @@ import lombok.ToString;
 @Entity
 @Table(name = "orderInfo")
 public class OrderEntity implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id

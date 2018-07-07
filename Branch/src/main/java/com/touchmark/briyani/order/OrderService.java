@@ -132,5 +132,9 @@ public class OrderService {
 	public List<Order> getOrders(String paymentStatus) {
 		return Order.builder().build().transformEntities(repository.findByPaymentStatus(paymentStatus));		
 	}
+	
+	public List<Order> getOrdersOnGoing(String status) {
+		return Order.builder().build().transformEntities(repository.findByPaymentStatusNot(status));		
+	}
 
 }

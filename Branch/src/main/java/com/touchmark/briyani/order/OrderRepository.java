@@ -16,4 +16,6 @@ public interface OrderRepository extends JpaRepository<OrderEntity, Long> {
 	
 	
 	public List<OrderEntity> findByPaymentStatus(String paymentStatus);
+	
+	public List<OrderEntity> findByPaymentStatusNot(String paymentStatus);
 }

@@ -67,5 +67,11 @@ public class OrderController {
 	public ResponseEntity<OrderResponse> getOrders(@PathVariable("status") String status) {
 		return ResponseEntity.ok(OrderResponse.builder().order(this.service.getOrders(status)).build());
 	}
+	
+	@GetMapping
+	@RequestMapping("/listOrdersOngoing/{status}")
+	public ResponseEntity<OrderResponse> getOrdersOngoing(@PathVariable("status") String status) {
+		return ResponseEntity.ok(OrderResponse.builder().order(this.service.getOrdersOnGoing(status)).build());
+	}
 
 }

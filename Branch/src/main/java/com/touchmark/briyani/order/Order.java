@@ -80,6 +80,10 @@ public class Order {
 	private String transformId(long orderId) {
 		return "ORD-" + orderId;
 	}
+	
+	public Long getDatabaseID() {
+		return Long.parseLong(orderId.substring(4));
+	}
 
 	public List<Order> transformEntities(List<OrderEntity> entities) {
 		List<Order> orders = new ArrayList<>(entities.size());

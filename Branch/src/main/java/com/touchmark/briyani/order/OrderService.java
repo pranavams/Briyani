@@ -141,4 +141,10 @@ public class OrderService {
 		return Order.builder().build().transformEntities(repository.findByPaymentStatus(paymentStatus));		
 	}
 
+	public Order get(String id) {
+		
+		return Order.builder().build()
+				.transformEntity(repository.findById(Order.builder().orderId(id).build().getDatabaseID()).get());
+	}
+
 }

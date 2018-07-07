@@ -1,5 +1,7 @@
 package com.touchmark.briyani.order;
 
+import java.util.Arrays;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -78,6 +80,13 @@ public class OrderController {
 	@RequestMapping("/listOrdersByPaymentStatus/{status}")
 	public ResponseEntity<OrderResponse> getOrdersByPaymentStatus(@PathVariable("status") String status) {
 		return ResponseEntity.ok(OrderResponse.builder().order(this.service.getOrdersByPaymentStatus(status.toUpperCase())).build());
+	}
+	
+	@GetMapping
+	@RequestMapping("/get/{id}")
+	public ResponseEntity<OrderResponse> get(@PathVariable("id") String id) {
+		Log.log("OrderController", "get", "Parameter Received " + id);
+		return ResponseEntity.ok(OrderResponse.builder().order(Arrays.asList(this.service.get(id))).build());
 	}
 
 }

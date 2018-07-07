@@ -84,4 +84,10 @@ public class OrderEntity implements Serializable {
 	
 	@Column(name = "lastUpdatedDate")
 	private OffsetDateTime lastUpdatedDate;
+	
+	@Column(name = "numberOfVessels")
+	private int numberOfVessels;
+	
+	@Column(name = "vesselStatus")
+	private String vesselStatus;
 }

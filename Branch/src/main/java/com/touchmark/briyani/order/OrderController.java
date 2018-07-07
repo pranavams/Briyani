@@ -114,4 +114,18 @@ public class OrderController {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("");
 		}
 	}
+
+
+	@GetMapping
+	@RequestMapping("/updateVesselStatus/{id}/{vesselStatus}")
+	public ResponseEntity<String> updateVesselStatus(@PathVariable("id") String id, @PathVariable("vesselStatus") String vesselStatus) {
+		try {
+			Log.log("OrderController", "updateVesselStatus", "Object Received To Update Vessel Status " + id + ", " + vesselStatus);
+			this.service.updateVesselStatus(id, vesselStatus);
+			return ResponseEntity.ok("");
+		} catch (Exception ex) {
+			Log.error("OrderController", "updateVesselStatus", "Order Vessel Status Update Failed", ex);
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("");
+		}
+	}
 }

@@ -158,4 +158,10 @@ public class OrderService {
 		this.repository.saveAndFlush(order);
 	}
 
+	public void updateVesselStatus(String id, String vesselStatus) {
+		OrderEntity order = this.repository.findById(Order.builder().orderId(id).build().getDatabaseID()).get();
+		order.setPaymentStatus(vesselStatus);
+		this.repository.saveAndFlush(order);		
+	}
+
 }

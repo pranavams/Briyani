@@ -2,7 +2,6 @@ package com.touchmark.briyani.order;
 
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import com.touchmark.briyani.branch.Branch;
@@ -35,6 +34,8 @@ public class Order {
 	private Branch branch;
 	private Customer customer;
 	private Address deliveryAddress;
+	private int numberOfVessels;
+	private String vesselStatus;
 
 	private List<OrderDetail> orderDetails;
 
@@ -47,13 +48,12 @@ public class Order {
 		List<OrderDetailEntity> orders = new ArrayList<>();
 
 		for (OrderDetail orderDetail : orderDetails) {
-
 			orders.add(OrderDetailEntity.builder().quantity(orderDetail.getQuantity())
 					.unitPrice(orderDetail.getUnitPrice()).build());
 		}
 		return OrderEntity.builder().couponCode(couponCode).dateAndTime(dateAndTime).deliveryAddress(addressEntity)
 				.paymentStatus(paymentStatus).taxPercentage(taxPercentage).taxAmount(taxAmount).totalAmount(totalAmount)
-				.orderStatus(orderStatus)
+				.orderStatus(orderStatus).numberOfVessels(numberOfVessels).vesselStatus(vesselStatus)
 				.userName(userName).orderDetails(orders).build();
 	}
 
@@ -72,7 +72,8 @@ public class Order {
 				.deliveryAddress(deliveryAddress).couponCode(entity.getCouponCode())
 				.dateAndTime(entity.getDateAndTime()).orderId(transformId(entity.getOrderId()))
 				.paymentStatus(entity.getPaymentStatus()).taxAmount(entity.getTaxAmount())
-				.orderStatus(entity.getOrderStatus())
+				.orderStatus(entity.getOrderStatus()).numberOfVessels(entity.getNumberOfVessels())
+				.vesselStatus(entity.getVesselStatus())
 				.taxPercentage(entity.getTaxPercentage()).totalAmount(entity.getTotalAmount())
 				.userName(entity.getUserName()).deliveryAddress(deliveryAddress).orderDetails(orderDetails).build();
 	}
@@ -87,8 +88,8 @@ public class Order {
 
 	public List<Order> transformEntities(List<OrderEntity> entities) {
 		List<Order> orders = new ArrayList<>(entities.size());
-		for (OrderEntity rdierEntity : entities) {
-			orders.add(transformEntity(rdierEntity));
+		for (OrderEntity orderEntity : entities) {
+			orders.add(transformEntity(orderEntity));
 		}
 		return orders;
 	}

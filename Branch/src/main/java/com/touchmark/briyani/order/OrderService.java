@@ -124,27 +124,38 @@ public class OrderService {
 	public List<Order> getRecent() {
 		return Order.builder().build().transformEntities(repository.findRecent());
 	}
-	
+
 	public List<Order> getTodayOrders() {
-		return Order.builder().build().transformEntities(repository.findTodayOrders());		
+		return Order.builder().build().transformEntities(repository.findTodayOrders());
 	}
-	
+
 	public List<Order> getOrders(String orderStatus) {
-		return Order.builder().build().transformEntities(repository.findByOrderStatus(orderStatus));		
+		return Order.builder().build().transformEntities(repository.findByOrderStatus(orderStatus));
 	}
-	
+
 	public List<Order> getOrdersOnGoing(String status) {
-		return Order.builder().build().transformEntities(repository.findByOrderStatusNot(status));		
+		return Order.builder().build().transformEntities(repository.findByOrderStatusNot(status));
 	}
-	
+
 	public List<Order> getOrdersByPaymentStatus(String paymentStatus) {
-		return Order.builder().build().transformEntities(repository.findByPaymentStatus(paymentStatus));		
+		return Order.builder().build().transformEntities(repository.findByPaymentStatus(paymentStatus));
 	}
 
 	public Order get(String id) {
-		
 		return Order.builder().build()
 				.transformEntity(repository.findById(Order.builder().orderId(id).build().getDatabaseID()).get());
+	}
+
+	public void updateOrderStatus(String id, String orderStatus) {
+		OrderEntity order = this.repository.findById(Order.builder().orderId(id).build().getDatabaseID()).get();
+		order.setOrderStatus(orderStatus);
+		this.repository.saveAndFlush(order);
+	}
+
+	public void updatePaymentStatus(String id, String paymentStatus) {
+		OrderEntity order = this.repository.findById(Order.builder().orderId(id).build().getDatabaseID()).get();
+		order.setPaymentStatus(paymentStatus);
+		this.repository.saveAndFlush(order);
 	}
 
 }

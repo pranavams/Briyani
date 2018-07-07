@@ -89,4 +89,29 @@ public class OrderController {
 		return ResponseEntity.ok(OrderResponse.builder().order(Arrays.asList(this.service.get(id))).build());
 	}
 
+	@PostMapping
+	@RequestMapping(path = "/updateOrderStatus", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<String> updateOrderStatus(@PathVariable("id") String id, @PathVariable("orderStatus") String orderStatus) {
+		try {
+			Log.log("OrderController", "updateOrderStatus", "Object Received To Update " + id + ", " + orderStatus);
+			this.service.updateOrderStatus(id, orderStatus);
+			return ResponseEntity.ok("");
+		} catch (Exception ex) {
+			Log.error("OrderController", "updateOrderStatus", "Order Status Update Failed", ex);
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("");
+		}
+	}
+
+	@PostMapping
+	@RequestMapping(path = "/updatePaymentStatus", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<String> updatePaymentStatus(@PathVariable("id") String id, @PathVariable("paymentStatus") String paymentStatus) {
+		try {
+			Log.log("OrderController", "updatePaymentStatus", "Object Received To Update " + id + ", " + paymentStatus);
+			this.service.updatePaymentStatus(id, paymentStatus);
+			return ResponseEntity.ok("");
+		} catch (Exception ex) {
+			Log.error("OrderController", "updatePaymentStatus", "Order Payment Status Update Failed", ex);
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("");
+		}
+	}
 }

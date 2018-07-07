@@ -89,8 +89,8 @@ public class OrderController {
 		return ResponseEntity.ok(OrderResponse.builder().order(Arrays.asList(this.service.get(id))).build());
 	}
 
-	@PostMapping
-	@RequestMapping(path = "/updateOrderStatus", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping
+	@RequestMapping("/updateOrderStatus/{id}/{orderStatus}")
 	public ResponseEntity<String> updateOrderStatus(@PathVariable("id") String id, @PathVariable("orderStatus") String orderStatus) {
 		try {
 			Log.log("OrderController", "updateOrderStatus", "Object Received To Update " + id + ", " + orderStatus);
@@ -102,8 +102,8 @@ public class OrderController {
 		}
 	}
 
-	@PostMapping
-	@RequestMapping(path = "/updatePaymentStatus", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping
+	@RequestMapping("/updatePaymentStatus/{id}/{paymentStatus}")
 	public ResponseEntity<String> updatePaymentStatus(@PathVariable("id") String id, @PathVariable("paymentStatus") String paymentStatus) {
 		try {
 			Log.log("OrderController", "updatePaymentStatus", "Object Received To Update " + id + ", " + paymentStatus);

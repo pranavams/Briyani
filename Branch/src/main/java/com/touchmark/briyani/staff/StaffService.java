@@ -40,4 +40,8 @@ public class StaffService {
 		return Staff.builder().build().transformEntities(repository.findRecent());
 	}
 
+	public Staff get(String id) {
+		return Staff.builder().build().transformEntities(repository.findById(Staff.builder().id(id).build().getDatabaseID()).get());
+	}
+
 }

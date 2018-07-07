@@ -50,7 +50,7 @@ public class Rider {
 				.mobileNumber(mobileNumber).address(addressEntity).build();
 	}
 
-	public Rider transformEntity(RiderEntity entity) {
+	public Rider transformEntities(RiderEntity entity) {
 		return Rider.builder().id(transformId(entity.getId(), entity.getDepartmentType())).email(entity.getEmail())
 				.dateOfBirth(entity.getDateOfBirth()).riderPersonSalutation(entity.getRiderPersonSalutation())
 				.riderPersonFirstName(entity.getRiderPersonFirstName())
@@ -76,7 +76,7 @@ public class Rider {
 	public List<Rider> transformEntities(List<RiderEntity> entities) {
 		List<Rider> riders = new ArrayList<>(entities.size());
 		for (RiderEntity rdierEntity : entities) {
-			riders.add(transformEntity(rdierEntity));
+			riders.add(transformEntities(rdierEntity));
 		}
 		return riders;
 	}

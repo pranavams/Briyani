@@ -1,9 +1,12 @@
 package com.touchmark.briyani.staff;
 
+import java.util.Arrays;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,4 +49,11 @@ public class StaffController {
 	public ResponseEntity<String> delete(@RequestParam(name="id") String id) {
 		return ResponseEntity.ok(this.service.delete(id));
 	}
+
+	@GetMapping
+	@RequestMapping("/get/{id}")
+	public ResponseEntity<StaffResponse> get(@PathVariable("id") String id) {
+		return ResponseEntity.ok(StaffResponse.builder().staff(Arrays.asList(this.service.get(id))).build());
+	}
+
 }

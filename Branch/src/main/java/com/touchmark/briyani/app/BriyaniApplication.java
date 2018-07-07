@@ -31,7 +31,9 @@ public class BriyaniApplication {
 		return new WebMvcConfigurerAdapter() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/api/**").allowedOrigins("http://localhost:36363").allowedMethods("GET", "POST");
+				registry.addMapping("/api/**")
+                .allowedOrigins("https://briyani-web-ui.cfapps.io/", "http://localhost:36363", "http://localhost", "http://localhost/touch/kitchen", "http://localhost/touch")
+				.allowedMethods("GET", "POST");
 			}
 		};
 	}

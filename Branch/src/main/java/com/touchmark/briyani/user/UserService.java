@@ -30,12 +30,19 @@ public class UserService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		try {
+			Log.log("UserService", "LoadUser", "User Name " + username);
 			List<UserEntity> findByUserName = userRepository.findByUserName(username);
 			UserEntity user = findByUserName.get(0);
-			return new User(user.getUserName(), user.getPassword(), getAuthority(user.getRoles()));
+			User user2 = new User(user.getUserName(), user.getPassword(), getAuthority(user.getRoles()));
+			Log.log("UserService", "LoadUser", "User details " + user2);
+			return user2;
 		} catch (Exception ex) {
-			Log.log("UserService", "loadUserByUserName", "Exception while Fetching User Details", ex);
+			Log.error("UserService", "loadUserByUserName", "Exception while Fetching User Details", ex);
 			throw new UsernameNotFoundException("User Not Found");
 		}
+	}
+	
+	public UserEntity save(com.touchmark.briyani.user.User user) {
+		return this.userRepository.save(user.createEntity());
 	}
 }

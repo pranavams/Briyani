@@ -1,0 +1,7 @@
+---
+applications:
+- name: briyani-web-ui
+  memory: 1024M
+  buildpack: java_buildpack
+  routes:
+  - route: briyani-web-ui.cfapps.io

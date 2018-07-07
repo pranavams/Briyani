@@ -4,9 +4,13 @@
 
 //Get inContact Token
 var accessToken = '';
+//var kitchenBaseURI = 'https://briyani-web-ui.cfapps.io/';
+//var baseURI = 'https://briyani-services.cfapps.io/api/v1/';
+//var tokenURL = 'https://briyani-services.cfapps.io/oauth/token';
+
 var kitchenBaseURI = 'http://localhost:36363/'
 var baseURI = 'http://localhost:63636/api/v1/';
-var tokenURL = 'http://localhost:63636/oauth/token';
+var tokenURL = 'http://localhost:63636/oauth/token/';
 
 var postData = {
 	grant_type : 'client_credentials',
@@ -52,7 +56,7 @@ function getTokens() {
 		"data" : {
 			"username" : "Alex123",
 			"password" : "$2a$04$I9Q2sDc4QGGg5WNTLmsz0.fvGv3OjoZyj81PrSFyGOqMphqfS2qKu",
-			"grant_type" : "authorization_code"
+			"grant_type" : "password"
 		},
 		'success' : function(result) {
 			//Process success actions

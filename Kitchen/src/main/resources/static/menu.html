@@ -1,231 +1,265 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Menu / Item | Briyani Application </title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="description" content="Business Management Application by Dude at Work">
-	<meta name="author" content="Touchmark Media">
-	<!-- CSS -->
-	<link href='//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Source+Sans+Pro:400&subset=latin' rel='stylesheet' type='text/css'>
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/bootstrap-datepicker3.css" rel="stylesheet">
-	<link href="assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="assets/js/plugins/export_record/jquery.dataTables.css">
-    <link rel="stylesheet" href="assets/js/plugins/export_record/buttons.dataTables.min.css" /> 
+<title>Menu / Item | Briyani Application</title>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="description"
+	content="Business Management Application by Dude at Work">
+<meta name="author" content="Touchmark Media">
+<!-- CSS -->
+<link
+	href='//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Source+Sans+Pro:400&subset=latin'
+	rel='stylesheet' type='text/css'>
+<link href="assets/css/bootstrap.min.css" rel="stylesheet"
+	type="text/css">
+<link href="assets/css/bootstrap-datepicker3.css" rel="stylesheet">
+<link href="assets/css/font-awesome.min.css" rel="stylesheet"
+	type="text/css">
+<link rel="stylesheet"
+	href="assets/js/plugins/export_record/jquery.dataTables.css">
+<link rel="stylesheet"
+	href="assets/js/plugins/export_record/buttons.dataTables.min.css" />
 
-	<link href="assets/css/main.css" rel="stylesheet" type="text/css">
-	<link href="assets/css/style.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/bootstrap-tagsinput.css">
-    <link href="assets/css/bootstrapValidator.min.css">
-	<!-- Fav and touch icons -->
-	<link rel="shortcut icon" href="assets/img/notepad.png">
-    <link rel="stylesheet" href="assets/css/bootstrap-select.min.css" />
-    <style type="text/css">
-	.investment-summary { 
-	padding-top: 15px; padding-bottom: 15px; 
-	}
-	a:focus, a:hover {
-    color: #23527c;
-    text-decoration: none;
-	}
-	.typeahead, .tt-query, .tt-hint {
+<link href="assets/css/main.css" rel="stylesheet" type="text/css">
+<link href="assets/css/style.css" rel="stylesheet" type="text/css">
+<link href="assets/css/bootstrap-tagsinput.css">
+<link href="assets/css/bootstrapValidator.min.css">
+<!-- Fav and touch icons -->
+<link rel="shortcut icon" href="assets/img/notepad.png">
+<link rel="stylesheet" href="assets/css/bootstrap-select.min.css" />
+<style type="text/css">
+.investment-summary {
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+a:focus, a:hover {
+	color: #23527c;
+	text-decoration: none;
+}
+
+.typeahead, .tt-query, .tt-hint {
 	font-size: 14px;
 	outline: medium none;
 	padding: 5px 12px;
 	width: 360px;
-	}
-	.tt-dropdown-menu {
+}
+
+.tt-dropdown-menu {
 	background-color: #FFFFFF;
 	border: 1px solid rgba(0, 0, 0, 0.2);
 	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 	margin: 0 0 0 0px;
 	padding: 8px 0;
 	width: 360px;
-	}
-	.margin_left {
-		margin-left:0px !important;
-	}
+}
+
+.margin_left {
+	margin-left: 0px !important;
+}
 /*	.logo_align {
 		width:27%;
 	}
 */
-	</style>
+</style>
 </head>
 
 <body class="sidebar-fixed topnav-fixed dashboard">
 	<!-- WRAPPER -->
 	<div id="wrapper" class="wrapper">
-		
-      <!-- Menu Bar-->
-      
-      	<!-- TOP BAR -->
 
-        <div class="top-bar navbar-fixed-top">
-        <div class="container">
-            <div class="clearfix">
-                 <a href="javascript:;" class="pull-left toggle-sidebar-collapse hidden-lg hidden-mde"><i class="fa fa-bars"></i></a> <!-- toggle-sidebar-collapse -->
-                <!--logo -->
-                <div class="pull-left left logo">
-                    <a href="index.html" class="logo_name">Authentic Arab St Biriyani</a>
-                    <h1 class="sr-only">Application Dashboard</h1>
-                </div>
-                <!-- end logo -->
-                <div class="pull-right right">
-                    <!-- search box -->
-                    
-                    <!-- end search box -->
-                    <!-- top-bar-right -->
-                    <div class="top-bar-right">
-                        
-                        <!-- logged user and the menu -->
-                        <div class="logged-user">
-                            <div class="btn-group">
-                                <a href="javascript:;" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-power-off"></i>
-                                    <span class="name">
-                                   Logout
-                                    
-                                </a>
-                                
-                            </div>
-                        </div>
-                        <!-- end logged user and the menu -->
-                    </div>
-                    <!-- end top-bar-right -->
-                </div>
-            </div>
-        </div>
-        <!-- /container -->
-        </div>
-        <!-- END TOP BAR -->
-        <!-- LEFT SIDEBAR -->
-        <div id="left-sidebar" class="left-sidebar left_sidebar">
-        <div class="sidebar-minified js-toggle-minified">
-            <i class="fa fa-arrows-h"></i>
-        </div>
-        <!-- main-nav -->
-           
-                <div class="sidebar-scroll">
-                    <nav class="main-nav">
-                        <ul class="main-menu">
-                            <li ><a href="index.html"><i class="fa fa-dashboard fa-fw"></i><span class="text">Dashboard</span></a></li>
-                            
-                            <li><a href="customer.html"><i class="fa fa-user-plus fa-fw"></i><span class="text">Customer </span></a></li>
-                            
-                            <li ><a href="order_user.html"><i class="fa fa-list"></i><span class="text">List Of End User Order</span></a></li>
-                            
-                            <li ><a href="branch.html"><i class="fa fa-university fa-fw"></i><span class="text">Branch</span></a></li>
-                            
-                             <li ><a href="order.html"><i class="fa fa-list fa-fw"></i><span class="text">List Of Branch Order</span></a> </li>
-                     		
-                             <li><a href="rider.html"><i class="fa fa-motorcycle fa-fw"></i><span class="text">Rider</span></a></li>
-                             
-                             <li class="active"><a href="menu.html"><i class="fa fa-list-alt fa-fw"></i><span class="text">Menu</span></a></li>
-                             
-                             <li ><a href="staff.html"><i class="fa fa-user fa-fw"></i><span class="text">Staff</span></a></li>
-                            
-                        </ul>
-                    </nav>
-                </div>
-               
-            </div>
+		<!-- Menu Bar-->
+
+		<!-- TOP BAR -->
+
+		<div class="top-bar navbar-fixed-top">
+			<div class="container">
+				<div class="clearfix">
+					<a href="javascript:;"
+						class="pull-left toggle-sidebar-collapse hidden-lg hidden-mde"><i
+						class="fa fa-bars"></i></a>
+					<!-- toggle-sidebar-collapse -->
+					<!--logo -->
+					<div class="pull-left left logo">
+						<a href="index.html" class="logo_name">Authentic Arab St
+							Biriyani</a>
+						<h1 class="sr-only">Application Dashboard</h1>
+					</div>
+					<!-- end logo -->
+					<div class="pull-right right">
+						<!-- search box -->
+
+						<!-- end search box -->
+						<!-- top-bar-right -->
+						<div class="top-bar-right">
+
+							<!-- logged user and the menu -->
+							<div class="logged-user">
+								<div class="btn-group">
+									<a href="javascript:;" class="btn btn-link dropdown-toggle"
+										data-toggle="dropdown"> <i class="fa fa-power-off"></i> <span
+										class="name"> Logout </a>
+
+								</div>
+							</div>
+							<!-- end logged user and the menu -->
+						</div>
+						<!-- end top-bar-right -->
+					</div>
+				</div>
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- END TOP BAR -->
+		<!-- LEFT SIDEBAR -->
+		<div id="left-sidebar" class="left-sidebar left_sidebar">
+			<div class="sidebar-minified js-toggle-minified">
+				<i class="fa fa-arrows-h"></i>
+			</div>
+			<!-- main-nav -->
+
+			<div class="sidebar-scroll">
+				<nav class="main-nav">
+					<ul class="main-menu">
+						<li><a href="index.html"><i class="fa fa-dashboard fa-fw"></i><span
+								class="text">Dashboard</span></a></li>
+
+						<li><a href="customer.html"><i
+								class="fa fa-user-plus fa-fw"></i><span class="text">Customer
+							</span></a></li>
+
+						<li><a href="order_user.html"><i class="fa fa-list"></i><span
+								class="text">List Of End User Order</span></a></li>
+
+						<li><a href="branch.html"><i
+								class="fa fa-university fa-fw"></i><span class="text">Branch</span></a></li>
+
+						<li><a href="order.html"><i class="fa fa-list fa-fw"></i><span
+								class="text">List Of Branch Order</span></a></li>
+
+						<li><a href="rider.html"><i
+								class="fa fa-motorcycle fa-fw"></i><span class="text">Rider</span></a></li>
+
+						<li class="active"><a href="menu.html"><i
+								class="fa fa-list-alt fa-fw"></i><span class="text">Menu</span></a></li>
+
+						<li><a href="staff.html"><i class="fa fa-user fa-fw"></i><span
+								class="text">Staff</span></a></li>
+
+					</ul>
+				</nav>
+			</div>
+
+		</div>
 
 
-<!-- END LEFT SIDEBAR -->
+		<!-- END LEFT SIDEBAR -->
 
 
-		<!-- MAIN CONTENT WRAPPER expanded-->   
-		<div id="main-content-wrapper" class="content-wrapper content_wwrapper">
-                    
+		<!-- MAIN CONTENT WRAPPER expanded-->
+		<div id="main-content-wrapper"
+			class="content-wrapper content_wwrapper">
+
 			<div class="row">
 				<div class="col-md-4">
 					<ul class="breadcrumb">
 						<li><i class="fa fa-home"></i><a href="#">Home</a></li>
-                        <li class="active hide_list">Name of the Branches</li>
-                        <li class="active hide_add">Add Branch</li>
-						
+						<li class="active hide_list">Name of the Branches</li>
+						<li class="active hide_add">Add Branch</li>
+
 					</ul>
 				</div>
 			</div>
 			<!-- main -->
 			<div class="content">
 				<div class="main-header">
-               
+
 					<h2 class="hide_list">List of Menu / Item</h2>
-                    
-                    <h2 class="hide_add">Add Menu/Item</h2>
-                  
+
+					<h2 class="hide_add">Add Menu/Item</h2>
+
 					<em>the first priority information</em>
-                    <div class="pull-right">
-                        
-                        <a href="#" class="btn btn-info btn-sm" id="addmenu"><i class="fa fa-plus"></i> Add Menu</a>
-                        <a href="menu.html" class="btn btn-default btn-sm" id="addbranch_list"><i class="fa fa-arrow-left"></i> Back To List</a>
-                    </div>
+					<div class="pull-right">
+
+						<a href="#" class="btn btn-info btn-sm" id="addmenu"><i
+							class="fa fa-plus"></i> Add Menu</a> <a href="menu.html"
+							class="btn btn-default btn-sm" id="addbranch_list"><i
+							class="fa fa-arrow-left"></i> Back To List</a>
+					</div>
 				</div>
 				<hr class="inner-separator" />
-               
-                	
-                    <!--- Table Div--->
-                    <div class="main-content table_hide">
-                    <div class="table-responsive">
-                        <table id="contacts_list" class="table table-responsive table-hover tablefontsize cell-border" >
-                          <thead class="table_heading_color">
-                            <tr>
-                                <th>#</th>
-                                <th>Menu Code</th>
-                                <th>Item Code</th>
-                                <th>Menu Name</th>
-                                <th>Item Name</th>
-                                <th>Price</th>
-                                <th>Modify</th>
-                            </tr>
-                         </thead>
-                        </table>
-                    </div>    
+
+
+				<!--- Table Div--->
+				<div class="main-content table_hide">
+					<div class="table-responsive">
+						<table id="contacts_list"
+							class="table table-responsive table-hover tablefontsize cell-border">
+							<thead class="table_heading_color">
+								<tr>
+									<th>#</th>
+									<th data-field="menuId">Menu Code</th>
+									<th data-field="id">Item Code</th>
+									<th data-field="menuName">Menu Name</th>
+									<th data-field="name">Item Name</th>
+									<th data-field="price">Price</th>
+									<th>Modify</th>
+								</tr>
+							</thead>
+						</table>
+					</div>
 				</div>
-                
-                <!-- Form Div Start--->
-                      
-						<div class="main-content form_hide">
-                    <div class="inner-page">
-                             <div class="col-lg-8 col-sm-6 col-xs-12 center-block float_none">
-                             	<div class="panel panel-default">
-                                    <div class="panel-heading quick_notes"></div>
-                                    	<div class="panel-body">
-                                    	      <form id="mainform" method="post" enctype="multipart/form-data" > 
-                                              <div class="form-row">
-                                              <div id="add_menu_div">
-                                                <div class="form-group col-md-12">
-                                                	<hr class="inner-separator" />
-                                                	<h4>Add Menu</h4>
-                                                	<hr class="inner-separator" />
-                                                </div>
-                                                <!-- 
+
+				<!-- Form Div Start--->
+
+				<div class="main-content form_hide">
+					<div class="inner-page">
+						<div class="col-lg-8 col-sm-6 col-xs-12 center-block float_none">
+							<div class="panel panel-default">
+								<div class="panel-heading quick_notes"></div>
+								<div class="panel-body">
+									<form id="mainform" method="post" enctype="multipart/form-data">
+										<div class="form-row">
+											<div id="add_menu_div">
+												<div class="form-group col-md-12">
+													<hr class="inner-separator" />
+													<h4>Add Menu</h4>
+													<hr class="inner-separator" />
+												</div>
+												<!-- 
                                                 <div class="form-group col-md-6">
                                                 	<label for="exampleFormControlSelect1">Menu Code <span class="text-danger">*</span></label>
                                                   <input type="text" class="form-control add_menu_field" id="menu_code" name="menu_code" maxlength="80">
                                                 </div>
                                                  -->
-                                                <div class="form-group col-md-6">
-                                                	<label for="exampleFormControlSelect1">Menu Name <span class="text-danger">*</span></label>
-                                                  <input type="text" class="form-control add_menu_field" id="menu_name" name="menu_name" maxlength="15">
-                                                </div>
-                                                <div class="form-group col-md-12">
-                                                  	 <button type="reset" class="btn btn-danger pull-right" id="reset_button">Cancel</button>
-                                                  	<button type="button" class="btn btn-primary pull-right save_button save_menu" name="add_btn" onclick = 'saveMenu()' >Save Menu</button>
-                                                    <button type="button" class="btn btn-primary pull-right save_button add_item_button" name="add_btn" >Add Item</button>
-                                                   
-                                                  </div>
-                                                </div>
-                                                  <div id="add_item_div">
-                                                <div class="form-group col-md-12">
-                                                	<hr class="inner-separator" />
-                                                	<h4>Add Item</h4>
-                                                	<hr class="inner-separator" />
-                                                </div>
-                                                <!-- 
+												<div class="form-group col-md-6">
+													<label for="exampleFormControlSelect1">Menu Name <span
+														class="text-danger">*</span></label> <input type="text"
+														class="form-control add_menu_field" id="menu_name"
+														name="menu_name" maxlength="15">
+												</div>
+												<div class="form-group col-md-12">
+													<button type="reset" class="btn btn-danger pull-right"
+														id="reset_button">Cancel</button>
+													<button type="button"
+														class="btn btn-primary pull-right save_button save_menu"
+														name="add_btn" onclick='saveMenu()'>Save Menu</button>
+													<button type="button"
+														class="btn btn-primary pull-right save_button add_item_button"
+														name="add_btn">Add Item</button>
+
+												</div>
+											</div>
+											<div id="add_item_div">
+												<div class="form-group col-md-12">
+													<hr class="inner-separator" />
+													<h4>Add Item</h4>
+													<hr class="inner-separator" />
+												</div>
+												<!-- 
                                                 <div class="form-group col-md-6">
                                                   <div class="form-group">
                                                     <label for="exampleFormControlSelect1">Menu Name <span class="text-danger">*</span></label>
@@ -245,16 +279,20 @@
                                                 </div>
                                                 <div class="clearfix"></div>
                                                  -->
-                                                <div class="form-group col-md-6">
-                                                	<label for="exampleFormControlSelect1">Item Name <span class="text-danger">*</span></label>
-                                                  <input type="text" class="form-control" id="item_name" name="item_name" maxlength="15">
-                                                </div>
-                                                
-                                                <div class="form-group col-md-6">
-                                                	<label for="exampleFormControlSelect1">Item Description <span class="text-danger">*</span></label>
-                                                  <input type="text" class="form-control" id="item_descri" name="item_descri" maxlength="15">
-                                                </div>
-                                                <!--  
+												<div class="form-group col-md-6">
+													<label for="exampleFormControlSelect1">Item Name <span
+														class="text-danger">*</span></label> <input type="text"
+														class="form-control" id="item_name" name="item_name"
+														maxlength="15">
+												</div>
+
+												<div class="form-group col-md-6">
+													<label for="exampleFormControlSelect1">Item
+														Description <span class="text-danger">*</span>
+													</label> <input type="text" class="form-control" id="item_descri"
+														name="item_descri" maxlength="15">
+												</div>
+												<!--  
                                                 <div class="form-group col-md-6">
                                                 <label for="exampleFormControlSelect1">Item Image <span class="text-danger">*</span></label>
                                                   <div class="input-group">
@@ -270,142 +308,210 @@
                                                   </div><br>
                                                 </div>
                                                 -->
-                                                <div class="form-group col-md-6">
-                                                <label for="exampleFormControlSelect1">Price ($) <span class="text-danger">*</span></label>
-                                                  <input type="text" class="form-control" id="item_price" name="item_price" maxlength="15">
-                                                </div>
-                                               
-                                               
-                                               
-                                                  <div class="form-group col-md-12">
-                                                  	 <button type="reset" class="btn btn-danger pull-right" id="PageRefresh">Reset</button>
-                                                  	<button type="button" class="btn btn-primary pull-right save_button save_item" name="add_btn" onclick = 'saveItem()'>Save Item</button>
-                                                   
-                                                  </div>
-                                                  </div>
-                                              </div>
-                                            </form>
-                                            
-                                    	</div>
-                              	</div>
-                             </div>                                            
-                            </div>
-                    	</div>
+												<div class="form-group col-md-6">
+													<label for="exampleFormControlSelect1">Price ($) <span
+														class="text-danger">*</span></label> <input type="text"
+														class="form-control" id="item_price" name="item_price"
+														maxlength="15">
+												</div>
+
+
+
+												<div class="form-group col-md-12">
+													<button type="reset" class="btn btn-danger pull-right"
+														id="PageRefresh">Reset</button>
+													<button type="button"
+														class="btn btn-primary pull-right save_button save_item"
+														name="add_btn" onclick='saveItem()'>Save Item</button>
+
+												</div>
+											</div>
+										</div>
+									</form>
+
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
-			<!-- /main -->
 		</div>
-		<!-- END CONTENT WRAPPER -->
+		<!-- /main -->
+	</div>
+	<!-- END CONTENT WRAPPER -->
 	</div>
 	<!-- END WRAPPER -->
-    
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-       <img src="assets/img/Biriyani.Jpeg" class="img-responsive">
-       <h4><b>Chicken Biriyani - $120 /-</b></h4>
-       <p> <b>Description:</b><br> 
-       <span>You may have heard the word biryani floating around when it comes to Indian food. What is biryani?<br>	A world-renowned Indian dish, biryani takes time and practice to make but is worth every bit of the effort. Long-grained rice (like basmati) flavored with exotic spices such as saffron is layered with lamb, chicken, fish, or vegetables cooked in a thick gravy. The dish is then covered, its lid sealed on with dough and the biryani is cooked on a low flame.<br> This is definitely a special occasion dish.</span></p>
-       <div class="col-md-8">
-        <form action="" class="search-form">
-            <div class="form-group has-feedback">
-                <label for="search" class="sr-only">Search</label>
-                <input type="text" class="form-control" name="search" id="search" placeholder="search">
-                <span class="glyphicon glyphicon-search form-control-feedback"></span>
-            </div>
-        </form>
-        <br>
-        </div>
-        <div class="row">
-            <div class="col-md-8">
-                <h5>With Applam: <b>1</b> <a href="#"><i class="fa fa-plus"></i></a></h5>
-                <h5>With Anion: <b>1Packet</b> <a href="#"><i class="fa fa-plus"></i></a></h5>
-            </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger btn-md" data-dismiss="modal"><i class="fa fa-remove"></i> Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-    
-    
-    
-    <!-- Delete Popup-->
 
-<div class="modal fade" id="deleteDATA" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-        <div class="modal-sm center-block" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Please confirm your action</h4>
-                </div>
-                <div class="modal-body receiving-delete-data">
-                    <div class='col-lg-12'>This action cannot be revoked...!!!<br /><br />
-                        <a class='btn btn-default btn-sm'><i class="fa fa-check"></i> Yes</a>
-                        <a class='btn btn-default btn-sm' data-dismiss='modal' style='margin-left:20px'><i class="fa fa-remove"></i> No</a>
-                    </div>
-               </div>
-            </div>
-        </div>
-    </div>
+	<div class="modal fade" id="exampleModalCenter" tabindex="-1"
+		role="dialog" aria-labelledby="exampleModalCenterTitle"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div id="test"></div>
+
+					<h4>
+						<b>Chicken Biriyani - $120 /-</b>
+					</h4>
+					<p>
+						<b>Description:</b><br> <span>You may have heard the
+							word biryani floating around when it comes to Indian food. What
+							is biryani?<br> A world-renowned Indian dish, biryani takes
+							time and practice to make but is worth every bit of the effort.
+							Long-grained rice (like basmati) flavored with exotic spices such
+							as saffron is layered with lamb, chicken, fish, or vegetables
+							cooked in a thick gravy. The dish is then covered, its lid sealed
+							on with dough and the biryani is cooked on a low flame.<br>
+							This is definitely a special occasion dish.
+						</span>
+					</p>
+					<div class="col-md-8">
+						<form action="" class="search-form">
+							<div class="form-group has-feedback">
+								<label for="search" class="sr-only">Search</label> <input
+									type="text" class="form-control" name="search" id="search"
+									placeholder="search"> <span
+									class="glyphicon glyphicon-search form-control-feedback"></span>
+							</div>
+						</form>
+						<br>
+					</div>
+					<div class="row">
+						<div class="col-md-8">
+							<h5>
+								With Applam: <b>1</b> <a href="#"><i class="fa fa-plus"></i></a>
+							</h5>
+							<h5>
+								With Anion: <b>1Packet</b> <a href="#"><i class="fa fa-plus"></i></a>
+							</h5>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger btn-md"
+						data-dismiss="modal">
+						<i class="fa fa-remove"></i> Close
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<!-- Delete Popup-->
+
+	<div class="modal fade" id="deleteDATA" tabindex="-1" role="dialog"
+		aria-hidden="true" data-backdrop="static" data-keyboard="false">
+		<div class="modal-sm center-block" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">Please confirm your action</h4>
+				</div>
+				<div class="modal-body receiving-delete-data">
+					<div class='col-lg-12'>
+						This action cannot be revoked...!!!<br /> <br /> <a
+							class='btn btn-default btn-sm'><i class="fa fa-check"></i>
+							Yes</a> <a class='btn btn-default btn-sm' data-dismiss='modal'
+							style='margin-left: 20px'><i class="fa fa-remove"></i> No</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 
 	<!-- Javascript -->
-    <script src="assets/js/jquery/jquery-2.1.0.min.js"></script>
+	<script src="assets/js/jquery/jquery-2.1.0.min.js"></script>
 	<script src="assets/js/bootstrap/bootstrap.js"></script>
-    <script src="assets/js/plugins/modernizr/modernizr.js"></script>
-    <script src="assets/js/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="assets/js/bootstrap-table.js"></script>
+	<script src="assets/js/plugins/modernizr/modernizr.js"></script>
+	<script
+		src="assets/js/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 	<script src="assets/js/plugins/bootstrap-tour/bootstrap-tour.custom.js"></script>
-    <script type="text/javascript" src="assets/js/plugins/export_record/jquery.dataTables.js"></script>
-    <script type="text/javascript" src="assets/js/plugins/export_record/dataTables.buttons.min.js"></script>
-    <script type="text/javascript" src="assets/js/plugins/export_record/jszip.min.js"></script>
-    <script type="text/javascript" src="assets/js/plugins/export_record/pdfmake.min.js"></script>
-    <script type="text/javascript" src="assets/js/plugins/export_record/vfs_fonts.js"></script>
-    <script type="text/javascript" src="assets/js/plugins/export_record/buttons.html5.min.js"></script>
-    <script src="assets/js/jquery.buttonLoader.js"></script>
+	<script type="text/javascript"
+		src="assets/js/plugins/export_record/jquery.dataTables.js"></script>
+	<script type="text/javascript"
+		src="assets/js/plugins/export_record/dataTables.buttons.min.js"></script>
+	<script type="text/javascript"
+		src="assets/js/plugins/export_record/jszip.min.js"></script>
+	<script type="text/javascript"
+		src="assets/js/plugins/export_record/pdfmake.min.js"></script>
+	<script type="text/javascript"
+		src="assets/js/plugins/export_record/vfs_fonts.js"></script>
+	<script type="text/javascript"
+		src="assets/js/plugins/export_record/buttons.html5.min.js"></script>
+	<script src="assets/js/jquery.buttonLoader.js"></script>
 	<script src="assets/js/plugins/jquery-gritter/jquery.gritter.min.js"></script>
-    <script src="assets/chart/dist/Chart.bundle.js"></script>
-    <script src="assets/chart/dist/utils.js"></script>
-    <script src="assets/js/plugins/bootstrap-datepicker/bootstrap-datepicker.js"></script>
-    <script src="assets/js/common.js"></script>
-    <script src="assets/js/bootstrap-tagsinput.min.js"></script>
-    <script src="assets/js/default.js"></script>
-    <script src="assets/js/bootstrap/bootstrapValidator.min.js"></script>
-    <script src="assets/js/bootstrap-select.min.js"></script>
-    <script src="assets/js/common_function.js"></script>	
+	<script src="assets/chart/dist/Chart.bundle.js"></script>
+	<script src="assets/chart/dist/utils.js"></script>
+	<script
+		src="assets/js/plugins/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+	<script src="assets/js/common.js"></script>
+	<script src="assets/js/bootstrap-tagsinput.min.js"></script>
+	<script src="assets/js/default.js"></script>
+	<script src="assets/js/bootstrap/bootstrapValidator.min.js"></script>
+	<script src="assets/js/bootstrap-select.min.js"></script>
+	<script src="assets/js/common_function.js"></script>
 
-    <script src="assets/js/pages/getToken.js"></script>	
-    <script src="assets/js/pages/menu.js"></script>	
-      	
-		<script type="text/javascript">
-        	/// Table Format
-            $('#contacts_list').DataTable( {
-               	
-                columns: [
-                    { data: "nte_addnew_mark" }, //0-0
-                    { data: "Menu_Code" }, //1
-                    { data: "Item_Code" }, //2
-                    { data: "Menu Name" }, //3
-                    { data: "address" }, //4
-				    { data: "Name_contact" }, //5
-					{ data: "category" }, //5
-                    { data: "modify" } //6
-                ],
-                dom: 'lBfrtip',
-				buttons: [
-					'excelHtml5',
-					'csvHtml5',
-					'pdfHtml5'
-				]
-            } );
-    </script>
+	<script src="assets/js/pages/getToken.js"></script>
+	<script src="assets/js/pages/menu.js"></script>
+	<script>
+		function invoicePreview() {
+			var a = document.getElementById('link');
+			alert(a.getAttribute('data-imgid'));
+			var img_val = "http://localhost:63636/api/v1/image/imageDownload?type=ITEM&id=" + a.getAttribute('data-imgid');
+			// alert(img_val);
+			$("#test").html("");
+			$('#test').append('<img src="' + img_val + '" />')
+		}
+	</script>
+	<script type="text/javascript">
+		/// Table Format
+		$('#contacts_list').DataTable({
+			columns : [
+				{
+					data : "nte_addnew_mark"
+				}, //0-0
+				{
+					data : "Menu_Code"
+				}, //1
+				{
+					data : "Item_Code"
+				}, //2
+				{
+					data : "Menu Name"
+				}, //3
+				{
+					data : "address"
+				}, //4
+				{
+					data : "Name_contact"
+				}, //5
+				{
+					data : "category"
+				}, //5
+				{
+					data : "modify"
+				} //6
+			],
+			dom : 'lBfrtip',
+			buttons : [
+				'excelHtml5',
+				'csvHtml5',
+				'pdfHtml5'
+			]
+		});
+	</script>
 </body>
 </html>

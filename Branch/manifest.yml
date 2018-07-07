@@ -1,0 +1,8 @@
+applications:
+- name: briyani-services
+  services:
+  - mysql
+  memory: 1024M
+  buildpack: java_buildpack
+  routes:
+  - route: briyani-services.cfapps.io

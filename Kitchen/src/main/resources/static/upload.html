@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+	<h1>Spring Boot - Multiple file upload example - AJAX</h1>
+
+	<form method="POST" enctype="multipart/form-data" id="fileUploadForm">
+		id : <input type="text" name="id" /><br />
+		type: <input type="text" name="type" /><br />
+		<br /> <input type="file" name="files" /><br />
+		<br /> <input type="submit" value="Submit" id="btnSubmit" />
+	</form>
+		<br /> <input type="button" value="create user" id="btnUSer"  onclick = "createUser()"/>
+
+	<h1>Ajax Post Result</h1>
+	<pre>
+    <span id="result"></span>
+    	<img
+    		src="http://localhost:63636/api/v1/image/imageDownload?id=CHIBR1&type=ITEM">
+	</pre>
+
+	<script src="assets/js/jquery/jquery-2.1.0.min.js"></script>
+
+	<script src="assets/js/pages/getToken.js"></script>
+	<script src="assets/js/pages/upload.js"></script>
+
+</body>
+</html>

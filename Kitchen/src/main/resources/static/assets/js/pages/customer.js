@@ -4,6 +4,7 @@
 
 console.log("Customer List " + getCustomerList());
 
+
 function getCustomerList() {
 	// The baseURI variable is created by the result.base_server_base_uri 
 	// which is returned when getting a token and should be used to 
@@ -29,41 +30,22 @@ function getCustomerList() {
 	});
 }
 
-function displayCustomer(CustomerResult) {
-	console.log('Customer Received ' + CustomerResult);
-	var Customer = CustomerResult['customer'];
-	var table = document.getElementById("contacts_list");
-	for (var i = 0; i < Customer.length; i++) {
-
-		tr = table.insertRow(-1);
-
-		var tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = (i + 1);
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = Customer[i]['salutation'] + ' ' + Customer[i]['firstName'] + ' ' + Customer[i]['middleName'] + ' ' + Customer[i]['lastName'];
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = Customer[i]['email'];
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = Customer[i]['mobileNumber'];
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = Customer[i]['dateOfBirth'];
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = (Customer[i]['address']['doorNumber'] + ' ' +
-		Customer[i]['address']['street'] + ' ' +
-		Customer[i]['address']['area'] + ' ' +
-		Customer[i]['address']['city'] + ' ' +
-		Customer[i]['address']['state'] + ' ' +
-		Customer[i]['address']['country'] + ' ' +
-		Customer[i]['address']['zipcode']).trim();
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = '<a href="#" class="btn btn-xs btn-default"><i class="fa fa-pencil"></i></a> <a href="#" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#deleteDATA"><i class="fa fa-remove"></i></a> <a href="preview.html?id=' + Customer[i]['id'] + '" class="btn btn-xs btn-info"><i class="fa fa-eye"></i></a>';
-	}
+function displayCustomer(data){
+	console.log("Data " + JSON.stringify(data));
+	$.each(data.customer, function(i, data) {
+        var body = "<tr>";
+        body    += "<td>" + (i + 1) + "</td>";
+        body    += "<td>" + data.salutation + ' ' + data.firstName + ' ' + data.middleName + ' ' + data.lastName + "</td>";
+        body    += "<td>" + data.email + "</td>";
+        body    += "<td>" + data.mobileNumber + "</td>";
+        body    += "<td>" + data.dateOfBirth + "</td>";
+        body    += "<td>" + data.address.doorNumber + ' ' + data.address.street + ' ' + data.address.area + ' ' + data.address.city + ' ' + data.address.state + ' ' + data.address.country + ' ' + data.address.zipcode + "</td>";
+        body    += '<td><a href="#" class="btn btn-xs btn-default"><i class="fa fa-pencil"></i></a> <a href="#" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#deleteDATA"><i class="fa fa-remove"></i></a> <a href="preview.html?id=' + data.id + '" class="btn btn-xs btn-info"><i class="fa fa-eye"></i></a></td>';
+        body    += "</tr>";
+        $( "#contacts_list tbody" ).append(body);
+    });
+    /*DataTables instantiation.*/
+    $( "#contacts_list" ).DataTable();
 }
 
 function getJSONData() {

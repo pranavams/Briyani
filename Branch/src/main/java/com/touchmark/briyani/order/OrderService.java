@@ -128,5 +128,9 @@ public class OrderService {
 	public List<Order> getTodayOrders() {
 		return Order.builder().build().transformEntities(repository.findTodayOrders());		
 	}
+	
+	public List<Order> getOrders(String paymentStatus) {
+		return Order.builder().build().transformEntities(repository.findByPaymentStatus(paymentStatus));		
+	}
 
 }

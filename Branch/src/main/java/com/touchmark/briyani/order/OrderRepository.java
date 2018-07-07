@@ -13,4 +13,7 @@ public interface OrderRepository extends JpaRepository<OrderEntity, Long> {
 
 	@Query (value = "SELECT * FROM ORDER_INFO WHERE DATE(date_and_time) = DATE(now())", nativeQuery = true)
 	public List<OrderEntity> findTodayOrders();
+	
+	
+	public List<OrderEntity> findByPaymentStatus(String paymentStatus);
 }

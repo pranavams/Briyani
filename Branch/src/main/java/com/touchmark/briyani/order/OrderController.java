@@ -61,4 +61,13 @@ public class OrderController {
 	public ResponseEntity<OrderResponse> getTodayOrders() {
 		return ResponseEntity.ok(OrderResponse.builder().order(this.service.getTodayOrders()).build());
 	}
+	
+	@GetMapping
+	@RequestMapping("/listOrders/{status}")
+	public ResponseEntity<OrderResponse> getOrders(@PathVariable("status") String status) {
+		return ResponseEntity.ok(OrderResponse.builder().order(this.service.getOrders(status)).build());
+	}
+
+	
+	
 }

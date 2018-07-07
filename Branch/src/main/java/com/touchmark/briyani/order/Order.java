@@ -68,7 +68,7 @@ public class Order {
 					.quantity(orderDetail.getQuantity()).unitPrice(orderDetail.getUnitPrice())
 					.build());
 		}
-		return Order.builder().branch(Branch.builder().build().transformEntity(entity.getBranch()))
+		return Order.builder().branch(Branch.builder().build().transformEntities(entity.getBranch()))
 				.deliveryAddress(deliveryAddress).couponCode(entity.getCouponCode())
 				.dateAndTime(entity.getDateAndTime()).orderId(transformId(entity.getOrderId()))
 				.paymentStatus(entity.getPaymentStatus()).taxAmount(entity.getTaxAmount())

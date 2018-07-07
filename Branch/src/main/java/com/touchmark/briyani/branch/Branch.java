@@ -42,7 +42,7 @@ public class Branch {
 				.telephone(telephone).address(addressEntity).build();
 	}
 
-	public Branch transformEntity(BranchEntity entity) {
+	public Branch transformEntities(BranchEntity entity) {
 		return Branch.builder().id(transformID(entity.getId())).name(entity.getName()).email(entity.getEmail())
 				.latitude(entity.getLatitude()).longitude(entity.getLongitude()).notes(entity.getNotes())
 				.contactPersonFirstName(entity.getContactPersonFirstName())
@@ -65,7 +65,7 @@ public class Branch {
 	public List<Branch> transformEntities(List<BranchEntity> entities) {
 		List<Branch> branches = new ArrayList<>(entities.size());
 		for (BranchEntity branchEntity : entities) {
-			branches.add(transformEntity(branchEntity));
+			branches.add(transformEntities(branchEntity));
 		}
 		return branches;
 	}

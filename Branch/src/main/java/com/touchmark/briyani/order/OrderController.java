@@ -55,10 +55,29 @@ public class OrderController {
 	public ResponseEntity<OrderResponse> getRecent() {
 		return ResponseEntity.ok(OrderResponse.builder().order(this.service.getRecent()).build());
 	}
-	
+
 	@GetMapping
 	@RequestMapping("/listTodayOrders")
 	public ResponseEntity<OrderResponse> getTodayOrders() {
 		return ResponseEntity.ok(OrderResponse.builder().order(this.service.getTodayOrders()).build());
 	}
+
+	@GetMapping
+	@RequestMapping("/listOrders/{status}")
+	public ResponseEntity<OrderResponse> getOrders(@PathVariable("status") String status) {
+		return ResponseEntity.ok(OrderResponse.builder().order(this.service.getOrders(status.toUpperCase())).build());
+	}
+	
+	@GetMapping
+	@RequestMapping("/listOrdersOngoing/{status}")
+	public ResponseEntity<OrderResponse> getOrdersOngoing(@PathVariable("status") String status) {
+		return ResponseEntity.ok(OrderResponse.builder().order(this.service.getOrdersOnGoing(status.toUpperCase())).build());
+	}
+	
+	@GetMapping
+	@RequestMapping("/listOrdersByPaymentStatus/{status}")
+	public ResponseEntity<OrderResponse> getOrdersByPaymentStatus(@PathVariable("status") String status) {
+		return ResponseEntity.ok(OrderResponse.builder().order(this.service.getOrdersByPaymentStatus(status.toUpperCase())).build());
+	}
+
 }

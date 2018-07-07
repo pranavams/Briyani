@@ -61,6 +61,10 @@ public class OrderEntity implements Serializable {
 
 	@Column(name = "paymentStatus")
 	private String paymentStatus;
+	
+	@Column(name = "orderStatus")
+	private String orderStatus;
+
 
 	@OneToOne(fetch=FetchType.LAZY, cascade= CascadeType.ALL)
 	@JoinColumn(name = "branchId")

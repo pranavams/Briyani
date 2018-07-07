@@ -30,6 +30,7 @@ public class Order {
 	private float taxPercentage, taxAmount, totalAmount;
 	private String userName;
 	private String paymentStatus;
+	private String orderStatus;
 	private OffsetDateTime dateAndTime;
 	private Branch branch;
 	private Customer customer;
@@ -52,6 +53,7 @@ public class Order {
 		}
 		return OrderEntity.builder().couponCode(couponCode).dateAndTime(dateAndTime).deliveryAddress(addressEntity)
 				.paymentStatus(paymentStatus).taxPercentage(taxPercentage).taxAmount(taxAmount).totalAmount(totalAmount)
+				.orderStatus(orderStatus)
 				.userName(userName).orderDetails(orders).build();
 	}
 
@@ -70,6 +72,7 @@ public class Order {
 				.deliveryAddress(deliveryAddress).couponCode(entity.getCouponCode())
 				.dateAndTime(entity.getDateAndTime()).orderId(transformId(entity.getOrderId()))
 				.paymentStatus(entity.getPaymentStatus()).taxAmount(entity.getTaxAmount())
+				.orderStatus(entity.getOrderStatus())
 				.taxPercentage(entity.getTaxPercentage()).totalAmount(entity.getTotalAmount())
 				.userName(entity.getUserName()).deliveryAddress(deliveryAddress).orderDetails(orderDetails).build();
 	}

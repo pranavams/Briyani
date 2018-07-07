@@ -33,9 +33,9 @@ public class UserService implements UserDetailsService {
 			Log.log("UserService", "LoadUser", "User Name " + username);
 			List<UserEntity> findByUserName = userRepository.findByUserName(username);
 			UserEntity user = findByUserName.get(0);
-			User user2 = new User(user.getUserName(), user.getPassword(), getAuthority(user.getRoles()));
-			Log.log("UserService", "LoadUser", "User details " + user2);
-			return user2;
+			User retrievedUser = new User(user.getUserName(), user.getPassword(), getAuthority(user.getRoles()));
+			Log.log("UserService", "LoadUser", "User details " + retrievedUser);
+			return retrievedUser;
 		} catch (Exception ex) {
 			Log.error("UserService", "loadUserByUserName", "Exception while Fetching User Details", ex);
 			throw new UsernameNotFoundException("User Not Found");

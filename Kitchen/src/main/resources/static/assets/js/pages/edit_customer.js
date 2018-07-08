@@ -7,7 +7,7 @@ function getCustomerList() {
 	// create the url_base.
 	
 	$.ajax({
-		'url' : baseURI + 'customer/get/' + 'CUST1' + '?access_token=' + accessToken,
+		'url' : baseURI + 'customer/get/' + $.urlParam('id') + '?access_token=' + accessToken,
 		'type' : 'GET',
 		'contentType' : 'x-www-form-urlencoded',
 		'crossDomain' : true,

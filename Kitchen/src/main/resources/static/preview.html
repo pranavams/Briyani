@@ -143,7 +143,7 @@
                                                                 
                                                                 <img class="img-responsive img-circle img_profile" src="assets/img/preview.jpg">
                                                                 
-                                                                <h3 class="text-uppercase text-center text-danger"> <i class="fa fa-user"></i> john </h3>
+                                                                <h3 class="text-uppercase text-center text-danger"> <i class="fa fa-user"></i> <span id = 'displayName'> john </span></h3>
                                                                 <p class="text-info profile_company"><i class="fa fa-envelope"></i> john@gmail.com</p>
                                                                 <hr>
                                                                 <p class="text-info text-center profile"> <i class="fa fa-phone"></i> +63456789</p>
@@ -151,8 +151,8 @@
                                                                 <p class="text-info text-center profile"> No234, Thomas Street,<br>Singapore-600056
                                                                 </p>
                                                                 <div class="social-icons">
-                                                                    <a href="edit_customer.html"class="btn btn-sm btn-info edit_caontact"><i class="fa fa-pencil"></i> Edit Profile</a>
-                                                                    <a href="#"class="btn btn-sm btn-danger edit_caontact"><i class="fa fa-remove"></i> Delete</a>
+                                                                    <a href="#" onclick = 'edit()' class="btn btn-sm btn-info edit_caontact"><i class="fa fa-pencil"></i> Edit Profile</a>
+                                                                    <a href="#" onclick = 'deleteData()' class="btn btn-sm btn-danger edit_caontact"><i class="fa fa-remove"></i> Delete</a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -260,6 +260,8 @@
     <script src="assets/js/bootstrap/bootstrapValidator.min.js"></script>
     <script src="assets/js/bootstrap-select.min.js"></script>
     <script src="assets/js/common_function.js"></script>	
+    <script src="assets/js/pages/getToken.js"></script>	
+   <script src="assets/js/pages/customer_preview.js"></script>	
     <script type="text/javascript">
 	
 		  $(document).ready(function() {

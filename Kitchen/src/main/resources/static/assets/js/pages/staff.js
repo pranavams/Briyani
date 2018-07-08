@@ -1,14 +1,10 @@
 /**
  * 
  */
-
-
 function getStaffList() {
 	// The baseURI variable is created by the result.base_server_base_uri 
 	// which is returned when getting a token and should be used to 
 	// create the url_base.
-	var url_base = baseURI;
-	//accessToken = getToken();
 	$.ajax({
 		'url' : baseURI + 'staff/listAll?access_token=' + accessToken,
 		'type' : 'GET',
@@ -71,77 +67,6 @@ function displayStaff(StaffResult) {
 		tabCell = tr.insertCell(-1);
 		tabCell.innerHTML = '<a href="#" class="btn btn-xs btn-default"><i class="fa fa-pencil"></i></a> <a href="#" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#deleteDATA"><i class="fa fa-remove"></i></a>';
 	}
-}
-
-function getJSONData() {
-	jsonObject = {
-		'firstName' : document.getElementById('staff_fname').value,
-		'middleName' : document.getElementById('staff_mname').value,
-		'lastName' : document.getElementById('staff_lname').value,
-		'salutation' : ' ',
-		'mobileNumber' : document.getElementById('staff_mobile').value,
-		'dateOfBirth' : stringToDate(document.getElementById('staff_dob').value, 'dd/mm/yyyy', '/'),
-		'dateOfJoin' : stringToDate(document.getElementById('staff_jod').value, 'dd/mm/yyyy', '/'),
-		//'role' : document.getElementById('staff_role').value,
-		'email' : document.getElementById('staff_email').value,
-		'notes' : document.getElementById('staff_notes').value,
-	};
-
-	console.log("Inside Get JSON Data " + jsonObject);
-	return jsonObject;
-}
-
-function clearItem() {
-	document.getElementById('staff_fname').value = '';
-	document.getElementById('staff_fname').value = '';
-	document.getElementById('staff_fname').value = '';
-	document.getElementById('staff_mobile').value = '';
-	document.getElementById('staff_dob').value = '';
-	document.getElementById('staff_jod').value = '';
-	document.getElementById('staff_email').value = '';
-	document.getElementById('staff_notes').value = '';
-}
-
-function saveCloseStaff() {
-	saveStaff();
-}
-
-function saveStaff() {
-	console.log("Inside Save Staff");
-
-	var jsonObj = getJSONData();
-
-	var url_base = baseURI;
-	//accessToken = getToken();
-	$.ajax({
-		'url' : baseURI + 'staff/save',
-		'type' : 'POST',
-		'contentType' : 'application/json',
-		'crossDomain' : true,
-		'data' : JSON.stringify(jsonObj),
-		'dataType' : 'json',
-		'success' : function(result) {
-			$.gritter.add({
-				class_name : 'gritter-success',
-				title : 'Success!',
-				text : '<p style="font-size: 14px;">Staff Saved successfully!</p>',
-			});
-			clearItem();
-			return result;
-		},
-		'error' : function(XMLHttpRequest, textStatus, errorThrown) {
-			//Process error actions
-			console.log('getMenu - Error: ' + errorThrown + " - " + textStatus);
-			console.log(XMLHttpRequest.status + ' ' +
-				XMLHttpRequest.statusText);
-			$.gritter.add({
-				class_name : 'gritter-error',
-				title : 'Success!',
-				text : '<p style="font-size: 14px;">Staff Not Saved!</p>',
-			});
-			return false;
-		}
-	});
 }
 
 getToken(getStaffList);

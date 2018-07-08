@@ -35,22 +35,13 @@ function displayMenu(MenuResult) {
 		tabCell.innerHTML = (i + 1);
 
 		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = Menu[i]['menuId'];
-
-		tabCell = tr.insertCell(-1);
 		tabCell.innerHTML = Menu[i]['id'];
 
 		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = Menu[i]['menuName'];
+		tabCell.innerHTML = Menu[i]['menuName'] + ' ' + Menu[i]['name'];
 
 		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = Menu[i]['name'];
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = '$' + Menu[i]['price'];
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = '<a href="#" class="btn btn-xs btn-default"><i class="fa fa-pencil"></i></a> <a href="#" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#deleteDATA"><i class="fa fa-remove"></i></a> <a id="link" data-imgid="' + Menu[i]['id'] + '" onClick ="invoicePreview();" href="item_id=' + Menu[i]['id'] + '" class="btn btn-xs btn-info" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a>';
+		tabCell.innerHTML = '<a href="menu_edit.html" class="btn btn-xs btn-info"><i class="fa fa-pencil"></i>Edit</a> <a href="menu_preview.html" class="btn btn-xs btn-danger"><i class="fa fa-remove"></i>Delete</a> ';
 	}
 }
 

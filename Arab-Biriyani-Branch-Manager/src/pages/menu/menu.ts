@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, Nav, NavController } from 'ionic-angular';
 
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
 export interface CountdownTimer {
@@ -28,26 +28,55 @@ export class MenuPage implements OnInit {
   notification: any = 4;
   menuItemsUrl = "http://localhost:63636/api/v1/item/listAll";
   menuItems: any = [];
+  data : any = {
+  };
   
   ngOnInit(){
   	this.getMenuItems();
   }
   
   getMenuItems(): void {
-    this.restItemsServiceGetMenuItems()
-      .subscribe(
-        menuItems => {
-          this.menuItems = menuItems.items;
-          console.log(menuItems);
-        }
-      )
+	  this.restToken()
+	  .subscribe(
+		(tokenResponse) => {
+			this.restItemsServiceGetMenuItems(tokenResponse.access_token)
+				.subscribe(
+					menuItems => {
+					  this.menuItems = menuItems.items;
+					  console.log(menuItems);
+					}
+				)		
+		}
+	);		
   }
 
   // Rest Items Service: Read all MENU Items
-  restItemsServiceGetMenuItems() {
+  restItemsServiceGetMenuItems(accessToken) {
     return this.http
-      .get<any[]>(this.menuItemsUrl)
+      .get<any[]>(this.menuItemsUrl + "?access_token=" + accessToken)
       .pipe(map(data => data));
+  }
+    
+  getAuthToken() {
+	return "Basic " + btoa('arab-briyani-client:devglan-secret');;
+  }
+  
+  getAuthTokenParameters() {
+	return new HttpParams()
+    .set('username', 'Alex123')
+    .set('password', 'password')
+	.set('grant_type', 'password');
+  }
+  
+  restToken() {	  
+	  return this.http
+	  .post<any[]> ("http://localhost:63636/oauth/token", 
+			this.getAuthTokenParameters().toString(), {
+			headers : new HttpHeaders().set('content-type', 'application/x-www-form-urlencoded')
+									.set('authorization', this.getAuthToken())
+									.set('cache-control', 'no-cache')
+			})
+	  .pipe(map(token => token));
   }
   
   constructor(public navCtrl: NavController, private http: HttpClient) {

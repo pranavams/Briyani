@@ -13,7 +13,7 @@ import { map } from 'rxjs/operators';
 export class OrderPage {
     order: any = 'ongoing';
     notification: any = 4;
-    completedOrders: any= []
+    completedOrders: any= [];
     completedOrdersURL = "http://localhost:63636/api/v1/order/listOrders/completed";
     constructor(public navCtrl: NavController, public popup: PopoverController, private http: HttpClient) { }
     

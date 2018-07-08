@@ -1,5 +1,7 @@
 package com.touchmark.briyani.user;
 
+import java.time.OffsetDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -47,4 +49,6 @@ public class UserEntity {
 	@Column(name = "userType")
 	private String userType;
 
+	@Column(name = "lastUpdatedDate")
+	private OffsetDateTime lastUpdatedDate;
 }

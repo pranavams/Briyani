@@ -1,8 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, Nav, NavController } from 'ionic-angular';
-import { HttpClient, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 
-import { ItemService } from 'itemservice'
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 export interface CountdownTimer {
   seconds: number;
@@ -15,12 +15,10 @@ export interface CountdownTimer {
 
 @IonicPage()
 @Component({
-  providers: [ItemService],
   selector: 'page-menu',
   templateUrl: 'menu.html'
 })
-export class MenuPage {
-	private itemListALLURL = 'http://localhost:63636/api/v1/item/listAll';  
+export class MenuPage implements OnInit {
   timer: CountdownTimer;
   counter: any = '00:00:00';
   seconds: number;
@@ -28,49 +26,32 @@ export class MenuPage {
   hours: number;
   cart: any = 0;
   notification: any = 4;
-  menuItems: any = [
-    {
-      title: "Chicken Biriyani",
-      price: "10.99",
-      quantity: 0,
-      imgSrc: "assets/imgs/chicken-biryani.jpg"
-    },
-    {
-      title: "Mutton Biriyani",
-      price: "19.99",
-      quantity: 0,
-      imgSrc: "assets/imgs/mutton-biryani.jpg"
-    },
-    {
-      title: "Fish Biriyani",
-      price: "11.99",
-      quantity: 0,
-      imgSrc: "assets/imgs/fish-biryani.jpg"
-    },
-    {
-      title: "Egg Biriyani",
-      price: "7.99",
-      quantity: 0,
-      imgSrc: "assets/imgs/egg-biryani.jpg"
-    },
-    {
-      title: "Veg Biriyani",
-      price: "5.99",
-      quantity: 0,
-      imgSrc: "assets/imgs/veg-biryani.jpg"
-    }
-  ]
-  constructor(public navCtrl: NavController, private itemService:ItemService) {
-    
+  menuItemsUrl = "http://localhost:63636/api/v1/item/listAll";
+  menuItems: any = [];
+  
+  ngOnInit(){
+  	this.getMenuItems();
   }
   
-  public loginData = {username: "user id from screen", password: "password from screen"};
+  getMenuItems(): void {
+    this.restItemsServiceGetMenuItems()
+      .subscribe(
+        menuItems => {
+          this.menuItems = menuItems.items;
+          console.log(menuItems);
+        }
+      )
+  }
 
-  getAllItems(){
-	this.itemService.getResource(this.itemListALLURL, this.loginData)
-	  .subscribe(
-		data => this.menuItems = data,
-		error =>  this.menuItems.name = 'Error');
+  // Rest Items Service: Read all MENU Items
+  restItemsServiceGetMenuItems() {
+    return this.http
+      .get<any[]>(this.menuItemsUrl)
+      .pipe(map(data => data));
+  }
+  
+  constructor(public navCtrl: NavController, private http: HttpClient) {
+    
   }
         
   ionViewDidLoad() {

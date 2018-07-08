@@ -66,11 +66,11 @@
                         <tr>
                             <td>{{item.item}}</td>
                             <td>{{item.quantity}}</td>
-                            <td>$ {{item.total}}</td>
+                            <td>${{item.totalAmount}}</td>
                         </tr>
                     </tbody>
                 </table>
-                <p>{{item.date}}</p>
+                <p>{{item.dateAndTime}}</p>
                 <button ion-button icon-left small round class="reorder disable-hover" (click)="trackPage('CartPage')">
                     <ion-icon name="md-refresh"></ion-icon>
                     Re-Order

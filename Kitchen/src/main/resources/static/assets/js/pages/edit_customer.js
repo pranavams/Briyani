@@ -27,8 +27,7 @@ function getCustomerList() {
 
 function displayCustomer(data){
 	console.log("Data " + JSON.stringify(data));
-	data = data.customer[0];
-	
+	data = data.customer[0];	
 	address = data.address;
 	document.getElementById('customer_fname').value = data.firstName;
 	document.getElementById('customer_mname').value = data.middleName;

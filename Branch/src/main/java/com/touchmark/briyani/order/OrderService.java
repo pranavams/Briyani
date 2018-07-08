@@ -40,21 +40,24 @@ public class OrderService {
 
 	public List<Order> getAll() {
 		List<OrderEntity> orders = repository.findAll();
-		List<OrderEntity> allOrders = getItemsInOrder(orders);
+		List<OrderEntity> allOrders = getItemsInOrders(orders);
 		return Order.builder().build().transformEntities(allOrders);
 	}
 
-	private List<OrderEntity> getItemsInOrder(List<OrderEntity> orders) {
+	private List<OrderEntity> getItemsInOrders(List<OrderEntity> orders) {
 		List<OrderEntity> allOrders = new ArrayList<>();
-		for (int i = 0; i < orders.size(); i++) {
-			OrderEntity tempOrder = orders.get(i);
-			List<OrderDetailEntity> orderDetails = orderDetailRepository.findByOrderId(tempOrder.getOrderId());
-			Log.log("OrderService", "getAll", "Order ID " + tempOrder.getOrderId());
-			Log.log("OrderService", "getAll", "Order details " + orderDetails);
-			tempOrder.setOrderDetails(orderDetails);
-			allOrders.add(tempOrder);
+		for (OrderEntity order : allOrders) {
+			allOrders.add(getItemsInOrders(order));
 		}
 		return allOrders;
+	}
+
+	private OrderEntity getItemsInOrders(OrderEntity tempOrder) {
+		List<OrderDetailEntity> orderDetails = orderDetailRepository.findByOrderId(tempOrder.getOrderId());
+		Log.log("OrderService", "getAll", "Order ID " + tempOrder.getOrderId());
+		Log.log("OrderService", "getAll", "Order details " + orderDetails);
+		tempOrder.setOrderDetails(orderDetails);
+		return tempOrder;
 	}
 
 	public OrderEntity save(Order object) {
@@ -81,7 +84,7 @@ public class OrderService {
 
 	public List<Order> getOrdersForCustomer(String id) {
 		long customerID = Long.parseLong(id.substring(4));
-		List<OrderEntity> orders = getItemsInOrder(repository.findByCustomerId(customerID));
+		List<OrderEntity> orders = getItemsInOrders(repository.findByCustomerId(customerID));
 		return Order.builder().build().transformEntities(orders);
 	}
 
@@ -131,20 +134,24 @@ public class OrderService {
 	}
 
 	public List<Order> getOrders(String orderStatus) {
-		return Order.builder().build().transformEntities(repository.findByOrderStatus(orderStatus));
+		List<OrderEntity> allOrders = getItemsInOrders(repository.findByOrderStatus(orderStatus));
+		return Order.builder().build().transformEntities(allOrders);
 	}
 
 	public List<Order> getOrdersOnGoing(String status) {
-		return Order.builder().build().transformEntities(repository.findByOrderStatusNot(status));
+		List<OrderEntity> allOrders = getItemsInOrders(repository.findByOrderStatusNot(status));
+		return Order.builder().build().transformEntities(allOrders);
 	}
 
 	public List<Order> getOrdersByPaymentStatus(String paymentStatus) {
-		return Order.builder().build().transformEntities(repository.findByPaymentStatus(paymentStatus));
+		List<OrderEntity> allOrders = getItemsInOrders(repository.findByPaymentStatus(paymentStatus));
+		return Order.builder().build().transformEntities(allOrders);
 	}
 
 	public Order get(String id) {
-		return Order.builder().build()
-				.transformEntity(repository.findById(Order.builder().orderId(id).build().getDatabaseID()).get());
+		OrderEntity entity = getItemsInOrders(
+				repository.findById(Order.builder().orderId(id).build().getDatabaseID()).get());
+		return Order.builder().build().transformEntity(entity);
 	}
 
 	public void updateOrderStatus(String id, String orderStatus) {
@@ -162,11 +169,11 @@ public class OrderService {
 	public void updateVesselStatus(String id, String vesselStatus) {
 		OrderEntity order = this.repository.findById(Order.builder().orderId(id).build().getDatabaseID()).get();
 		order.setVesselStatus(Case.upper(vesselStatus));
-		this.repository.saveAndFlush(order);		
+		this.repository.saveAndFlush(order);
 	}
 
 	public List<Order> getOrdersByVesselStatus(String status) {
-		return Order.builder().build().transformEntities(repository.findByVesselStatus(status));
+		return Order.builder().build().transformEntities(getItemsInOrders(repository.findByVesselStatus(status)));
 	}
 
 }

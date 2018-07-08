@@ -234,17 +234,17 @@
                                                     </div>
                                                     </div>
                                                     <div class="form-group col-md-3">
-                                                        <label for="exampleFormControlSelect1" class="gender_align"> <span class="text-danger"></span></label>
+                                                        <label for="exampleFormControlSelect2" class="gender_align"> <span class="text-danger"></span></label>
                                                         <div class="custom-control custom-radio custom-control-inline">
-                                                          <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+                                                          <input type="radio" id="customRadioInline2" name="customRadioInline2" class="custom-control-input">
                                                           <label class="custom-control-label" for="customRadioInline2">Female</label>
                                                         </div>
                                                     </div>
                                                     
                                                     <div class="form-group col-md-3">
-                                                    	<label for="exampleFormControlSelect1" class="gender_align"> <span class="text-danger"></span></label>
+                                                    	<label for="exampleFormControlSelect3" class="gender_align"> <span class="text-danger"></span></label>
                                                         <div class="custom-control custom-radio custom-control-inline">
-                                                          <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+                                                          <input type="radio" id="customRadioInline3" name="customRadioInline3" class="custom-control-input">
                                                           <label class="custom-control-label" for="customRadioInline2">Other</label>
                                                         </div>
                                                     </div>
@@ -252,7 +252,7 @@
                                                 
                                                 <div class="form-group col-md-6">
                                                 <label for="exampleFormControlSelect1">Location Address <span class="text-danger">*</span></label>
-                                                  <textarea class="form-control" id="cust_delivery_address" name="cust_delivery_address" rows="3"></textarea>
+                                                  <textarea class="form-control" id="rider_address" name="cust_delivery_address" rows="3"></textarea>
                                                 </div>
                                                 
                                                 <div class="form-group col-md-6">
@@ -296,7 +296,7 @@
                                                 <div class="form-group col-md-6">
                                                   <div class="form-group">
                                                     <label for="exampleFormControlSelect1">Vehicle Modal</label>
-                                                    <select class="form-control selectpicker" id="vehicle_type" name="vehicle_type" data-live-search="true">
+                                                    <select class="form-control selectpicker" id="vehicle_model" name="vehicle_model" data-live-search="true">
                                                     	<option>*** Select Vehicle Modal***</option> 
                                                         <option value="Y">Yamaha</option> 
                                                         <option value="HO">Honda</option> 
@@ -421,18 +421,18 @@
                                                     </div>
                                                     </div>
                                                     <div class="form-group col-md-3">
-                                                        <label for="exampleFormControlSelect1" class="gender_align"> <span class="text-danger"></span></label>
+                                                        <label for="exampleFormControlSelect2" class="gender_align"> <span class="text-danger"></span></label>
                                                         <div class="custom-control custom-radio custom-control-inline">
-                                                          <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+                                                          <input type="radio" id="customRadioInline2" name="customRadioInline2" class="custom-control-input">
                                                           <label class="custom-control-label" for="customRadioInline2">Female</label>
                                                         </div>
                                                     </div>
                                                     
                                                     <div class="form-group col-md-3">
-                                                    	<label for="exampleFormControlSelect1" class="gender_align"> <span class="text-danger"></span></label>
+                                                    	<label for="exampleFormControlSelect3" class="gender_align"> <span class="text-danger"></span></label>
                                                         <div class="custom-control custom-radio custom-control-inline">
-                                                          <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
-                                                          <label class="custom-control-label" for="customRadioInline2">Other</label>
+                                                          <input type="radio" id="customRadioInline3" name="customRadioInline3" class="custom-control-input">
+                                                          <label class="custom-control-label" for="customRadioInline3">Other</label>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -620,11 +620,13 @@
     <script src="assets/js/bootstrap/bootstrapValidator.min.js"></script>
     <script src="assets/js/bootstrap-select.min.js"></script>
     <script src="assets/js/common_function.js"></script>
+    <script src="assets/js/pages/getToken.js"></script>	
+    <script src="assets/js/pages/edit_rider.js"></script>
     	
       	
 		<script type="text/javascript">
         	/// Table Format
-            $('#contacts_list').DataTable( {
+          /*   $('#contacts_list').DataTable( {
                	
                 columns: [
                     
@@ -644,7 +646,7 @@
 					'csvHtml5',
 					'pdfHtml5'
 				]
-            } );
+            } ); */
     </script>
 </body>
 </html>

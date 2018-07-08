@@ -65,7 +65,7 @@ function displayStaff(StaffResult) {
 		tabCell.innerHTML = Staff[i]['dateOfJoin'];
 
 		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = '<a href="#" class="btn btn-xs btn-default"><i class="fa fa-pencil"></i></a> <a href="#" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#deleteDATA"><i class="fa fa-remove"></i></a>';
+		tabCell.innerHTML = '<a href="staff_preview.html?id=' + Staff[i]['id'] + '" class="btn btn-xs btn-default"><i class="fa fa-eye"></i>Details</a>';
 	}
 }
 

@@ -143,9 +143,9 @@
                                                                 
                                                                 <img class="img-responsive img-circle img_profile" src="assets/img/preview.jpg">
                                                                 
-                                                                <h3 class="text-uppercase text-center text-danger"> <i class="fa fa-user"></i> John - ENDRI0001 </h3>
-                                                                <p class="text-info profile_company"><i class="fa fa-phone"></i> +63456789</p><br>
-                                                                <p class="text-info profile_company"><i class="fa fa-envelope"></i> john@gmail.com</p>
+                                                                <h3 class="text-uppercase text-center text-danger"> <i class="fa fa-user"></i> <span id ='riderName'> John</span> </h3>
+                                                                <p class="text-info profile_company"><i class="fa fa-phone"></i> <span id ='riderPhoneNumber'> +9840770917</span></p><br>
+                                                                <p class="text-info profile_company"><i class="fa fa-envelope"></i> <span id ='riderEmail'>john@gmail.com</span></p>
                                                                  <h4 class="text-primary"> End User Rider</h4>
                                                                 <span class="start_size"><i class="fa fa-star start_color"></i> <i class="fa fa-star start_color"></i> <i class="fa fa-star start_color"></i> <i class="fa fa-star-half-empty start_color"></i> <i class="fa fa-star-o"></i></span>
                                                                
@@ -153,11 +153,10 @@
                                                                 
                                                                 <p class="text-info text-center profile"> <i class="fa fa-calendar"></i> 1993-11-20</p>
                                                                 <p class="text-info text-center profile"> <i class="fa fa-truck"></i> SBA 1234A</p>
-                                                                <p class="text-info text-center profile"> No234, Thomas Street,<br>Singapore-600056
-                                                                </p>
+                                                                <p class="text-info text-center profile">  <span id ='address'> Address</span></p>
                                                                 <div class="social-icons">
-                                                                    <a href="rider.html"class="btn btn-sm btn-info edit_caontact"><i class="fa fa-pencil"></i> Edit Profile</a>
-                                                                    <a href="#"class="btn btn-sm btn-danger edit_caontact"><i class="fa fa-remove"></i> Delete</a>
+                                                                    <a href="#" onclick = 'edit()' class="btn btn-sm btn-info edit_caontact"><i class="fa fa-pencil"></i> Edit Profile</a>
+                                                                    <a href="#" onclick = 'delete()' class="btn btn-sm btn-danger edit_caontact"><i class="fa fa-remove"></i> Delete</a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -251,6 +250,8 @@
     <script src="assets/js/bootstrap/bootstrapValidator.min.js"></script>
     <script src="assets/js/bootstrap-select.min.js"></script>
     <script src="assets/js/common_function.js"></script>	
+    <script src="assets/js/pages/getToken.js"></script>	
+    <script src="assets/js/pages/rider_preview.js"></script>
     <script type="text/javascript">
 	
 		  $(document).ready(function() {

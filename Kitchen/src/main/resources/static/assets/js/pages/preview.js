@@ -1,14 +1,6 @@
 /**
  * 
  */
-
-$.urlParam = function (name) {
-    var results = new RegExp('[\?&]' + name + '=([^&#]*)')
-                      .exec(window.location.search);
-
-    return (results !== null) ? results[1] || 0 : false;
-}
-
 function getOrderList() {
 	// The baseURI variable is created by the result.base_server_base_uri 
 	// which is returned when getting a token and should be used to 

@@ -40,7 +40,7 @@ function displayBranch(data){
 }
 
 function edit() {
-	window.location.href = kitchenBaseURI + 'edit_customer.html?id=' + $.urlParam('id');
+	window.location.href = kitchenBaseURI + 'edit_branch.html?id=' + $.urlParam('id');
 }
 
 function deleteData() {

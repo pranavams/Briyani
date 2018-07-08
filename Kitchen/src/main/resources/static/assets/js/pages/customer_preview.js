@@ -6,7 +6,7 @@ function getCustomerList() {
 	// which is returned when getting a token and should be used to 
 	// create the url_base.
 	$.ajax({
-		'url' : baseURI + 'customer/get/' +'CUST1' + '?access_token=' + accessToken,
+		'url' : baseURI + 'customer/get/' +$.urlParam('id') + '?access_token=' + accessToken,
 		'type' : 'GET',
 		'contentType' : 'x-www-form-urlencoded',
 		'crossDomain' : true,
@@ -32,14 +32,15 @@ function displayCustomer(data){
 	document.getElementById('displayName').innerHTML = data.firstName + ' ' + data.middleName + ' ' + data.lastName
 	document.getElementById('mobileNo').innerHTML = data.mobileNumber;
 	document.getElementById('emailId').innerHTML = data.email;
-	document.getElementById('dateOfBirth').innerHTML = new Date(data.dateOfBirth);
-	document.getElementById('gender').innerHTML = 'No data from service';
+	document.getElementById('dateOfBirth').innerHTML = data.dateOfBirth;
+	
+	document.getElementById('gender').innerHTML = data.gender;
 	document.getElementById('address').innerHTML = address.doorNumber+',' + address.street + ', ' + address.area
 	 + ',' + address.city+' ,' + address.state+' . ';
 }
 
 function edit() {
-	window.location.href = kitchenBaseURI + 'edit_customer.html?id=' + 'CUST1';
+	window.location.href = kitchenBaseURI + 'edit_customer.html?id=' + $.urlParam('id');
 }
 
 function deleteData() {

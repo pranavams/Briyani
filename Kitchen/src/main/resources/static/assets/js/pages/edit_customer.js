@@ -40,15 +40,31 @@ function displayCustomer(data){
 	else {
 		document.getElementById('customer_telephone_no').value = "";
 	}
+	setTheGenderValue(data.gender);
 	document.getElementById('customer_mobile_no').value = data.mobileNumber;
-	document.getElementById('customRadioInline1').checked = 'True';
-	document.getElementById('customer_dob').value = new Date(data.dateOfBirth)	;
+	document.getElementById('customer_dob').value = stringToDate(data.dateOfBirth, 'dd/mm/yyyy', '-')	;
 	document.getElementById('cust_delivery_address').innerHTML = address.doorNumber +',' + address.street + ', ' + address.area
 	 + ',' + address.city+' ,' + address.state+' . ';
 }
 
+function setTheGenderValue(gender) {
+	if (gender!=null && gender!='') {
+		if (gender=='Female'){
+			document.getElementById('customRadioInline2').checked = 'True';
+		
+		}
+		else if (gender=='Male') {
+			document.getElementById('customRadioInline1').checked = 'True';
+		}
+		else {
+			document.getElementById('customRadioInline3').checked = 'True';
+		}
+	}
+}
+
+
 function edit() {
-	window.location.href = kitchenBaseURI + 'edit_customer.html?id=' + 'CUST1';
+	window.location.href = kitchenBaseURI + 'edit_customer.html?id=' + $.urlParam('id');
 }
 
 function deleteData() {

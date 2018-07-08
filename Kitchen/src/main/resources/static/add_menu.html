@@ -178,7 +178,7 @@
                                                 	<h4>Add Menu</h4>
                                                 	<hr class="inner-separator" />
                                                 </div>
-                                                <div class="form-group col-md-6">
+                                                <!--                                                  <div class="form-group col-md-6">
                                                   <div class="form-group">
                                                     <label for="exampleFormControlSelect1">Category Name <span class="text-danger">*</span></label>
                                                     <select class="form-control selectpicker" id="rider_depart" name="rider_depart" data-live-search="true">
@@ -191,17 +191,18 @@
                                                   </div>
                                                 </div>
                                                 
-                                                
+                                                -->
                                                 <div class="form-group col-md-6">
                                                 	<label for="exampleFormControlSelect1">Menu Name <span class="text-danger">*</span></label>
                                                   <input type="text" class="form-control" id="menu_name" name="menu_name" maxlength="80">
                                                 </div>
+                                                <!--  
                                                 <div class="clearfix"></div>
                                                 <div class="form-group col-md-6">
                                                 	<label for="exampleFormControlSelect1">Menu Code <span class="text-danger">*</span></label>
                                                   <input type="text" class="form-control" id="menu_code" name="menu_code" maxlength="15">
                                                 </div>
-                                                
+                                                -->
                                                 <div class="form-group col-md-6">
                                                 	<label for="exampleFormControlSelect1">Item Name <span class="text-danger">*</span></label>
                                                   <input type="text" class="form-control" id="item_name" name="item_name" maxlength="15">
@@ -236,7 +237,7 @@
                                                
                                                   <div class="form-group col-md-12">
                                                   	 <button type="reset" class="btn btn-danger pull-right" id="PageRefresh">Reset</button>
-                                                  	<button type="button" class="btn btn-primary pull-right save_button save_item" name="add_btn" >Save Item</button>
+                                                  	<button onclick = 'getToken(saveAndCloseMenu)' type="button" class="btn btn-primary pull-right save_button save_item" name="add_btn" >Save Item</button>
                                                    
                                                   </div>
                                                   </div>
@@ -338,6 +339,8 @@
     <script src="assets/js/bootstrap/bootstrapValidator.min.js"></script>
     <script src="assets/js/bootstrap-select.min.js"></script>
     <script src="assets/js/common_function.js"></script>	
+    <script src="assets/js/pages/getToken.js"></script>	
+   	<script src="assets/js/pages/add_menu.js"></script>	
       	
 		<script type="text/javascript">
         	/// Table Format

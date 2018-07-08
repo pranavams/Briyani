@@ -33,7 +33,7 @@ public class BriyaniApplication {
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/api/**")
                 .allowedOrigins("https://briyani-web-ui.cfapps.io/", "http://localhost:36363", "http://localhost", "http://localhost:8100")
-				.allowedMethods("GET", "POST");
+				.allowedMethods("HEAD", "GET", "PUT", "POST", "DELETE", "PATCH", "OPTONS");
 			}
 		};
 	}

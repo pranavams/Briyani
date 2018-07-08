@@ -41,8 +41,22 @@ public class UserService implements UserDetailsService {
 			throw new UsernameNotFoundException("User Not Found");
 		}
 	}
-	
+
 	public UserEntity save(com.touchmark.briyani.user.User user) {
 		return this.userRepository.save(user.createEntity());
 	}
+
+	public List<com.touchmark.briyani.user.User> getAll() {
+		return com.touchmark.briyani.user.User.builder().build().transformEntity(userRepository.findAll());
+	}
+
+	public com.touchmark.briyani.user.User get(String id) {
+		return com.touchmark.briyani.user.User.builder().build().transformEntity(userRepository
+				.findById(com.touchmark.briyani.user.User.builder().id(id).build().getDatabaseID()).get());
+	}
+
+	public List<com.touchmark.briyani.user.User> getAllByUserType(String type) {
+		return com.touchmark.briyani.user.User.builder().build().transformEntity(userRepository.findByUserType(type));
+	}
+
 }

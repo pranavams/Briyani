@@ -43,5 +43,8 @@ public class UserEntity {
 
 	@Column(name = "roles")
 	private String roles;
+	
+	@Column(name = "userType")
+	private String userType;
 
 }

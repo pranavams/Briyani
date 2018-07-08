@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,7 +18,7 @@ import com.touchmark.briyani.item.ImageEntity;
 
 @RestController
 @RequestMapping(path = "/api/v1/image")
-// @PreAuthorize("hasAuthority('STANDARD_USER')")
+@PreAuthorize("hasAuthority('BRANCH_USER')")
 public class ImageController {
 	private ImageService service;
 
@@ -41,17 +42,12 @@ public class ImageController {
 	}
 
 	@RequestMapping("/imageDownload")
-	public ResponseEntity<byte[]> downloadFile1(@RequestParam String id, @RequestParam String type) throws IOException {
+	public ResponseEntity<byte[]> downloadFile(@RequestParam String id, @RequestParam String type) throws IOException {
 		try {
 			Log.log("ImageController", "Upload", "Parameters " + id + " - " + type);
 			ImageEntity image = this.service.getImage(id, type);
 			return ResponseEntity.ok()
-					// Content-Disposition
-					// .header(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=" +
-					// file.getName())
-					// Content-Type
 					.contentType(MediaType.IMAGE_JPEG)
-					// Content-Length
 					.contentLength(image.getSize()).body(image.getImage());
 		} catch (Exception e) {
 			Log.error("ImageController", "download", "Exception " + e, e);

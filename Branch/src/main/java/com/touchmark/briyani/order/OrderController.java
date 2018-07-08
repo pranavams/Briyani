@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +18,7 @@ import com.touchmark.briyani.commons.Log;
 
 @RestController
 @RequestMapping(path = "/api/v1/order/")
-// @PreAuthorize("hasAuthority('STANDARD_USER')")
+@PreAuthorize("hasAuthority('BRANCH_USER')")
 public class OrderController {
 
 	private OrderService service;
@@ -69,19 +70,21 @@ public class OrderController {
 	public ResponseEntity<OrderResponse> getOrders(@PathVariable("status") String status) {
 		return ResponseEntity.ok(OrderResponse.builder().order(this.service.getOrders(status.toUpperCase())).build());
 	}
-	
+
 	@GetMapping
 	@RequestMapping("/listOrdersOngoing/{status}")
 	public ResponseEntity<OrderResponse> getOrdersOngoing(@PathVariable("status") String status) {
-		return ResponseEntity.ok(OrderResponse.builder().order(this.service.getOrdersOnGoing(status.toUpperCase())).build());
+		return ResponseEntity
+				.ok(OrderResponse.builder().order(this.service.getOrdersOnGoing(status.toUpperCase())).build());
 	}
-	
+
 	@GetMapping
 	@RequestMapping("/listOrdersByPaymentStatus/{status}")
 	public ResponseEntity<OrderResponse> getOrdersByPaymentStatus(@PathVariable("status") String status) {
-		return ResponseEntity.ok(OrderResponse.builder().order(this.service.getOrdersByPaymentStatus(status.toUpperCase())).build());
+		return ResponseEntity
+				.ok(OrderResponse.builder().order(this.service.getOrdersByPaymentStatus(status.toUpperCase())).build());
 	}
-	
+
 	@GetMapping
 	@RequestMapping("/get/{id}")
 	public ResponseEntity<OrderResponse> get(@PathVariable("id") String id) {
@@ -91,7 +94,8 @@ public class OrderController {
 
 	@GetMapping
 	@RequestMapping("/updateOrderStatus/{id}/{orderStatus}")
-	public ResponseEntity<String> updateOrderStatus(@PathVariable("id") String id, @PathVariable("orderStatus") String orderStatus) {
+	public ResponseEntity<String> updateOrderStatus(@PathVariable("id") String id,
+			@PathVariable("orderStatus") String orderStatus) {
 		try {
 			Log.log("OrderController", "updateOrderStatus", "Object Received To Update " + id + ", " + orderStatus);
 			this.service.updateOrderStatus(id, orderStatus);
@@ -104,7 +108,8 @@ public class OrderController {
 
 	@GetMapping
 	@RequestMapping("/updatePaymentStatus/{id}/{paymentStatus}")
-	public ResponseEntity<String> updatePaymentStatus(@PathVariable("id") String id, @PathVariable("paymentStatus") String paymentStatus) {
+	public ResponseEntity<String> updatePaymentStatus(@PathVariable("id") String id,
+			@PathVariable("paymentStatus") String paymentStatus) {
 		try {
 			Log.log("OrderController", "updatePaymentStatus", "Object Received To Update " + id + ", " + paymentStatus);
 			this.service.updatePaymentStatus(id, paymentStatus);
@@ -115,12 +120,13 @@ public class OrderController {
 		}
 	}
 
-
 	@GetMapping
 	@RequestMapping("/updateVesselStatus/{id}/{vesselStatus}")
-	public ResponseEntity<String> updateVesselStatus(@PathVariable("id") String id, @PathVariable("vesselStatus") String vesselStatus) {
+	public ResponseEntity<String> updateVesselStatus(@PathVariable("id") String id,
+			@PathVariable("vesselStatus") String vesselStatus) {
 		try {
-			Log.log("OrderController", "updateVesselStatus", "Object Received To Update Vessel Status " + id + ", " + vesselStatus);
+			Log.log("OrderController", "updateVesselStatus",
+					"Object Received To Update Vessel Status " + id + ", " + vesselStatus);
 			this.service.updateVesselStatus(id, vesselStatus);
 			return ResponseEntity.ok("");
 		} catch (Exception ex) {
@@ -132,6 +138,7 @@ public class OrderController {
 	@GetMapping
 	@RequestMapping("/listOrdersByVesselStatus/{status}")
 	public ResponseEntity<OrderResponse> getOrdersByVesselStatus(@PathVariable("status") String status) {
-		return ResponseEntity.ok(OrderResponse.builder().order(this.service.getOrdersByVesselStatus(status.toUpperCase())).build());
+		return ResponseEntity
+				.ok(OrderResponse.builder().order(this.service.getOrdersByVesselStatus(status.toUpperCase())).build());
 	}
 }

@@ -86,9 +86,10 @@ VALUES ('Prabhas', 'M', 'Roy', '123455', 'Mr.', 'prabhas.roy@gmail.com', '234234
 
 
 INSERT INTO ACTOR (roles, first_name, last_name, user_name, password) VALUES ('STANDARD_USER', 'Dummy', 'Head', 'dummy.head', '821f498d827d4edad2ed0960408a98edceb661d9f34287ceda2962417881231a');
-INSERT INTO ACTOR (roles, FIRST_NAME, LAST_NAME, user_name, password) VALUES ('STANDARD_USER,ADMIN_USER', 'ALEX' ,'ALEX', 'Alex123', '$2a$04$I9Q2sDc4QGGg5WNTLmsz0.fvGv3OjoZyj81PrSFyGOqMphqfS2qKu');
-INSERT INTO ACTOR (roles, FIRST_NAME, LAST_NAME, user_name, password) VALUES ('ADMIN_USER', 'TOM', 'TOM', 'Tom234', '$2a$04$PCIX2hYrve38M7eOcqAbCO9UqjYg7gfFNpKsinAxh99nms9e.8HwK');
-INSERT INTO ACTOR (roles, FIRST_NAME, LAST_NAME, user_name, password) VALUES ('STANDARD_USER', 'ADAM', 'ADAM', 'Adam', '$2a$04$I9Q2sDc4QGGg5WNTLmsz0.fvGv3OjoZyj81PrSFyGOqMphqfS2qKu');
+INSERT INTO ACTOR (roles, FIRST_NAME, LAST_NAME, user_name, password) VALUES ('BRANCH_USER,BRANCH_MANAGER', 'ALEX' ,'ALEX', 'Alex123', '$2a$04$I9Q2sDc4QGGg5WNTLmsz0.fvGv3OjoZyj81PrSFyGOqMphqfS2qKu');
+INSERT INTO ACTOR (roles, FIRST_NAME, LAST_NAME, user_name, password) VALUES ('BRANCH_ADMIN', 'TOM', 'TOM', 'Tom234', '$2a$04$PCIX2hYrve38M7eOcqAbCO9UqjYg7gfFNpKsinAxh99nms9e.8HwK');
+INSERT INTO ACTOR (roles, FIRST_NAME, LAST_NAME, user_name, password) VALUES ('BRANCH_MANAGER', 'ADAM', 'ADAM', 'Adam', '$2a$04$I9Q2sDc4QGGg5WNTLmsz0.fvGv3OjoZyj81PrSFyGOqMphqfS2qKu');
+INSERT INTO ACTOR (roles, FIRST_NAME, LAST_NAME, user_name, password) VALUES ('SYSTEM_MANAGER', 'Evelyn', 'M', 'Chang', '$2a$04$I9Q2sDc4QGGg5WNTLmsz0.fvGv3OjoZyj81PrSFyGOqMphqfS2qKu');
 
 --menu * item
 INSERT INTO MENU (NAME) VALUES ('Chicken');

@@ -40,10 +40,9 @@ function saveAndCloseCustomer() {
 }
 
 function saveCustomer(toClose) {
-	console.log("To Close " + toClose);
 	var jsonObj = getJSONData();
 	$.ajax({
-		"url" : baseURI + 'staff/save?access_token=' + accessToken,
+		"url" : baseURI + 'customer/save?access_token=' + accessToken,
 		'type' : 'POST',
 		'contentType' : 'application/json',
 		'crossDomain' : true,

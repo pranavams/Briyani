@@ -20,7 +20,7 @@ public class BranchService {
 
 	public Branch get(String id) {
 		return Branch.builder().build()
-				.transformEntities(branchRepository.findById(Branch.builder().id(id).build().getDatabaseID()).get());
+				.transformEntities(branchRepository.findById(Branch.builder().id(id).build().DBID()).get());
 	}
 
 	public BranchEntity saveBranch(Branch branch) {

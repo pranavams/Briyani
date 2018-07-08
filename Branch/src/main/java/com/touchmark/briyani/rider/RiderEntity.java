@@ -29,6 +29,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "rider")
 public class RiderEntity implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
@@ -65,13 +66,34 @@ public class RiderEntity implements Serializable {
 	@Column(name = "zone")
 	private String zone;
 
-	@Column(name = "riderIdCardNo")
-	private String riderIdCardNo;
-
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "address_id")
 	private AddressEntity address;
 
 	@Column(name = "lastUpdatedDate")
 	private OffsetDateTime lastUpdatedDate;
+	
+	@Column(name = "riderIdCardNo")
+	private String riderIdCardNo;
+
+	@Column(name = "vehicleType")
+	private String vehicleType;
+
+	@Column(name = "vehicleModel")
+	private String vehicleModel;
+	
+	@Column(name = "vehicleNumber")
+	private String vehicleNumber;
+	
+	@Column(name = "licenseNumber")
+	private String licenseNumber;
+	
+	@Column(name = "licenseType")
+	private String licenseType;
+	
+	@Column(name = "licenseIssueDate")
+	private OffsetDateTime licenseIssueDate;
+	
+	@Column(name = "licenseExpiryDate")
+	private OffsetDateTime licenseExpiryDate;
 }

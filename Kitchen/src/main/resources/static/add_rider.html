@@ -232,14 +232,14 @@
                                                 	<div class="form-group col-md-3">
                                                     <label for="exampleFormControlSelect1">Gender <span class="text-danger">*</span></label>
                                                   		<div class="custom-control custom-radio custom-control-inline">
-                                                      <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+                                                      <input value = "Male" type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
                                                       <label class="custom-control-label" for="customRadioInline1">Male</label>
                                                     </div>
                                                     </div>
                                                     <div class="form-group col-md-3">
                                                         <label for="exampleFormControlSelect1" class="gender_align"> <span class="text-danger"></span></label>
                                                         <div class="custom-control custom-radio custom-control-inline">
-                                                          <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+                                                          <input value = "Female" type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
                                                           <label class="custom-control-label" for="customRadioInline2">Female</label>
                                                         </div>
                                                     </div>
@@ -247,7 +247,7 @@
                                                     <div class="form-group col-md-3">
                                                     	<label for="exampleFormControlSelect1" class="gender_align"> <span class="text-danger"></span></label>
                                                         <div class="custom-control custom-radio custom-control-inline">
-                                                          <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+                                                          <input value = "Other" type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
                                                           <label class="custom-control-label" for="customRadioInline2">Other</label>
                                                         </div>
                                                     </div>
@@ -299,7 +299,7 @@
                                                 <div class="form-group col-md-6">
                                                   <div class="form-group">
                                                     <label for="exampleFormControlSelect1">Vehicle Modal</label>
-                                                    <select class="form-control selectpicker" id="vehicle_type" name="vehicle_type" data-live-search="true">
+                                                    <select class="form-control selectpicker" id="vehicle_model" name="vehicle_model" data-live-search="true">
                                                     	<option>*** Select Vehicle Modal***</option> 
                                                         <option value="Y">Yamaha</option> 
                                                         <option value="HO">Honda</option> 
@@ -375,8 +375,8 @@
                                                
                                                   <div class="form-group col-md-12">
                                                   	 <button type="reset" class="btn btn-danger pull-right" id="PageRefresh">Cancel</button>
-                                                  	<a href="rider.html" class="btn btn-primary pull-right save_button" name="add_btn" >Save & Close</a>
-                                                    <a href="" class="btn btn-primary pull-right save_button" name="add_btn2">Save & New</a>  
+                                                  	<a href="#" onclick = 'getToken(saveAndCloseRider)' class="btn btn-primary pull-right save_button" name="add_btn" >Save & Close</a>
+                                                    <a href="#" onclick = 'getToken(saveRider)' class="btn btn-primary pull-right save_button" name="add_btn2">Save & New</a>  
                                                    
                                                   </div>
                                               </div>
@@ -624,6 +624,8 @@
     <script src="assets/js/bootstrap/bootstrapValidator.min.js"></script>
     <script src="assets/js/bootstrap-select.min.js"></script>
     <script src="assets/js/common_function.js"></script>
+    <script src="assets/js/pages/getToken.js"></script>	
+   	<script src="assets/js/pages/add_rider.js"></script>	
     	
       	
 		<script type="text/javascript">

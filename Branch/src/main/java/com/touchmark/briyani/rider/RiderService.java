@@ -26,7 +26,7 @@ public class RiderService {
 
 	public String delete(String id) {
 		try {
-			Long idToDelete = Rider.builder().id(id).build().getDatabaseID();
+			Long idToDelete = Rider.builder().id(id).build().DBID();
 			Log.log("RiderService", "delete", "Rider ID to Delete " + idToDelete + ", " + id);
 			this.repository.deleteById(idToDelete);
 			return "Rider " + id + " deleted Successfully";
@@ -41,7 +41,7 @@ public class RiderService {
 	}
 
 	public Rider get(String id) {
-		return Rider.builder().build().transformEntities(repository.findById(Rider.builder().id(id).build().getDatabaseID()).get());
+		return Rider.builder().build().transformEntities(repository.findById(Rider.builder().id(id).build().DBID()).get());
 	}
 
 }

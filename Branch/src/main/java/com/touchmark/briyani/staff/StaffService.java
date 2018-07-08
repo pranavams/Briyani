@@ -26,7 +26,7 @@ public class StaffService {
 
 	public String delete(String id) {
 		try {
-			Long staffID = Staff.builder().id(id).build().getDatabaseID();
+			Long staffID = Staff.builder().id(id).build().DBID();
 			Log.log("StaffService", "delete", "Staff ID to Delete " + staffID + ", " + id);
 			this.repository.deleteById(staffID);
 			return "Staff " + id + " deleted Successfully";
@@ -41,7 +41,7 @@ public class StaffService {
 	}
 
 	public Staff get(String id) {
-		return Staff.builder().build().transformEntities(repository.findById(Staff.builder().id(id).build().getDatabaseID()).get());
+		return Staff.builder().build().transformEntities(repository.findById(Staff.builder().id(id).build().DBID()).get());
 	}
 
 }

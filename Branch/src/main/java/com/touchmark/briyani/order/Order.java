@@ -82,7 +82,7 @@ public class Order {
 		return "ORD-" + orderId;
 	}
 
-	public Long getDatabaseID() {
+	public Long DBID() {
 		return Long.parseLong(orderId.substring(4));
 	}
 

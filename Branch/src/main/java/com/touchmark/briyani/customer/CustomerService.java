@@ -26,7 +26,7 @@ public class CustomerService {
 
 	public String delete(String id) {
 		try {
-			Long idToDelete = Customer.builder().id(id).build().getDatabaseID();
+			Long idToDelete = Customer.builder().id(id).build().DBID();
 			Log.log("CustomerService", "delete", "Customer ID to Delete " + idToDelete + ", " + id);
 			this.repository.deleteById(idToDelete);
 			return "Customer " + id + " deleted Successfully";
@@ -42,7 +42,7 @@ public class CustomerService {
 
 	public Customer get(String id) {
 		return Customer.builder().build()
-				.transformEntities(repository.findById(Customer.builder().id(id).build().getDatabaseID()).get());
+				.transformEntities(repository.findById(Customer.builder().id(id).build().DBID()).get());
 	}
 
 }

@@ -30,7 +30,10 @@ public class Menu {
 		return "CHBI" + id;
 	}
 
-
+	Long DBID(String id){
+		return Long.parseLong(id.substring(4)); 
+	}
+	
 	public List<Menu> transformEntities(List<MenuEntity> entities) {
 		List<Menu> menus = new ArrayList<>(entities.size());
 		for (MenuEntity menuEntity : entities) {

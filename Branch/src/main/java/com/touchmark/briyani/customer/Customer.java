@@ -48,7 +48,7 @@ public class Customer {
 		return "CUST" + id;
 	}
 
-	public Long getDatabaseID() {
+	public Long DBID() {
 		return Long.parseLong(id.substring(4));
 	}
 

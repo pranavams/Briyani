@@ -3,9 +3,6 @@ package com.touchmark.briyani.item;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -50,7 +47,7 @@ public class Item {
 		return items;
 	}
 
-	public Long getDatabaseID() {
+	public Long DBID() {
 		return Long.parseLong(id.substring(5));
 	}
 }

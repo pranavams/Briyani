@@ -32,7 +32,7 @@ public class Staff {
 	private String notes;
 	private Address address;
 
-	public Long getDatabaseID() {
+	public Long DBID() {
 		return Long.parseLong(id.substring(5));
 	}
 

@@ -52,7 +52,7 @@ public class UserService implements UserDetailsService {
 
 	public com.touchmark.briyani.user.User get(String id) {
 		return com.touchmark.briyani.user.User.builder().build().transformEntity(userRepository
-				.findById(com.touchmark.briyani.user.User.builder().id(id).build().getDatabaseID()).get());
+				.findById(com.touchmark.briyani.user.User.builder().id(id).build().DBID()).get());
 	}
 
 	public List<com.touchmark.briyani.user.User> getAllByUserType(String type) {

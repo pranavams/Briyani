@@ -34,7 +34,7 @@ public class ImageService {
 	private void saveFile(String id, String type, MultipartFile file) {
 		switch (type.toLowerCase()) {
 		case "item":
-			saveImage(Item.builder().id(id).build().getDatabaseID(), type, file);
+			saveImage(Item.builder().id(id).build().DBID(), type, file);
 			break;
 		default:
 			throw new RuntimeException("Invalid Image Type");
@@ -51,7 +51,7 @@ public class ImageService {
 	}
 
 	public void validateItemId(String id) {
-		boolean isItemAvailable = this.itemRepository.findById(Item.builder().id(id).build().getDatabaseID())
+		boolean isItemAvailable = this.itemRepository.findById(Item.builder().id(id).build().DBID())
 				.isPresent();
 		if (!isItemAvailable)
 			throw new RuntimeException("Item Not Available");
@@ -79,7 +79,7 @@ public class ImageService {
 	public ImageEntity getImage(String id, String type) {
 		switch (type.toLowerCase()) {
 		case "item":
-			return getImage(Item.builder().id(id).build().getDatabaseID(), type);
+			return getImage(Item.builder().id(id).build().DBID(), type);
 		default:
 			throw new RuntimeException("Invalid Image Type");
 		}

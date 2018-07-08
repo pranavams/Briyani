@@ -83,12 +83,28 @@
                         <div class="logged-user">
                             <div class="btn-group">
                                 <a href="javascript:;" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-power-off"></i>
+                                    <i class="fa fa-lock"></i>
                                     <span class="name">
-                                   Logout
-                                    
+                                    My Account
+                                    </span> <span class="caret"></span>
                                 </a>
-                                
+                                <ul class="dropdown-menu" role="menu">
+                                    
+                                    
+                                    <li>
+                                        <a href="change_pass.html">
+                                            <i class="fa fa-lock"></i>
+                                            <span class="text">Change Password</span>
+                                        </a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="logout.html">
+                                            <i class="fa fa-power-off"></i>
+                                            <span class="text">Logout</span>
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                         <!-- end logged user and the menu -->
@@ -114,13 +130,11 @@
                             
                             <li><a href="customer.html"><i class="fa fa-user-plus fa-fw"></i><span class="text">Customer </span></a></li>
                             
-                            <li ><a href="order_user.html"><i class="fa fa-list"></i><span class="text">List Of End User Order</span></a></li>
-                            
                             <li ><a href="branch.html"><i class="fa fa-university fa-fw"></i><span class="text">Branch</span></a></li>
                             
-                             <li ><a href="order.html"><i class="fa fa-list fa-fw"></i><span class="text">List Of Branch Order</span></a> </li>
-                     		
-                             <li><a href="rider.html"><i class="fa fa-motorcycle fa-fw"></i><span class="text">Rider</span></a></li>
+                            <li><a href="rider.html"><i class="fa fa-motorcycle fa-fw"></i><span class="text">Rider</span></a></li>
+                            
+                             <li ><a href="order.html"><i class="fa fa-tags fa-fw"></i><span class="text">Order</span></a></li>
                              
                              <li class="active"><a href="menu.html"><i class="fa fa-list-alt fa-fw"></i><span class="text">Menu</span></a></li>
                              
@@ -143,8 +157,8 @@
 				<div class="col-md-4">
 					<ul class="breadcrumb">
 						<li><i class="fa fa-home"></i><a href="#">Home</a></li>
-                        <li class="active hide_list">List of Category</li>
-                        
+                        <li class="active hide_list">Name of the Branches</li>
+                        <li class="active hide_add">Add Branch</li>
 						
 					</ul>
 				</div>
@@ -153,30 +167,33 @@
 			<div class="content">
 				<div class="main-header">
                
-					<h2 class="hide_list">List of Category</h2>
+					<h2 class="hide_list">List of Menu / Item</h2>
                     
+                    <h2 class="hide_add">Add Menu/Item</h2>
                   
 					<em>the first priority information</em>
                     <div class="pull-right">
                         
-<!--                        <a href="add_menu_item.html" class="btn btn-info btn-sm"><i class="fa fa-plus"></i> Add Category & Menu</a>
--->                        <a href="" class="btn btn-warning btn-sm"><i class="fa fa-recycle"></i> Refresh</a>
-                        <a href="add_menu.html" class="btn btn-info btn-sm"><i class="fa fa-plus"></i> Add Menu</a>
+                        <a href="#" class="btn btn-info btn-sm" id="addmenu"><i class="fa fa-plus"></i> Add Menu</a>
+                        <a href="#" class="btn btn-info btn-sm" id="additem"><i class="fa fa-plus"></i> Add Item</a>
+                        <a href="#" class="btn btn-default btn-sm" id="addbranch_list"><i class="fa fa-arrow-left"></i> Back To List</a>
                     </div>
 				</div>
 				<hr class="inner-separator" />
                
                 	
                     <!--- Table Div--->
-                    <div class="col-md-6 col-lg-6 col-sm-6">
                     <div class="main-content table_hide">
                     <div class="table-responsive">
                         <table id="contacts_list" class="table table-responsive table-hover tablefontsize cell-border" >
                           <thead class="table_heading_color">
                             <tr>
                                 <th>#</th>
-                                <th>Category Code</th>
-                                <th>Category Name</th>
+                                <th>Menu Code</th>
+                                <th>Item Code</th>
+                                <th>Menu Name</th>
+                                <th>Item Name</th>
+                                <th>Price</th>
                                 <th>Modify</th>
                             </tr>
                          </thead>
@@ -184,19 +201,22 @@
                          	<tr>
                             	<td>1</td>
                                 <td>CHI0001</td>
+                                <td>CHBIR001</td>
+                                <td>Chicken</td>
                                 <td>Biriyani</td>
-                                <td> <a href="" class="btn btn-xs btn-info"><i class="fa fa-pencil"></i>Edit</a> <a href="menu_preview.html" class="btn btn-xs btn-danger"><i class="fa fa-remove"></i>Delete</a> </td>
+                                <td>$125</td>
+                                <td><a href="#" class="btn btn-xs btn-default"><i class="fa fa-pencil"></i></a> <a href="#" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#deleteDATA"><i class="fa fa-remove"></i></a> <a href="#" class="btn btn-xs btn-info" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></td>
                             </tr>
                          </tbody>
                         </table>
                     </div>    
 				</div>
-                	</div>
                 
                 <!-- Form Div Start--->
-                      <div class="col-md-6 col-lg-6 col-sm-6">
-						<div class="main-content">
+                      
+						<div class="main-content form_hide">
                     <div class="inner-page">
+                             <div class="col-lg-8 col-sm-6 col-xs-12 center-block float_none">
                              	<div class="panel panel-default">
                                     <div class="panel-heading quick_notes"></div>
                                     	<div class="panel-body">
@@ -204,35 +224,97 @@
                                               <div class="form-row">
                                               <div id="add_menu_div">
                                                 <div class="form-group col-md-12">
-                                                	
-                                                	<h4>Create/Edit Category</h4>
+                                                	<hr class="inner-separator" />
+                                                	<h4>Add Menu</h4>
                                                 	<hr class="inner-separator" />
                                                 </div>
                                                 
                                                 <div class="form-group col-md-6">
-                                                	<label for="exampleFormControlSelect1">Category Code <span class="text-danger">*</span></label>
+                                                	<label for="exampleFormControlSelect1">Menu Code <span class="text-danger">*</span></label>
                                                   <input type="text" class="form-control add_menu_field" id="menu_code" name="menu_code" maxlength="80">
                                                 </div>
                                                 
                                                 <div class="form-group col-md-6">
-                                                	<label for="exampleFormControlSelect1">Category Name <span class="text-danger">*</span></label>
+                                                	<label for="exampleFormControlSelect1">Menu Name <span class="text-danger">*</span></label>
                                                   <input type="text" class="form-control add_menu_field" id="menu_name" name="menu_name" maxlength="15">
                                                 </div>
                                                 <div class="form-group col-md-12">
                                                   	 <button type="reset" class="btn btn-danger pull-right" id="reset_button">Cancel</button>
-                                                  	<button type="button" class="btn btn-primary pull-right save_button save_menu" name="add_btn" >Save</button>
+                                                  	<button type="button" class="btn btn-primary pull-right save_button save_menu" name="add_btn" >Save Menu</button>
+                                                    <button type="button" class="btn btn-primary pull-right save_button add_item_button" name="add_btn" >Add Item</button>
                                                    
                                                   </div>
                                                 </div>
-                                                  
+                                                  <div id="add_item_div">
+                                                <div class="form-group col-md-12">
+                                                	<hr class="inner-separator" />
+                                                	<h4>Add Item</h4>
+                                                	<hr class="inner-separator" />
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                  <div class="form-group">
+                                                    <label for="exampleFormControlSelect1">Menu Name <span class="text-danger">*</span></label>
+                                                    <select class="form-control selectpicker" id="rider_depart" name="rider_depart" data-live-search="true">
+                                                    	<option>*** Select Menu ***</option> 
+                                                        <option value="CHI">Chicken</option> 
+                                                        <option value="MU">Mutton</option>   
+                                                        <option value="FIS">Fish</option>   
+                                                      	
+                                                    </select>
+                                                  </div>
+                                                </div>
+                                                
+                                                <div class="form-group col-md-6">
+                                                	<label for="exampleFormControlSelect1">Item Code <span class="text-danger">*</span></label>
+                                                  <input type="text" class="form-control" id="item_code" name="item_code" maxlength="15">
+                                                </div>
+                                                <div class="clearfix"></div>
+                                                <div class="form-group col-md-6">
+                                                	<label for="exampleFormControlSelect1">Item Name <span class="text-danger">*</span></label>
+                                                  <input type="text" class="form-control" id="item_name" name="item_name" maxlength="15">
+                                                </div>
+                                                
+                                                <div class="form-group col-md-6">
+                                                	<label for="exampleFormControlSelect1">Item Description <span class="text-danger">*</span></label>
+                                                  <input type="text" class="form-control" id="item_descri" name="item_descri" maxlength="15">
+                                                </div>
+                                                
+                                                <div class="form-group col-md-6">
+                                                <label for="exampleFormControlSelect1">Item Image <span class="text-danger">*</span></label>
+                                                  <div class="input-group">
+                                                  	 
+                                                    <input id="uploadFile" class="form-control" name="item_image" placeholder="Choose File" disabled="disabled">
+                                                    <div class="input-group-btn">
+                                                    
+                                                      <div class="fileUpload btn btn-default">
+                                                        <span><i class="glyphicon glyphicon-upload"></i> Upload</span>
+                                                        <input id="uploadBtn" type="file" name="item_image" class="upload" />
+                                                      </div>
+                                                    </div>
+                                                  </div><br>
+                                                </div>
+                                                
+                                                <div class="form-group col-md-6">
+                                                <label for="exampleFormControlSelect1">Price ($) <span class="text-danger">*</span></label>
+                                                  <input type="text" class="form-control" id="item_price" name="item_price" maxlength="15">
+                                                </div>
+                                               
+                                               
+                                               
+                                                  <div class="form-group col-md-12">
+                                                  	 <button type="reset" class="btn btn-danger pull-right" id="PageRefresh">Reset</button>
+                                                  	<button type="button" class="btn btn-primary pull-right save_button save_item" name="add_btn" >Save Item</button>
+                                                   
+                                                  </div>
+                                                  </div>
                                               </div>
                                             </form>
                                             
                                     	</div>
                               	</div>
+                             </div>                                            
                             </div>
                     	</div>
-                      </div>
 				</div>
 			</div>
 			<!-- /main -->
@@ -305,19 +387,25 @@
 	<script src="assets/js/bootstrap/bootstrap.js"></script>
     <script src="assets/js/plugins/modernizr/modernizr.js"></script>
     <script src="assets/js/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="assets/js/plugins/bootstrap-tour/bootstrap-tour.custom.js"></script>
     <script type="text/javascript" src="assets/js/plugins/export_record/jquery.dataTables.js"></script>
     <script type="text/javascript" src="assets/js/plugins/export_record/dataTables.buttons.min.js"></script>
     <script type="text/javascript" src="assets/js/plugins/export_record/jszip.min.js"></script>
+    <script type="text/javascript" src="assets/js/plugins/export_record/pdfmake.min.js"></script>
     <script type="text/javascript" src="assets/js/plugins/export_record/vfs_fonts.js"></script>
     <script type="text/javascript" src="assets/js/plugins/export_record/buttons.html5.min.js"></script>
     <script src="assets/js/jquery.buttonLoader.js"></script>
 	<script src="assets/js/plugins/jquery-gritter/jquery.gritter.min.js"></script>
+    <script src="assets/chart/dist/Chart.bundle.js"></script>
+    <script src="assets/chart/dist/utils.js"></script>
+    <script src="assets/js/plugins/bootstrap-datepicker/bootstrap-datepicker.js"></script>
     <script src="assets/js/common.js"></script>
+    <script src="assets/js/bootstrap-tagsinput.min.js"></script>
     <script src="assets/js/default.js"></script>
     <script src="assets/js/bootstrap/bootstrapValidator.min.js"></script>
+    <script src="assets/js/bootstrap-select.min.js"></script>
     <script src="assets/js/common_function.js"></script>	
-    <script src="assets/js/pages/getToken.js"></script>	
-   <script src="assets/js/pages/menu.js"></script>	
+      	
 		<script type="text/javascript">
         	/// Table Format
             $('#contacts_list').DataTable( {
@@ -326,12 +414,17 @@
                     { data: "nte_addnew_mark" }, //0-0
                     { data: "name" }, //1
                     { data: "mobile" }, //2
+                    { data: "emailid" }, //3
+                    { data: "address" }, //4
+				    { data: "Name_contact" }, //5
+					{ data: "category" }, //5
                     { data: "modify" } //6
                 ],
                 dom: 'lBfrtip',
 				buttons: [
-					'excelHtml5'
-					
+					'excelHtml5',
+					'csvHtml5',
+					'pdfHtml5'
 				]
             } );
     </script>

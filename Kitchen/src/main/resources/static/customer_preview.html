@@ -22,6 +22,7 @@
 	<!-- Fav and touch icons -->
 	<link rel="shortcut icon" href="assets/img/notepad.png">
     <link rel="stylesheet" href="assets/css/bootstrap-select.min.css" />
+    
     <style type="text/css">
 	.investment-summary { 
 		padding-top: 15px; padding-bottom: 15px; 
@@ -169,14 +170,19 @@
                                         <span id='displayName' class="text-uppercase">John</span>
                                     </div>
                                     <div class="profile-usertitle-job">
-                                        <span class="profile_design"><i class="fa fa-mobile"></i> <span id ='mobileNo'>+63456789</span> | <i class="fa fa-envelope"></i> john@gmail.com</span>
+                                        <span class="profile_design"><i class="fa fa-mobile"></i> 
+                                        <span id ='mobileNo'>+63456789</span> 
+                                        | <i class="fa fa-envelope"></i>
+                                        <span id ='emailId'> john@gmail.com</span>
+                                        
+                                        </span>
                                     </div>
                                 </div>
                                 <!-- END SIDEBAR USER TITLE -->
                                 <!-- SIDEBAR BUTTONS -->
                                 <div class="profile-userbuttons">
-                                    <button type="button" class="btn btn-success btn-sm"><i class="fa fa-pencil"></i> Edit</button>
-                                    <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-remove"></i> Delete</button>
+                                    <a href="#" onclick = 'edit()' class="btn btn-sm btn-info edit_caontact"><i class="fa fa-pencil"></i> Edit Profile</a>
+                                    <a href="#" onclick = 'deleteData()' class="btn btn-sm btn-danger edit_caontact"><i class="fa fa-remove"></i> Delete</a>
                                 </div>
                                 <!-- END SIDEBAR BUTTONS -->
                                 <!-- SIDEBAR MENU -->
@@ -185,17 +191,17 @@
                                         <li class="active">
                                             <a href="#">
                                             <i class="fa fa-calendar"></i>
-                                            DOB : 2018/05/25 </a>
+                                           <span id ='dateOfBirth'> DOB : 2018/05/25 </span></a>
                                         </li>
                                         <li class="active">
                                             <a href="#" >
                                             <i class="fa fa-user"></i>
-                                            Gender: Male </a>
+                                           <span id ='gender'> Gender : Male </span> </a>
                                         </li>
                                         <li class="active">
                                             <a href="#" target="_blank" title="No234, Thomas Street,Singapore-600056">
                                             <i class="fa fa-map-marker"></i>
-                                            Home Address </a>
+                                             <span id ='address'> Address</span> </a>
                                         </li>
                                        
                                     </ul>

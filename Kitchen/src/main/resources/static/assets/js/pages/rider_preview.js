@@ -39,7 +39,7 @@ function displayRiderPreview(data){
 }
 
 function edit() {
-	window.location.href = kitchenBaseURI + 'edit_customer.html?id=' + $.urlParam('id');
+	window.location.href = kitchenBaseURI + 'edit_rider.html?id=' + $.urlParam('id');
 }
 
 function deleteData() {

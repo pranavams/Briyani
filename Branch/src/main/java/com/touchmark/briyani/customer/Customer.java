@@ -3,11 +3,8 @@ package com.touchmark.briyani.customer;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import com.touchmark.briyani.commons.Address;
-import com.touchmark.briyani.staff.Staff;
-import com.touchmark.briyani.staff.StaffEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,6 +24,7 @@ public class Customer {
 	private String salutation;
 	private String mobileNumber;
 	private String telephoneNumber;
+	private String gender;
 	private String email;
 	private OffsetDateTime dateOfBirth;
 	private Address address;
@@ -34,6 +32,7 @@ public class Customer {
 	public CustomerEntity createEntity() {
 		return CustomerEntity.builder().address(address.createEntity()).dateOfBirth(dateOfBirth).firstName(firstName)
 				.email(email).telephoneNumber(telephoneNumber).lastName(lastName).middleName(middleName)
+				.gender(gender)
 				.lastUpdatedDate(OffsetDateTime.now()).mobileNumber(mobileNumber).salutation(salutation).build();
 	}
 
@@ -56,6 +55,7 @@ public class Customer {
 	public Customer transformEntities(CustomerEntity customerEntity) {
 		return Customer.builder().id(transformId(customerEntity.getId())).email(customerEntity.getEmail())
 				.telephoneNumber(customerEntity.getTelephoneNumber())
+				.gender(customerEntity.getGender())
 				.address(Address.builder().build().transform(customerEntity.getAddress()))
 				.dateOfBirth(customerEntity.getDateOfBirth()).firstName(customerEntity.getFirstName())
 				.lastName(customerEntity.getLastName()).middleName(customerEntity.getMiddleName())

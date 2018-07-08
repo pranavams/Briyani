@@ -64,5 +64,8 @@ public class CustomerEntity implements Serializable {
 	private AddressEntity address;
 	@Column(name = "lastUpdatedDate")
 	private OffsetDateTime lastUpdatedDate;
+	
+	@Column(name = "gender")
+	private String gender;
 
 }

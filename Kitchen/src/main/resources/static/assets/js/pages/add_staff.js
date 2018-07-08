@@ -57,9 +57,6 @@ function saveStaff(toClose) {
 				text : '<p style="font-size: 14px;">Staff Saved successfully!</p>',
 			});
 			clearItem();
-			if(toClose) {
-				window.location.href = kitchenBaseURI + "staff.html";
-			}
 			return result;
 		},
 		'error' : function(XMLHttpRequest, textStatus, errorThrown) {

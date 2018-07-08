@@ -50,9 +50,11 @@ public class Order {
 
 		for (OrderDetail orderDetail : orderDetails) {
 			orders.add(OrderDetailEntity.builder().quantity(orderDetail.getQuantity())
+					.lastUpdatedDate(OffsetDateTime.now())
 					.unitPrice(orderDetail.getUnitPrice()).build());
 		}
 		return OrderEntity.builder().couponCode(couponCode).dateAndTime(dateAndTime).deliveryAddress(addressEntity)
+				.lastUpdatedDate(OffsetDateTime.now())
 				.paymentStatus(Case.upper(paymentStatus)).taxPercentage(taxPercentage).taxAmount(taxAmount).totalAmount(totalAmount)
 				.orderStatus(Case.upper(orderStatus)).numberOfVessels(numberOfVessels).vesselStatus(Case.upper(vesselStatus)).userName(userName)
 				.orderDetails(orders).build();

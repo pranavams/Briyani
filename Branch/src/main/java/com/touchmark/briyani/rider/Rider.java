@@ -46,7 +46,7 @@ public class Rider implements Serializable{
 				.country(address.getCountry()).doorNumber(address.getDoorNumber()).state(address.getState())
 				.street(address.getStreet()).zipcode(address.getZipcode()).build();
 		return RiderEntity.builder().riderPersonFirstName(riderPersonFirstName).dateOfBirth(dateOfBirth)
-				.departmentType(departmentType)
+				.departmentType(departmentType).lastUpdatedDate(OffsetDateTime.now())
 				.riderPersonLastName(riderPersonLastName).riderPersonMiddleName(riderPersonMiddleName)
 				.riderPersonNumber(riderPersonNumber).riderPersonSalutation(riderPersonSalutation).email(email)
 				.vehicleModel(vehicleModel).vehicleNumber(vehicleNumber).vehicleType(vehicleType)

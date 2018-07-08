@@ -1,5 +1,6 @@
 package com.touchmark.briyani.branch;
 
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +36,7 @@ public class Branch {
 		AddressEntity addressEntity = AddressEntity.builder().area(address.getArea()).city(address.getCity())
 				.country(address.getCountry()).doorNumber(address.getDoorNumber()).state(address.getState())
 				.street(address.getStreet()).zipcode(address.getZipcode()).build();
-		return BranchEntity.builder().contactPersonFirstName(contactPersonFirstName)
+		return BranchEntity.builder().contactPersonFirstName(contactPersonFirstName).lastUpdatedDate(OffsetDateTime.now())
 				.contactPersonLastName(contactPersonLastName).contactPersonMiddleName(contactPersonMiddleName)
 				.contactPersonNumber(contactPersonNumber).contactPersonSalutation(contactPersonSalutation).email(email)
 				.latitude(latitude).longitude(longitude).mobileNumber(mobileNumber).name(name).notes(notes)

@@ -1,5 +1,6 @@
 package com.touchmark.briyani.user;
 
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class User {
 
 	public UserEntity createEntity() {
 		return UserEntity.builder().firstName(firstName).lastName(lastName).middleName(middleName).password(password)
-				.userType(userType)
+				.userType(userType).lastUpdatedDate(OffsetDateTime.now())
 				.roles(roles).userName(userName).build();
 	}
 

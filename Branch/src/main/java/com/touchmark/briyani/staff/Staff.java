@@ -40,6 +40,7 @@ public class Staff {
 		return StaffEntity.builder().dateOfBirth(dateOfBirth).firstName(firstName).email(email).lastName(lastName)
 				.middleName(middleName).mobileNumber(mobileNumber).salutation(salutation).gender(gender).notes(notes)
 				.role(role).lastUpdatedDate(OffsetDateTime.now())
+				.lastUpdatedDate(OffsetDateTime.now())
 				// .dateOfJoin(dateOfJoin)
 				// .address(address.createEntity())
 				.build();

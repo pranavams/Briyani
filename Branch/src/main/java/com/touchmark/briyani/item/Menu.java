@@ -1,5 +1,6 @@
 package com.touchmark.briyani.item;
 
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class Menu {
 	private String name;
 
 	public MenuEntity createEntity() {
-		return MenuEntity.builder().name(name).build();
+		return MenuEntity.builder().name(name).lastUpdatedDate(OffsetDateTime.now()).build();
 	}
 
 	public Menu transformEntity(MenuEntity entity) {

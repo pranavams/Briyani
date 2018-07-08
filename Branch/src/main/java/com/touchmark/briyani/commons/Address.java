@@ -1,5 +1,7 @@
 package com.touchmark.briyani.commons;
 
+import java.time.OffsetDateTime;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -28,6 +30,7 @@ public class Address {
 
 	public AddressEntity createEntity() {
 		return AddressEntity.builder().area(area).city(city).country(country).doorNumber(doorNumber).state(state)
+				.lastUpdatedDate(OffsetDateTime.now())
 				.street(street).zipcode(zipcode).build();
 	}
 

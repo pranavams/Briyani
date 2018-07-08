@@ -46,7 +46,7 @@ public class OrderService {
 
 	private List<OrderEntity> getItemsInOrders(List<OrderEntity> orders) {
 		List<OrderEntity> allOrders = new ArrayList<>();
-		for (OrderEntity order : allOrders) {
+		for (OrderEntity order : orders) {
 			allOrders.add(getItemsInOrders(order));
 		}
 		return allOrders;

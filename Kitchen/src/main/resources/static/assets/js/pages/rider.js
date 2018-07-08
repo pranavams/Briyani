@@ -1,17 +1,12 @@
 /**
  * 
  */
-
-console.log("Rider List " + getRiderList());
-
 function getRiderList() {
 	// The baseURI variable is created by the result.base_server_base_uri 
 	// which is returned when getting a token and should be used to 
 	// create the url_base.
-	var url_base = baseURI;
-	//accessToken = getToken();
 	$.ajax({
-		'url' : baseURI + 'rider/listAll',
+		'url' : baseURI + 'rider/listAll?access_token=' + accessToken,
 		'type' : 'GET',
 		'contentType' : 'x-www-form-urlencoded',
 		'crossDomain' : true,
@@ -66,7 +61,7 @@ function displayRider(RiderResult) {
 
 		tabCell = tr.insertCell(-1);
 
-		if('Branch' === Rider[i]['departmentType']){
+		if ('Branch' === Rider[i]['departmentType']) {
 			tabCell.innerHTML = '<td><a class="btn btn-default btn-xs">Branch Rider</a></td>'
 		} else {
 			tabCell.innerHTML = '<td><a class="btn btn-primary btn-xs">End User Rider</a></td>';
@@ -79,48 +74,87 @@ function displayRider(RiderResult) {
 
 function getJSONData() {
 	console.log("Inside Get JSON Data");
+	var riderDepartment = document.getElementById('rider_depart');
+	
 	var jsonObject = {
-		"id" : "",
-		"name" : "Nungambakkam Rider",
-		"email" : "ajith.roy@gmail.com",
-		"latitude" : "234234",
-		"longitude" : "234234",
-		"notes" : "Rider in omr",
+		"departmentType" : riderDepartment.options[riderDepartment.selectedIndex].text,
 		"address" : {
-			"doorNumber" : "5",
-			"street" : "x Street",
-			"area" : "dunton",
-			"city" : "dunton",
-			"state" : "GB",
-			"country" : "England",
-			"zipcode" : "444555"
+			"doorNumber" : " ",
+			"street" : " ",
+			"area" : document.getElementById("cust_delivery_address").value,
+			"city" : " ",
+			"state" : " ",
+			"country" : " ",
+			"zipcode" : " "
 		},
-		"contactPersonFirstName" : "Ajith",
-		"contactPersonLastName" : "Roy",
-		"contactPersonMiddleName" : "M",
-		"contactPersonSalutation" : "Mr.",
-		"mobileNumber" : "123234234",
-		"telephone" : "323234234",
-		"contactPersonNumber" : "123455"
+		"riderPersonSalutation" : " ",
+		"riderPersonFirstName" : document.getElementById('rider_fname').value,
+		"riderPersonMiddleName" : document.getElementById("rider_mname").value,
+		"riderPersonLastName" : document.getElementById("rider_lname").value,
+		"mobileNumber" : document.getElementById("rider_mobile_no").value,
+		"riderPersonNumber" : " ",
+		//"dateOfBirth" : "",
+		"email" : document.getElementById("rider_email").value,
+		"gender" : $('input[name=customRadioInline1]:checked').val(),
+		"zone" : " ",
+		"riderIdCardNo" : document.getElementById("rider_idcard_no").value
 	};
-
+	console.log("JSON " + JSON.stringify(jsonObject));
 	return jsonObject;
 }
 
 function saveRider() {
+	var xhr = new XMLHttpRequest();
+	xhr.withCredentials = true;
+
+	xhr.addEventListener("readystatechange", function () {
+	  if (this.readyState === 4) {
+	    console.log(this.responseText);
+	  }
+	});
+
+	xhr.open("POST", baseURI + "rider/save");
+	xhr.setRequestHeader("content-type", "application/json");
+	xhr.setRequestHeader("cache-control", "no-cache");
+	xhr.setRequestHeader("access-token", accessToken);
+	xhr.send(getJSONData());
+}
+
+function saveRider2() {
+	var settings = {
+		"async" : true,
+		"crossDomain" : true,
+		"url" : baseURI + 'rider/save?access_token=' + accessToken,
+		"method" : "POST",
+		"headers" : {
+			"content-type" : "application/json",
+			"cache-control" : "no-cache"
+		},
+		"processData" : false,
+		"data" : getJSONData()
+	}
+
+	$.ajax(settings).done(function(response) {
+		console.log(response);
+	});
+}
+
+function saveRiders() {
 	console.log("Inside Save Rider");
 
 	var jsonObj = getJSONData();
-
-	var url_base = baseURI;
-	//accessToken = getToken();
 	$.ajax({
 		'url' : baseURI + 'rider/save',
 		'type' : 'POST',
 		'content-Type' : 'application/json; charset=utf-8',
 		'crossDomain' : true,
 		'data' : JSON.stringify(jsonObj),
-		'dataType' : 'jsonp',
+		'dataType' : 'json',
+		'headers' : {
+			"Content-Type" : "application/json",
+			"Accept" : "application/json",
+			"Authorization" : "OAuth oauth_token=" + accessToken
+		},
 		'success' : function(result) {
 			console.log('Save Rider - Success!\r\n' + result);
 			//Process success actions
@@ -138,3 +172,5 @@ function saveRider() {
 		}
 	});
 }
+
+getToken(getRiderList);

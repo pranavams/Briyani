@@ -143,7 +143,7 @@
 				<div class="col-md-4">
 					<ul class="breadcrumb">
 						<li><i class="fa fa-home"></i><a href="#">Home</a></li>
-                        <li class="active hide_list">List Of Menu / Item</li>
+                        <li class="active hide_list">Add Menu </li>
                         
 						
 					</ul>
@@ -153,54 +153,20 @@
 			<div class="content">
 				<div class="main-header">
                
-					<h2 class="hide_list">List of Menu / Item</h2>
+					
                     
-                    <h2 class="hide_add">Add Menu/Item</h2>
+                    <h2>Add Menu</h2>
                   
 					<em>the first priority information</em>
                     <div class="pull-right">
-                        
+                    	<a href="menu.html" class="btn btn-default btn-sm"><i class="fa fa-arrow-left"></i> Back To List</a>
                         <a href="add_menu_item.html" class="btn btn-info btn-sm"><i class="fa fa-plus"></i> Add Category & Menu</a>
-                        <a href="add_category.html" class="btn btn-info btn-sm"><i class="fa fa-plus"></i> Add Category</a>
                         <a href="add_menu.html" class="btn btn-info btn-sm"><i class="fa fa-plus"></i> Add Menu</a>
                     </div>
 				</div>
 				<hr class="inner-separator" />
                
-                	
-                    <!--- Table Div--->
-                    <div class="main-content table_hide">
-                    <div class="table-responsive">
-                        <table id="contacts_list" class="table table-responsive table-hover tablefontsize cell-border" >
-                          <thead class="table_heading_color">
-                            <tr>
-                                <th>#</th>
-                                <th>Menu Code</th>
-                                <th>Item Code</th>
-                                <th>Menu Name</th>
-                                <th>Item Name</th>
-                                <th>Price</th>
-                                <th>Modify</th>
-                            </tr>
-                         </thead>
-                         <tbody>
-                         	<tr>
-                            	<td>1</td>
-                                <td>CHI0001</td>
-                                <td>CHBIR001</td>
-                                <td>Chicken</td>
-                                <td>Biriyani</td>
-                                <td>$125</td>
-                                <td> <a href="menu_preview.html" class="btn btn-xs btn-default"><i class="fa fa-eye"></i>Details</a></td>
-                            </tr>
-                         </tbody>
-                        </table>
-                    </div>    
-				</div>
-                
-                <!-- Form Div Start--->
-                      
-						<div class="main-content form_hide">
+						<div class="main-content">
                     <div class="inner-page">
                              <div class="col-lg-8 col-sm-6 col-xs-12 center-block float_none">
                              	<div class="panel panel-default">
@@ -211,35 +177,35 @@
                                               <div id="add_menu_div">
                                                 <div class="form-group col-md-12">
                                                 	<hr class="inner-separator" />
-                                                	<h4>Add Menu</h4>
+                                                	<h4>Add Category</h4>
                                                 	<hr class="inner-separator" />
                                                 </div>
                                                 
                                                 <div class="form-group col-md-6">
-                                                	<label for="exampleFormControlSelect1">Menu Code <span class="text-danger">*</span></label>
+                                                	<label for="exampleFormControlSelect1">Category Code <span class="text-danger">*</span></label>
                                                   <input type="text" class="form-control add_menu_field" id="menu_code" name="menu_code" maxlength="80">
                                                 </div>
                                                 
                                                 <div class="form-group col-md-6">
-                                                	<label for="exampleFormControlSelect1">Menu Name <span class="text-danger">*</span></label>
+                                                	<label for="exampleFormControlSelect1">Category Name <span class="text-danger">*</span></label>
                                                   <input type="text" class="form-control add_menu_field" id="menu_name" name="menu_name" maxlength="15">
                                                 </div>
                                                 <div class="form-group col-md-12">
                                                   	 <button type="reset" class="btn btn-danger pull-right" id="reset_button">Cancel</button>
-                                                  	<button type="button" class="btn btn-primary pull-right save_button save_menu" name="add_btn" >Save Menu</button>
-                                                    <button type="button" class="btn btn-primary pull-right save_button add_item_button" name="add_btn" >Add Item</button>
+                                                  	<button type="button" class="btn btn-primary pull-right save_button save_menu" name="add_btn" >Save Category</button>
+                                                    <button type="button" class="btn btn-primary pull-right save_button add_item_button" name="add_btn" >Add Menu</button>
                                                    
                                                   </div>
                                                 </div>
                                                   <div id="add_item_div">
                                                 <div class="form-group col-md-12">
                                                 	<hr class="inner-separator" />
-                                                	<h4>Add Item</h4>
+                                                	<h4>Add Menu</h4>
                                                 	<hr class="inner-separator" />
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                   <div class="form-group">
-                                                    <label for="exampleFormControlSelect1">Menu Name <span class="text-danger">*</span></label>
+                                                    <label for="exampleFormControlSelect1">Category Name <span class="text-danger">*</span></label>
                                                     <select class="form-control selectpicker" id="rider_depart" name="rider_depart" data-live-search="true">
                                                     	<option>*** Select Menu ***</option> 
                                                         <option value="CHI">Chicken</option> 
@@ -250,23 +216,29 @@
                                                   </div>
                                                 </div>
                                                 
+                                                
                                                 <div class="form-group col-md-6">
-                                                	<label for="exampleFormControlSelect1">Item Code <span class="text-danger">*</span></label>
-                                                  <input type="text" class="form-control" id="item_code" name="item_code" maxlength="15">
+                                                	<label for="exampleFormControlSelect1">Menu Name <span class="text-danger">*</span></label>
+                                                  <input type="text" class="form-control" id="menu_name" name="menu_name" maxlength="80">
                                                 </div>
                                                 <div class="clearfix"></div>
+                                                <div class="form-group col-md-6">
+                                                	<label for="exampleFormControlSelect1">Menu Code <span class="text-danger">*</span></label>
+                                                  <input type="text" class="form-control" id="menu_code" name="menu_code" maxlength="15">
+                                                </div>
+                                                
                                                 <div class="form-group col-md-6">
                                                 	<label for="exampleFormControlSelect1">Item Name <span class="text-danger">*</span></label>
                                                   <input type="text" class="form-control" id="item_name" name="item_name" maxlength="15">
                                                 </div>
                                                 
                                                 <div class="form-group col-md-6">
-                                                	<label for="exampleFormControlSelect1">Item Description <span class="text-danger">*</span></label>
+                                                	<label for="exampleFormControlSelect1">Menu Description <span class="text-danger">*</span></label>
                                                   <input type="text" class="form-control" id="item_descri" name="item_descri" maxlength="15">
                                                 </div>
                                                 
                                                 <div class="form-group col-md-6">
-                                                <label for="exampleFormControlSelect1">Item Image <span class="text-danger">*</span></label>
+                                                <label for="exampleFormControlSelect1">Menu Image <span class="text-danger">*</span></label>
                                                   <div class="input-group">
                                                   	 
                                                     <input id="uploadFile" class="form-control" name="item_image" placeholder="Choose File" disabled="disabled">
@@ -366,6 +338,7 @@
             </div>
         </div>
     </div>
+
 
 
 	<!-- Javascript -->

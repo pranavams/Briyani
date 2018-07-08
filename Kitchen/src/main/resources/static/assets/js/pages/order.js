@@ -1,17 +1,12 @@
 /**
  * 
  */
-
-console.log("Order List " + getOrderList());
-
 function getOrderList() {
 	// The baseURI variable is created by the result.base_server_base_uri 
 	// which is returned when getting a token and should be used to 
 	// create the url_base.
-	var url_base = baseURI;
-	//accessToken = getToken();
 	$.ajax({
-		'url' : baseURI + 'order/listAll',
+		'url' : baseURI + 'order/listAll?access_token=' + accessToken,
 		'type' : 'GET',
 		'contentType' : 'x-www-form-urlencoded',
 		'crossDomain' : true,
@@ -166,5 +161,6 @@ function createOrder() {
 			return false;
 		}
 	});
-
 }
+
+getToken(getOrderList);

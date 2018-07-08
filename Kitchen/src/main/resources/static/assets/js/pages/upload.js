@@ -1,6 +1,4 @@
 
-getToken();
-
 $(document).ready(function() {
 
 	$("#btnSubmit").click(function(event) {
@@ -50,23 +48,19 @@ function fire_ajax_submit() {
 
 }
 
-var img = document.createElement('img');
-img.onload = function(e) {
-	ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-	var url = canvas.toDataURL(); // Read succeeds, canvas won't be dirty.
-};
-img.crossOrigin = '';
-img.src = 'http://localhost:63636/api/v1/menu/imageDownload?fileName=1';
-
-function download() {
+var downloadImage = function(accessToken) {
 	// Get form
+	console.log("Access sToken " + accessToken);
+	
 	$.ajax({
 		type : "GET",
-		url : baseURI + "menu/imageDownload",
+		url : baseURI + "image/imageDownload?access_token=" + accessToken +'&id=CHIBR1&type=ITEM',
 		cache : false,
 		timeout : 600000,
 		success : function(data) {
-			console.log("SUCCESS : ", data);
+			var img = document.getElementById('imageMenu');
+			img.src = data;
+			return data;
 		},
 		error : function(e) {
 			$("#result").text(e.responseText);
@@ -75,6 +69,8 @@ function download() {
 		}
 	});
 }
+
+getToken(downloadImage);
 
 function getJSONData() {
 	console.log("Inside Get JSON Data");
@@ -99,7 +95,6 @@ function createUser() {
 	console.log("JSON DATA for Save " + JSON.stringify(jsonObj));
 
 	var url_base = baseURI;
-	//accessToken = getToken();
 	$.ajax({
 		'url' : baseURI + 'user/save',
 		'type' : 'POST',

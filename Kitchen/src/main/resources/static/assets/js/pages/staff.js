@@ -2,7 +2,6 @@
  * 
  */
 
-console.log("Staff List " + getStaffList());
 
 function getStaffList() {
 	// The baseURI variable is created by the result.base_server_base_uri 
@@ -11,7 +10,7 @@ function getStaffList() {
 	var url_base = baseURI;
 	//accessToken = getToken();
 	$.ajax({
-		'url' : baseURI + 'staff/listAll',
+		'url' : baseURI + 'staff/listAll?access_token=' + accessToken,
 		'type' : 'GET',
 		'contentType' : 'x-www-form-urlencoded',
 		'crossDomain' : true,
@@ -144,3 +143,5 @@ function saveStaff() {
 		}
 	});
 }
+
+getToken(getStaffList);

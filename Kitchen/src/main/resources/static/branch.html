@@ -163,8 +163,8 @@
 					<em>the first priority information</em>
                     <div class="pull-right">
                         
-                        <a href="#" class="btn btn-info btn-sm" id="addbranch"><i class="fa fa-plus"></i> Add Branch</a>
-                        <a href="branch.html" class="btn btn-default btn-sm" id="addbranch_list"><i class="fa fa-arrow-left"></i> Back To Branch List</a>
+                        <a href="add_branch.html" class="btn btn-info btn-sm" id="addbranch"><i class="fa fa-plus"></i> Add Branch</a>
+                        <a href="#" class="btn btn-default btn-sm" id="addbranch_list"><i class="fa fa-arrow-left"></i> Back To Branch List</a>
                     </div>
 				</div>
 				<hr class="inner-separator" />
@@ -186,105 +186,25 @@
                                 <th>Modify</th>
                             </tr>
                          </thead>
+                         <tbody>
+                         	<tr>
+                            	<td>1</td>
+                                <td>BRAN001</td>
+                                <td>Biriyani Resturant</td>
+                                <td>+63456789</td>
+                                <td>No234, Thomas Street,<br>Singapore-600056</td>
+                                <td>Thomas</td>
+                                <td>9876543210</td>
+                                <td><a href="branch_preview.html" class="btn btn-xs btn-default"><i class="fa fa-eye"></i>Details</a></td>
+                            </tr>
+                         </tbody>
                         </table>
                     </div>    
 				</div>
                 
                 <!-- Form Div Start--->
                       
-						<div class="main-content form_hide">
-                    <div class="inner-page">
-                             <div class="col-lg-8 col-sm-6 col-xs-12 center-block float_none">
-                             	<div class="panel panel-default">
-                                    <div class="panel-heading quick_notes"></div>
-                                    	<div class="panel-body">
-                                    	      <form id="mainform" method="post" enctype="multipart/form-data" > 
-                                              <div class="form-row">
-                                                <div class="form-group col-md-12">
-                                                	<hr class="inner-separator" />
-                                                	<h4>Branch Information</h4>
-                                                	<hr class="inner-separator" />
-                                                </div>
-                                                
-                                                
-                                                <div class="form-group col-md-6">
-                                                	<label for="exampleFormControlSelect1">Name <span class="text-danger">*</span></label>
-                                                  <input type="text" class="form-control" id="branch_name" name="branch_name" maxlength="80">
-                                                </div>
-                                                
-                                                <div class="form-group col-md-6">
-                                                	<label for="exampleFormControlSelect1">Telephone No <span class="text-danger">*</span></label>
-                                                  <input type="text" class="form-control" id="branch_contact_no" name="branch_contact_no" maxlength="15">
-                                                </div>
-                                                
-                                                 <div class="form-group col-md-6">
-                                                  <label for="exampleFormControlSelect1">Email Id <span class="text-muted">optional</span></label>
-                                                  <input type="email" class="form-control onefieldreq_add" id="branch_email" name="branch_email" >
-                                                </div>
-                                                
-                                                <div class="form-group col-md-6">
-                                                <label for="exampleFormControlSelect1">Address <span class="text-danger">*</span></label>
-                                                  <textarea class="form-control" id="branch_address" name="branch_address" rows="3"></textarea>
-                                                </div>
-                                                <div class="form-group col-md-12">
-                                                	<hr class="inner-separator" />
-                                                	<h4>Additional Information</h4>
-                                                	<hr class="inner-separator" />
-                                                </div>
-                                                <div class="form-group col-md-6">
-                                                	<label for="exampleFormControlSelect1">Contact Person Name <span class="text-danger">*</span></label>
-                                                  <input type="text" class="form-control" id="branch_contact_person" name="branch_contact_person" maxlength="50">
-                                                </div>
-                                                
-                                                <div class="form-group col-md-6">
-                                                	<label for="exampleFormControlSelect1">Contact Person No <span class="text-danger">*</span></label>
-                                                  <input type="text" class="form-control" id="branch_contact_person_no" name="branch_contact_person_no" maxlength="15">
-                                                </div>
-                                                
-                                                <div class="form-group col-md-6">
-                                                	<label for="exampleFormControlSelect1">Latitude <span class="text-danger">*</span></label>
-                                                  <input type="text" class="form-control" id="branch_latitude_no" name="branch_contact_person_no" maxlength="15">
-                                                </div>
-                                                
-                                                <div class="form-group col-md-6">
-                                                	<label for="exampleFormControlSelect1">Longitude <span class="text-danger">*</span></label>
-                                                  <input type="text" class="form-control" id="branch_longitude_no" name="branch_contact_person_no" maxlength="15">
-                                                </div>
-                                                <!-- 
-                                                <div class="form-group col-md-6">
-                                                  <div class="input-group">
-                                                  	
-                                                    <input id="uploadFile" class="form-control" name="nte_addnew_contactpic" placeholder="Choose File" disabled="disabled">
-                                                    <div class="input-group-btn">
-                                                      <div class="fileUpload btn btn-default">
-                                                        <span><i class="glyphicon glyphicon-upload"></i> Upload</span>
-                                                        <input id="uploadBtn" type="file" name="nte_addnew_contactpic" class="upload" />
-                                                      </div>
-                                                    </div>
-                                                  </div><br>
-                                                </div>
-                                                -->
-                                                <div class="form-group col-md-6">
-                                                <label for="exampleFormControlSelect1">Notes <span class="text-danger">*</span></label>
-                                                  <textarea class="form-control" id="branch_notes" name="branch_notes" rows="3"></textarea>
-                                                </div>
-                                               
-                                               
-                                               
-                                                  <div class="form-group col-md-12">
-                                                  	 <button type="reset" class="btn btn-danger pull-right" id="PageRefresh">Cancel</button>
-                                                  	<button type="button" class="btn btn-primary pull-right save_button" onclick = 'saveCloseBranch()' name="add_btn" >Save & Close</button>
-                                                    <button type="button" class="btn btn-primary pull-right save_button" onclick = 'saveBranch()' name="add_btn2">Save & New</button>  
-                                                   
-                                                  </div>
-                                              </div>
-                                            </form>
-                                            
-                                    	</div>
-                              	</div>
-                             </div>                                            
-                            </div>
-                    	</div>
+						
 				</div>
 			</div>
 			<!-- /main -->
@@ -335,10 +255,7 @@
     <script src="assets/js/default.js"></script>
     <script src="assets/js/bootstrap/bootstrapValidator.min.js"></script>
     <script src="assets/js/bootstrap-select.min.js"></script>
-    <script src="assets/js/common_function.js"></script>
-    
-    <script src="assets/js/pages/getToken.js"></script>	
-    <script src="assets/js/pages/branch.js"></script>	
+    <script src="assets/js/common_function.js"></script>	
       	
 		<script type="text/javascript">
         	/// Table Format

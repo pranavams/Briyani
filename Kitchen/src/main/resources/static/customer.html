@@ -143,9 +143,7 @@
 				<div class="col-md-4">
 					<ul class="breadcrumb">
 						<li><i class="fa fa-home"></i><a href="index.html">Home</a></li>
-                        <li class="active hide_list">List of Customer</li>
-                        <li class="active hide_add">Add Customer</li>
-						
+                        <li class="active">List of Customer</li>
 					</ul>
 				</div>
 			</div>
@@ -153,15 +151,11 @@
 			<div class="content">
 				<div class="main-header">
                
-					<h2 class="hide_list">List of Customer</h2>
-                    
-                    <h2 class="hide_add">Add Customer</h2>
-                  
+					<h2>List of Customer</h2>
 					<em>the first priority information</em>
                     <div class="pull-right">
                         
-                        <a href="#" class="btn btn-info btn-sm" id="addbranch"><i class="fa fa-plus"></i> Add Customer</a>
-                        <a href="customer.html" class="btn btn-default btn-sm" id="addbranch_list"><i class="fa fa-arrow-left"></i> Back To List</a>
+                        <a href="add_customer.html" class="btn btn-info btn-sm" id="addbranch"><i class="fa fa-plus"></i> Add Customer</a>
                     </div>
 				</div>
 				<hr class="inner-separator" />
@@ -182,141 +176,21 @@
                                 <th>Modify</th>
                             </tr>
                          </thead>
+                         <tbody>
+                         	<tr>
+                            	<td>1</td>
+                                <td>John</td>
+                                <td>john@gmail.com</td>
+                                <td>+63456789</td>
+                                <td>22/11/1993</td>
+                                 <td>No234, Thomas Street,<br>Singapore-600056</td>
+                                <td> <a href="preview.html" class="btn btn-xs btn-default"><i class="fa fa-eye"></i>Details</a></td>
+                            </tr>
+                         </tbody>
                         </table>
                     </div>    
 				</div>
-                
                 <!-- Form Div Start--->
-                      
-						<div class="main-content form_hide">
-                    <div class="inner-page">
-                             <div class="col-lg-8 col-sm-6 col-xs-12 center-block float_none">
-                             	<div class="panel panel-default">
-                                    <div class="panel-heading quick_notes"></div>
-                                    	<div class="panel-body">
-                                    	      <form id="mainform" method="post" enctype="multipart/form-data" > 
-                                              <div class="form-row">
-                                              <div class="form-group col-md-12">
-                                                	<hr class="inner-separator" />
-                                                	<h4>Personal Information</h4>
-                                                	<hr class="inner-separator" />
-                                                </div>
-                                                <div class="form-group col-md-6">
-                                                	<label for="exampleFormControlSelect1">First Name <span class="text-danger">*</span></label>
-                                                  <input type="text" class="form-control" id="customer_fname" name="customer_fname" maxlength="80">
-                                                </div>
-                                                
-                                                <div class="form-group col-md-6">
-                                                	<label for="exampleFormControlSelect1">Middle Name <span class="text-muted">Optinal</span></label>
-                                                  <input type="text" class="form-control" id="customer_mname" name="customer_mname" maxlength="80">
-                                                </div>
-                                                
-                                                <div class="form-group col-md-6">
-                                                	<label for="exampleFormControlSelect1">Last Name <span class="text-danger">*</span></label>
-                                                  <input type="text" class="form-control" id="customer_lname" name="customer_lname" maxlength="80">
-                                                </div>
-                                                
-                                                
-                                                
-                                                 <div class="form-group col-md-6">
-                                                  <label for="exampleFormControlSelect1">Email Id <span class="text-muted">optional</span></label>
-                                                  <input type="email" class="form-control onefieldreq_add" id="customer_email" name="customer_email" >
-                                                </div>
-                                                
-                                                <div class="form-group col-md-6">
-                                                	<label for="exampleFormControlSelect1">Telephone No <span class="text-muted">optional</span></label>
-                                                  <input type="text" class="form-control" id="customer_telephone_no" name="customer_telephone_no" maxlength="15">
-                                                </div>
-                                                
-                                                <div class="form-group col-md-6">
-                                                	<label for="exampleFormControlSelect1">Mobile No <span class="text-danger">*</span></label>
-                                                  <input type="text" class="form-control" id="customer_mobile_no" name="customer_mobile_no" maxlength="15">
-                                                </div>
-                                                <div class="form-group col-md-12">
-                                                	<hr class="inner-separator" />
-                                                	<h4>Additional Information</h4>
-                                                	<hr class="inner-separator" />
-                                                </div>
-                                                <div class="form-group col-md-6">
-                                                	
-                                                	<div class="form-group col-md-3">
-                                                    <label for="exampleFormControlSelect1">Gender <span class="text-danger">*</span></label>
-                                                  		<div class="custom-control custom-radio custom-control-inline">
-                                                      <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
-                                                      <label class="custom-control-label" for="customRadioInline1">Male</label>
-                                                    </div>
-                                                    </div>
-                                                    <div class="form-group col-md-3">
-                                                        <label for="exampleFormControlSelect1" class="gender_align"> <span class="text-danger"></span></label>
-                                                        <div class="custom-control custom-radio custom-control-inline">
-                                                          <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
-                                                          <label class="custom-control-label" for="customRadioInline2">Female</label>
-                                                        </div>
-                                                    </div>
-                                                    
-                                                    <div class="form-group col-md-3">
-                                                    	<label for="exampleFormControlSelect1" class="gender_align"> <span class="text-danger"></span></label>
-                                                        <div class="custom-control custom-radio custom-control-inline">
-                                                          <input type="radio" id="customRadioInline3" name="customRadioInline1" class="custom-control-input">
-                                                          <label class="custom-control-label" for="customRadioInline2">Other</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                
-                                                <div class="form-group col-md-6">  
-                                                 <div class="form-group"  title="Click to Calender Icon">
-                                                 <label for="exampleFormControlSelect1">DOB <span class="text-danger">*</span></label>
-                                                    <div class="input-group date cal_width" id="data_1">
-                                                    
-                                                    <input type="text" class="form-control" name="customer_dob" id="customer_dob" placeholder="DD/MM/YYYY" readonly/>
-                                                      <span class="input-group-addon">
-                                                        <span class="glyphicon glyphicon-calendar"></span>
-                                                        </span>
-                                                        
-                                                    </div>
-                                                  </div>
-                          						</div>
-                                                
-                                                <div class="form-group col-md-6">
-                                                	<label for="exampleFormControlSelect1">Attach Image<span class="text-danger">*</span></label>
-                                                  <div class="input-group">
-                                                  	
-                                                    <input id="uploadFile" class="form-control" name="customer_img" placeholder="Choose File" disabled="disabled">
-                                                    <div class="input-group-btn">
-                                                      <div class="fileUpload btn btn-default">
-                                                        <span><i class="glyphicon glyphicon-upload"></i> Upload</span>
-                                                        <input id="uploadBtn" type="file" name="customer_img" class="upload" />
-                                                      </div>
-                                                    </div>
-                                                  </div><br>
-                                                </div>
-                                                <div class="clearfix"></div>
-                                                <div class="after-add-more">
-                                               		<div class="form-group col-md-6">
-                                                <label for="exampleFormControlSelect1">Delivery Address <span class="text-danger">*</span> <span class="pull-right add-more cursoer delivery_add"> <i class="fa fa-plus plus_icon"></i> Add More</span></label>
-                                                  <textarea class="form-control" id="cust_delivery_address" name="cust_delivery_address" rows="3"></textarea>
-                                                </div>
-                                                </div>
-                                               
-                                                  <div class="form-group col-md-12">
-                                                  	 <button type="reset" class="btn btn-danger pull-right" id="PageRefresh">Cancel</button>
-                                                  	<button type="button" class="btn btn-primary pull-right save_button" name="add_btn" onclick="saveCloseCustomer()" >Save & Close</button>
-                                                    <button type="button" class="btn btn-primary pull-right save_button" name="add_btn2" onclick="saveCustomer()" >Save & New</button>  
-                                                   
-                                                  </div>
-                                              </div>
-                                            </form>
-                                            	<div class="copy hide delete2">
-                                               		<div class="form-group col-md-6">
-                                                <label for="exampleFormControlSelect1">Billing Address <span class="text-danger">*</span> <span class="pull-right remove2 cursoer_remove billing_remove"> <i class="fa fa-remove plus_icon"></i> Remove</span> </label>
-                                                  <textarea class="form-control" id="cust_building_address" name="cust_building_address" rows="3"></textarea>
-                                                </div>
-                                                </div>
-                                    	</div>
-                              	</div>
-                             </div>                                            
-                            </div>
-                    	</div>
 				</div>
 			</div>
 			<!-- /main -->
@@ -368,21 +242,19 @@
     <script src="assets/js/bootstrap/bootstrapValidator.min.js"></script>
     <script src="assets/js/bootstrap-select.min.js"></script>
     <script src="assets/js/common_function.js"></script>	
-
-    <script src="assets/js/pages/getToken.js"></script>	
-    <script src="assets/js/pages/customer.js"></script>	
       	
 		<script type="text/javascript">
         	/// Table Format
             $('#contacts_list').DataTable( {
                	
                 columns: [
-                    { data: "nte_addnew_mark" }, //0-0
-                    { data: "Customer_Name" }, //1
-                    { data: "Email_Id" }, //2
-                    { data: "Mobile_No" }, //3
-                    { data: "DOB" }, //4
-				    { data: "Address" }, //5
+                    
+                    { data: "sno" }, //1
+                    { data: "name" }, //2
+                    { data: "emailid" }, //3
+                    { data: "mobile" }, //4
+				    { data: "dob" }, //5
+					{ data: "address" }, //5
                     { data: "modify" } //6
                 ],
                 dom: 'lBfrtip',

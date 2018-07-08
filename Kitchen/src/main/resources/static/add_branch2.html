@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Branch | Briyani Application </title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="description" content="Business Management Application by Dude at Work">
+	<meta name="author" content="Touchmark Media">
+	<!-- CSS -->
+	<link href='//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Source+Sans+Pro:400&subset=latin' rel='stylesheet' type='text/css'>
+    <link href="../for_auditor/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../for_auditor/assets/css/bootstrap-datepicker3.css" rel="stylesheet">
+	<link href="../for_auditor/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../for_auditor/assets/js/plugins/export_record/jquery.dataTables.css">
+    <link rel="stylesheet" href="../for_auditor/assets/js/plugins/export_record/buttons.dataTables.min.css" /> 
+
+	<link href="../for_auditor/assets/css/main.css" rel="stylesheet" type="text/css">
+	<link href="../for_auditor/assets/css/style.css" rel="stylesheet" type="text/css">
+    <link href="../for_auditor/assets/css/bootstrap-tagsinput.css">
+    <link href="../for_auditor/assets/css/bootstrapValidator.min.css">
+	<!-- Fav and touch icons -->
+	<link rel="shortcut icon" href="../for_auditor/assets/img/notepad.png">
+    <link rel="stylesheet" href="../for_auditor/assets/css/bootstrap-select.min.css" />
+    <style type="text/css">
+	.investment-summary { 
+	padding-top: 15px; padding-bottom: 15px; 
+	}
+	a:focus, a:hover {
+    color: #23527c;
+    text-decoration: none;
+	}
+	.typeahead, .tt-query, .tt-hint {
+	font-size: 14px;
+	outline: medium none;
+	padding: 5px 12px;
+	width: 360px;
+	}
+	.tt-dropdown-menu {
+	background-color: #FFFFFF;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	margin: 0 0 0 0px;
+	padding: 8px 0;
+	width: 360px;
+	}
+	.margin_left {
+		margin-left:0px !important;
+	}
+/*	.logo_align {
+		width:27%;
+	}
+*/
+	</style>
+</head>
+
+<body class="sidebar-fixed topnav-fixed dashboard">
+	<!-- WRAPPER -->
+	<div id="wrapper" class="wrapper">
+		
+      <!-- Menu Bar-->
+      
+      	<!-- TOP BAR -->
+
+
+
+
+<div class="top-bar navbar-fixed-top">
+<div class="container">
+    <div class="clearfix">
+         <a href="javascript:;" class="pull-left toggle-sidebar-collapse hidden-lg hidden-mde"><i class="fa fa-bars"></i></a> <!-- toggle-sidebar-collapse -->
+        <!--logo -->
+        <div class="pull-left left logo">
+            <a href="../for_auditor/index.html" class="logo_name">Authentic Arab St Biriyani</a>
+            <h1 class="sr-only">Application Dashboard</h1>
+        </div>
+        <!-- end logo -->
+        <div class="pull-right right">
+            <!-- search box -->
+            
+            <!-- end search box -->
+            <!-- top-bar-right -->
+            <div class="top-bar-right">
+                
+                <!-- logged user and the menu -->
+                <div class="logged-user">
+                            <div class="btn-group">
+                                <a href="javascript:;" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-power-off"></i>
+                                    <span class="name">
+                                   Logout
+                                    
+                                </a>
+                                
+                            </div>
+                        </div>
+                <!-- end logged user and the menu -->
+            </div>
+            <!-- end top-bar-right -->
+        </div>
+    </div>
+</div>
+<!-- /container -->
+</div>
+<!-- END TOP BAR -->
+<!-- LEFT SIDEBAR -->
+<div id="left-sidebar" class="left-sidebar left_sidebar">
+<div class="sidebar-minified js-toggle-minified">
+    <i class="fa fa-arrows-h"></i>
+</div>
+<!-- main-nav -->
+   
+        <div class="sidebar-scroll">
+            <nav class="main-nav">
+                <ul class="main-menu">
+                            <li ><a href="../for_auditor/index.html"><i class="fa fa-dashboard fa-fw"></i><span class="text">Dashboard</span></a></li>
+                            
+                            <li ><a href="../for_auditor/customer.html"><i class="fa fa-user-plus fa-fw"></i><span class="text">Customer </span></a></li>
+                            
+                            <li><a href="../for_auditor/order_user.html"><i class="fa fa-list"></i><span class="text">List Of End User Order</span></a></li>
+                            
+                            <li class="active"><a href="../for_auditor/branch.html"><i class="fa fa-university fa-fw"></i><span class="text">Branch</span></a></li>
+                            
+                             <li ><a href="../for_auditor/order.html"><i class="fa fa-list fa-fw"></i><span class="text">List Of Branch Order</span></a> </li>
+                     		
+                             <li ><a href="../for_auditor/rider.html"><i class="fa fa-motorcycle fa-fw"></i><span class="text">Rider</span></a></li>
+                             
+                             <li ><a href="../for_auditor/menu.html"><i class="fa fa-list-alt fa-fw"></i><span class="text">Menu</span></a></li>
+                             
+                             <li ><a href="../for_auditor/staff.html"><i class="fa fa-user fa-fw"></i><span class="text">Staff</span></a></li>
+                            
+                        </ul>
+            </nav>
+        </div>
+       
+    </div>
+
+
+<!-- END LEFT SIDEBAR -->
+
+
+		<!-- MAIN CONTENT WRAPPER expanded-->   
+		<div id="main-content-wrapper" class="content-wrapper content_wwrapper">
+                    
+			<div class="row">
+				<div class="col-md-4">
+					<ul class="breadcrumb">
+						<li><i class="fa fa-home"></i><a href="#">Home</a></li>
+                        <li class="active hide_list">Name of the Branches</li>
+                        <li class="active hide_add">Add Branch</li>
+						
+					</ul>
+				</div>
+			</div>
+			<!-- main -->
+			<div class="content">
+				<div class="main-header">
+               
+					
+                    
+                    <h2>Add Branch</h2>
+                  
+					<em>the first priority information</em>
+                    <div class="pull-right">
+                        
+                       
+                        <a href="../for_auditor/branch.html" class="btn btn-default btn-sm" id="addbranch_list"><i class="fa fa-arrow-left"></i> Back To Branch List</a>
+                    </div>
+				</div>
+				<hr class="inner-separator" />
+               
+                	
+                    <!--- Table Div--->
+                    
+                
+                <!-- Form Div Start--->
+                      
+						<div class="main-content">
+                    <div class="inner-page">
+                             <div class="col-lg-8 col-sm-6 col-xs-12 center-block float_none">
+                             	<div class="panel panel-default">
+                                    <div class="panel-heading quick_notes"></div>
+                                    	<div class="panel-body">
+                                    	      <form id="mainform" method="post" enctype="multipart/form-data" > 
+                                              <div class="form-row">
+                                                <div class="form-group col-md-12">
+                                                	<hr class="inner-separator" />
+                                                	<h4>Branch Information</h4>
+                                                	<hr class="inner-separator" />
+                                                </div>
+                                                
+                                                
+                                                <div class="form-group col-md-6">
+                                                	<label for="exampleFormControlSelect1">Name <span class="text-danger">*</span></label>
+                                                  <input type="text" class="form-control" id="branch_name" name="branch_name" maxlength="80">
+                                                </div>
+                                                
+                                                <div class="form-group col-md-6">
+                                                	<label for="exampleFormControlSelect1">Telephone No <span class="text-danger">*</span></label>
+                                                  <input type="text" class="form-control" id="branch_contact_no" name="branch_contact_no" maxlength="15">
+                                                </div>
+                                                
+                                                 <div class="form-group col-md-6">
+                                                  <label for="exampleFormControlSelect1">Email Id <span class="text-muted">optional</span></label>
+                                                  <input type="email" class="form-control onefieldreq_add" id="branch_email" name="branch_email" >
+                                                </div>
+                                                
+                                                <div class="form-group col-md-6">
+                                                <label for="exampleFormControlSelect1">Address <span class="text-danger">*</span></label>
+                                                  <textarea class="form-control" id="branch_address" name="branch_address" rows="3"></textarea>
+                                                </div>
+                                                <div class="form-group col-md-12">
+                                                	<hr class="inner-separator" />
+                                                	<h4>Additional Information</h4>
+                                                	<hr class="inner-separator" />
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                	<label for="exampleFormControlSelect1">Contact Person Name <span class="text-danger">*</span></label>
+                                                  <input type="text" class="form-control" id="branch_contact_person" name="branch_contact_person" maxlength="50">
+                                                </div>
+                                                
+                                                <div class="form-group col-md-6">
+
+                                                	<label for="exampleFormControlSelect1">Contact Person No <span class="text-danger">*</span></label>
+                                                  <input type="text" class="form-control" id="branch_contact_person_no" name="branch_contact_person_no" maxlength="15">
+                                                </div>
+                                                
+                                                <div class="form-group col-md-6">
+                                                	<label for="exampleFormControlSelect1">Latitude <span class="text-danger">*</span></label>
+                                                  <input type="text" class="form-control" id="branch_latitude_no" name="branch_contact_person_no" maxlength="15">
+                                                </div>
+                                                
+                                                <div class="form-group col-md-6">
+                                                	<label for="exampleFormControlSelect1">Longitude <span class="text-danger">*</span></label>
+                                                  <input type="text" class="form-control" id="branch_longitude_no" name="branch_contact_person_no" maxlength="15">
+                                                </div>
+                                                
+                                                <div class="form-group col-md-6">
+                                                  <div class="input-group">
+                                                  	
+                                                    <input id="uploadFile" class="form-control" name="nte_addnew_contactpic" placeholder="Choose File" disabled="disabled">
+                                                    <div class="input-group-btn">
+                                                      <div class="fileUpload btn btn-default">
+                                                        <span><i class="glyphicon glyphicon-upload"></i> Upload</span>
+                                                        <input id="uploadBtn" type="file" name="nte_addnew_contactpic" class="upload" />
+                                                      </div>
+                                                    </div>
+                                                  </div><br>
+                                                </div>
+                                                
+                                                <div class="form-group col-md-6">
+                                                <label for="exampleFormControlSelect1">Notes <span class="text-danger">*</span></label>
+                                                  <textarea class="form-control" id="branch_notes" name="branch_address" rows="3"></textarea>
+                                                </div>
+                                               
+                                               
+                                               
+                                                  <div class="form-group col-md-12">
+                                                  	 <button type="reset" class="btn btn-danger pull-right" id="PageRefresh">Cancel</button>
+                                                  	<button type="button" class="btn btn-primary pull-right save_button" name="add_btn" >Save & Close</button>
+                                                    <button type="button" class="btn btn-primary pull-right save_button" name="add_btn2">Save & New</button>  
+                                                   
+                                                  </div>
+                                              </div>
+                                            </form>
+                                            
+                                    	</div>
+                              	</div>
+                             </div>                                            
+                            </div>
+                    	</div>
+				</div>
+			</div>
+			<!-- /main -->
+		</div>
+		<!-- END CONTENT WRAPPER -->
+	</div>
+	<!-- END WRAPPER -->
+    
+    <!-- Delete Popup-->
+
+<div class="modal fade" id="deleteDATA" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-sm center-block" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Please confirm your action</h4>
+                </div>
+                <div class="modal-body receiving-delete-data">
+                    <div class='col-lg-12'>This action cannot be revoked...!!!<br /><br />
+                        <a class='btn btn-default btn-sm'><i class="fa fa-check"></i> Yes</a>
+                        <a class='btn btn-default btn-sm' data-dismiss='modal' style='margin-left:20px'><i class="fa fa-remove"></i> No</a>
+                    </div>
+               </div>
+            </div>
+        </div>
+    </div>
+
+
+	<!-- Javascript -->
+    <script src="../for_auditor/assets/js/jquery/jquery-2.1.0.min.js"></script>
+	<script src="../for_auditor/assets/js/bootstrap/bootstrap.js"></script>
+    <script src="../for_auditor/assets/js/plugins/modernizr/modernizr.js"></script>
+    <script src="../for_auditor/assets/js/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="../for_auditor/assets/js/plugins/bootstrap-tour/bootstrap-tour.custom.js"></script>
+    <script type="text/javascript" src="../for_auditor/assets/js/plugins/export_record/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="../for_auditor/assets/js/plugins/export_record/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="../for_auditor/assets/js/plugins/export_record/jszip.min.js"></script>
+    <script type="text/javascript" src="../for_auditor/assets/js/plugins/export_record/pdfmake.min.js"></script>
+    <script type="text/javascript" src="../for_auditor/assets/js/plugins/export_record/vfs_fonts.js"></script>
+    <script type="text/javascript" src="../for_auditor/assets/js/plugins/export_record/buttons.html5.min.js"></script>
+    <script src="../for_auditor/assets/js/jquery.buttonLoader.js"></script>
+	<script src="../for_auditor/assets/js/plugins/jquery-gritter/jquery.gritter.min.js"></script>
+    <script src="../for_auditor/assets/chart/dist/Chart.bundle.js"></script>
+    <script src="../for_auditor/assets/chart/dist/utils.js"></script>
+    <script src="../for_auditor/assets/js/plugins/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+    <script src="../for_auditor/assets/js/common.js"></script>
+    <script src="../for_auditor/assets/js/bootstrap-tagsinput.min.js"></script>
+    <script src="../for_auditor/assets/js/default.js"></script>
+    <script src="../for_auditor/assets/js/bootstrap/bootstrapValidator.min.js"></script>
+    <script src="../for_auditor/assets/js/bootstrap-select.min.js"></script>
+    <script src="../for_auditor/assets/js/common_function.js"></script>	
+      	
+		<script type="text/javascript">
+        	/// Table Format
+            $('#contacts_list').DataTable( {
+               	
+                columns: [
+                    { data: "nte_addnew_mark" }, //0-0
+                    { data: "name" }, //1
+                    { data: "mobile" }, //2
+                    { data: "emailid" }, //3
+                    { data: "address" }, //4
+				    { data: "Name_contact" }, //5
+					{ data: "category" }, //5
+                    { data: "modify" } //6
+                ],
+                dom: 'lBfrtip',
+				buttons: [
+					'excelHtml5',
+					'csvHtml5',
+					'pdfHtml5'
+				]
+            } );
+    </script>
+</body>
+</html>

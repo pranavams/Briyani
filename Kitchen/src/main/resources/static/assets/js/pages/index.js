@@ -2,16 +2,12 @@
  * 
  */
 
-getStaffList();
-
 function getStaffList() {
 	// The baseURI variable is created by the result.base_server_base_uri 
 	// which is returned when getting a token and should be used to 
 	// create the url_base.
-	var url_base = baseURI;
-	//accessToken = getToken();
 	$.ajax({
-		'url' : baseURI + 'staff/listRecent',
+		'url' : baseURI + 'staff/listRecent?access_token=' + accessToken,
 		'type' : 'GET',
 		'contentType' : 'x-www-form-urlencoded',
 		'crossDomain' : true,
@@ -72,15 +68,12 @@ function displayStaff(StaffResult) {
 	}
 }
 
-getRiderList();
 function getRiderList() {
 	// The baseURI variable is created by the result.base_server_base_uri 
 	// which is returned when getting a token and should be used to 
 	// create the url_base.
-	var url_base = baseURI;
-	//accessToken = getToken();
 	$.ajax({
-		'url' : baseURI + 'rider/listRecent',
+		'url' : baseURI + 'rider/listRecent?access_token=' + accessToken,
 		'type' : 'GET',
 		'contentType' : 'x-www-form-urlencoded',
 		'crossDomain' : true,
@@ -138,16 +131,12 @@ function displayRider(riderResult) {
 	}
 }
 
-getMenuList();
-
 function getMenuList() {
 	// The baseURI variable is created by the result.base_server_base_uri 
 	// which is returned when getting a token and should be used to 
 	// create the url_base.
-	var url_base = baseURI;
-	//accessToken = getToken();
 	$.ajax({
-		'url' : baseURI + 'item/listRecent',
+		'url' : baseURI + 'item/listRecent?access_token=' + accessToken,
 		'type' : 'GET',
 		'contentType' : 'x-www-form-urlencoded',
 		'crossDomain' : true,
@@ -195,16 +184,12 @@ function displayMenu(MenuResult) {
 	}
 }
 
-getStatistics();
-
 function getStatistics() {
 	// The baseURI variable is created by the result.base_server_base_uri 
 	// which is returned when getting a token and should be used to 
 	// create the url_base.
-	var url_base = baseURI;
-	//accessToken = getToken();
 	$.ajax({
-		'url' : baseURI + 'statistics/get',
+		'url' : baseURI + 'statistics/get?access_token=' + accessToken,
 		'type' : 'GET',
 		'contentType' : 'x-www-form-urlencoded',
 		'crossDomain' : true,
@@ -238,17 +223,12 @@ function displayStatistics(result){
 	document.getElementById("overallNumberOfPurchaseRequest").innerHTML = '<strong>' + result['overallNumberOfPurchaseRequest'] + '</strong>';
 }
 
-
-getOrderList();
-
 function getOrderList() {
 	// The baseURI variable is created by the result.base_server_base_uri 
 	// which is returned when getting a token and should be used to 
 	// create the url_base.
-	var url_base = baseURI;
-	//accessToken = getToken();
 	$.ajax({
-		'url' : baseURI + 'order/listTodayOrders',
+		'url' : baseURI + 'order/listTodayOrders?access_token=' + accessToken,
 		'type' : 'GET',
 		'contentType' : 'x-www-form-urlencoded',
 		'crossDomain' : true,
@@ -293,3 +273,10 @@ function displayOrder(OrderResult) {
 
 	}
 }
+
+getToken(getStaffList);
+getToken(getRiderList);
+getToken(getMenuList);
+getToken(getStatistics);
+getToken(getOrderList);
+

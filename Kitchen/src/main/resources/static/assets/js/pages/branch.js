@@ -63,7 +63,7 @@ function displayBranch(branchResult) {
 		tabCell.innerHTML = branch[i]['contactPersonNumber'];
 		
 		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = '<a href="#" class="btn btn-xs btn-default"><i class="fa fa-pencil"></i></a> <a href="#" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#deleteDATA"><i class="fa fa-remove"></i></a> <a	href="branch_preview.html" class="btn btn-xs btn-info"><i		class="fa fa-eye"></i></a>';
+		tabCell.innerHTML = '<a href="branch_preview.html?id=' + branch[i]['id'] + '" class="btn btn-xs btn-default"><i class="fa fa-eye"></i>Details</a>';
 	}
 }
 

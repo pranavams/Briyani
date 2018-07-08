@@ -5,6 +5,7 @@ function getCustomerList() {
 	// The baseURI variable is created by the result.base_server_base_uri 
 	// which is returned when getting a token and should be used to 
 	// create the url_base.
+	
 	$.ajax({
 		'url' : baseURI + 'customer/get/' + 'CUST1' + '?access_token=' + accessToken,
 		'type' : 'GET',
@@ -27,6 +28,7 @@ function getCustomerList() {
 function displayCustomer(data){
 	console.log("Data " + JSON.stringify(data));
 	data = data.customer[0];
+	
 	address = data.address;
 	document.getElementById('customer_fname').value = data.firstName;
 	document.getElementById('customer_mname').value = data.middleName;

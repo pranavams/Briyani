@@ -21,6 +21,7 @@ function getCustomerList() {
 				XMLHttpRequest.statusText);
 			return false;
 		}
+		
 	});
 }
 

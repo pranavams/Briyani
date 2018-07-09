@@ -30,6 +30,7 @@ export class MenuPage implements OnInit {
   menuItems: any = [];
   data : any = {
   };
+  accessToken: string;
   
   ngOnInit(){
   	this.getMenuItems();
@@ -39,7 +40,8 @@ export class MenuPage implements OnInit {
 	  this.restToken()
 	  .subscribe(
 		(tokenResponse) => {
-			this.restItemsServiceGetMenuItems(tokenResponse.access_token)
+      this.accessToken = tokenResponse.access_token;
+			this.restItemsServiceGetMenuItems()
 				.subscribe(
 					menuItems => {
 					  this.menuItems = menuItems.items;
@@ -51,9 +53,9 @@ export class MenuPage implements OnInit {
   }
 
   // Rest Items Service: Read all MENU Items
-  restItemsServiceGetMenuItems(accessToken) {
+  restItemsServiceGetMenuItems() {
     return this.http
-      .get<any[]>(this.menuItemsUrl + "?access_token=" + accessToken)
+      .get<any[]>(this.menuItemsUrl + "?access_token=" + this.accessToken)
       .pipe(map(data => data));
   }
     

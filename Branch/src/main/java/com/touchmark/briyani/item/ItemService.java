@@ -9,15 +9,25 @@ import org.springframework.stereotype.Service;
 public class ItemService {
 	private ItemRepository repository;
 	private MenuRepository mRepository;
+	private ImageRepository iRepository;
 
 	@Autowired
-	public ItemService(ItemRepository repository, MenuRepository mRepository) {
+	public ItemService(ItemRepository repository, MenuRepository mRepository, ImageRepository iRepository) {
 		this.repository = repository;
 		this.mRepository = mRepository;
+		this.iRepository = iRepository;
 	}
 
 	public List<Item> getAll() {
 		return Item.builder().build().transformEntities(repository.findAll());
+	}
+
+	public List<Item> getAllWithImages() {
+		List<ItemEntity> itemsFromDB = repository.findAll();
+		for (ItemEntity itemEntity : itemsFromDB) {
+			itemEntity.setImage(iRepository.findByTypeAndTypeId("item", itemEntity.getId()).get(0).getImage());
+		}
+		return Item.builder().build().transformEntities(itemsFromDB);
 	}
 
 	public ItemEntity save(Item object) {

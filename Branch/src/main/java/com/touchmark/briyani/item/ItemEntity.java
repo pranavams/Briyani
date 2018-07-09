@@ -3,7 +3,6 @@ package com.touchmark.briyani.item;
 import java.io.Serializable;
 import java.time.OffsetDateTime;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,8 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import com.touchmark.briyani.commons.AddressEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,6 +28,7 @@ import lombok.ToString;
 @Entity
 @Table(name = "item")
 public class ItemEntity implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
@@ -51,4 +49,6 @@ public class ItemEntity implements Serializable {
 
 	@Column(name = "lastUpdatedDate")
 	private OffsetDateTime lastUpdatedDate;
+	
+	private byte[] image;
 }

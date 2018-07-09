@@ -21,6 +21,7 @@ public class Item {
 	private float price;
 	private String menuName;
 	private String menuId;
+	private byte[] image;
 
 	public ItemEntity createEntity() {
 		return ItemEntity.builder().description(description).name(name).price(price).lastUpdatedDate(OffsetDateTime.now()).build();
@@ -29,6 +30,7 @@ public class Item {
 	public Item transformEntity(ItemEntity entity) {
 		return Item.builder().id(transformId(entity.getId())).name(entity.getName())
 				.description(entity.getDescription()).price(entity.getPrice()).menuName(entity.getMenu().getName())
+				.image(entity.getImage())
 				.menuId(transformMenuId(entity.getMenu().getId())).build();
 	}
 

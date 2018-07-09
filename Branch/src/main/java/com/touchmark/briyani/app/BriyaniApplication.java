@@ -32,7 +32,7 @@ public class BriyaniApplication {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/api/**")
-                .allowedOrigins("https://briyani-web-ui.cfapps.io/", "http://localhost:36363", "http://localhost", "http://localhost:8100")
+                .allowedOrigins("https://briyani-web-ui.touchmarkmedia.in", "https://biriyani-web-ui.cfapps.io/", "http://localhost:36363", "http://localhost", "http://localhost:8100")
 				.allowedMethods("HEAD", "GET", "PUT", "POST", "DELETE", "PATCH", "OPTONS");
 			}
 		};

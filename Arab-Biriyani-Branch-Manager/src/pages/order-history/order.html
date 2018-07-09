@@ -23,29 +23,31 @@
         </ion-segment-button>
     </ion-segment>
     <div class="ongoing" *ngIf="order == 'ongoing'">
-        <ion-card no-margin (click)="trackPage('TrackPage')">
-            <ion-card-header>
-                <h1 class="orderId">PO# 1101110</h1>
-                <ion-badge item-end>PACKING</ion-badge>
-            </ion-card-header>
-            <ion-card-content>
-                <table width="100%" margin-bottom>
-                    <thead>
-                        <tr>
-                            <th>Items</th>
-                            <th>Qty</th>
-                            <th>Amount</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>3</td>
-                            <td>80</td>
-                            <td>$ 1165.44</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </ion-card-content>
+        <ion-card no-margin *ngFor="let item of pendingOrders">
+	        <ion-card no-margin (click)="trackPage('TrackPage', item.orderId)">
+	            <ion-card-header>
+	                <h1 class="orderId">{{item.orderId}}</h1>
+	                <ion-badge item-end>{{item.orderStatus}}</ion-badge>
+	            </ion-card-header>
+	            <ion-card-content>
+	                <table width="100%" margin-bottom>
+	                    <thead>
+	                        <tr>
+	                            <th>Items</th>
+	                            <th>Qty</th>
+	                            <th>Amount</th>
+	                        </tr>
+	                    </thead>
+	                    <tbody>
+	                        <tr>
+                            <td>{{item.orderDetails.length}}</td>
+                            <td>{{calculateQuantity(item.orderId, 'pending')}}</td>
+                            <td>${{item.totalAmount}}</td>
+	                        </tr>
+	                    </tbody>
+	                </table>
+	            </ion-card-content>
+	        </ion-card>
         </ion-card>
     </div>
     <div class="ongoing" *ngIf="order == 'completed'">
@@ -64,8 +66,8 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{{item.item}}</td>
-                            <td>{{item.quantity}}</td>
+                            <td>{{item.orderDetails.length}}</td>
+                            <td>{{calculateQuantity(item.orderId, 'completed')}}</td>
                             <td>${{item.totalAmount}}</td>
                         </tr>
                     </tbody>

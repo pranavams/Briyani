@@ -1,5 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
-import { IonicPage, Nav, NavController } from 'ionic-angular';
+import {Component, ViewChild} from '@angular/core';
+import {IonicPage, Nav, NavController, NavParams} from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -8,12 +8,18 @@ import { IonicPage, Nav, NavController } from 'ionic-angular';
 })
 
 export class TrackPage {
-  constructor(public navCtrl: NavController) { }
+
+  order: any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.order = this.navParams.get('items')
+    console.log(this.order);
+  }
 
   backButtonClick() {
     this.navCtrl.pop();
   }
-  ordersPage(){
+  ordersPage() {
     this.navCtrl.push('OrderPage');
   }
 }

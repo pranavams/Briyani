@@ -10,25 +10,19 @@
     <ion-card no-margin>
         <ion-card-header>
             Purchase Order #
-            <h1 class="orderId">1101110</h1>
+            <h1 class="orderId">{{order.orderId}}</h1>
         </ion-card-header>
         <ion-card-content>
             <h3 margin-bottom>Items</h3>
-            <div>
-                <h1>Chicken Biriyani</h1>
-                <h1 text-right>x 20</h1>
-            </div>
-            <div>
-                <h1>Mutton Biriyani</h1>
-                <h1 text-right>x 10</h1>
-            </div>
-            <div>
-                <h1>Egg Biriyani</h1>
-                <h1 text-right>x 10</h1>
-            </div>
+            <ion-card no-margin *ngFor="let item of order.orderDetails">
+	            <div>
+	                <h1>{{item.item.menuName}} {{item.item.name}}</h1>
+	                <h1 text-right>x {{item.quantity}}</h1>
+	            </div>
+            </ion-card>
             <div class="totalAmount" margin-top>
                 <h1>Total</h1>
-                <h1 text-right>$ 852.54</h1>
+                <h1 text-right>$ {{order.totalAmount}}</h1>
             </div>
         </ion-card-content>
     </ion-card>

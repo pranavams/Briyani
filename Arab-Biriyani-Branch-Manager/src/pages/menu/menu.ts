@@ -1,8 +1,8 @@
-import { Component, ViewChild } from '@angular/core';
-import { IonicPage, Nav, NavController } from 'ionic-angular';
+import {Component, ViewChild} from '@angular/core';
+import {IonicPage, Nav, NavController} from 'ionic-angular';
 
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {map} from 'rxjs/operators';
 
 export interface CountdownTimer {
   seconds: number;
@@ -28,63 +28,63 @@ export class MenuPage implements OnInit {
   notification: any = 4;
   menuItemsUrl = "http://localhost:63636/api/v1/item/listAll";
   menuItems: any = [];
-  data : any = {
+  data: any = {
   };
   accessToken: string;
-  
-  ngOnInit(){
-  	this.getMenuItems();
-  }
-  
-  getMenuItems(): void {
-	  this.restToken()
-	  .subscribe(
-		(tokenResponse) => {
-      this.accessToken = tokenResponse.access_token;
-			this.restItemsServiceGetMenuItems()
-				.subscribe(
-					menuItems => {
-					  this.menuItems = menuItems.items;
-					  console.log(menuItems);
-					}
-				)		
-		}
-	);		
+
+  ngOnInit() {
+    this.getMenuItems();
   }
 
+  getMenuItems(): void {
+    this.restToken()
+      .subscribe(
+      (tokenResponse) => {
+        this.accessToken = tokenResponse.access_token;
+        this.restItemsServiceGetMenuItems()
+          .subscribe(
+          menuItems => {
+            this.menuItems = menuItems.items;
+            console.log(menuItems);
+          }
+          )
+      }
+      );
+  }
+  
   // Rest Items Service: Read all MENU Items
   restItemsServiceGetMenuItems() {
     return this.http
       .get<any[]>(this.menuItemsUrl + "?access_token=" + this.accessToken)
       .pipe(map(data => data));
   }
-    
+
   getAuthToken() {
-	return "Basic " + btoa('arab-briyani-client:devglan-secret');;
+    return "Basic " + btoa('arab-briyani-client:devglan-secret');;
   }
-  
+
   getAuthTokenParameters() {
-	return new HttpParams()
-    .set('username', 'Alex123')
-    .set('password', 'password')
-	.set('grant_type', 'password');
+    return new HttpParams()
+      .set('username', 'Alex123')
+      .set('password', 'password')
+      .set('grant_type', 'password');
   }
-  
-  restToken() {	  
-	  return this.http
-	  .post<any[]> ("http://localhost:63636/oauth/token", 
-			this.getAuthTokenParameters().toString(), {
-			headers : new HttpHeaders().set('content-type', 'application/x-www-form-urlencoded')
-									.set('authorization', this.getAuthToken())
-									.set('cache-control', 'no-cache')
-			})
-	  .pipe(map(token => token));
+
+  restToken() {
+    return this.http
+      .post<any[]>("http://localhost:63636/oauth/token",
+      this.getAuthTokenParameters().toString(), {
+        headers: new HttpHeaders().set('content-type', 'application/x-www-form-urlencoded')
+          .set('authorization', this.getAuthToken())
+          .set('cache-control', 'no-cache')
+      })
+      .pipe(map(token => token));
   }
-  
+
   constructor(public navCtrl: NavController, private http: HttpClient) {
-    
+
   }
-        
+
   ionViewDidLoad() {
     this.initTimer();
     this.cartCount();
@@ -117,7 +117,7 @@ export class MenuPage implements OnInit {
 
   timerTick() {
     setTimeout(() => {
-      if (!this.timer.runTimer) { return; }
+      if (!this.timer.runTimer) {return;}
       this.timer.secondsRemaining--;
       this.timer.displayTime = this.getSecondsAsDigitalClock(this.timer.secondsRemaining);
       if (this.timer.secondsRemaining > 0) {
@@ -143,28 +143,28 @@ export class MenuPage implements OnInit {
     return hoursString + ':' + minutesString + ':' + secondsString;
   }
 
-  add(itemIndex){
+  add(itemIndex) {
     this.menuItems[itemIndex].quantity++;
     this.cartCount();
   }
 
-  remove(itemIndex){
-    if(this.menuItems[itemIndex].quantity > 0){
+  remove(itemIndex) {
+    if (this.menuItems[itemIndex].quantity > 0) {
       this.menuItems[itemIndex].quantity--;
     }
     this.cartCount();
   }
 
-  cartCount(){
+  cartCount() {
     this.cart = 0;
     this.menuItems.forEach(element => {
       this.cart = element.quantity + this.cart;
     });
-    if(this.cart > 99)
+    if (this.cart > 99)
       this.cart = '99+';
   }
 
-  placeOrder(menu){
-    this.navCtrl.push('CartPage',{items: this.menuItems});
+  placeOrder(menu) {
+    this.navCtrl.push('CartPage', {items: this.menuItems});
   }
 }

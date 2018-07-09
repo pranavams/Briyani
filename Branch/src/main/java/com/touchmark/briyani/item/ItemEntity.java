@@ -49,6 +49,4 @@ public class ItemEntity implements Serializable {
 
 	@Column(name = "lastUpdatedDate")
 	private OffsetDateTime lastUpdatedDate;
-	
-	private byte[] image;
 }

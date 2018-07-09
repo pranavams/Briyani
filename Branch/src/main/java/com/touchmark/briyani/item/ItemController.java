@@ -27,12 +27,6 @@ public class ItemController {
 		return ResponseEntity.ok(ItemResponse.builder().items(this.service.getAll()).build());
 	}
 
-	@GetMapping
-	@RequestMapping("/listAllWithImages")
-	public ResponseEntity<ItemResponse> getAllWithImages() {
-		return ResponseEntity.ok(ItemResponse.builder().items(this.service.getAllWithImages()).build());
-	}
-
 	@PostMapping
 	@RequestMapping("/save")
 	@PreAuthorize("hasAuthority('BRANCH_MANAGER')")

@@ -23,14 +23,14 @@
         <ion-card no-margin *ngFor="let item of tempArr">
             <ion-card-header>
                 <ion-icon [name]="item.icon"></ion-icon>
-                <h1>{{item.paymentStatus}}</h1>
+                <h1>{{item.paymentStatus | titlecase}} for Order</h1>
             </ion-card-header>
             <ion-card-content>
                 <p>
-                    <span>{{item.orderId}}</span>
+                    <span>Purchase Order #{{item.orderId}}</span>
                     <span class="amount" float-right>${{item.totalAmount}}</span>
                 </p>
-                <p class="date">{{item.dateAndTime}}</p>
+                <p class="date">On {{item.dateAndTime | date:'dd MMM yyyy HH:mm a'}}</p>
             </ion-card-content>
         </ion-card>
     </div> 

@@ -30,7 +30,7 @@ export class PaymentHistoryPage {
     this.restToken()
       .subscribe(
       (tokenResponse) => {
-        this.accessToken = tokenResponse.access_token;
+        this.accessToken = tokenResponse.access_token; 
         this.paymentHistoryRetrival(paymentStatus)
           .subscribe(
           paymentHistory => {

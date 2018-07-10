@@ -169,6 +169,42 @@ function stringToDate(_date, _format, _delimiter) {
 	return formatedDate;
 }
 
+function dateToString(dateobj, format) {
+	var year = dateobj.getFullYear();
+	var month = ("0" + (dateobj.getMonth() + 1)).slice(-2);
+	var date = ("0" + dateobj.getDate()).slice(-2);
+	var hours = ("0" + dateobj.getHours()).slice(-2);
+	var minutes = ("0" + dateobj.getMinutes()).slice(-2);
+	var seconds = ("0" + dateobj.getSeconds()).slice(-2);
+	var day = dateobj.getDay();
+	var months = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
+	var dates = [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" ];
+	var converted_date = "";
+
+	switch (format) {
+	case "YYYY-MM-DD":
+		converted_date = year + "-" + month + "-" + date;
+		break;
+	case "YYYY-MMM-DD DDD":
+		converted_date = year + "-" + months[parseInt(month) - 1] + "-" + date + " " + dates[parseInt(day)];
+		break;
+	case "DDD MMM DD, YYYY":
+		converted_date = dates[parseInt(day)] + " " + months[parseInt(month) - 1] + " " + date + ", " + year;
+		break;
+	case "DD/MM/YYYY":
+		converted_date = date + "/" + month + "/" + year;
+		break;
+	case "MM/DD/YYYY":
+		converted_date = month + "/" + date + "/" + year;
+		break;
+	case "YYYY/MM/DD":
+		converted_date = year + "/" + month + "/" + date;
+		break;
+	}
+
+	return converted_date;
+}
+
 $.urlParam = function(name) {
 	var results = new RegExp('[\?&]' + name + '=([^&#]*)')
 		.exec(window.location.search);

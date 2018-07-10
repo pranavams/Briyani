@@ -19,7 +19,6 @@ import com.touchmark.briyani.commons.Log;
 @RequestMapping(path = "/api/v1/user/")
 @PreAuthorize("hasAuthority('BRANCH_USER')")
 public class UserController {
-
 	private UserService service;
 
 	@Autowired

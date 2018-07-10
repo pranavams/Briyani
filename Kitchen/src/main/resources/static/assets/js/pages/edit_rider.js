@@ -43,8 +43,8 @@ function displayRider(data){
 	document.getElementById('vehicle_model').value = data.vehicleModel;
 
 	setTheGenderValue(data.gender);
-	document.getElementById('rider_address').innerHTML = address.doorNumber +',' + address.street + ', ' + address.area
-	 + ',' + address.city+' ,' + address.state+' . ';
+	document.getElementById('rider_address').innerHTML = address.doorNumber +' ' + address.street + ' ' + address.area
+	 + ' ' + address.city+' ' + address.state+'  ' + address.country + ' ' + address.zipcode;
 }
 
 function setTheGenderValue(gender) {

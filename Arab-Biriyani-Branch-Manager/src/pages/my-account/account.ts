@@ -12,7 +12,7 @@ import {map} from 'rxjs/operators';
 
 export class AccountPage {
   notification: any = 4;
-  serviceUrl = "http://localhost:63636/api/v1/branch/get/";
+  serviceUrl = "https://biriyani-services.cfapps.io/api/v1/branch/get/";
   accessToken: string;
 
   details: any = {}
@@ -24,18 +24,18 @@ export class AccountPage {
   }
 
   getData(data: string): void {
-    this.restToken()
-      .subscribe(
-      (tokenResponse) => {
-        this.accessToken = tokenResponse.access_token;//ignore
+    //this.restToken()
+    //  .subscribe(
+    //  (tokenResponse) => {
+    //    this.accessToken = tokenResponse['access_token'];//ignore
         this.dataRetrival(data)
           .subscribe(
           responseData => {
-            this.details = responseData.branch[0];//ignore
+            this.details = responseData['branch'][0];//ignore
             console.log(responseData);
           }
-          )
-      });
+          );
+     // });
   }
 
   dataRetrival(data: string) {
@@ -57,7 +57,7 @@ export class AccountPage {
 
   restToken() {
     return this.http
-      .post<any[]>("http://localhost:63636/oauth/token",
+      .post<any[]>("https://biriyani-services.cfapps.io/oauth/token",
       this.getAuthTokenParameters().toString(), {
         headers: new HttpHeaders().set('content-type', 'application/x-www-form-urlencoded')
           .set('authorization', this.getAuthToken())

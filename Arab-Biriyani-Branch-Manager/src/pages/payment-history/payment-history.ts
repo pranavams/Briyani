@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, ViewChild, OnInit} from '@angular/core';
 import {IonicPage, Nav, NavController} from 'ionic-angular';
 
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
@@ -10,11 +10,11 @@ import {map} from 'rxjs/operators';
   templateUrl: 'payment-history.html'
 })
 
-export class PaymentHistoryPage {
+export class PaymentHistoryPage implements OnInit {
   category: any = 'all';
   notification: any = 4;
 
-  paymentHistoryUrl = "http://localhost:63636/api/v1/order/listAll/";
+  paymentHistoryUrl = "https://biriyani-services.cfapps.io/api/v1/order/listAll/";
   paymentHistory: any = [];
   tempArr: any = this.paymentHistory;
   data: any = {};
@@ -23,23 +23,23 @@ export class PaymentHistoryPage {
   constructor(public navCtrl: NavController, private http: HttpClient) {}
 
   ngOnInit() {
-    this.getPaymentHistory("completed");
+    this.getData("completed");
   }
 
-  getPaymentHistory(paymentStatus: string): void {
-    this.restToken()
-      .subscribe(
-      (tokenResponse) => {
-        this.accessToken = tokenResponse.access_token; 
+  getData(paymentStatus: string): void {
+    //this.restToken()
+    //  .subscribe(
+    //  (tokenResponse) => {
+    //    this.accessToken = tokenResponse.access_token; 
         this.paymentHistoryRetrival(paymentStatus)
           .subscribe(
           paymentHistory => {
-            this.paymentHistory = paymentHistory.order;
-            this.tempArr = paymentHistory.order;
+            this.paymentHistory = paymentHistory['order'];
+            this.tempArr = paymentHistory['order'];
             console.log(paymentHistory);
           }
-          )
-      });
+          );
+    //  });
   }
 
   paymentHistoryRetrival(paymentStatus: string) {
@@ -61,7 +61,7 @@ export class PaymentHistoryPage {
 
   restToken() {
     return this.http
-      .post<any[]>("http://localhost:63636/oauth/token",
+      .post<any[]>("https://biriyani-services.cfapps.io/oauth/token",
       this.getAuthTokenParameters().toString(), {
         headers: new HttpHeaders().set('content-type', 'application/x-www-form-urlencoded')
           .set('authorization', this.getAuthToken())

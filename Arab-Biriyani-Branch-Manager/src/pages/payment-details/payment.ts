@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { IonicPage, Nav, NavController } from 'ionic-angular';
 
 @IonicPage()
@@ -7,7 +7,12 @@ import { IonicPage, Nav, NavController } from 'ionic-angular';
   templateUrl: 'payment.html'
 })
 
-export class PaymentPage {
+export class PaymentPage implements OnInit {
+  
+    ngOnInit(){
+      
+    }
+  
     constructor(public navCtrl: NavController){}
 
     nextPage(){

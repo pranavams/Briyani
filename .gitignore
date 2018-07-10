@@ -10,6 +10,7 @@ gradle.properties
 **/node_modules
 **/www/**
 **/www
+**/.sourcemaps
 
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 

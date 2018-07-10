@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
@@ -13,7 +13,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   selector: 'page-order-popover',
   templateUrl: 'order-popover.html',
 })
-export class OrderPopoverPage {
+export class OrderPopoverPage implements OnInit {
+  
+  ngOnInit(){
+    
+  }
+  
   show: boolean = true;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     if(navParams.data.value != 'ongoing')

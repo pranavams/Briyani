@@ -42,8 +42,8 @@ function displayCustomer(data){
 	setTheGenderValue(data.gender);
 	document.getElementById('customer_mobile_no').value = data.mobileNumber;
 	document.getElementById('customer_dob').value = stringToDate(data.dateOfBirth, 'dd/mm/yyyy', '-')	;
-	document.getElementById('cust_delivery_address').innerHTML = address.doorNumber +',' + address.street + ', ' + address.area
-	 + ',' + address.city+' ,' + address.state+' . ';
+	document.getElementById('cust_delivery_address').innerHTML = address.doorNumber +' ' + address.street + ' ' + address.area
+	 + ' ' + address.city+' ' + address.state+' ' + address.country + ' ' + address.zipcode;
 }
 
 function setTheGenderValue(gender) {

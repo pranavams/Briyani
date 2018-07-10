@@ -35,8 +35,8 @@ function displayCustomer(data){
 	document.getElementById('dateOfBirth').innerHTML = data.dateOfBirth;
 	
 	document.getElementById('gender').innerHTML = data.gender;
-	document.getElementById('address').innerHTML = address.doorNumber+',' + address.street + ', ' + address.area
-	 + ',' + address.city+' ,' + address.state+' . ';
+	document.getElementById('address').innerHTML = address.doorNumber+' ' + address.street + ' ' + address.area
+	 + ' ' + address.city+' ' + address.state+' ' + address.country + ' ' + address.country + ' ' + address.zipcode;
 }
 
 function edit() {

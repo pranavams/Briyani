@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, ViewChild, OnInit} from '@angular/core';
 import {IonicPage, Nav, NavController, PopoverController} from 'ionic-angular';
 
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
@@ -10,14 +10,14 @@ import {map} from 'rxjs/operators';
   templateUrl: 'order.html'
 })
 
-export class OrderPage {
+export class OrderPage implements OnInit {
   order: any = 'ongoing';
   notification: any = 4;
   completedOrders: any = [];
-  completedOrdersURL = "http://localhost:63636/api/v1/order/listOrders/completed";
+  completedOrdersURL = "https://biriyani-services.cfapps.io/api/v1/order/listOrders/completed";
 
   pendingOrders: any = [];
-  pendingOrdersURL = "http://localhost:63636/api/v1/order/listOrdersOngoing/completed";
+  pendingOrdersURL = "https://biriyani-services.cfapps.io/api/v1/order/listOrdersOngoing/completed";
   accessToken: string;
 
   constructor(public navCtrl: NavController, public popup: PopoverController, private http: HttpClient) {}
@@ -42,35 +42,35 @@ export class OrderPage {
   }
 
   getCompletedOrders(): void {
-    this.restToken()
-      .subscribe(
-      (tokenResponse) => {
-        this.accessToken = tokenResponse.access_token;
+    //this.restToken()
+    //  .subscribe(
+    //  (tokenResponse) => {
+    //   this.accessToken = tokenResponse['access_token'];
         this.restOrdersGetCompletedOrders()
           .subscribe(
           completedOrderList => {
             console.log(completedOrderList);
-            this.completedOrders = completedOrderList.order;
+            this.completedOrders = completedOrderList['order'];
           }
-          )
-      }
-      );
+          );
+     // }
+     // );
   }
 
   getPendingOrders(): void {
-    this.restToken()
-      .subscribe(
-      (tokenResponse) => {
-        this.accessToken = tokenResponse.access_token;
+    //this.restToken()
+    //  .subscribe(
+    //  (tokenResponse) => {
+    //    this.accessToken = tokenResponse['access_token'];
         this.restOrdersGetPendingOrders()
           .subscribe(
           pendingOrderList => {
             console.log(pendingOrderList);
-            this.pendingOrders = pendingOrderList.order;
+            this.pendingOrders = pendingOrderList['order'];
           }
-          )
-      }
-      );
+          );
+      //}
+      //);
   }
 
   restOrdersGetCompletedOrders() {
@@ -98,7 +98,7 @@ export class OrderPage {
 
   restToken() {
     return this.http
-      .post<any[]>("http://localhost:63636/oauth/token",
+      .post<any[]>("https://biriyani-services.cfapps.io/oauth/token",
       this.getAuthTokenParameters().toString(), {
         headers: new HttpHeaders().set('content-type', 'application/x-www-form-urlencoded')
           .set('authorization', this.getAuthToken())
@@ -117,16 +117,8 @@ export class OrderPage {
     console.log(ordersToSend);
     
     this.navCtrl.push(page, ordersToSend);
-    
-//    this.navCtrl.push(page, {
-//      items: [{
-//        title: "Chicken Biriyani",
-//        price: "10.99",
-//        quantity: 50,
-//        imgSrc: "/assets/imgs/chicken-biryani.jpg"
-//      }]
-//    });
   }
+  
   segmentChanged($event) {
     console.log(this.order)
   }

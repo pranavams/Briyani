@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, ViewChild, OnInit} from '@angular/core';
 import {IonicPage, Nav, NavController} from 'ionic-angular';
 
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
@@ -18,6 +18,7 @@ export interface CountdownTimer {
   selector: 'page-menu',
   templateUrl: 'menu.html'
 })
+  
 export class MenuPage implements OnInit {
   timer: CountdownTimer;
   counter: any = '00:00:00';
@@ -26,30 +27,30 @@ export class MenuPage implements OnInit {
   hours: number;
   cart: any = 0;
   notification: any = 4;
-  menuItemsUrl = "http://localhost:63636/api/v1/item/listAll";
+  menuItemsUrl = "https://biriyani-services.cfapps.io/api/v1/item/listAll";
   menuItems: any = [];
   data: any = {
   };
   accessToken: string;
 
   ngOnInit() {
-    this.getMenuItems();
+    this.getData();
   }
 
-  getMenuItems(): void {
-    this.restToken()
-      .subscribe(
-      (tokenResponse) => {
-        this.accessToken = tokenResponse.access_token;
+  getData(): void {
+    //this.restToken()
+    //  .subscribe(
+    //  (tokenResponse) => {
+    //    this.accessToken = tokenResponse['access_token'];
         this.restItemsServiceGetMenuItems()
           .subscribe(
           menuItems => {
-            this.menuItems = menuItems.items;
+            this.menuItems = menuItems['items'];
             console.log(menuItems);
           }
-          )
-      }
-      );
+          );
+    //  }
+    //  );
   }
   
   // Rest Items Service: Read all MENU Items
@@ -72,7 +73,7 @@ export class MenuPage implements OnInit {
 
   restToken() {
     return this.http
-      .post<any[]>("http://localhost:63636/oauth/token",
+      .post<any[]>("https://biriyani-services.cfapps.io/oauth/token",
       this.getAuthTokenParameters().toString(), {
         headers: new HttpHeaders().set('content-type', 'application/x-www-form-urlencoded')
           .set('authorization', this.getAuthToken())

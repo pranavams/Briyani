@@ -20,8 +20,8 @@ public class RiderService {
 		return Rider.builder().build().transformEntities(repository.findAll());
 	}
 	
-	public RiderEntity save(Rider object) {
-		return this.repository.save(object.createEntity());
+	public Rider save(Rider object) {
+		return Rider.builder().build().transformEntities(this.repository.save(object.createEntity()));
 	}
 
 	public String delete(String id) {

@@ -47,8 +47,8 @@ public class BranchController {
 	@PostMapping
 	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE, path = "/save", produces = MediaType.APPLICATION_JSON_VALUE)
 	@PreAuthorize("hasAuthority('SYSTEM_MANAGER')")
-	public ResponseEntity<BranchEntity> saveBranch(@RequestBody Branch branch) {
-		BranchEntity createdBranch = this.branchService.saveBranch(branch);
+	public ResponseEntity<Branch> saveBranch(@RequestBody Branch branch) {
+		Branch createdBranch = this.branchService.saveBranch(branch);
 		return ResponseEntity.ok(createdBranch);
 	}
 

@@ -23,8 +23,8 @@ public class BranchService {
 				.transformEntities(branchRepository.findById(Branch.builder().id(id).build().DBID()).get());
 	}
 
-	public BranchEntity saveBranch(Branch branch) {
-		return this.branchRepository.save(branch.createEntity());
+	public Branch saveBranch(Branch branch) {
+		return Branch.builder().build().transformEntities(this.branchRepository.save(branch.createEntity()));
 	}
 
 }

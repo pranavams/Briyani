@@ -212,22 +212,22 @@
                                                 	<label for="exampleFormControlSelect1">Menu Description <span class="text-danger">*</span></label>
                                                   <input type="text" class="form-control" id="item_descri" name="item_descri" maxlength="15">
                                                 </div>
-                                                
                                                 <div class="form-group col-md-6">
                                                 <label for="exampleFormControlSelect1">Menu Image <span class="text-danger">*</span></label>
                                                   <div class="input-group">
-                                                  	 
-                                                    <input id="uploadFile" class="form-control" name="item_image" placeholder="Choose File" disabled="disabled">
-                                                    <div class="input-group-btn">
-                                                    
-                                                      <div class="fileUpload btn btn-default">
-                                                        <span><i class="glyphicon glyphicon-upload"></i> Upload</span>
-                                                        <input id="uploadBtn" type="file" name="item_image" class="upload" />
-                                                      </div>
-                                                    </div>
+														<input type="hidden" name="entityId" id = "entityId" /><input type="hidden" name="entityType" value = "item"/>
+	                                                    <input id="entityImage" class="form-control" name="entityImage" type="file" placeholder="Choose File" >
+	                                                    <!--  
+	                                                    <div class="input-group-btn">
+	                                                    
+	                                                      <div class="fileUpload btn btn-default">
+	                                                        <span><i class="glyphicon glyphicon-upload"></i> Upload</span>
+	                                                        <input id="uploadBtn" type="file" name="item_image" class="upload" />
+	                                                      </div>
+	                                                    </div>
+	                                                    -->
                                                   </div><br>
                                                 </div>
-                                                
                                                 <div class="form-group col-md-6">
                                                 <label for="exampleFormControlSelect1">Price ($) <span class="text-danger">*</span></label>
                                                   <input type="text" class="form-control" id="item_price" name="item_price" maxlength="15">

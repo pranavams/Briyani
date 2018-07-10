@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +18,6 @@ import com.touchmark.briyani.item.ImageEntity;
 
 @RestController
 @RequestMapping(path = "/api/v1/image")
-@PreAuthorize("hasAuthority('BRANCH_USER')")
 public class ImageController {
 	private ImageService service;
 
@@ -29,12 +27,12 @@ public class ImageController {
 	}
 
 	@PostMapping
-	@RequestMapping("/imageUpload")
-	public ResponseEntity<String> upload(@RequestParam("type") String type, @RequestParam("id") String id,
-			@RequestParam("files") MultipartFile uploadfile) {
+	@RequestMapping(path =  "/imageUpload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	public ResponseEntity<String> upload(@RequestParam("entityType") String type, @RequestParam("entityId") String id,
+			@RequestParam("entityImage") MultipartFile uploadfile) {
 		try {
 			Log.log("ImageController", "Upload", "Parameters " + id + " - " + type);
-			this.service.saveImage(id, type, uploadfile);
+			this.service.saveImage(id, type.trim(), uploadfile);
 			return ResponseEntity.ok().body("Image Saved");
 		} catch (Exception e) {
 			Log.error("ImageController", "upload", "Exception " + e, e);

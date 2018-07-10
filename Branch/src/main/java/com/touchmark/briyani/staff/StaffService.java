@@ -20,8 +20,8 @@ public class StaffService {
 		return Staff.builder().build().transformEntities(repository.findAll());
 	}
 
-	public StaffEntity save(Staff object) {
-		return this.repository.save(object.createEntity());
+	public Staff save(Staff object) {
+		return Staff.builder().build().transformEntities(this.repository.save(object.createEntity()));
 	}
 
 	public String delete(String id) {

@@ -20,7 +20,7 @@ public class ItemService {
 		return Item.builder().build().transformEntities(repository.findAll());
 	}
 
-	public ItemEntity save(Item object) {
+	public Item save(Item object) {
 		MenuEntity menuEntity = null;
 		List<MenuEntity> menuNames = mRepository.findByName(object.getMenuName());
 		if (menuNames == null || menuNames.size() == 0) {
@@ -31,7 +31,7 @@ public class ItemService {
 
 		ItemEntity itemEntity = object.createEntity();
 		itemEntity.setMenu(menuEntity);
-		return this.repository.save(itemEntity);
+		return Item.builder().build().transformEntity(this.repository.save(itemEntity));
 	}
 
 	public List<Item> getRecent() {

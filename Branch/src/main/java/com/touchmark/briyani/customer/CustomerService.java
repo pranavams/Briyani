@@ -20,8 +20,8 @@ public class CustomerService {
 		return Customer.builder().build().transformEntities(repository.findAll());
 	}
 
-	public CustomerEntity save(Customer object) {
-		return this.repository.save(object.createEntity());
+	public Customer save(Customer object) {
+		return Customer.builder().build().transformEntities(this.repository.save(object.createEntity()));
 	}
 
 	public String delete(String id) {

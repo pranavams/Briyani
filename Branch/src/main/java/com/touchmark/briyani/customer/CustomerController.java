@@ -40,8 +40,8 @@ public class CustomerController {
 
 	@PostMapping
 	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE, path = "/save", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<CustomerEntity> saveBranch(@RequestBody Customer object) {
-		CustomerEntity created = this.service.save(object);
+	public ResponseEntity<Customer> save(@RequestBody Customer object) {
+		Customer created = this.service.save(object);
 		return ResponseEntity.ok(created);
 	}
 

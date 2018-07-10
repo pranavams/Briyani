@@ -35,8 +35,8 @@ public class RiderController {
 	@PostMapping
 	@RequestMapping("/save")
 	@PreAuthorize("hasAuthority('BRANCH_MANAGER')")
-	public ResponseEntity<RiderEntity> save(@RequestBody Rider object) {
-		RiderEntity created = this.service.save(object);
+	public ResponseEntity<Rider> save(@RequestBody Rider object) {
+		Rider created = this.service.save(object);
 		return ResponseEntity.ok(created);
 	}
 

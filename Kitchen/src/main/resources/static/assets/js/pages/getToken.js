@@ -2,13 +2,13 @@
  * 
  */
 
-//var kitchenBaseURI = 'https://briyani-web-ui.cfapps.io/';
-//var baseURI = 'https://briyani-services.cfapps.io/api/v1/';
-//var tokenURL = 'https://briyani-services.cfapps.io/oauth/token';
+//var kitchenBaseURI = 'https://biriyani-web-ui.cfapps.io/';
+//var baseURI = 'https://biriyani-services.cfapps.io/api/v1/';
+//var tokenURL = 'https://biriyani-services.cfapps.io/oauth/token';
 
 var kitchenBaseURI = 'http://localhost:36363/'
-var baseURI = 'http://localhost:63636/api/v1/';
-var tokenURL = 'http://localhost:63636/oauth/token';
+var baseURI = 'http://localhost:18181/api/v1/';
+var tokenURL = 'http://localhost:18181/oauth/token';
 
 var accessToken = '';
 function getAuthToken() {
@@ -18,6 +18,10 @@ function getAuthToken() {
 }
 
 var getToken = function(callback) {
+	return callback('');
+}
+
+var getTokens = function(callback) {
 	var settings = {
 		"async" : true,
 		"crossDomain" : true,

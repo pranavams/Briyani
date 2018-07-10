@@ -41,8 +41,8 @@ public class StaffController {
 	@PostMapping
 	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE, path = "/save", produces = MediaType.APPLICATION_JSON_VALUE)
 	@PreAuthorize("hasAuthority('BRANCH_MANAGER')")
-	public ResponseEntity<StaffEntity> save(@RequestBody Staff object) {
-		StaffEntity created = this.service.save(object);
+	public ResponseEntity<Staff> save(@RequestBody Staff object) {
+		Staff created = this.service.save(object);
 		return ResponseEntity.ok(created);
 	}
 

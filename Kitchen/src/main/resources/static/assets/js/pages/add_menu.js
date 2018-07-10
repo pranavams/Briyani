@@ -34,11 +34,8 @@ function saveMenu(toClose) {
 		'data' : JSON.stringify(jsonObj),
 		'dataType' : 'json',
 		'success' : function(result) {
-			$.gritter.add({
-				class_name : 'gritter-success',
-				title : 'Success!',
-				text : '<p style="font-size: 14px;">Menu Saved successfully!</p>',
-			});
+			console.log(JSON.stringify(result));
+			imageUpload(result.id, 'image/imageUpload?access_token=' + accessToken, "Menu Save Successfully", "Menu Added Image upload Failed, use edit menu to save the image");
 			clearItem();
 			return result;
 		},

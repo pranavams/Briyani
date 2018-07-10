@@ -36,11 +36,11 @@ public class Branch {
 		AddressEntity addressEntity = AddressEntity.builder().area(address.getArea()).city(address.getCity())
 				.country(address.getCountry()).doorNumber(address.getDoorNumber()).state(address.getState())
 				.street(address.getStreet()).zipcode(address.getZipcode()).build();
-		return BranchEntity.builder().contactPersonFirstName(contactPersonFirstName).lastUpdatedDate(OffsetDateTime.now())
-				.contactPersonLastName(contactPersonLastName).contactPersonMiddleName(contactPersonMiddleName)
-				.contactPersonNumber(contactPersonNumber).contactPersonSalutation(contactPersonSalutation).email(email)
-				.latitude(latitude).longitude(longitude).mobileNumber(mobileNumber).name(name).notes(notes)
-				.telephone(telephone).address(addressEntity).build();
+		return BranchEntity.builder().contactPersonFirstName(contactPersonFirstName)
+				.lastUpdatedDate(OffsetDateTime.now()).contactPersonLastName(contactPersonLastName)
+				.contactPersonMiddleName(contactPersonMiddleName).contactPersonNumber(contactPersonNumber)
+				.contactPersonSalutation(contactPersonSalutation).email(email).latitude(latitude).longitude(longitude)
+				.mobileNumber(mobileNumber).name(name).notes(notes).telephone(telephone).address(addressEntity).build();
 	}
 
 	public Branch transformEntities(BranchEntity entity) {
@@ -73,5 +73,21 @@ public class Branch {
 
 	public Long DBID() {
 		return Long.parseLong(id.substring(4));
+	}
+
+	public String getContactPersonSalutation() {
+		return this.contactPersonSalutation == null ? "" : this.contactPersonSalutation;
+	}
+
+	public String getContactPersonFirstName() {
+		return this.contactPersonFirstName == null ? "" : this.contactPersonFirstName;
+	}
+
+	public String getContactPersonMiddleName() {
+		return this.contactPersonMiddleName == null ? "" : this.contactPersonMiddleName;
+	}
+
+	public String getContactPersonLastName() {
+		return this.contactPersonLastName == null ? "" : this.contactPersonLastName;
 	}
 }

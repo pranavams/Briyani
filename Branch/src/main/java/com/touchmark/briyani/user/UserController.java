@@ -46,6 +46,15 @@ public class UserController {
 	}
 
 	@GetMapping
+	@RequestMapping("/getByUserName/{userName}")
+	public ResponseEntity<UserResponse> getByUserName(@PathVariable("userName") String userName) {
+		Log.log("UserController", "get", "Parameter Received " + userName);
+		UserResponse user = UserResponse.builder().users(Arrays.asList(this.service.findByUsername(userName))).build();
+		Log.log("UserController", "get", "User To Send " + user);
+		return ResponseEntity.ok(user);
+	}
+
+	@GetMapping
 	@RequestMapping("/getAllByType/{type}")
 	public ResponseEntity<UserResponse> getByType(@PathVariable("type") String type) {
 		Log.log("UserController", "get", "Parameter Received " + type);

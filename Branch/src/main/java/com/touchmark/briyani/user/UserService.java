@@ -42,6 +42,20 @@ public class UserService implements UserDetailsService {
 		}
 	}
 
+	public com.touchmark.briyani.user.User findByUsername(String username) {
+		try {
+			Log.log("UserService", "LoadUser", "User Name " + username);
+			List<UserEntity> findByUserName = userRepository.findByUserName(username);
+			UserEntity user = findByUserName.get(0);
+			com.touchmark.briyani.user.User retrievedUser = com.touchmark.briyani.user.User.builder().build().transformEntity(user);
+			Log.log("UserService", "LoadUser", "User details " + retrievedUser);
+			return retrievedUser;
+		} catch (Exception ex) {
+			Log.error("UserService", "findByUserName", "Exception while Fetching User Details", ex);
+			throw new RuntimeException("User Not Found");
+		}
+	}
+
 	public UserEntity save(com.touchmark.briyani.user.User user) {
 		return this.userRepository.save(user.createEntity());
 	}

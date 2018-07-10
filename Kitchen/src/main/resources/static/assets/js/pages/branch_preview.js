@@ -35,8 +35,8 @@ function displayBranch(data){
 	document.getElementById('branch_contactPerson').innerHTML = data.contactPersonFirstName;
 	document.getElementById('branch_contactPersonMob').innerHTML = data.mobileNumber;
 	
-	document.getElementById('branch_address').innerHTML = address.doorNumber+',' + address.street + ', ' + address.area
-	 + ',' + address.city+' ,' + address.state+' . ';
+	document.getElementById('branch_address').innerHTML = address.doorNumber+' ' + address.street + ' ' + address.area
+	 + ' ' + address.city +' ' + address.state + ' ' + address.country + ' ' + address.zipcode;
 }
 
 function edit() {

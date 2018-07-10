@@ -2,13 +2,13 @@
  * 
  */
 
-var kitchenBaseURI = 'https://biriyani-web-ui.cfapps.io/';
-var baseURI = 'https://biriyani-services.cfapps.io/api/v1/';
-var tokenURL = 'https://biriyani-services.cfapps.io/oauth/token';
+//var kitchenBaseURI = 'https://biriyani-web-ui.cfapps.io/';
+//var baseURI = 'https://biriyani-services.cfapps.io/api/v1/';
+//var tokenURL = 'https://biriyani-services.cfapps.io/oauth/token';
 
-//var kitchenBaseURI = 'http://localhost:36363/'
-//var baseURI = 'http://localhost:18181/api/v1/';
-//var tokenURL = 'http://localhost:18181/oauth/token';
+var kitchenBaseURI = 'http://localhost:36363/'
+var baseURI = 'http://localhost:18181/api/v1/';
+var tokenURL = 'http://localhost:18181/oauth/token';
 
 var accessToken = '';
 function getAuthToken() {

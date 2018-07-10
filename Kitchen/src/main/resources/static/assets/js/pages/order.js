@@ -66,7 +66,7 @@ function displayOrder(OrderResult) {
 				Order[i]['branch']['address']['zipcode'];
 
 				tabCell = tr.insertCell(-1);
-				tabCell.innerHTML = '<a href="#" class="btn btn-xs btn-default" >Not Approve</a>';
+				tabCell.innerHTML = '<a href="order_details.html?id=' + Order[i]['orderId'] + '" class="btn btn-xs btn-default">' + Order[i]['orderStatus'] + '</a> ';
 			} else {
 
 				tabCell = tr.insertCell(-1);

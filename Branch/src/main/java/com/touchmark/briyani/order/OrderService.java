@@ -83,14 +83,12 @@ public class OrderService {
 	}
 
 	public List<Order> getOrdersForCustomer(String id) {
-		long customerID = Long.parseLong(id.substring(4));
-		List<OrderEntity> orders = getItemsInOrders(repository.findByCustomerId(customerID));
-		return Order.builder().build().transformEntities(orders);
+		return Order.builder().build().transformEntities(getItemsInOrders(repository.findByCustomerId(Customer.builder().id(id).build().DBID())));
 	}
 
 	public OrderEntity createOrder(CreateOrder object) {
-		BranchEntity branch = this.branchRepository
-				.findById(Branch.builder().id(object.getBranchID()).build().DBID()).get();
+		BranchEntity branch = this.branchRepository.findById(Branch.builder().id(object.getBranchID()).build().DBID())
+				.get();
 		CustomerEntity customer = this.customerRepository
 				.findById(Customer.builder().id(object.getCustomerID()).build().DBID()).get();
 		OrderEntity order = OrderEntity.builder().branch(branch).customer(customer).couponCode(object.getCouponCode())
@@ -98,23 +96,16 @@ public class OrderService {
 
 		List<OrderDetailEntity> orderDetails = new ArrayList<>(object.getOrderDetails().size());
 
-		float totalPrice = 0;
+		float totalPrice = calculateTotalPriceForAnOrder(object, order, orderDetails);
 
-		for (OrderDetail orderDetail : object.getOrderDetails()) {
-			ItemEntity item = iRepository
-					.findById(Item.builder().id(orderDetail.getItem().getId()).build().DBID()).get();
-			totalPrice += item.getPrice() * orderDetail.getQuantity();
-			orderDetails.add(OrderDetailEntity.builder().item(item).quantity(orderDetail.getQuantity())
-					.unitPrice(item.getPrice()).orderId(order.getOrderId()).build());
-		}
 		order.setTaxAmount(totalPrice * 0.06f);
 		order.setTaxPercentage(6);
 		order.setTotalAmount(totalPrice * 1.06f);
 		repository.save(order);
 
 		for (OrderDetail orderDetail : object.getOrderDetails()) {
-			ItemEntity item = iRepository
-					.findById(Item.builder().id(orderDetail.getItem().getId()).build().DBID()).get();
+			ItemEntity item = iRepository.findById(Item.builder().id(orderDetail.getItem().getId()).build().DBID())
+					.get();
 			totalPrice += item.getPrice() * orderDetail.getQuantity();
 			orderDetailRepository.save(OrderDetailEntity.builder().item(item).quantity(orderDetail.getQuantity())
 					.unitPrice(item.getPrice()).orderId(order.getOrderId()).build());
@@ -123,6 +114,19 @@ public class OrderService {
 		Log.log("OrderService", "CreateOrder", "Order To Create " + order);
 
 		return order;
+	}
+
+	private float calculateTotalPriceForAnOrder(CreateOrder object, OrderEntity order,
+			List<OrderDetailEntity> orderDetails) {
+		float totalPrice = 0;
+		for (OrderDetail orderDetail : object.getOrderDetails()) {
+			ItemEntity item = iRepository.findById(Item.builder().id(orderDetail.getItem().getId()).build().DBID())
+					.get();
+			totalPrice += item.getPrice() * orderDetail.getQuantity();
+			orderDetails.add(OrderDetailEntity.builder().item(item).quantity(orderDetail.getQuantity())
+					.unitPrice(item.getPrice()).orderId(order.getOrderId()).build());
+		}
+		return totalPrice;
 	}
 
 	public List<Order> getRecent() {
@@ -134,24 +138,19 @@ public class OrderService {
 	}
 
 	public List<Order> getOrders(String orderStatus) {
-		List<OrderEntity> allOrders = getItemsInOrders(repository.findByOrderStatus(orderStatus));
-		return Order.builder().build().transformEntities(allOrders);
+		return Order.builder().build().transformEntities(getItemsInOrders(repository.findByOrderStatus(orderStatus)));
 	}
 
 	public List<Order> getOrdersOnGoing(String status) {
-		List<OrderEntity> allOrders = getItemsInOrders(repository.findByOrderStatusNot(status));
-		return Order.builder().build().transformEntities(allOrders);
+		return Order.builder().build().transformEntities(getItemsInOrders(repository.findByOrderStatusNot(status)));
 	}
 
 	public List<Order> getOrdersByPaymentStatus(String paymentStatus) {
-		List<OrderEntity> allOrders = getItemsInOrders(repository.findByPaymentStatus(paymentStatus));
-		return Order.builder().build().transformEntities(allOrders);
+		return Order.builder().build().transformEntities(getItemsInOrders(repository.findByPaymentStatus(paymentStatus)));
 	}
 
 	public Order get(String id) {
-		OrderEntity entity = getItemsInOrders(
-				repository.findById(Order.builder().orderId(id).build().DBID()).get());
-		return Order.builder().build().transformEntity(entity);
+		return Order.builder().build().transformEntity(getItemsInOrders(repository.findById(Order.builder().orderId(id).build().DBID()).get()));
 	}
 
 	public void updateOrderStatus(String id, String orderStatus) {

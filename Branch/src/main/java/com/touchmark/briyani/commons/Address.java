@@ -1,6 +1,8 @@
 package com.touchmark.briyani.commons;
 
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,6 +25,9 @@ public class Address {
 	private String zipcode;
 
 	public Address transform(AddressEntity entity) {
+		if(entity == null)
+			return Address.builder().build();
+		
 		return Address.builder().area(entity.getArea()).city(entity.getCity()).country(entity.getCountry())
 				.doorNumber(entity.getDoorNumber()).state(entity.getState()).street(entity.getStreet())
 				.zipcode(entity.getZipcode()).build();
@@ -30,8 +35,7 @@ public class Address {
 
 	public AddressEntity createEntity() {
 		return AddressEntity.builder().area(area).city(city).country(country).doorNumber(doorNumber).state(state)
-				.lastUpdatedDate(OffsetDateTime.now())
-				.street(street).zipcode(zipcode).build();
+				.lastUpdatedDate(OffsetDateTime.now()).street(street).zipcode(zipcode).build();
 	}
 
 	public String getDoorNumber() {
@@ -60,6 +64,14 @@ public class Address {
 
 	public String getZipcode() {
 		return zipcode == null ? "" : zipcode;
+	}
+
+	public List<Address> transformEntities(List<AddressEntity> findAll) {
+		List<Address> address = new ArrayList<>();
+		for (AddressEntity addressEntity : findAll) {
+			address.add(transform(addressEntity));
+		}
+		return address;
 	}
 
 }

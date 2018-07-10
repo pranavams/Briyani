@@ -215,12 +215,12 @@ function displayStatistics(result){
 	document.getElementById("todayOrderRequest").innerHTML = '<strong>' + result['todayNumberOfOrders'] + '</strong>';
 	document.getElementById("todayPurchaseRequest").innerHTML = '<strong>' + result['todayNumberOfPurchaseRequest'] + '</strong>';
 	
-	document.getElementById("overallOrders").innerHTML = '<strong>' + result['overallOrders'] + '</strong>';
-	document.getElementById("overallSales").innerHTML = '<strong>' + result['overallSales'] + '</strong>';
-	document.getElementById("overallPaid").innerHTML = '<strong>' + result['overallPaid'] + '</strong>';
-	document.getElementById("overallDue").innerHTML = '<strong>' + result['overallDue'] + '</strong>';
-	document.getElementById("overallNumberOfOrders").innerHTML = '<strong>' + result['overallNumberOfOrders'] + '</strong>';
-	document.getElementById("overallNumberOfPurchaseRequest").innerHTML = '<strong>' + result['overallNumberOfPurchaseRequest'] + '</strong>';
+	document.getElementById("totalOrders").innerHTML = '<strong>' + result['overallOrders'] + '</strong>';
+	document.getElementById("totalSales").innerHTML = '<strong>' + result['overallSales'] + '</strong>';
+	document.getElementById("totalPaid").innerHTML = '<strong>' + result['overallPaid'] + '</strong>';
+	document.getElementById("totalDue").innerHTML = '<strong>' + result['overallDue'] + '</strong>';
+	document.getElementById("totalNumberOfOrders").innerHTML = '<strong>' + result['overallNumberOfOrders'] + '</strong>';
+	document.getElementById("totalNumberOfPurchaseRequest").innerHTML = '<strong>' + result['overallNumberOfPurchaseRequest'] + '</strong>';
 }
 
 function getOrderList() {

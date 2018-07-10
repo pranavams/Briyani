@@ -46,11 +46,7 @@ function saveBranch(toClose) {
 		'data' : JSON.stringify(jsonObj),
 		'dataType' : 'json',
 		'success' : function(result) {
-			$.gritter.add({
-				class_name : 'gritter-success',
-				title : 'Success!',
-				text : '<p style="font-size: 14px;">Branch Saved successfully!</p>',
-			});
+			imageUpload(result.id, 'image/imageUpload?access_token=' + accessToken, "Branch Save Successfully", "Branch Added Image upload Failed, use Edit Branch to save the image");
 			clearItem();
 			return result;
 		},

@@ -34,8 +34,8 @@ function displayRiderPreview(data){
 	document.getElementById('riderEmail').innerHTML = data.email;
 	//document.getElementById('dateOfBirth').innerHTML = data.dateOfBirth;
 	
-	document.getElementById('address').innerHTML = address.doorNumber+',' + address.street + ', ' + address.area
-	 + ',' + address.city +' ,' + address.state +' , ' + address.country + ' .';
+	document.getElementById('address').innerHTML = address.doorNumber+' ' + address.street + ' ' + address.area
+	 + ' ' + address.city +' ' + address.state +' ' + address.country + ' ' + address.zipcode;
 }
 
 function edit() {

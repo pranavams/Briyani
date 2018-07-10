@@ -175,3 +175,35 @@ $.urlParam = function(name) {
 
 	return (results !== null) ? results[1] || 0 : false;
 }
+
+function imageUpload(id, url, successMessage, failureMessage) {
+	// Get form
+	document.getElementById('entityId').value = id;
+	var data = new FormData(document.getElementById('mainform'));
+
+	$.ajax({
+		type : "POST",
+		enctype : 'multipart/form-data',
+		url : baseURI + url,
+		data : data,
+		processData : false,
+		contentType : false,
+		cache : false,
+		timeout : 600000,
+		success : function(data) {
+			$.gritter.add({
+				class_name : 'gritter-success',
+				title : 'Success!',
+				text : '<p style="font-size: 14px;">' + successMessage + '!</p>',
+			});
+		},
+		error : function(e) {
+			console.log('Image Upload - Error: ' + e);
+			$.gritter.add({
+				class_name : 'gritter-error',
+				title : 'Success!',
+				text : '<p style="font-size: 14px;">' + failureMessage + '</p>',
+			});
+		}
+	});
+}

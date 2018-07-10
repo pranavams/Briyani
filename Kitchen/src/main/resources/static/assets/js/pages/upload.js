@@ -18,8 +18,10 @@ function fire_ajax_submit() {
 	var form = $('#fileUploadForm')[0];
 
 	var data = new FormData(form);
-
-	console.log("Data to upload " + data);
+	
+	for (var key of data.entries()) {
+		console.log('Key [' + key + '] - Value [' + data.values()[key] + ']');
+	}
 
 	$("#btnSubmit").prop("disabled", true);
 

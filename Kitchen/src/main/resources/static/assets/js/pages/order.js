@@ -57,12 +57,12 @@ function displayOrder(OrderResult) {
 				tabCell.innerHTML = Order[i]['branch']['contactPersonSalutation'] + ' ' + Order[i]['branch']['contactPersonFirstName'] + ' ' + Order[i]['branch']['contactPersonMiddleName'] + ' ' + Order[i]['branch']['contactPersonLastName'];
 
 				tabCell = tr.insertCell(-1);
-				tabCell.innerHTML = Order[i]['branch']['address']['doorNumber'] + ', ' +
-				Order[i]['branch']['address']['street'] + ', ' +
-				Order[i]['branch']['address']['area'] + ', ' +
-				Order[i]['branch']['address']['city'] + ', ' +
-				Order[i]['branch']['address']['state'] + ', ' +
-				Order[i]['branch']['address']['country'] + ', ' +
+				tabCell.innerHTML = Order[i]['branch']['address']['doorNumber'] + ' ' +
+				Order[i]['branch']['address']['street'] + ' ' +
+				Order[i]['branch']['address']['area'] + ' ' +
+				Order[i]['branch']['address']['city'] + ' ' +
+				Order[i]['branch']['address']['state'] + ' ' +
+				Order[i]['branch']['address']['country'] + ' ' +
 				Order[i]['branch']['address']['zipcode'];
 
 				tabCell = tr.insertCell(-1);

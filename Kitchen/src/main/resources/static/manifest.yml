@@ -2,6 +2,6 @@
 applications:
 - name: biriyani-web-ui
   memory: 256M
-  buildpack: java_buildpack
+  buildpack: staticfile_buildpack
   routes:
   - route: biriyani-web-ui.cfapps.io

@@ -65,11 +65,7 @@ function saveRider() {
 		'data' : JSON.stringify(jsonObj),
 		'dataType' : 'json',
 		'success' : function(result) {
-			$.gritter.add({
-				class_name : 'gritter-success',
-				title : 'Success!',
-				text : '<p style="font-size: 14px;">Rider Saved successfully!</p>',
-			});
+			imageUpload(result.id, 'image/imageUpload?access_token=' + accessToken, "Rider Saved Successfully", "Rider Added. Image upload Failed, use Edit Rider to save the image");
 			clearItem();
 			return result;
 		},

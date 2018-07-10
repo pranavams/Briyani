@@ -130,7 +130,7 @@ public class OrderService {
 	}
 
 	public List<Order> getTodayOrders() {
-		return Order.builder().build().transformEntities(repository.findTodayOrders());
+		return Order.builder().build().transformEntities(getItemsInOrders(repository.findTodayOrders()));
 	}
 
 	public List<Order> getOrders(String orderStatus) {

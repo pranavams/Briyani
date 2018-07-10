@@ -139,17 +139,21 @@ values (3, 'NOT_RETURNED', 'PACKING',
 (select id from branch where CONTACT_PERSON_FIRST_NAME = 'Ajith'));
 
 INSERT INTO ORDER_DETAIL (QUANTITY,  	UNIT_PRICE,  	ITEM_ID,  	ORDER_ID)
-VALUES ( 5, 10, 1, 
+VALUES ( 5, 10, 
+(select id from item where menu_id = (select id from menu where name = 'Chicken')), 
+(select order_id from order_info where address_id = (select address_id from address where area = '
+'))
+);
+
+INSERT INTO ORDER_DETAIL (QUANTITY,  	UNIT_PRICE,  	ITEM_ID,  	ORDER_ID)
+VALUES (3, 10,
+(select id from item where menu_id = (select id from menu where name = 'Mutton')), 
 (select order_id from order_info where address_id = (select address_id from address where area = 'sanfransisco'))
 );
 
 INSERT INTO ORDER_DETAIL (QUANTITY,  	UNIT_PRICE,  	ITEM_ID,  	ORDER_ID)
-VALUES (3, 10, 2, 
-(select order_id from order_info where address_id = (select address_id from address where area = 'sanfransisco'))
-);
-
-INSERT INTO ORDER_DETAIL (QUANTITY,  	UNIT_PRICE,  	ITEM_ID,  	ORDER_ID)
-VALUES (2, 10, 3, 
+VALUES (2, 10, 
+(select id from item where menu_id = (select id from menu where name = 'Steak')), 
 (select order_id from order_info where address_id = (select address_id from address where area = 'sanfransisco'))
 );
 

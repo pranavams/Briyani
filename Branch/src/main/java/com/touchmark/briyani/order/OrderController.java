@@ -40,6 +40,12 @@ public class OrderController {
 		return ResponseEntity.ok(OrderResponse.builder().order(this.service.getOrdersForCustomer(id)).build());
 	}
 
+	@GetMapping
+	@RequestMapping("/listForBranch/{id}")
+	public ResponseEntity<OrderResponse> getOrdersForBranch(@PathVariable("id") String id) {
+		return ResponseEntity.ok(OrderResponse.builder().order(this.service.getOrdersForBranch(id)).build());
+	}
+
 	@PostMapping
 	@RequestMapping(path = "/createOrder", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<String> createOrder(@RequestBody CreateOrder object) {

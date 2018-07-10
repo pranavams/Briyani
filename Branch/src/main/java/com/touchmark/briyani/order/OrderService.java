@@ -86,6 +86,10 @@ public class OrderService {
 		return Order.builder().build().transformEntities(getItemsInOrders(repository.findByCustomerId(Customer.builder().id(id).build().DBID())));
 	}
 
+	public List<Order> getOrdersForBranch(String id) {
+		return Order.builder().build().transformEntities(getItemsInOrders(repository.findByBranchId(Branch.builder().id(id).build().DBID())));
+	}
+
 	public OrderEntity createOrder(CreateOrder object) {
 		BranchEntity branch = this.branchRepository.findById(Branch.builder().id(object.getBranchID()).build().DBID())
 				.get();

@@ -41,7 +41,7 @@ function displayMenu(MenuResult) {
 		tabCell.innerHTML = Menu[i]['menuName'] + ' ' + Menu[i]['name'];
 
 		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = '<a href="edit_menu_item.html?id=' Menu[i]['id'] + '" class="btn btn-xs btn-info"><i class="fa fa-pencil"></i>Edit</a> <a href="menu_preview.html" class="btn btn-xs btn-danger"><i class="fa fa-remove"></i>Delete</a> ';
+		tabCell.innerHTML = '<a href="edit_menu_item.html?id=' + Menu[i]['id'] + '" class="btn btn-xs btn-info"><i class="fa fa-pencil"></i>Edit</a> <a href="menu_preview.html" class="btn btn-xs btn-danger"><i class="fa fa-remove"></i>Delete</a> ';
 	}
 }
 

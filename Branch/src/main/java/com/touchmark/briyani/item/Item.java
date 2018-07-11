@@ -27,6 +27,8 @@ public class Item {
 	}
 
 	public Item transformEntity(ItemEntity entity) {
+		if(entity == null)
+			return Item.builder().build();
 		return Item.builder().id(transformId(entity.getId())).name(entity.getName())
 				.description(entity.getDescription()).price(entity.getPrice()).menuName(entity.getMenu().getName())
 				.menuId(transformMenuId(entity.getMenu().getId())).build();

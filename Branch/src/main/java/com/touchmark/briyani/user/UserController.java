@@ -5,7 +5,6 @@ import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +16,6 @@ import com.touchmark.briyani.commons.Log;
 
 @RestController
 @RequestMapping(path = "/api/v1/user/")
-@PreAuthorize("hasAuthority('BRANCH_USER')")
 public class UserController {
 	private UserService service;
 
@@ -28,7 +26,6 @@ public class UserController {
 
 	@GetMapping
 	@RequestMapping("/listAll")
-	@PreAuthorize("hasAuthority('BRANCH_MANAGER')")
 	public ResponseEntity<UserResponse> getAll() {
 		UserResponse users = UserResponse.builder().users(this.service.getAll()).build();
 		Log.log("UserController", "getAll", "User To Send " + users);
@@ -64,7 +61,6 @@ public class UserController {
 
 	@PostMapping
 	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE, path = "/save", produces = MediaType.APPLICATION_JSON_VALUE)
-	@PreAuthorize("hasAuthority('BRANCH_MANAGER')")
 	public ResponseEntity<UserEntity> save(@RequestBody User user) {
 		UserEntity created = this.service.save(user);
 		return ResponseEntity.ok(created);

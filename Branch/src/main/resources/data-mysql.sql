@@ -24,50 +24,50 @@ TRUNCATE TABLE ADDRESS;
 TRUNCATE TABLE ACTOR;
 
 ###Address
-INSERT INTO ADDRESS (AREA,  	CITY,  	COUNTRY,  	DOOR_NUMBER,  	STATE,  	STREET,  	ZIPCODE  )
-VALUES ('dunton', 'dunton', 'England', '5', 'GB', 'x Street', '444555');
+INSERT INTO ADDRESS (AREA,  	CITY,  	COUNTRY,  	DOOR_NUMBER,  	STATE,  	STREET,  	ZIPCODE, LAST_UPDATED_DATE  )
+VALUES ('dunton', 'dunton', 'England', '5', 'GB', 'x Street', '444555', NOW());
 
-INSERT INTO ADDRESS (AREA,  	CITY,  	COUNTRY,  	DOOR_NUMBER,  	STATE,  	STREET,  	ZIPCODE  )
-VALUES ('dearborn', 'dearborn', 'United States', '5', 'Michigan', 'x Street', '42186');
+INSERT INTO ADDRESS (AREA,  	CITY,  	COUNTRY,  	DOOR_NUMBER,  	STATE,  	STREET,  	ZIPCODE  , LAST_UPDATED_DATE  )
+VALUES ('dearborn', 'dearborn', 'United States', '5', 'Michigan', 'x Street', '42186', NOW());
 
-INSERT INTO ADDRESS (AREA,  	CITY,  	COUNTRY,  	DOOR_NUMBER,  	STATE,  	STREET,  	ZIPCODE  )
-VALUES ('new york', 'dearborn', 'United States', '5', 'Michigan', 'x Street', '42186');
+INSERT INTO ADDRESS (AREA,  	CITY,  	COUNTRY,  	DOOR_NUMBER,  	STATE,  	STREET,  	ZIPCODE  , LAST_UPDATED_DATE  )
+VALUES ('new york', 'dearborn', 'United States', '5', 'Michigan', 'x Street', '42186', NOW());
 
-INSERT INTO ADDRESS (AREA,  	CITY,  	COUNTRY,  	DOOR_NUMBER,  	STATE,  	STREET,  	ZIPCODE  )
-VALUES ('new jersey', 'dearborn', 'United States', '5', 'Michigan', 'x Street', '42186');
+INSERT INTO ADDRESS (AREA,  	CITY,  	COUNTRY,  	DOOR_NUMBER,  	STATE,  	STREET,  	ZIPCODE  , LAST_UPDATED_DATE  )
+VALUES ('new jersey', 'dearborn', 'United States', '5', 'Michigan', 'x Street', '42186', NOW());
 
-INSERT INTO ADDRESS (AREA,  	CITY,  	COUNTRY,  	DOOR_NUMBER,  	STATE,  	STREET,  	ZIPCODE  )
-VALUES ('dallas', 'dearborn', 'United States', '5', 'Michigan', 'x Street', '42186');
+INSERT INTO ADDRESS (AREA,  	CITY,  	COUNTRY,  	DOOR_NUMBER,  	STATE,  	STREET,  	ZIPCODE  , LAST_UPDATED_DATE  )
+VALUES ('dallas', 'dearborn', 'United States', '5', 'Michigan', 'x Street', '42186', NOW());
 
-INSERT INTO ADDRESS (AREA,  	CITY,  	COUNTRY,  	DOOR_NUMBER,  	STATE,  	STREET,  	ZIPCODE  )
-VALUES ('chicago', 'dearborn', 'United States', '5', 'Michigan', 'x Street', '42186');
+INSERT INTO ADDRESS (AREA,  	CITY,  	COUNTRY,  	DOOR_NUMBER,  	STATE,  	STREET,  	ZIPCODE  , LAST_UPDATED_DATE  )
+VALUES ('chicago', 'dearborn', 'United States', '5', 'Michigan', 'x Street', '42186', NOW());
 
-INSERT INTO ADDRESS (AREA,  	CITY,  	COUNTRY,  	DOOR_NUMBER,  	STATE,  	STREET,  	ZIPCODE  )
-VALUES ('wisconsin', 'dearborn', 'United States', '5', 'Michigan', 'x Street', '42186');
+INSERT INTO ADDRESS (AREA,  	CITY,  	COUNTRY,  	DOOR_NUMBER,  	STATE,  	STREET,  	ZIPCODE  , LAST_UPDATED_DATE  )
+VALUES ('wisconsin', 'dearborn', 'United States', '5', 'Michigan', 'x Street', '42186', NOW());
 
-INSERT INTO ADDRESS (AREA,  	CITY,  	COUNTRY,  	DOOR_NUMBER,  	STATE,  	STREET,  	ZIPCODE  )
-VALUES ('great lakes', 'dearborn', 'United States', '5', 'Michigan', 'x Street', '42186');
+INSERT INTO ADDRESS (AREA,  	CITY,  	COUNTRY,  	DOOR_NUMBER,  	STATE,  	STREET,  	ZIPCODE  , LAST_UPDATED_DATE  )
+VALUES ('great lakes', 'dearborn', 'United States', '5', 'Michigan', 'x Street', '42186', NOW());
 
-INSERT INTO ADDRESS (AREA,  	CITY,  	COUNTRY,  	DOOR_NUMBER,  	STATE,  	STREET,  	ZIPCODE  )
-VALUES ('niagara', 'dearborn', 'United States', '5', 'Michigan', 'x Street', '42186');
+INSERT INTO ADDRESS (AREA,  	CITY,  	COUNTRY,  	DOOR_NUMBER,  	STATE,  	STREET,  	ZIPCODE  , LAST_UPDATED_DATE  )
+VALUES ('niagara', 'dearborn', 'United States', '5', 'Michigan', 'x Street', '42186', NOW());
 
-INSERT INTO ADDRESS (AREA,  	CITY,  	COUNTRY,  	DOOR_NUMBER,  	STATE,  	STREET,  	ZIPCODE  )
-VALUES ('san jose', 'dearborn', 'United States', '5', 'Michigan', 'x Street', '42186');
+INSERT INTO ADDRESS (AREA,  	CITY,  	COUNTRY,  	DOOR_NUMBER,  	STATE,  	STREET,  	ZIPCODE  , LAST_UPDATED_DATE  )
+VALUES ('san jose', 'dearborn', 'United States', '5', 'Michigan', 'x Street', '42186', NOW());
 
-INSERT INTO ADDRESS (AREA,  	CITY,  	COUNTRY,  	DOOR_NUMBER,  	STATE,  	STREET,  	ZIPCODE  )
-VALUES ('san fransisco', 'dearborn', 'United States', '5', 'Michigan', 'x Street', '42186');
+INSERT INTO ADDRESS (AREA,  	CITY,  	COUNTRY,  	DOOR_NUMBER,  	STATE,  	STREET,  	ZIPCODE  , LAST_UPDATED_DATE  )
+VALUES ('san fransisco', 'dearborn', 'United States', '5', 'Michigan', 'x Street', '42186', NOW());
 
-INSERT INTO ADDRESS (AREA,  	CITY,  	COUNTRY,  	DOOR_NUMBER,  	STATE,  	STREET,  	ZIPCODE  )
-VALUES ('las vegas', 'dearborn', 'United States', '5', 'Michigan', 'x Street', '42186');
+INSERT INTO ADDRESS (AREA,  	CITY,  	COUNTRY,  	DOOR_NUMBER,  	STATE,  	STREET,  	ZIPCODE  , LAST_UPDATED_DATE  )
+VALUES ('las vegas', 'dearborn', 'United States', '5', 'Michigan', 'x Street', '42186', NOW());
 
-INSERT INTO ADDRESS (AREA,  	CITY,  	COUNTRY,  	DOOR_NUMBER,  	STATE,  	STREET,  	ZIPCODE  )
-VALUES ('los angels', 'dearborn', 'United States', '5', 'Michigan', 'x Street', '42186');
+INSERT INTO ADDRESS (AREA,  	CITY,  	COUNTRY,  	DOOR_NUMBER,  	STATE,  	STREET,  	ZIPCODE  , LAST_UPDATED_DATE  )
+VALUES ('los angels', 'dearborn', 'United States', '5', 'Michigan', 'x Street', '42186', NOW());
 
-INSERT INTO ADDRESS (AREA,  	CITY,  	COUNTRY,  	DOOR_NUMBER,  	STATE,  	STREET,  	ZIPCODE  )
-VALUES ('salt lakes', 'dearborn', 'United States', '5', 'Michigan', 'x Street', '42186');
+INSERT INTO ADDRESS (AREA,  	CITY,  	COUNTRY,  	DOOR_NUMBER,  	STATE,  	STREET,  	ZIPCODE  , LAST_UPDATED_DATE  )
+VALUES ('salt lakes', 'dearborn', 'United States', '5', 'Michigan', 'x Street', '42186', NOW());
 
-INSERT INTO ADDRESS (AREA,  	CITY,  	COUNTRY,  	DOOR_NUMBER,  	STATE,  	STREET,  	ZIPCODE  )
-VALUES ('pa', 'dearborn', 'United States', '5', 'Michigan', 'x Street', '42186');
+INSERT INTO ADDRESS (AREA,  	CITY,  	COUNTRY,  	DOOR_NUMBER,  	STATE,  	STREET,  	ZIPCODE  , LAST_UPDATED_DATE  )
+VALUES ('pa', 'dearborn', 'United States', '5', 'Michigan', 'x Street', '42186', NOW());
 
 ###Rider
 

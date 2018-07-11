@@ -55,13 +55,15 @@ public class Staff {
 	}
 
 	Staff transformEntities(StaffEntity staffEntity) {
+		if(staffEntity == null)
+			return Staff.builder().build();
 		return Staff.builder().id(transformId(staffEntity.getId())).email(staffEntity.getEmail())
 				.gender(staffEntity.getGender()).dateOfJoin(staffEntity.getDateOfJoin()).role(staffEntity.getRole())
 				.notes(staffEntity.getNotes()).dateOfBirth(staffEntity.getDateOfBirth())
 				.firstName(staffEntity.getFirstName()).lastName(staffEntity.getLastName())
 				.middleName(staffEntity.getMiddleName()).mobileNumber(staffEntity.getMobileNumber())
 				.salutation(staffEntity.getSalutation())
-				// .address(Address.builder().build().transform(staffEntity.getAddress()))
+				.address(Address.builder().build().transform(staffEntity.getAddress()))
 				.build();
 	}
 

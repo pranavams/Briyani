@@ -32,6 +32,8 @@ public class User {
 	}
 
 	public User transformEntity(UserEntity entity) {
+		if(entity == null)
+			return User.builder().build();
 		return User.builder().firstName(entity.getFirstName()).id(transformId(entity.getActorId()))
 				.lastName(entity.getLastName()).middleName(entity.getMiddleName()).roles(entity.getRoles())
 				.userType(entity.getUserType())

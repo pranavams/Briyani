@@ -44,6 +44,8 @@ public class Branch {
 	}
 
 	public Branch transformEntities(BranchEntity entity) {
+		if (entity == null)
+			return Branch.builder().build();
 		return Branch.builder().id(transformID(entity.getId())).name(entity.getName()).email(entity.getEmail())
 				.latitude(entity.getLatitude()).longitude(entity.getLongitude()).notes(entity.getNotes())
 				.contactPersonFirstName(entity.getContactPersonFirstName())
@@ -51,11 +53,7 @@ public class Branch {
 				.contactPersonMiddleName(entity.getContactPersonMiddleName())
 				.contactPersonNumber(entity.getContactPersonNumber())
 				.contactPersonSalutation(entity.getContactPersonSalutation()).mobileNumber(entity.getMobileNumber())
-				.telephone(entity.getTelephone())
-				.address(Address.builder().area(entity.getAddress().getArea()).city(entity.getAddress().getCity())
-						.country(entity.getAddress().getCountry()).doorNumber(entity.getAddress().getDoorNumber())
-						.state(entity.getAddress().getState()).street(entity.getAddress().getStreet())
-						.zipcode(entity.getAddress().getZipcode()).build())
+				.telephone(entity.getTelephone()).address(Address.builder().build().transform(entity.getAddress()))
 				.build();
 	}
 

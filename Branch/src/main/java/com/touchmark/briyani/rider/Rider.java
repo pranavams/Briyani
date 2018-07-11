@@ -55,6 +55,9 @@ public class Rider implements Serializable{
 	}
 
 	public Rider transformEntities(RiderEntity entity) {
+		if(entity == null)
+			Rider.builder().build();
+		
 		return Rider.builder().id(transformId(entity.getId(), entity.getDepartmentType())).email(entity.getEmail())
 				.dateOfBirth(entity.getDateOfBirth()).riderPersonSalutation(entity.getRiderPersonSalutation())
 				.riderPersonFirstName(entity.getRiderPersonFirstName())
@@ -65,10 +68,7 @@ public class Rider implements Serializable{
 				.riderIdCardNo(entity.getRiderIdCardNo()).zone(entity.getZone())
 				.vehicleModel(entity.getVehicleModel()).vehicleNumber(entity.getVehicleNumber()).vehicleType(entity.getVehicleType())
 				.licenseExpiryDate(entity.getLicenseExpiryDate()).licenseIssueDate(entity.getLicenseIssueDate()).licenseNumber(entity.getLicenseNumber()).licenseType(entity.getLicenseType())
-				.address(Address.builder().area(entity.getAddress().getArea()).city(entity.getAddress().getCity())
-						.country(entity.getAddress().getCountry()).doorNumber(entity.getAddress().getDoorNumber())
-						.state(entity.getAddress().getState()).street(entity.getAddress().getStreet())
-						.zipcode(entity.getAddress().getZipcode()).build())
+				.address(Address.builder().build().transform(entity.getAddress()))
 				.build();
 	}
 

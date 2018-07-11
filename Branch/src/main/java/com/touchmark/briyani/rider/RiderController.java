@@ -5,7 +5,6 @@ import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(path = "/api/v1/rider/")
-@PreAuthorize("hasAuthority('BRANCH_USER')")
 public class RiderController {
 
 	private RiderService service;
@@ -34,7 +32,6 @@ public class RiderController {
 
 	@PostMapping
 	@RequestMapping("/save")
-	@PreAuthorize("hasAuthority('BRANCH_MANAGER')")
 	public ResponseEntity<Rider> save(@RequestBody Rider object) {
 		Rider created = this.service.save(object);
 		return ResponseEntity.ok(created);
@@ -42,7 +39,6 @@ public class RiderController {
 
 	@GetMapping
 	@RequestMapping(path = "/delete", produces = MediaType.APPLICATION_JSON_VALUE)
-	@PreAuthorize("hasAuthority('BRANCH_MANAGER')")
 	public ResponseEntity<String> delete(@RequestParam(name = "id") String id) {
 		return ResponseEntity.ok(this.service.delete(id));
 	}

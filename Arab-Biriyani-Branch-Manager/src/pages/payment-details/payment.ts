@@ -1,5 +1,5 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
-import { IonicPage, Nav, NavController } from 'ionic-angular';
+import {Component, ViewChild, OnInit} from '@angular/core';
+import {IonicPage, Nav, NavController, NavParams} from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -8,18 +8,22 @@ import { IonicPage, Nav, NavController } from 'ionic-angular';
 })
 
 export class PaymentPage implements OnInit {
-  
-    ngOnInit(){
-      
-    }
-  
-    constructor(public navCtrl: NavController){}
 
-    nextPage(){
-        this.navCtrl.push('CompletePage');
-    }
+  cartItems: any = [];
 
-    backButtonClick(){
-        this.navCtrl.pop();
-    }
+  ngOnInit() {
+
+  }
+
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.cartItems = navParams.data.items; 
+  }
+
+  nextPage() {
+    this.navCtrl.push('CompletePage');
+  }
+
+  backButtonClick() {
+    this.navCtrl.pop();
+  }
 }

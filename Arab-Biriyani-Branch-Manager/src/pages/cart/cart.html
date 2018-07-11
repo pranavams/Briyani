@@ -23,11 +23,11 @@
                         $ {{item.price}}
                     </p>
                     <div class="quantity-group">
-                        <button ion-button icon-only (click)="add(item.title)" class="add-btn">
+                        <button ion-button icon-only (click)="add(item.menuName)" class="add-btn">
                             <ion-icon name="add"></ion-icon>
                         </button>
                         <input type="number" [(ngModel)]="item.quantity" class="quantity" (change)="cartCount()">
-                        <button ion-button icon-only (click)="remove(item.title)" class="remove-btn">
+                        <button ion-button icon-only (click)="remove(item.menuName)" class="remove-btn">
                             <ion-icon name="md-remove"></ion-icon>
                         </button>
                     </div>

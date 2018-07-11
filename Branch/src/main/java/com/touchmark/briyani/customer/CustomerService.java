@@ -47,6 +47,7 @@ public class CustomerService {
 
 	public Customer update(Customer object) {
 		CustomerEntity entity = getByID(object);
+		entity.updateWith(object);
 		return Customer.builder().build().transformEntities(this.repository.saveAndFlush(entity));
 	}
 

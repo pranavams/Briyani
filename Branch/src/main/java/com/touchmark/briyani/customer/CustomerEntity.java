@@ -31,6 +31,7 @@ import lombok.ToString;
 @Entity
 @Table(name = "customer")
 public class CustomerEntity implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
@@ -67,5 +68,19 @@ public class CustomerEntity implements Serializable {
 	
 	@Column(name = "gender")
 	private String gender;
+
+	public void updateWith(Customer object) {
+		this.firstName = object.getFirstName();
+		this.lastName = object.getLastName();
+		this.middleName = object.getMiddleName();
+		this.salutation = object.getSalutation();
+		this.mobileNumber = object.getMobileNumber();
+		this.telephoneNumber = object.getTelephoneNumber();
+		this.dateOfBirth = object.getDateOfBirth();
+		this.email = object.getEmail();
+		this.address.updateWith(object.getAddress());
+		this.lastUpdatedDate = OffsetDateTime.now();
+		this.gender = object.getGender();
+	}
 
 }

@@ -53,6 +53,8 @@ public class Customer {
 	}
 
 	public Customer transformEntities(CustomerEntity customerEntity) {
+		if(customerEntity == null)
+			return Customer.builder().build();
 		return Customer.builder().id(transformId(customerEntity.getId())).email(customerEntity.getEmail())
 				.telephoneNumber(customerEntity.getTelephoneNumber())
 				.gender(customerEntity.getGender())

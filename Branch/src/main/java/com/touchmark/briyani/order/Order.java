@@ -8,7 +8,6 @@ import com.touchmark.briyani.branch.Branch;
 import com.touchmark.briyani.commons.Address;
 import com.touchmark.briyani.commons.AddressEntity;
 import com.touchmark.briyani.commons.Case;
-import com.touchmark.briyani.commons.Log;
 import com.touchmark.briyani.customer.Customer;
 import com.touchmark.briyani.item.Item;
 
@@ -61,7 +60,8 @@ public class Order {
 	}
 
 	public Order transformEntity(OrderEntity entity) {
-		Log.log("Order", "transformEntity", "Order Received " + entity);
+		if(entity == null)
+			return Order.builder().build();
 
 		List<OrderDetail> orderDetails = new ArrayList<>();
 		for (OrderDetailEntity orderDetail : entity.getOrderDetails()) {

@@ -23,6 +23,8 @@ public class Menu {
 	}
 
 	public Menu transformEntity(MenuEntity entity) {
+		if(entity == null)
+			return Menu.builder().build();
 		return Menu.builder().id(transformId(entity.getId())).name(entity.getName())
 				.build();
 	}

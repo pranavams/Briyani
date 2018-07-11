@@ -143,14 +143,13 @@
                                                                 
                                                                 <img class="img-responsive img-circle img_profile" src="assets/img/preview.jpg">
                                                                 
-                                                                <h3 class="text-uppercase text-center text-danger"> <i class="fa fa-shop"></i> 
-                                                                Biriyani Resturant <br><span id ='branchName'> BRAN001</span> </h3>
-                                                                <p class="text-info profile_company"><i class="fa fa-phone"></i> <span id ='branch_phoneNo'> +4445445</span></p>
-                                                                <hr>
-                                                                <p class="text-info text-center profile"> <i class="fa fa-user"></i> <span id ='branch_contactPerson'>Thomas</span> | <i class="fa fa-phone"></i> <span id ='branch_contactPersonMob'> 9840770917</span></p>
+                                                                <h3 class="text-uppercase text-center text-danger"> <i class="fa fa-shop"></i>
+                                                                <span id ='branchName'> </span> </h3>
+                                                                <p class="text-info profile_company"><i class="fa fa-phone"></i> <span id ='branch_phoneNo'> </span></p><hr>
+                                                                <p class="text-info text-center profile"> <i class="fa fa-user"></i> <span id ='branch_contactPerson'></span> | <i class="fa fa-phone"></i> 
+                                                                <span id ='branch_contactPersonMob'> </span></p>
                                                                 <p class="text-info text-center profile">  </p>
-                                                                <p class="text-info text-center profile"> <span id ='branch_address'>No234, Thomas Street,</span><br>Singapore-600056
-                                                                </p>
+                                                                <p class="text-info text-center profile"> <span id ='branch_address'></p>
                                                                 <div class="social-icons">
                                                                     <a href="#" onclick = 'edit()' class="btn btn-sm btn-info edit_caontact"><i class="fa fa-pencil"></i> Edit</a>
                                                                     <a href="#" onclick = 'deleteData()' class="btn btn-sm btn-danger edit_caontact"><i class="fa fa-remove"></i> Delete</a>
@@ -171,35 +170,13 @@
                                                                         <tr>
                                                                             <th width="8%">#</th>
                                                                             <th>Date</th>
-                                                                            <th>Recent Purchase Request</th>
-                                                                            <th>Total Purchase Requesr</th>
+                                                                            <th>Total Purchase Request</th>
                                                                             <th>Total Paid Order</th>
                                                                             <th>Total Due Order</th>
-                                                                            
-                                                                           
                                                                         </tr>
+	                                                                     </thead>
                                                                         <tbody>
-                                                                        	<tr>
-                                                                            	<td>1</td>
-                                                                                <td class="text-center">2018-06-20</td>
-                                                                                <td class="text-center">25</td>
-                                                                                <td class="text-center">50</td>
-                                                                                <td class="text-center">25</td>
-                                                                                <td class="text-center">0</td>
-                                                                            </tr>
-                                                                            
-                                                                            <tr>
-                                                                            	<td>2</td>
-                                                                                <td class="text-center">2018-06-25</td>
-                                                                                <td class="text-center">26</td>
-                                                                                <td class="text-center">40</td>
-                                                                                <td class="text-center">40</td>
-                                                                                <td class="text-center">00</td>
-                                                                            </tr>
-                                                                            
-                                                                           
                                                                         </tbody>
-                                                                     </thead>
                                                                     </table>
                                                                 </div>
                     											</div>
@@ -251,9 +228,6 @@
     <script src="assets/js/pages/branch_preview.js"></script>
     <script type="text/javascript">
 	
-		  $(document).ready(function() {
-        
-            
 		$(document).ready(function() {
 			jQuery('#contacts_list .group-checkable').change(function () {
 				var set = jQuery(this).attr("data-set");

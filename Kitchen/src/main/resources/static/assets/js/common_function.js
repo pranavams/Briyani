@@ -156,6 +156,15 @@ $("select").change(function() {
 }).change(); // JavaScript Document
 
 
+function formatDateDefault(dateString) {
+	return formatDate(dateString, "DDD MMM DD, YYYY");
+}
+
+function formatDate(dateString, format) {
+	dateObj = stringToDate(dateString.substring(0, 10), 'YYYY-MM-DD', '-');
+	return dateToString(dateObj, format);
+}
+
 function stringToDate(_date, _format, _delimiter) {
 	var formatLowerCase = _format.toLowerCase();
 	var formatItems = formatLowerCase.split(_delimiter);
@@ -165,8 +174,8 @@ function stringToDate(_date, _format, _delimiter) {
 	var yearIndex = formatItems.indexOf("yyyy");
 	var month = parseInt(dateItems[monthIndex]);
 	month -= 1;
-	var formatedDate = new Date(dateItems[yearIndex], month, dateItems[dayIndex]);
-	return formatedDate;
+	var formattedDate = new Date(dateItems[yearIndex], month, dateItems[dayIndex]);
+	return formattedDate;
 }
 
 function dateToString(dateobj, format) {

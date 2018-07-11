@@ -53,7 +53,7 @@ public class StatisticsService {
 			if (dayWiseStatistics.containsKey(localDate)) {
 				dayWiseStatistics.put(localDate, calculateStatistics(dayWiseStatistics.get(localDate), orderEntity));
 			} else {
-				dayWiseStatistics.put(localDate, calculateStatistics(Statistics.builder().overallNumberOfOrders(1).build(), orderEntity));
+				dayWiseStatistics.put(localDate, calculateStatistics(Statistics.builder().build(), orderEntity));
 			}
 		}
 

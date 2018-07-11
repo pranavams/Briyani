@@ -31,7 +31,7 @@ function displayBranch(data) {
 	address = data.address;
 	document.getElementById('branchName').innerHTML = data.name;
 	document.getElementById('branch_phoneNo').innerHTML = data.telephone;
-	document.getElementById('branch_contactPerson').innerHTML = data.contactPersonFirstName;
+	document.getElementById('branch_contactPerson').innerHTML = data.contactPersonFirstName + ' ' + data.contactPersonMiddleName+ ' ' +data.contactPersonLastName;
 	document.getElementById('branch_contactPersonMob').innerHTML = data.mobileNumber;
 
 	document.getElementById('branch_address').innerHTML = address.doorNumber + ' ' + address.street + ' ' + address.area

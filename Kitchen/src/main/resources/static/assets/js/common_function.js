@@ -265,3 +265,23 @@ function getAddress(address){
 			address['country'] + ' ' +
 			address['zipcode'];
 }
+
+function dateToFormattedStringWithFormat(dateString, format) {
+	if(dateString == null || dateString == 'undefined')
+		return '';
+
+	return formatDate(dateString, format);
+}
+
+function dateToFormattedString(dateString) {
+	if(dateString == null || dateString == 'undefined')
+		return '';
+	return formatDate(dateString, "DDD MMM DD, YYYY");
+}
+
+function nvl(val){
+	if(val == null || val == 'undefined' || val === "null")
+		return '';
+	return val;
+
+}

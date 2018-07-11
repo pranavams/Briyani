@@ -26,16 +26,13 @@ function getRiderList() {
 }
 
 function displayRiderPreview(data){
-	console.log("Data " + JSON.stringify(data));
 	data = data.rider[0];
-	address = data.address;
-	document.getElementById('riderName').innerHTML = data.riderPersonFirstName + ' ' + data.riderPersonMiddleName + ' ' + data.riderPersonLastName
+	document.getElementById('riderName').innerHTML = nvl(data.riderPersonFirstName) + ' ' + nvl(data.riderPersonMiddleName) + ' ' + nvl(data.riderPersonLastName);
 	document.getElementById('riderPhoneNumber').innerHTML = data.mobileNumber;
 	document.getElementById('riderEmail').innerHTML = data.email;
-	//document.getElementById('dateOfBirth').innerHTML = data.dateOfBirth;
-	
-	document.getElementById('address').innerHTML = address.doorNumber+' ' + address.street + ' ' + address.area
-	 + ' ' + address.city +' ' + address.state +' ' + address.country + ' ' + address.zipcode;
+	document.getElementById('riderDob').innerHTML = dateToFormattedString(data.dateOfBirth);  
+	//document.getElementById('riderDob').innerHTML =dateToFormattedStringWithFormat(data.dateOfBirth, "DD/MM/YYYY");
+	document.getElementById('address').innerHTML = getAddress(data.address);
 }
 
 function edit() {

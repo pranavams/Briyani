@@ -34,8 +34,7 @@ function displayBranch(data) {
 	document.getElementById('branch_contactPerson').innerHTML = data.contactPersonFirstName + ' ' + data.contactPersonMiddleName+ ' ' +data.contactPersonLastName;
 	document.getElementById('branch_contactPersonMob').innerHTML = data.mobileNumber;
 
-	document.getElementById('branch_address').innerHTML = address.doorNumber + ' ' + address.street + ' ' + address.area
-	+ ' ' + address.city + ' ' + address.state + ' ' + address.country + ' ' + address.zipcode;
+	document.getElementById('branch_address').innerHTML = getAddress(data.address);
 }
 
 function getBranchOrdersList() {

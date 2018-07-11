@@ -21,6 +21,7 @@ public class Item {
 	private float price;
 	private String menuName;
 	private String menuId;
+	private int quantity;
 
 	public ItemEntity createEntity() {
 		return ItemEntity.builder().description(description).name(name).price(price).lastUpdatedDate(OffsetDateTime.now()).build();

@@ -45,4 +45,17 @@ public class CustomerService {
 				.transformEntities(repository.findById(Customer.builder().id(id).build().DBID()).get());
 	}
 
+	public Customer update(Customer object) {
+		CustomerEntity entity = getByID(object);
+		return Customer.builder().build().transformEntities(this.repository.saveAndFlush(entity));
+	}
+
+	private CustomerEntity getByID(Customer object) {
+		try {
+			return repository.findById(Customer.builder().id(object.getId()).build().DBID()).get();
+		} catch (Exception ex) {
+			throw new RuntimeException("Customer Not Found");
+		}
+	}
+
 }

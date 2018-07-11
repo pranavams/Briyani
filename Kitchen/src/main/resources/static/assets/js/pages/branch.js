@@ -48,13 +48,7 @@ function displayBranch(branchResult) {
 		tabCell.innerHTML = branch[i]['telephone'];
 
 		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = branch[i]['address']['doorNumber'] + ' ' +
-		branch[i]['address']['street'] + ' ' +
-		branch[i]['address']['area'] + ' ' +
-		branch[i]['address']['city'] + ' ' +
-		branch[i]['address']['state'] + ' ' +
-		branch[i]['address']['country'] + ' ' +
-		branch[i]['address']['zipcode'];
+		tabCell.innerHTML = getAddress(branch[i]['address']);
 
 		tabCell = tr.insertCell(-1);
 		tabCell.innerHTML = branch[i]['contactPersonSalutation'] + ' ' + branch[i]['contactPersonFirstName'] + ' ' + branch[i]['contactPersonMiddleName'] + ' ' + branch[i]['contactPersonLastName'];

@@ -33,7 +33,7 @@ function displayCustomer(data){
         body    += "<td>" + data.email + "</td>";
         body    += "<td>" + data.mobileNumber + "</td>";
         body    += "<td>" + formatDateDefault(data.dateOfBirth) + "</td>";
-        body    += "<td>" + data.address.doorNumber + ' ' + data.address.street + ' ' + data.address.area + ' ' + data.address.city + ' ' + data.address.state + ' ' + data.address.country + ' ' + data.address.zipcode + "</td>";
+        body    += "<td>" + getAddress(data.address) + "</td>";
         body    += '<td><a href="customer_preview.html?id=' + data.id + '" class="btn btn-xs btn-default"><i class="fa fa-eye"></i>Details</a></td>';
         body    += "</tr>";
         $( "#contacts_list tbody" ).append(body);

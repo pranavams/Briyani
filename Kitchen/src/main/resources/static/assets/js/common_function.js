@@ -252,3 +252,16 @@ function imageUpload(id, url, successMessage, failureMessage) {
 		}
 	});
 }
+
+function getAddress(address){
+	if(address == null || address == 'undefined')
+		return '';
+	else 
+		return	address['doorNumber'] + ' ' +
+			address['street'] + ' ' +
+			address['area'] + ' ' +
+			address['city'] + ' ' +
+			address['state'] + ' ' +
+			address['country'] + ' ' +
+			address['zipcode'];
+}

@@ -51,13 +51,7 @@ function displayRider(RiderResult) {
 		tabCell.innerHTML = '';
 
 		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = Rider[i]['address']['doorNumber'] + ' ' +
-		Rider[i]['address']['street'] + ' ' +
-		Rider[i]['address']['area'] + ' ' +
-		Rider[i]['address']['city'] + ' ' +
-		Rider[i]['address']['state'] + ' ' +
-		Rider[i]['address']['country'] + ' ' +
-		Rider[i]['address']['zipcode'];
+		tabCell.innerHTML = getAddress(Rider[i]['address']);
 
 		tabCell = tr.insertCell(-1);
 

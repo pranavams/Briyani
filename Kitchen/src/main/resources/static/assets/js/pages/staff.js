@@ -44,13 +44,7 @@ function displayStaff(StaffResult) {
 
 		tabCell = tr.insertCell(-1);
 		tabCell.innerHTML = ' ';
-//		(Staff[i]['address']['doorNumber'] + ' ' +
-//		Staff[i]['address']['street'] + ' ' +
-//		Staff[i]['address']['area'] + ' ' +
-//		Staff[i]['address']['city'] + ' ' +
-//		Staff[i]['address']['state'] + ' ' +
-//		Staff[i]['address']['country'] + ' ' +
-//		Staff[i]['address']['zipcode']).trim();
+//		getAddress(Staff[i]['address'])
 
 		tabCell = tr.insertCell(-1);
 		tabCell.innerHTML = Staff[i]['email'];

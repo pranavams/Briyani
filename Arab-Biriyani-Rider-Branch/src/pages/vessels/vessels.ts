@@ -5,7 +5,7 @@ import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 
 @IonicPage()
-@Component({
+@Component({ 
   selector: 'page-vessels',
   templateUrl: 'vessels.html'
 })
@@ -13,23 +13,23 @@ import {map} from 'rxjs/operators';
 export class VesselsPage {
   displayType: any = 'today';
 
-  serviceUrl = "http://localhost:63636/api/v1/order/listOrdersByVesselStatus/";
+  serviceUrl = "http://localhost:63636/api/v1/order/listAll";
   accessToken: string;
 
   today: any = [];
-  completed: any = []
+  completed: any = [];
   constructor(public navCtrl: NavController, public popoverCtrl: PopoverController, public http: HttpClient) {}
 
   ngOnInit() {
-    this.getData("RETURNED");
+    this.getData();
   }
 
-  getData(data: string): void {
+  getData(): void {
     this.restToken()
       .subscribe(
       (tokenResponse) => {
         this.accessToken = tokenResponse.access_token;//ignore
-        this.dataRetrival(data)
+        this.dataRetrival()
           .subscribe(
           responseData => {
             this.today = responseData.order.filter(x => x.vesselStatus.toUpperCase() !== 'RETURNED');
@@ -40,9 +40,9 @@ export class VesselsPage {
       });
   }
 
-  dataRetrival(data: string) {
+  dataRetrival() {
     return this.http
-      .get<any[]>(this.serviceUrl + data + "?access_token=" + this.accessToken)
+      .get<any[]>(this.serviceUrl + "?access_token=" + this.accessToken)
       .pipe(map(data => data));
   }
 

@@ -92,9 +92,10 @@ INSERT INTO ACTOR (roles, FIRST_NAME, LAST_NAME, user_name, password) VALUES ('B
 INSERT INTO ACTOR (roles, FIRST_NAME, LAST_NAME, user_name, password) VALUES ('SYSTEM_MANAGER', 'Evelyn', 'M', 'Chang', '$2a$04$I9Q2sDc4QGGg5WNTLmsz0.fvGv3OjoZyj81PrSFyGOqMphqfS2qKu');
 
 ###menu * item
+
 INSERT INTO MENU (NAME) VALUES ('Chicken');
 INSERT INTO MENU (NAME) VALUES ('Mutton');
-INSERT INTO MENU ( NAME) VALUES ('Steak');
+INSERT INTO MENU (NAME) VALUES ('Steak');
 
 
 INSERT INTO ITEM (DESCRIPTION,  	NAME,  	PRICE,  	MENU_ID)
@@ -135,26 +136,25 @@ INSERT INTO ORDER_INFO (NUMBER_OF_VESSELS, VESSEL_STATUS, ORDER_STATUS, CUSTOMER
 values (3, 'NOT_RETURNED', 'PACKING', 
 (select id from customer where first_name = 'Devaki'),
 '', current_timestamp, 'COMPLETED', 6, 
-6, 106, 'Alex123', (select address_id from address where area = 'sanfransisco'), 
+6, 106, 'Alex123', (select address_id from address where area = 'san fransisco'), 
 (select id from branch where CONTACT_PERSON_FIRST_NAME = 'Ajith'));
 
 INSERT INTO ORDER_DETAIL (QUANTITY,  	UNIT_PRICE,  	ITEM_ID,  	ORDER_ID)
 VALUES ( 5, 10, 
-(select id from item where menu_id = (select id from menu where name = 'Chicken')), 
-(select order_id from order_info where address_id = (select address_id from address where area = '
-'))
+(select id from item where menu_id = (select id from menu where name = 'Mutton')), 
+(select order_id from order_info where address_id = (select address_id from address where area = 'san fransisco'))
 );
 
 INSERT INTO ORDER_DETAIL (QUANTITY,  	UNIT_PRICE,  	ITEM_ID,  	ORDER_ID)
 VALUES (3, 10,
-(select id from item where menu_id = (select id from menu where name = 'Mutton')), 
-(select order_id from order_info where address_id = (select address_id from address where area = 'sanfransisco'))
+(select id from item where menu_id = (select id from menu where name = 'Steak')), 
+(select order_id from order_info where address_id = (select address_id from address where area = 'san fransisco'))
 );
 
 INSERT INTO ORDER_DETAIL (QUANTITY,  	UNIT_PRICE,  	ITEM_ID,  	ORDER_ID)
-VALUES (2, 10, 
-(select id from item where menu_id = (select id from menu where name = 'Steak')), 
-(select order_id from order_info where address_id = (select address_id from address where area = 'sanfransisco'))
+VALUES (2, 10,
+(select id from item where menu_id = (select id from menu where name = 'Chicken')), 
+(select order_id from order_info where address_id = (select address_id from address where area = 'san fransisco'))
 );
 
 
@@ -218,3 +218,29 @@ VALUES (60, 10,
 (select id from item where menu_id = (select id from menu where name = 'Mutton')),   
 (select order_id from order_info where address_id = (select address_id from address where area = 'salt lakes'))
 );
+
+INSERT INTO ORDER_INFO (NUMBER_OF_VESSELS, VESSEL_STATUS, ORDER_STATUS, CUSTOMER_ID, COUPON_CODE,  DATE_AND_TIME,  	PAYMENT_STATUS,  	TAX_AMOUNT,  	TAX_PERCENTAGE,  	TOTAL_AMOUNT,  	USER_NAME, ADDRESS_ID, BRANCH_ID)
+values (14, 'NOT_RETURNED', 'COMPLETED', 
+(select id from customer where first_name = 'Karthick'),
+ '', '2018-07-01 00:00:00', 'COMPLETED', 70, 10, 770, 'Alex123', (select address_id from address where area = 'pa'), 
+(select id from branch where CONTACT_PERSON_FIRST_NAME = 'Ajith'));
+
+INSERT INTO ORDER_DETAIL (QUANTITY,  	UNIT_PRICE,  	ITEM_ID,  	ORDER_ID)
+VALUES (6, 10, 
+(select id from item where menu_id = (select id from menu where name = 'Chicken')),   
+(select order_id from order_info where address_id = (select address_id from address where area = 'pa'))
+);
+
+INSERT INTO ORDER_DETAIL (QUANTITY,  	UNIT_PRICE,  	ITEM_ID,  	ORDER_ID)
+VALUES (4, 10, 
+(select id from item where menu_id = (select id from menu where name = 'Steak')),  
+(select order_id from order_info where address_id = (select address_id from address where area = 'pa'))
+);
+
+INSERT INTO ORDER_DETAIL (QUANTITY,  	UNIT_PRICE,  	ITEM_ID,  	ORDER_ID)
+VALUES (60, 10, 
+(select id from item where menu_id = (select id from menu where name = 'Mutton')),   
+(select order_id from order_info where address_id = (select address_id from address where area = 'pa'))
+);
+
+COMMIT;

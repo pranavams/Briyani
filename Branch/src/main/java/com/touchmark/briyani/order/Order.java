@@ -63,20 +63,20 @@ public class Order {
 	public Order transformEntity(OrderEntity entity) {
 		Log.log("Order", "transformEntity", "Order Received " + entity);
 
-		deliveryAddress = Address.builder().build().transform(entity.getDeliveryAddress());
-
 		List<OrderDetail> orderDetails = new ArrayList<>();
 		for (OrderDetailEntity orderDetail : entity.getOrderDetails()) {
 			orderDetails.add(OrderDetail.builder().item(Item.builder().build().transformEntity(orderDetail.getItem()))
 					.quantity(orderDetail.getQuantity()).unitPrice(orderDetail.getUnitPrice()).build());
 		}
 		return Order.builder().branch(Branch.builder().build().transformEntities(entity.getBranch()))
-				.deliveryAddress(deliveryAddress).couponCode(entity.getCouponCode())
+				.deliveryAddress(Address.builder().build().transform(entity.getDeliveryAddress()))
+				.customer(Customer.builder().build().transformEntities(entity.getCustomer()))
+				.couponCode(entity.getCouponCode())
 				.dateAndTime(entity.getDateAndTime()).orderId(transformId(entity.getOrderId()))
 				.paymentStatus(Case.upper(entity.getPaymentStatus())).taxAmount(entity.getTaxAmount())
 				.orderStatus(Case.upper(entity.getOrderStatus())).numberOfVessels(entity.getNumberOfVessels())
 				.vesselStatus(Case.upper(entity.getVesselStatus())).taxPercentage(entity.getTaxPercentage())
-				.totalAmount(entity.getTotalAmount()).userName(entity.getUserName()).deliveryAddress(deliveryAddress)
+				.totalAmount(entity.getTotalAmount()).userName(entity.getUserName())
 				.orderDetails(orderDetails).build();
 	}
 

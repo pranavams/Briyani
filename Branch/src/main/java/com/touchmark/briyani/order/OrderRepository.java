@@ -24,4 +24,5 @@ public interface OrderRepository extends JpaRepository<OrderEntity, Long> {
 	public List<OrderEntity> findByVesselStatus(String status);
 
 	public List<OrderEntity> findByBranchId(Long branchId);
+
 }

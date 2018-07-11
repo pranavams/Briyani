@@ -27,6 +27,4 @@ public class Statistics {
 	private int overallNumberOfOrders;
 	private int overallNumberOfPurchaseRequest;
 
-
-
 }

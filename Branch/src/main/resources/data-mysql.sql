@@ -154,7 +154,7 @@ VALUES (3, 10,
 
 INSERT INTO ORDER_DETAIL (QUANTITY,  	UNIT_PRICE,  	ITEM_ID,  	ORDER_ID)
 VALUES (2, 10,
-(select id from item where menu_id = (select id from menu where name = 'Chicken' LIMIT 1)), 
+(select id from item where menu_id = (select id from menu where name = 'Fish' LIMIT 1)), 
 (select order_id from order_info where address_id = (select address_id from address where area = 'san fransisco' LIMIT 1))
 );
 
@@ -167,7 +167,7 @@ values (30, 'RETURNED', 'REJECTED',
 
 INSERT INTO ORDER_DETAIL (QUANTITY,  	UNIT_PRICE,  	ITEM_ID,  	ORDER_ID)
 VALUES (6, 10, 
-(select id from item where menu_id = (select id from menu where name = 'Chicken' LIMIT 1)), 
+(select id from item where menu_id = (select id from menu where name = 'Fish' LIMIT 1)), 
 (select order_id from order_info where address_id = (select address_id from address where area = 'las vegas' LIMIT 1))
 );
 
@@ -186,7 +186,7 @@ values (13, 'NOT_RETURNED', 'DELIVERED',
 
 INSERT INTO ORDER_DETAIL (QUANTITY,  	UNIT_PRICE,  	ITEM_ID,  	ORDER_ID)
 VALUES (6, 10, 
-(select id from item where menu_id = (select id from menu where name = 'Chicken' LIMIT 1)),  
+(select id from item where menu_id = (select id from menu where name = 'Fish' LIMIT 1)),  
 (select order_id from order_info where address_id = (select address_id from address where area = 'los angels' LIMIT 1))
 );
 
@@ -204,7 +204,7 @@ values (14, 'NOT_RETURNED', 'COMPLETED',
 
 INSERT INTO ORDER_DETAIL (QUANTITY,  	UNIT_PRICE,  	ITEM_ID,  	ORDER_ID)
 VALUES (6, 10, 
-(select id from item where menu_id = (select id from menu where name = 'Chicken' LIMIT 1)),   
+(select id from item where menu_id = (select id from menu where name = 'Fish' LIMIT 1)),   
 (select order_id from order_info where address_id = (select address_id from address where area = 'salt lakes' LIMIT 1))
 );
 
@@ -228,7 +228,7 @@ values (14, 'NOT_RETURNED', 'COMPLETED',
 
 INSERT INTO ORDER_DETAIL (QUANTITY,  	UNIT_PRICE,  	ITEM_ID,  	ORDER_ID)
 VALUES (6, 10, 
-(select id from item where menu_id = (select id from menu where name = 'Chicken' LIMIT 1)),   
+(select id from item where menu_id = (select id from menu where name = 'Fish' LIMIT 1)),   
 (select order_id from order_info where address_id = (select address_id from address where area = 'pa' LIMIT 1))
 );
 

@@ -96,10 +96,11 @@ INSERT INTO ACTOR (roles, FIRST_NAME, LAST_NAME, user_name, password) VALUES ('S
 INSERT INTO MENU (NAME) VALUES ('Chicken');
 INSERT INTO MENU (NAME) VALUES ('Mutton');
 INSERT INTO MENU (NAME) VALUES ('Steak');
+INSERT INTO MENU (NAME) VALUES ('Fish');
 
 
-INSERT INTO ITEM (DESCRIPTION,  	NAME,  	PRICE,  	MENU_ID)
-VALUES ('With Onions Marinated in Curd', 'Briyani', 10, (select id from menu where name = 'Chicken'));
+INSERT INTO ITEM (DESCRIPTION, NAME, PRICE, MENU_ID)
+VALUES ('With Onions Marinated in Curd', 'Briyani', 10, (select id from menu where name = 'Fish'));
 
 INSERT INTO ITEM (DESCRIPTION,  	NAME,  	PRICE,  	MENU_ID)
 VALUES ('With Onions Marinated in Curd', 'Briyani', 10, (select id from menu where name = 'Mutton'));
@@ -134,113 +135,111 @@ VALUES ('Male', 'karthick@raj.com', 'Karthick', 'T', 'Rajkumar', 'Mr.', '3423423
 
 INSERT INTO ORDER_INFO (NUMBER_OF_VESSELS, VESSEL_STATUS, ORDER_STATUS, CUSTOMER_ID, COUPON_CODE,  DATE_AND_TIME,  	PAYMENT_STATUS,  	TAX_AMOUNT,  	TAX_PERCENTAGE,  	TOTAL_AMOUNT,  	USER_NAME, ADDRESS_ID, BRANCH_ID)
 values (3, 'NOT_RETURNED', 'PACKING', 
-(select id from customer where first_name = 'Devaki'),
+(select id from customer where first_name = 'Devaki' LIMIT 1),
 '', current_timestamp, 'COMPLETED', 6, 
-6, 106, 'Alex123', (select address_id from address where area = 'san fransisco'), 
-(select id from branch where CONTACT_PERSON_FIRST_NAME = 'Ajith'));
+6, 106, 'Alex123', (select address_id from address where area = 'san fransisco'  LIMIT 1), 
+(select id from branch where CONTACT_PERSON_FIRST_NAME = 'Ajith'  LIMIT 1));
 
 INSERT INTO ORDER_DETAIL (QUANTITY,  	UNIT_PRICE,  	ITEM_ID,  	ORDER_ID)
 VALUES ( 5, 10, 
-(select id from item where menu_id = (select id from menu where name = 'Mutton')), 
-(select order_id from order_info where address_id = (select address_id from address where area = 'san fransisco'))
+(select id from item where menu_id = (select id from menu where name = 'Mutton'  LIMIT 1)), 
+(select order_id from order_info where address_id = (select address_id from address where area = 'san fransisco' LIMIT 1))
 );
 
 INSERT INTO ORDER_DETAIL (QUANTITY,  	UNIT_PRICE,  	ITEM_ID,  	ORDER_ID)
 VALUES (3, 10,
-(select id from item where menu_id = (select id from menu where name = 'Steak')), 
-(select order_id from order_info where address_id = (select address_id from address where area = 'san fransisco'))
+(select id from item where menu_id = (select id from menu where name = 'Steak' LIMIT 1)), 
+(select order_id from order_info where address_id = (select address_id from address where area = 'san fransisco' LIMIT 1))
 );
 
 INSERT INTO ORDER_DETAIL (QUANTITY,  	UNIT_PRICE,  	ITEM_ID,  	ORDER_ID)
 VALUES (2, 10,
-(select id from item where menu_id = (select id from menu where name = 'Chicken')), 
-(select order_id from order_info where address_id = (select address_id from address where area = 'san fransisco'))
+(select id from item where menu_id = (select id from menu where name = 'Chicken' LIMIT 1)), 
+(select order_id from order_info where address_id = (select address_id from address where area = 'san fransisco' LIMIT 1))
 );
 
 
 INSERT INTO ORDER_INFO (NUMBER_OF_VESSELS, VESSEL_STATUS, ORDER_STATUS, CUSTOMER_ID, COUPON_CODE,  DATE_AND_TIME,  	PAYMENT_STATUS,  	TAX_AMOUNT,  	TAX_PERCENTAGE,  	TOTAL_AMOUNT,  	USER_NAME, ADDRESS_ID, BRANCH_ID)
 values (30, 'RETURNED', 'REJECTED', 
-(select id from customer where first_name = 'Jyothi'),
- '', current_timestamp, 'REFUNDED', 6, 6, 106, 'Alex123', (select address_id from address where area = 'las vegas'), 
- (select id from branch where CONTACT_PERSON_FIRST_NAME = 'Prabhas'));
+(select id from customer where first_name = 'Jyothi' LIMIT 1),
+ '', current_timestamp, 'REFUNDED', 6, 6, 106, 'Alex123', (select address_id from address where area = 'las vegas' LIMIT 1), 
+ (select id from branch where CONTACT_PERSON_FIRST_NAME = 'Prabhas' LIMIT 1));
 
 INSERT INTO ORDER_DETAIL (QUANTITY,  	UNIT_PRICE,  	ITEM_ID,  	ORDER_ID)
 VALUES (6, 10, 
-(select id from item where menu_id = (select id from menu where name = 'Chicken')), 
-(select order_id from order_info where address_id = (select address_id from address where area = 'las vegas'))
+(select id from item where menu_id = (select id from menu where name = 'Chicken' LIMIT 1)), 
+(select order_id from order_info where address_id = (select address_id from address where area = 'las vegas' LIMIT 1))
 );
 
 INSERT INTO ORDER_DETAIL (QUANTITY,  	UNIT_PRICE,  	ITEM_ID,  	ORDER_ID)
 VALUES (4, 10, 
-(select id from item where menu_id = (select id from menu where name = 'Mutton')), 
-(select order_id from order_info where address_id = (select address_id from address where area = 'las vegas'))
+(select id from item where menu_id = (select id from menu where name = 'Mutton' LIMIT 1)), 
+(select order_id from order_info where address_id = (select address_id from address where area = 'las vegas' LIMIT 1))
 );
 
 
 INSERT INTO ORDER_INFO (NUMBER_OF_VESSELS, VESSEL_STATUS, ORDER_STATUS, CUSTOMER_ID, COUPON_CODE,  DATE_AND_TIME,  	PAYMENT_STATUS,  	TAX_AMOUNT,  	TAX_PERCENTAGE,  	TOTAL_AMOUNT,  	USER_NAME, ADDRESS_ID, BRANCH_ID)
 values (13, 'NOT_RETURNED', 'DELIVERED', 
-(select id from customer where first_name = 'Karthick'),
- '', '2018-07-01 00:00:00', 'COMPLETED', 6, 6, 106, 'Alex123', (select address_id from address where area = 'los angels'), 
- (select id from branch where CONTACT_PERSON_FIRST_NAME = 'Prabhas'));
+(select id from customer where first_name = 'Karthick' LIMIT 1),
+ '', '2018-07-01 00:00:00', 'COMPLETED', 6, 6, 106, 'Alex123', (select address_id from address where area = 'los angels' LIMIT 1), 
+ (select id from branch where CONTACT_PERSON_FIRST_NAME = 'Prabhas' LIMIT 1));
 
 INSERT INTO ORDER_DETAIL (QUANTITY,  	UNIT_PRICE,  	ITEM_ID,  	ORDER_ID)
 VALUES (6, 10, 
-(select id from item where menu_id = (select id from menu where name = 'Chicken')),  
-(select order_id from order_info where address_id = (select address_id from address where area = 'los angels'))
+(select id from item where menu_id = (select id from menu where name = 'Chicken' LIMIT 1)),  
+(select order_id from order_info where address_id = (select address_id from address where area = 'los angels' LIMIT 1))
 );
 
 INSERT INTO ORDER_DETAIL (QUANTITY,  	UNIT_PRICE,  	ITEM_ID,  	ORDER_ID)
 VALUES (4, 10, 
-(select id from item where menu_id = (select id from menu where name = 'Mutton')),  
-(select order_id from order_info where address_id = (select address_id from address where area = 'los angels'))
+(select id from item where menu_id = (select id from menu where name = 'Mutton' LIMIT 1)),  
+(select order_id from order_info where address_id = (select address_id from address where area = 'los angels' LIMIT 1))
 );
 
 INSERT INTO ORDER_INFO (NUMBER_OF_VESSELS, VESSEL_STATUS, ORDER_STATUS, CUSTOMER_ID, COUPON_CODE,  DATE_AND_TIME,  	PAYMENT_STATUS,  	TAX_AMOUNT,  	TAX_PERCENTAGE,  	TOTAL_AMOUNT,  	USER_NAME, ADDRESS_ID, BRANCH_ID)
 values (14, 'NOT_RETURNED', 'COMPLETED', 
-(select id from customer where first_name = 'Karthick'),
- '', '2018-07-01 00:00:00', 'COMPLETED', 70, 10, 770, 'Alex123', (select address_id from address where area = 'salt lakes'), 
-(select id from branch where CONTACT_PERSON_FIRST_NAME = 'Ajith'));
+(select id from customer where first_name = 'Karthick' LIMIT 1),
+ '', '2018-07-01 00:00:00', 'COMPLETED', 70, 10, 770, 'Alex123', (select address_id from address where area = 'salt lakes' LIMIT 1), 
+(select id from branch where CONTACT_PERSON_FIRST_NAME = 'Ajith' LIMIT 1));
 
 INSERT INTO ORDER_DETAIL (QUANTITY,  	UNIT_PRICE,  	ITEM_ID,  	ORDER_ID)
 VALUES (6, 10, 
-(select id from item where menu_id = (select id from menu where name = 'Chicken')),   
-(select order_id from order_info where address_id = (select address_id from address where area = 'salt lakes'))
+(select id from item where menu_id = (select id from menu where name = 'Chicken' LIMIT 1)),   
+(select order_id from order_info where address_id = (select address_id from address where area = 'salt lakes' LIMIT 1))
 );
 
 INSERT INTO ORDER_DETAIL (QUANTITY,  	UNIT_PRICE,  	ITEM_ID,  	ORDER_ID)
 VALUES (4, 10, 
-(select id from item where menu_id = (select id from menu where name = 'Steak')),  
-(select order_id from order_info where address_id = (select address_id from address where area = 'salt lakes'))
+(select id from item where menu_id = (select id from menu where name = 'Steak' LIMIT 1)),  
+(select order_id from order_info where address_id = (select address_id from address where area = 'salt lakes' LIMIT 1))
 );
 
 INSERT INTO ORDER_DETAIL (QUANTITY,  	UNIT_PRICE,  	ITEM_ID,  	ORDER_ID)
 VALUES (60, 10, 
-(select id from item where menu_id = (select id from menu where name = 'Mutton')),   
-(select order_id from order_info where address_id = (select address_id from address where area = 'salt lakes'))
+(select id from item where menu_id = (select id from menu where name = 'Mutton' LIMIT 1)),   
+(select order_id from order_info where address_id = (select address_id from address where area = 'salt lakes' LIMIT 1))
 );
 
 INSERT INTO ORDER_INFO (NUMBER_OF_VESSELS, VESSEL_STATUS, ORDER_STATUS, CUSTOMER_ID, COUPON_CODE,  DATE_AND_TIME,  	PAYMENT_STATUS,  	TAX_AMOUNT,  	TAX_PERCENTAGE,  	TOTAL_AMOUNT,  	USER_NAME, ADDRESS_ID, BRANCH_ID)
 values (14, 'NOT_RETURNED', 'COMPLETED', 
-(select id from customer where first_name = 'Karthick'),
- '', '2018-07-01 00:00:00', 'COMPLETED', 70, 10, 770, 'Alex123', (select address_id from address where area = 'pa'), 
-(select id from branch where CONTACT_PERSON_FIRST_NAME = 'Ajith'));
+(select id from customer where first_name = 'Karthick' LIMIT 1),
+ '', '2018-07-01 00:00:00', 'COMPLETED', 70, 10, 770, 'Alex123', (select address_id from address where area = 'pa' LIMIT 1), 
+(select id from branch where CONTACT_PERSON_FIRST_NAME = 'Ajith' LIMIT 1));
 
 INSERT INTO ORDER_DETAIL (QUANTITY,  	UNIT_PRICE,  	ITEM_ID,  	ORDER_ID)
 VALUES (6, 10, 
-(select id from item where menu_id = (select id from menu where name = 'Chicken')),   
-(select order_id from order_info where address_id = (select address_id from address where area = 'pa'))
+(select id from item where menu_id = (select id from menu where name = 'Chicken' LIMIT 1)),   
+(select order_id from order_info where address_id = (select address_id from address where area = 'pa' LIMIT 1))
 );
 
 INSERT INTO ORDER_DETAIL (QUANTITY,  	UNIT_PRICE,  	ITEM_ID,  	ORDER_ID)
 VALUES (4, 10, 
-(select id from item where menu_id = (select id from menu where name = 'Steak')),  
-(select order_id from order_info where address_id = (select address_id from address where area = 'pa'))
+(select id from item where menu_id = (select id from menu where name = 'Steak' LIMIT 1)),  
+(select order_id from order_info where address_id = (select address_id from address where area = 'pa' LIMIT 1))
 );
 
 INSERT INTO ORDER_DETAIL (QUANTITY,  	UNIT_PRICE,  	ITEM_ID,  	ORDER_ID)
 VALUES (60, 10, 
-(select id from item where menu_id = (select id from menu where name = 'Mutton')),   
-(select order_id from order_info where address_id = (select address_id from address where area = 'pa'))
+(select id from item where menu_id = (select id from menu where name = 'Mutton' LIMIT 1)),   
+(select order_id from order_info where address_id = (select address_id from address where area = 'pa' LIMIT 1))
 );
-
-COMMIT;

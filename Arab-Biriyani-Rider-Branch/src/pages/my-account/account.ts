@@ -1,5 +1,8 @@
-import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, AlertController } from 'ionic-angular';
+import {Component, ViewChild} from '@angular/core';
+import {IonicPage, NavController, AlertController} from 'ionic-angular';
+
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {map} from 'rxjs/operators';
 
 @IonicPage()
 @Component({
@@ -8,17 +11,65 @@ import { IonicPage, NavController, AlertController } from 'ionic-angular';
 })
 
 export class AccountPage {
-  details: any = {
-    name: 'STREET BiRIYANI',
-    phone: '+65 89745641',
-    location: 'Blk 10-12 Street, 101-11 Singapore 609878'
+  notification: any = 4;
+  serviceUrl = "http://localhost:63636/api/v1/branch/get/"; 
+  accessToken: string;
+
+  details: any = {}
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public http: HttpClient) {}
+
+  ngOnInit() {
+    this.getData("BRAN1");
   }
- 
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController) { }
+
+  getData(data: string): void {
+    this.restToken()
+      .subscribe(
+      (tokenResponse) => {
+        this.accessToken = tokenResponse['access_token'];//ignore
+        this.dataRetrival(data)
+          .subscribe(
+          responseData => {
+            this.details = responseData['branch'][0];//ignore
+            console.log(responseData);
+          }
+          );
+      });
+  }
+
+  dataRetrival(data: string) {
+    return this.http
+      .get<any[]>(this.serviceUrl + data + "?access_token=" + this.accessToken)
+      .pipe(map(data => data));
+  }
+
+  getAuthToken() {
+    return "Basic " + btoa('arab-briyani-client:devglan-secret');
+  }
+
+  getAuthTokenParameters() {
+    return new HttpParams()
+      .set('username', 'Alex123')
+      .set('password', 'password')
+      .set('grant_type', 'password');
+  }
+
+  restToken() {
+    return this.http
+      .post<any[]>("http://localhost:63636/oauth/token",
+      this.getAuthTokenParameters().toString(), {
+        headers: new HttpHeaders().set('content-type', 'application/x-www-form-urlencoded')
+          .set('authorization', this.getAuthToken())
+          .set('cache-control', 'no-cache')
+      })
+      .pipe(map(token => token));
+  }
+
 
   backButtonClick() {
     this.navCtrl.pop();
   }
+
   showPrompt() {
     let prompt = this.alertCtrl.create({
       title: 'Change Password',
@@ -48,7 +99,7 @@ export class AccountPage {
     prompt.present();
   }
 
-  editAddress(){
+  editAddress() {
     let prompt = this.alertCtrl.create({
       title: 'Change Details',
       message: "Enter your Details",

@@ -7,15 +7,15 @@
     </ion-toolbar>
 </ion-header>
 <ion-content>
-    <ion-card no-margin *ngFor="let item of notification">
+    <ion-card no-margin *ngFor="let item of details">
         <ion-card-header>
-            <h1>{{item.title}}</h1>
+            <h1>{{item.orderStatus}}</h1>
         </ion-card-header>
         <ion-card-content>
             <p>
-                {{item.order}}
+                Purchase Order #{{item.orderId}}
             </p>
-            <p class="date">{{item.date}}</p>
+            <p class="date">{{item.dateAndTime | date:'dd MMM yyyy HH:mm a'}}</p>
         </ion-card-content>
     </ion-card>
 </ion-content>

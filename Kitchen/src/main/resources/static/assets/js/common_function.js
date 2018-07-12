@@ -376,4 +376,6 @@ if(window.sessionStorage.getItem("name") == null || window.sessionStorage.getIte
 		text : '<p style="font-size: 14px;">Session expired! Please re-login</p>',
 	});
 	window.location.href = "/index.html";
+} else {
+	document.getElementById("greetName").innerHTML = 'Hello ' + window.sessionStorage.getItem("name") + " !!!";
 }

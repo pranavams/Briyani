@@ -17,7 +17,7 @@ function getJSONData() {
 		}
 	};
 
-	console.log("Inside Get JSON Data " + jsonObject);
+	//console.log("Inside Get JSON Data " + jsonObject);
 	return jsonObject;
 }
 
@@ -55,8 +55,8 @@ function saveCustomer(toClose) {
 		},
 		'error' : function(XMLHttpRequest, textStatus, errorThrown) {
 			//Process error actions
-			console.log('getMenu - Error: ' + errorThrown + " - " + textStatus);
-			console.log(XMLHttpRequest.status + ' ' +
+			//console.log('getMenu - Error: ' + errorThrown + " - " + textStatus);
+			//console.log(XMLHttpRequest.status + ' ' +
 				XMLHttpRequest.statusText);
 			$.gritter.add({
 				class_name : 'gritter-error',

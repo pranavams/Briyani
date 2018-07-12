@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {map} from 'rxjs/operators';
+import { Api } from '../../providers/api/api';
 
 @IonicPage()
 @Component({
@@ -34,7 +35,7 @@ export class CartPage {
                   country: 'Singapore',
                   zipcode: '656435'};
 
-  constructor(public navParams: NavParams, public navCtrl: NavController, private http: HttpClient) {
+  constructor(public api: Api, public navParams: NavParams, public navCtrl: NavController, private http: HttpClient) {
     this.cartItems = navParams.data.items;
     this.accessToken = navParams.data.accessToken;
     this.cartItems.forEach((element, index) => {
@@ -166,7 +167,7 @@ export class CartPage {
   	  restCreateOrder(orderDetail) {
   		const createOrderHeaders = new HttpHeaders().set('Content-Type', 'application/json')
 	    return this.http
-	      .post<any[]>("https://biriyani-services.cfapps.io/api/v1/order/createOrder?access_token=" + this.accessToken,
+	      .post<any[]>(this.api.url + "/api/v1/order/createOrder?access_token=" + this.accessToken,
 	    		  JSON.stringify(orderDetail),  {
 	    	  		headers: createOrderHeaders
 	    		  }
@@ -186,7 +187,7 @@ export class CartPage {
 
 	  restToken() {
 	    return this.http
-	      .post<any[]>("https://biriyani-services.cfapps.io/oauth/token",
+	      .post<any[]>("/oauth/token",
 	      this.getAuthTokenParameters().toString(), {
 	        headers: new HttpHeaders().set('content-type', 'application/x-www-form-urlencoded')
 	          .set('authorization', this.getAuthToken())

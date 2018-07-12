@@ -3,6 +3,7 @@ import {IonicPage, NavController} from 'ionic-angular';
 
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {map} from 'rxjs/operators';
+import { Api } from '../../providers/api/api';
 
 @IonicPage()
 @Component({
@@ -14,13 +15,13 @@ export class PaymentHistoryPage implements OnInit {
   category: any = 'all';
   notification: any = 4;
 
-  paymentHistoryUrl = "https://biriyani-services.cfapps.io/api/v1/order/listAll/";
+  paymentHistoryUrl = this.api.url + "/api/v1/order/listAll/";
   paymentHistory: any = [];
   tempArr: any = this.paymentHistory;
   data: any = {};
   accessToken: string;
 
-  constructor(public navCtrl: NavController, private http: HttpClient) {}
+  constructor(public api: Api, public navCtrl: NavController, private http: HttpClient) {}
 
   ngOnInit() {
     this.getData("completed");
@@ -61,7 +62,7 @@ export class PaymentHistoryPage implements OnInit {
 
   restToken() {
     return this.http
-      .post<any[]>("https://biriyani-services.cfapps.io/oauth/token",
+      .post<any[]>("/oauth/token",
       this.getAuthTokenParameters().toString(), {
         headers: new HttpHeaders().set('content-type', 'application/x-www-form-urlencoded')
           .set('authorization', this.getAuthToken())

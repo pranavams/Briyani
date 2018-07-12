@@ -4,6 +4,8 @@ import {IonicPage, NavController} from 'ionic-angular';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 
+import { Api } from '../../providers/api/api';
+
 export interface CountdownTimer {
   seconds: number;
   secondsRemaining: number;
@@ -27,7 +29,7 @@ export class MenuPage implements OnInit {
   hours: number;
   cart: any = 0;
   notification: any = 4;
-  menuItemsUrl = "https://biriyani-services.cfapps.io/api/v1/item/listAll";
+  menuItemsUrl = this.api.url + "/api/v1/item/listAll";
   menuItems: any = [];
   data: any = {
   };
@@ -73,7 +75,7 @@ export class MenuPage implements OnInit {
 
   restToken() {
     return this.http
-      .post<any[]>("https://biriyani-services.cfapps.io/oauth/token",
+      .post<any[]>("/oauth/token",
       this.getAuthTokenParameters().toString(), {
         headers: new HttpHeaders().set('content-type', 'application/x-www-form-urlencoded')
           .set('authorization', this.getAuthToken())
@@ -82,7 +84,7 @@ export class MenuPage implements OnInit {
       .pipe(map(token => token));
   }
 
-  constructor(public navCtrl: NavController, private http: HttpClient) {
+  constructor(public api: Api, public navCtrl: NavController, private http: HttpClient) {
 
   }
 

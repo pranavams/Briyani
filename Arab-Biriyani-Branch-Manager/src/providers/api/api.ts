@@ -6,12 +6,16 @@ import { Injectable } from '@angular/core';
  */
 @Injectable()
 export class Api {
-  url: string = 'https://example.com/api/v1';
-
+  url: string = 'https://biriyani-services.cfapps.io';
+  //url: string = 'http://localhost:18181';
   constructor(public http: HttpClient) {
   }
 
-  get(endpoint: string, params?: any, reqOpts?: any) {
+  get(endpoint: string){
+	return this.http.get(this.url + '/' + endpoint);	  
+  }
+  
+  getWithParam(endpoint: string, params?: any, reqOpts?: any) {
     if (!reqOpts) {
       reqOpts = {
         params: new HttpParams()

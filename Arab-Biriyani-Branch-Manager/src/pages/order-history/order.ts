@@ -3,6 +3,7 @@ import {IonicPage, NavController, PopoverController} from 'ionic-angular';
 
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {map} from 'rxjs/operators';
+import { Api } from '../../providers/api/api';
 
 @IonicPage()
 @Component({
@@ -14,13 +15,13 @@ export class OrderPage implements OnInit {
   order: any = 'ongoing';
   notification: any = 4;
   completedOrders: any = [];
-  completedOrdersURL = "https://biriyani-services.cfapps.io/api/v1/order/listOrders/completed";
+  completedOrdersURL = this.api.url + "/api/v1/order/listOrders/completed";
 
   pendingOrders: any = [];
-  pendingOrdersURL = "https://biriyani-services.cfapps.io/api/v1/order/listOrdersOngoing/completed";
+  pendingOrdersURL = this.api.url + "/api/v1/order/listOrdersOngoing/completed";
   accessToken: string;
 
-  constructor(public navCtrl: NavController, public popup: PopoverController, private http: HttpClient) {}
+  constructor(public api: Api, public navCtrl: NavController, public popup: PopoverController, private http: HttpClient) {}
 
   ngOnInit() {
     this.getCompletedOrders();
@@ -98,7 +99,7 @@ export class OrderPage implements OnInit {
 
   restToken() {
     return this.http
-      .post<any[]>("https://biriyani-services.cfapps.io/oauth/token",
+      .post<any[]>("/oauth/token",
       this.getAuthTokenParameters().toString(), {
         headers: new HttpHeaders().set('content-type', 'application/x-www-form-urlencoded')
           .set('authorization', this.getAuthToken())

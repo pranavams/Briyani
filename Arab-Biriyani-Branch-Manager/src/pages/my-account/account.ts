@@ -3,6 +3,7 @@ import {IonicPage, NavController, AlertController} from 'ionic-angular';
 
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {map} from 'rxjs/operators';
+import { Api } from '../../providers/api/api';
 
 @IonicPage()
 @Component({
@@ -12,12 +13,12 @@ import {map} from 'rxjs/operators';
 
 export class AccountPage {
   notification: any = 4;
-  serviceUrl = "https://biriyani-services.cfapps.io/api/v1/branch/get/";
+  serviceUrl = this.api.url + "/api/v1/branch/get/";
   accessToken: string;
 
   details: any = {}
 
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public http: HttpClient) {}
+  constructor(public api: Api, public navCtrl: NavController, public alertCtrl: AlertController, public http: HttpClient) {}
 
   ngOnInit() {
     this.getData("BRAN1");
@@ -57,7 +58,7 @@ export class AccountPage {
 
   restToken() {
     return this.http
-      .post<any[]>("https://biriyani-services.cfapps.io/oauth/token",
+      .post<any[]>("/oauth/token",
       this.getAuthTokenParameters().toString(), {
         headers: new HttpHeaders().set('content-type', 'application/x-www-form-urlencoded')
           .set('authorization', this.getAuthToken())

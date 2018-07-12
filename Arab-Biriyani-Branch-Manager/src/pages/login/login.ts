@@ -13,9 +13,9 @@ export class LoginPage {
   // The account fields for the login form.
   // If you're using the username field with or without email, make
   // sure to add it to the type
-  account: { number: string, password: string } = {
-    number: '+65 652431',
-    password: 'test'
+  account: User = {
+	userName: 'Alex123',
+    password: 'password'
   };
 
   // Our translated text strings
@@ -28,23 +28,29 @@ export class LoginPage {
     public events: Events) {
     }
 
-  // Attempt to login in through our User service
   doLogin() {
+	this.user.login(this.account);
+	this.navCtrl.push(MainPage);
+    this.events.publish("menuObject", 'branch', 2);
+  }
+  
+  // Attempt to login in through our User service
+  doLoginLocal() {
     this.user.login(this.account).subscribe((resp) => {
-      if(this.account.number[this.account.number.length-1] == '1'){
+      if(this.account.userName[this.account.userName.length-1] == '1'){
         this.navCtrl.push(MainPage);
         this.events.publish("menuObject", 'branch', 2);
       }
-      else if(this.account.number[this.account.number.length-1] == '2')
+      else if(this.account.userName[this.account.userName.length-1] == '2')
         this.navCtrl.push('rider-delivery')
-      else if(this.account.number[this.account.number.length-1] == '3')
+      else if(this.account.userName[this.account.userName.length-1] == '3')
         this.navCtrl.push('rider-user')
     }, (err) => {
-      if(this.account.number[this.account.number.length-1] == '1')
+      if(this.account.userName[this.account.userName.length-1] == '1')
         this.navCtrl.push(MainPage);
-      else if(this.account.number[this.account.number.length-1] == '2')
+      else if(this.account.userName[this.account.userName.length-1] == '2')
         this.navCtrl.push('rider-delivery')
-      else if(this.account.number[this.account.number.length-1] == '3')
+      else if(this.account.userName[this.account.userName.length-1] == '3')
         this.navCtrl.push('rider-user')
       // Unable to log in
       let toast = this.toastCtrl.create({

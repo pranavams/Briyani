@@ -50,6 +50,13 @@ public class UserController {
 		return ResponseEntity.ok(user);
 	}
 
+	@PostMapping
+	@RequestMapping("/authenticate/")
+	public ResponseEntity<User> authenticate(@RequestBody User user) {
+		User validUser = this.service.authenticate(user);
+		return ResponseEntity.ok(validUser);
+	}
+
 	@GetMapping
 	@RequestMapping("/getAllByType/{type}")
 	public ResponseEntity<UserResponse> getByType(@PathVariable("type") String type) {

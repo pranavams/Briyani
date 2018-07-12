@@ -33,7 +33,8 @@ export class User {
 	 */
   login(accountInfo: User) {
 	  return Observable.create(observer => {
-		    let seq = this.api.get('api/v1/user/getByUserName/' + accountInfo['userName']).share();
+		  	let headers = new Headers({'Content-Type': 'application/json'});
+		    let seq = this.api.post('api/v1/user/authenticate/', accountInfo, headers).share();
 		    seq.subscribe((res: any) => {
 		        // If the API returned a successful response, mark the user as
 				// logged in

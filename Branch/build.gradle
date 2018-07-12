@@ -41,6 +41,8 @@ dependencies {
 	//Security
 	compile('org.springframework.boot:spring-boot-starter-actuator')
 	compile('org.springframework.boot:spring-boot-starter-data-rest')
+
+	compile 'org.springframework.security:spring-security-crypto'
 	
 	//Corss
 	

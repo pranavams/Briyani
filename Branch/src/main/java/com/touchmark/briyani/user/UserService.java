@@ -1,8 +1,10 @@
 package com.touchmark.briyani.user;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
 import com.touchmark.briyani.commons.Log;
@@ -42,6 +44,14 @@ public class UserService{
 
 	public List<com.touchmark.briyani.user.User> getAllByUserType(String type) {
 		return com.touchmark.briyani.user.User.builder().build().transformEntity(userRepository.findByUserType(type));
+	}
+
+	public User authenticate(User user) {
+		List<UserEntity> users = this.userRepository.findByUserName(user.getUserName());
+		if(users == null || users.isEmpty())
+			throw new RuntimeException("User Not Found");
+		Optional<UserEntity> foundUser = users.stream().filter(x -> BCrypt.checkpw(user.getPassword(), x.getPassword())).findFirst();
+		return User.builder().build().transformEntity(foundUser.get());
 	}
 
 }

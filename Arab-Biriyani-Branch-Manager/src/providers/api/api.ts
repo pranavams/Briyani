@@ -6,8 +6,9 @@ import { Injectable } from '@angular/core';
  */
 @Injectable()
 export class Api {
-  url: string = 'https://biriyani-services.cfapps.io';
-  //url: string = 'http://localhost:18181';
+
+  //url: string = 'https://biriyani-services.cfapps.io';
+  url: string = 'http://localhost:18181';
   constructor(public http: HttpClient) {
   }
 

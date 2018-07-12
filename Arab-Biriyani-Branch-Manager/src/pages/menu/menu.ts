@@ -166,6 +166,6 @@ export class MenuPage implements OnInit {
   }
 
   placeOrder(menu) {
-    this.navCtrl.push('CartPage', {items: this.menuItems});
+    this.navCtrl.push('CartPage', {items: this.menuItems, accessToken: this.accessToken});
   }
 }

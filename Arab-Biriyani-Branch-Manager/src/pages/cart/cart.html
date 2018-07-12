@@ -14,7 +14,7 @@
         </ion-item>
         <ion-item no-padding class="menuItem" *ngFor="let item of cartItems | myfilter:args ; index as i">
             <ion-card>
-                <img [src]="item.imgSrc" />
+        		<img src="https://biriyani-services.cfapps.io/api/v1/image/imageDownload/{{item.id}}/item/?access_token={{accessToken}}"  />
                 <ion-card-content>
                     <ion-card-title>
                         {{item.title}}

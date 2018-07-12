@@ -11,14 +11,14 @@ function getStaffList() {
 		'contentType' : 'x-www-form-urlencoded',
 		'crossDomain' : true,
 		'success' : function(result) {
-			console.log("Staff " + JSON.stringify(result));
+			//console.log("Staff " + JSON.stringify(result));
 			displayStaff(result);
 			return result;
 		},
 		'error' : function(XMLHttpRequest, textStatus, errorThrown) {
 			//Process error actions
-			console.log('getStaff - Error: ' + errorThrown);
-			console.log(XMLHttpRequest.status + ' ' +
+			//console.log('getStaff - Error: ' + errorThrown);
+			//console.log(XMLHttpRequest.status + ' ' +
 				XMLHttpRequest.statusText);
 			return false;
 		}
@@ -26,7 +26,7 @@ function getStaffList() {
 }
 
 function displayStaff(StaffResult) {
-	console.log('Staff Received ' + StaffResult);
+	//console.log('Staff Received ' + StaffResult);
 	var Staff = StaffResult['staff'];
 	var table = document.getElementById("contacts_list");
 	for (var i = 0; i < Staff.length; i++) {

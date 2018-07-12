@@ -40,7 +40,7 @@ function saveAndCloseStaff() {
 }
 
 function saveStaff(toClose) {
-	console.log("To Close " + toClose);
+	//console.log("To Close " + toClose);
 	var jsonObj = getJSONData();
 	$.ajax({
 		"url" : baseURI + 'staff/save?access_token=' + accessToken,
@@ -56,8 +56,8 @@ function saveStaff(toClose) {
 		},
 		'error' : function(XMLHttpRequest, textStatus, errorThrown) {
 			//Process error actions
-			console.log('getMenu - Error: ' + errorThrown + " - " + textStatus);
-			console.log(XMLHttpRequest.status + ' ' +
+			//console.log('getMenu - Error: ' + errorThrown + " - " + textStatus);
+			//console.log(XMLHttpRequest.status + ' ' +
 				XMLHttpRequest.statusText);
 			$.gritter.add({
 				class_name : 'gritter-error',

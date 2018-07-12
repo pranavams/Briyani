@@ -11,14 +11,14 @@ function getOrderList() {
 		'contentType' : 'x-www-form-urlencoded',
 		'crossDomain' : true,
 		'success' : function(result) {
-			console.log(JSON.stringify(result));
+			//console.log(JSON.stringify(result));
 			displayOrder(result);
 			return result;
 		},
 		'error' : function(XMLHttpRequest, textStatus, errorThrown) {
 			//Process error actions
-			console.log('getOrder - Error: ' + errorThrown);
-			console.log(XMLHttpRequest.status + ' ' +
+			//console.log('getOrder - Error: ' + errorThrown);
+			//console.log(XMLHttpRequest.status + ' ' +
 				XMLHttpRequest.statusText);
 			return false;
 		}
@@ -26,7 +26,7 @@ function getOrderList() {
 }
 
 function displayOrder(OrderResult) {
-	console.log('Order Received ' + OrderResult);
+	//console.log('Order Received ' + OrderResult);
 	var Order = OrderResult['order'];
 	var table = document.getElementById("contacts_list");
 	for (var i = 0; i < Order.length; i++) {
@@ -125,7 +125,7 @@ function createOrder() {
 		]
 	};
 
-	console.log("Order to Create " + jsonObj);
+	//console.log("Order to Create " + jsonObj);
 
 	var url_base = baseURI;
 	//accessToken = getToken();
@@ -145,7 +145,7 @@ function createOrder() {
 		},
 		'error' : function(XMLHttpRequest, textStatus, errorThrown) {
 			//Process error actions
-			console.log('createOrder - Error: ' + errorThrown + " - " + textStatus);
+			//console.log('createOrder - Error: ' + errorThrown + " - " + textStatus);
 			$.gritter.add({
 				class_name : 'gritter-error',
 				title : 'Success!',

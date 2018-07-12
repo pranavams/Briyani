@@ -36,7 +36,7 @@ function displayCustomer(data) {
 	document.getElementById('customer_telephone_no').value = nvl(data.telephoneNumber);
 	setTheGenderValue(data.gender);
 	document.getElementById('customer_mobile_no').value = nvl(data.mobileNumber);
-	document.getElementById('customer_dob').value = formatDateDefault(data.dateOfBirth, 'DD/MM/YYY');
+	document.getElementById('customer_dob').value = dateToFormattedStringWithFormat(data.dateOfBirth, "DD/MM/YYYY");
 	document.getElementById('cust_delivery_address').innerHTML = address.doorNumber + ' ' + address.street + ' ' + address.area
 	+ ' ' + address.city + ' ' + address.state + ' ' + address.country + ' ' + address.zipcode;
 }

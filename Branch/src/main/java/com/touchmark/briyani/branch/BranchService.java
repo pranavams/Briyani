@@ -26,5 +26,18 @@ public class BranchService {
 	public Branch saveBranch(Branch branch) {
 		return Branch.builder().build().transformEntities(this.branchRepository.save(branch.createEntity()));
 	}
+	
+	public Branch update(Branch object) {
+		BranchEntity entity = getByID(object);
+		entity.updateWith(object);
+		return Branch.builder().build().transformEntities(this.branchRepository.saveAndFlush(entity));
+	}
+	private BranchEntity getByID(Branch object) {
+		try {
+			return branchRepository.findById(Branch.builder().id(object.getId()).build().DBID()).get();
+		} catch (Exception ex) {
+			throw new RuntimeException("Branch Not Found");
+		}
+	}
 
 }

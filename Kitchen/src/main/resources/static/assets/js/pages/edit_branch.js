@@ -66,6 +66,66 @@ function edit() {
 function deleteData() {
 	console.log("Delete To Implement");
 }
+function getJSONUpdateData() {
+	jsonObject = {
+		'id' : $.urlParam('id'),
+		'firstName' : document.getElementById('customer_fname').value,
+		'middleName' : document.getElementById('customer_mname').value,
+		'lastName' : document.getElementById('customer_lname').value,
+		'telephoneNumber' : document.getElementById('customer_telephone_no').value,
+		'mobileNumber' : document.getElementById('customer_mobile_no').value,
+		'email' : document.getElementById('customer_email').value,
+		'gender' : $('input[name=customRadioInline1]:checked').val(),
+		'dateOfBirth' : stringToDate(document.getElementById('customer_dob').value, 'dd/mm/yyyy', '/'),
+		'address' : {
+			'area' : document.getElementById('cust_delivery_address').value
+		}
+	};
+
+	console.log("Inside Get JSON Data " + jsonObject);
+	return jsonObject;
+}
+
+function update() {
+	console.log("Inside Update Order");
+
+	var jsonObj = getJSONUpdateData();
+
+	var url_base = baseURI;
+	//accessToken = getToken();
+	$.ajax({
+		'url' : baseURI + 'branch/update',
+		'type' : 'POST',
+		'contentType' : 'application/json',
+		'crossDomain' : true,
+		'data' : JSON.stringify(jsonObj),
+		'dataType' : 'json',
+		'success' : function(result) {
+			$.gritter.add({
+				class_name : 'gritter-success',
+				title : 'Success!',
+				text : '<p style="font-size: 14px;">Branch Saved successfully!</p>',
+			});
+			clearItem();
+			return result;
+		},
+		'error' : function(XMLHttpRequest, textStatus, errorThrown) {
+			//Process error actions
+			console.log('Branch Update  - Error: ' + errorThrown + " - " + textStatus);
+			console.log(XMLHttpRequest.status + ' ' +
+				XMLHttpRequest.statusText);
+			$.gritter.add({
+				class_name : 'gritter-error',
+				title : 'Success!',
+				text : '<p style="font-size: 14px;">Branch Not Saved!</p>',
+			});
+			return false;
+		}
+	});
+
+}
+
+
 
 
 getToken(getBranchList);

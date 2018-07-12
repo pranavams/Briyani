@@ -75,4 +75,18 @@ public class BranchEntity implements Serializable {
 	
 	@Column(name = "lastUpdatedDate")
 	private OffsetDateTime lastUpdatedDate;
+	
+	public void updateWith(Branch object) {
+		this.contactPersonFirstName = object.getContactPersonFirstName();
+		this.contactPersonLastName = object.getContactPersonLastName();
+		this.contactPersonMiddleName = object.getContactPersonMiddleName();
+		this.mobileNumber = object.getMobileNumber();
+		this.contactPersonNumber = object.getContactPersonNumber();
+		this.email = object.getEmail();
+		this.address.updateWith(object.getAddress());
+		this.lastUpdatedDate = OffsetDateTime.now();
+		this.name = object.getName();
+		this.longitude = object.getLongitude();
+		this.latitude = object.getLatitude();
+	}
 }

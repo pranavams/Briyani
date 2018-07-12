@@ -14,7 +14,7 @@ export class LoginPage {
   // If you're using the username field with or without email, make
   // sure to add it to the type
   account: any = {
-	userName: 'Alex12',
+	userName: 'Alex123',
     password: 'password'
   };
 

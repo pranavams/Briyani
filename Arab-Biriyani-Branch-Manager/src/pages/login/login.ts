@@ -14,7 +14,7 @@ export class LoginPage {
   // If you're using the username field with or without email, make
   // sure to add it to the type
   account: any = {
-	userName: 'Alex123',
+	userName: 'Alex12',
     password: 'password'
   };
 
@@ -43,16 +43,20 @@ export class LoginPage {
 	          this.navCtrl.push(MainPage);
 	          this.events.publish("menuObject", 'branch', 2);
 	      } else {
-	        this.showError("Access Denied");
+	    	  this.showError("Access Denied");
 	      }
 	    },
 	      error => {
-	        this.showError(error);
+	    	  this.showError(error);
 	      });  
   }
   
   showError(text) {
-      let toast = this.toastCtrl.create({
+	  this.loading.present().then(() => {
+		  this.loading.dismiss();
+		});
+
+	  let toast = this.toastCtrl.create({
           message: text,
           duration: 3000,
           position: 'top'

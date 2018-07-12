@@ -42,6 +42,7 @@ export class User {
 		        observer.complete();
 		        this._loggedIn(res);
 		      }, err => {
+		    	observer.next(false);
 		        console.error('ERROR', err);
 		      });
 

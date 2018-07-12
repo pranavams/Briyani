@@ -1,6 +1,7 @@
 import 'rxjs/add/operator/toPromise';
 
 import { Injectable } from '@angular/core';
+import {Observable} from 'rxjs/Observable';
 
 import { Api } from '../api/api';
 
@@ -31,17 +32,20 @@ export class User {
 	 * on the form.
 	 */
   login(accountInfo: User) {
-    let seq = this.api.get('api/v1/user/getByUserName/' + accountInfo['userName']).share();
+	  return Observable.create(observer => {
+		    let seq = this.api.get('api/v1/user/getByUserName/' + accountInfo['userName']).share();
+		    seq.subscribe((res: any) => {
+		        // If the API returned a successful response, mark the user as
+				// logged in
+		  		console.log("Logged In Successfully User Details " + res);
+		        observer.next(true);
+		        observer.complete();
+		        this._loggedIn(res);
+		      }, err => {
+		        console.error('ERROR', err);
+		      });
 
-    seq.subscribe((res: any) => {
-      // If the API returned a successful response, mark the user as logged in
-		console.log("Logged In Successfully User Details " + res);
-        this._loggedIn(res);
-    }, err => {
-      console.error('ERROR', err);
-    });
-
-    return seq;
+	      });
   }
 
   /**

@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, ToastController, NavParams, Events } from 'ionic-angular';
+import { IonicPage, NavController, LoadingController, ToastController, NavParams, Events } from 'ionic-angular';
 
 import { User } from '../../providers';
 import { MainPage } from '../';
@@ -18,20 +18,44 @@ export class LoginPage {
     password: 'password'
   };
 
-  // Our translated text strings
+  loggedInUser: User = {
+	userName: 'Alex123',
+    password: 'password'
+  };
+  loading: Loading;
+
+// Our translated text strings
   private loginErrorString: string;
 
   constructor(public navCtrl: NavController,
-    public user: User,
+    public userService: User,
+    public loadingCtrl: LoadingController,
     public toastCtrl: ToastController,
     public navParams: NavParams,
     public events: Events) {
     }
-
+  showLoading() {
+	    this.loading = this.loadingCtrl.create({
+	      content: 'Please wait...',
+	      dismissOnPageChange: true
+	    });
+	    this.loading.present();
+	  }
+  
   doLogin() {
-	this.user.login(this.account);
-	this.navCtrl.push(MainPage);
-    this.events.publish("menuObject", 'branch', 2);
+	  this.showLoading();
+	  console.log("Loading Displayed");
+	    this.userService.login(this.account).subscribe(allowed => {
+	      if (allowed) {        
+	          this.navCtrl.push(MainPage);
+	          this.events.publish("menuObject", 'branch', 2);
+	      } else {
+	        this.showError("Access Denied");
+	      }
+	    },
+	      error => {
+	        this.showError(error);
+	      });  
   }
   
   // Attempt to login in through our User service

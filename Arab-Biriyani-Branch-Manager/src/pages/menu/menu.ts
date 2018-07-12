@@ -5,6 +5,7 @@ import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 
 import { Api } from '../../providers/api/api';
+import { Items } from '../../providers/items/items';
 
 export interface CountdownTimer {
   seconds: number;

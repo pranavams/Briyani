@@ -29,14 +29,13 @@ function displayCustomer(data){
 	console.log("Data " + JSON.stringify(data));
 	data = data.customer[0];
 	address = data.address;
-	document.getElementById('displayName').innerHTML = data.firstName + ' ' + data.middleName + ' ' + data.lastName
-	document.getElementById('mobileNo').innerHTML = data.mobileNumber;
-	document.getElementById('emailId').innerHTML = data.email;
-	document.getElementById('dateOfBirth').innerHTML = data.dateOfBirth;
+	document.getElementById('displayName').innerHTML = data.firstName + ' ' + nvl(data.middleName) + ' ' + data.lastName
+	document.getElementById('mobileNo').innerHTML = nvl(data.mobileNumber);
+	document.getElementById('emailId').innerHTML = nvl(data.email);
+	document.getElementById('dateOfBirth').innerHTML = nvl(formatDateDefault(data.dateOfBirth));
 	
-	document.getElementById('gender').innerHTML = data.gender;
-	document.getElementById('address').innerHTML = address.doorNumber+' ' + address.street + ' ' + address.area
-	 + ' ' + address.city+' ' + address.state+' ' + address.country + ' ' + address.country + ' ' + address.zipcode;
+	document.getElementById('gender').innerHTML = nvl(data.gender);
+	document.getElementById('address').innerHTML = getAddress(data.address);
 }
 
 function edit() {

@@ -169,7 +169,7 @@
                     <!--- Table Div--->
                     <div class="main-content table_hide">
                     <div class="table-responsive">
-                        <table id="contacts_list" class="table table-responsive table-hover tablefontsize cell-border">
+                        <table id="customer_table_list" class="table table-responsive table-hover tablefontsize cell-border">
                           <thead class="table_heading_color">
                             <tr>
                                 <th>#</th>
@@ -240,27 +240,6 @@
      <script src="assets/js/pages/getToken.js"></script>	
     <script src="assets/js/pages/customer.js"></script>	
       	
-		<script type="text/javascript">
-        	/// Table Format
-            $('#contacts_list').DataTable( {
-               	
-                columns: [
-                    
-                    { data: "sno" }, //1
-                    { data: "name" }, //2
-                    { data: "emailid" }, //3
-                    { data: "mobile" }, //4
-				    { data: "dob" }, //5
-					{ data: "address" }, //5
-                    { data: "modify" } //6
-                ],
-                dom: 'lBfrtip',
-				buttons: [
-					'excelHtml5',
-					'csvHtml5',
-					'pdfHtml5'
-				]
-            } );
-    </script>
+
 </body>
 </html>

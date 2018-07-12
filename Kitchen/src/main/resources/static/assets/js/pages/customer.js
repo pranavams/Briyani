@@ -24,6 +24,28 @@ function getCustomerList() {
 }
 
 function displayCustomer(data){
+	var rowIndex = 1;
+    $('#customer_table_list').DataTable( {
+    	"lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+    	"data" : data.customer,
+        "columns": [
+        	{ "data" : function (row, x, set) { return rowIndex ++ ;} },
+        	{ "data": function (data, x, set) { return nvl(data.salutation) + ' ' + data.firstName + ' ' + data.middleName + ' ' + data.lastName; } },
+        	{ "data": 'email' },
+        	{ "data": 'mobileNumber' },
+        	{ "data": function (data, x, set) { return nvl(formatDateDefault(data.dateOfBirth));} },
+        	{ "data": function (row, x, set) { return getAddress (row.address);} },
+            { "data": function (data, x, set) { return '<a href="customer_preview.html?id=' + data.id + '" class="btn btn-xs btn-default"><i class="fa fa-eye"></i>Details</a>';}}
+        ],
+		buttons: [
+			'excelHtml5',
+			'csvHtml5',
+			'pdfHtml5'
+		]	        
+    } );
+}
+
+function displayCustomers(data){
 	console.log("Data " + JSON.stringify(data));
 	$.each(data.customer, function(i, data) {
         var body = "<tr>";

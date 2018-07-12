@@ -27,37 +27,26 @@ function getBranchList() {
 }
 
 function displayBranch(branchResult) {
-	console.log('Branch Received ' + branchResult);
-	var branch = branchResult['branch'];
-	var table = document.getElementById("contacts_list");
-	for (var i = 0; i < branch.length; i++) {
-
-		tr = table.insertRow(-1);
-
-		var tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = (i + 1);
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = branch[i]['id'];
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = branch[i]['name'];
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = branch[i]['telephone'];
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = getAddress(branch[i]['address']);
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = branch[i]['contactPersonSalutation'] + ' ' + branch[i]['contactPersonFirstName'] + ' ' + branch[i]['contactPersonMiddleName'] + ' ' + branch[i]['contactPersonLastName'];
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = branch[i]['contactPersonNumber'];
-		
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = '<a href="branch_preview.html?id=' + branch[i]['id'] + '" class="btn btn-xs btn-default"><i class="fa fa-eye"></i>Details</a>';
-	}
+	var rowIndex = 1;
+    $('#contacts_list').DataTable( {
+    	"lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+    	"data" : branchResult['branch'],
+        "columns": [
+        	{ "data" : function (row, x, set) { return rowIndex ++ ;} },
+        	{ "data": 'id' },
+        	{ "data": 'name' },
+        	{ "data": 'telephone' },
+        	{ "data": function (row, x, set) { return getAddress (row.address);} },
+        	{ "data": function (row, x, set) { return (row.contactPersonSalutation + ' ' + row.contactPersonFirstName + ' ' + row.contactPersonMiddleName + ' ' + row.contactPersonLastName).trim()} },
+        	{ "data": 'contactPersonNumber' },
+            { "data": function (row, x, set) { return '<a href="branch_preview.html?id=' + row.id + '" class="btn btn-xs btn-default"><i class="fa fa-eye"></i>Details</a>' ;}}
+        ],
+		buttons: [
+			'excelHtml5',
+			'csvHtml5',
+			'pdfHtml5'
+		]	        
+    } );
 }
 
 function getJSONData() {

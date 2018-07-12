@@ -109,7 +109,7 @@ export class CartPage {
 	let cartDetails : any = {};
     cartDetails.couponCode = '10percent';
     cartDetails.userName = this.user;
-    cartDetails.branchID = 'BRAN1';
+    cartDetails.branchID = 'BRAN2';
     cartDetails.customerID = '';
     cartDetails.deliveryAddress = this.Address;
     cartDetails.orderDetails = this.buildOrderDetails();

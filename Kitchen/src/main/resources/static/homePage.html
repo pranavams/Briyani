@@ -1,147 +1,131 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
-<title>Dashboard | Notepad Application</title>
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="description"
-	content="Business Management Application by Dude at Work">
-<meta name="author" content="Touchmark Media">
-<!-- CSS -->
-<link
-	href='//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Source+Sans+Pro:400&subset=latin'
-	rel='stylesheet' type='text/css'>
-<link href="assets/css/bootstrap.min.css" rel="stylesheet"
-	type="text/css">
-<link href="assets/css/bootstrap-datepicker3.css" rel="stylesheet">
-<link href="assets/css/font-awesome.min.css" rel="stylesheet"
-	type="text/css">
-<link href="assets/css/main.css" rel="stylesheet" type="text/css">
-<link href="assets/css/style.css" rel="stylesheet" type="text/css">
-<link href="assets/css/bootstrap-tagsinput.css">
-<link href="assets/css/bootstrapValidator.min.css">
-<!-- Fav and touch icons -->
-<link rel="shortcut icon" href="assets/img/notepad.png">
-<link rel="stylesheet" href="assets/css/bootstrap-select.min.css" />
-<link rel="stylesheet" href="assets/css/autocomplete.css">
-<link rel="stylesheet" href="assets/css/autocomplete.theme.css">
-<style type="text/css">
-.investment-summary {
-	padding-top: 15px;
-	padding-bottom: 15px;
-}
-
-a:focus, a:hover {
-	color: #23527c;
-	text-decoration: none;
-}
-
-.typeahead, .tt-query, .tt-hint {
+	<title>Dashboard | Notepad Application </title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="description" content="Business Management Application by Dude at Work">
+	<meta name="author" content="Touchmark Media">
+	<!-- CSS -->
+	<link href='//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Source+Sans+Pro:400&subset=latin' rel='stylesheet' type='text/css'>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/bootstrap-datepicker3.css" rel="stylesheet">
+	<link href="assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="assets/css/main.css" rel="stylesheet" type="text/css">
+	<link href="assets/css/style.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/bootstrap-tagsinput.css">
+    <link href="assets/css/bootstrapValidator.min.css">
+	<!-- Fav and touch icons -->
+	<link rel="shortcut icon" href="assets/img/notepad.png">
+    <link rel="stylesheet" href="assets/css/bootstrap-select.min.css" />
+    <link rel="stylesheet" href="assets/css/autocomplete.css">
+    <link rel="stylesheet" href="assets/css/autocomplete.theme.css">
+	<style type="text/css">
+    .investment-summary { padding-top: 15px; padding-bottom: 15px; }
+    a:focus, a:hover {
+    color: #23527c;
+    text-decoration: none;
+    }
+		.typeahead, .tt-query, .tt-hint {
 	font-size: 14px;
 	outline: medium none;
 	padding: 5px 12px;
 	width: 310px;
-}
-
-.tt-dropdown-menu {
+	}
+	.tt-dropdown-menu {
 	background-color: #FFFFFF;
 	border: 1px solid rgba(0, 0, 0, 0.2);
 	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 	margin: 0 0 0 0px;
 	padding: 8px 0;
 	width: 310px;
-}
+	}
+	.margin_left {
+		margin-left:0px !important;
+	}
 
-.margin_left {
-	margin-left: 0px !important;
-}
-</style>
+    </style>
 </head>
 <body class="sidebar-fixed topnav-fixed dashboard">
 	<!-- WRAPPER -->
 	<div id="wrapper" class="wrapper">
-		<div class="top-bar navbar-fixed-top">
-			<div class="container">
-				<div class="clearfix">
-					<a href="javascript:;"
-						class="pull-left toggle-sidebar-collapse hidden-lg hidden-mde"><i
-						class="fa fa-bars"></i></a>
-					<!-- toggle-sidebar-collapse -->
-					<!--logo -->
-					<div class="pull-left left logo">
-						<a href="index.html" class="logo_name">Authentic Arab St
-							Biriyani</a>
-						<h1 class="sr-only">Application Dashboard</h1>
-					</div>
-					<!-- end logo -->
-					<div class="pull-right right">
-						<!-- search box -->
+         <div class="top-bar navbar-fixed-top">
+        <div class="container">
+            <div class="clearfix">
+                 <a href="javascript:;" class="pull-left toggle-sidebar-collapse hidden-lg hidden-mde"><i class="fa fa-bars"></i></a> <!-- toggle-sidebar-collapse -->
+                <!--logo -->
+                <div class="pull-left left logo">
+                    <a href="homePage.html" class="logo_name">Authentic Arab St Biriyani</a>
+                    <h1 class="sr-only">Application Dashboard</h1>
+                </div>
+                <!-- end logo -->
+                <div class="pull-right right">
+                    <!-- search box -->
+                    
+                    <!-- end search box -->
+                    <!-- top-bar-right -->
+                    <div class="top-bar-right">
+                        
+                        <!-- logged user and the menu -->
+                        <div class="logged-user">
+                            <div class="btn-group">
+                                <a href="javascript:;" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+                                <span class="name" id = 'greetName'></span>
+                                </a>
+                            </div>
 
-						<!-- end search box -->
-						<!-- top-bar-right -->
-						<div class="top-bar-right">
-
-							<!-- logged user and the menu -->
-							<div class="logged-user">
-								<div class="btn-group">
-									<a href="javascript:;" class="btn btn-link dropdown-toggle"
-										data-toggle="dropdown"> <i class="fa fa-power-off"></i> <span
-										class="name"> Logout </a>
-
-								</div>
-							</div>
-							<!-- end logged user and the menu -->
-						</div>
-						<!-- end top-bar-right -->
-					</div>
-				</div>
-			</div>
-			<!-- /container -->
-		</div>
-		<!-- END TOP BAR -->
-		<!-- LEFT SIDEBAR -->
-		<div id="left-sidebar" class="left-sidebar left_sidebar">
-			<div class="sidebar-minified js-toggle-minified">
-				<i class="fa fa-arrows-h"></i>
-			</div>
-			<!-- main-nav -->
-
-			<div class="sidebar-scroll">
-				<nav class="main-nav">
-					<ul class="main-menu">
-						<li class="active"><a href="index.html"><i
-								class="fa fa-dashboard fa-fw"></i><span class="text">Dashboard</span></a></li>
-
-						<li><a href="customer.html"><i
-								class="fa fa-user-plus fa-fw"></i><span class="text">Customer
-							</span></a></li>
-
-						<li><a href="order_user.html"><i class="fa fa-list"></i><span
-								class="text">List Of End User Order</span></a></li>
-
-						<li><a href="branch.html"><i
-								class="fa fa-university fa-fw"></i><span class="text">Branch</span></a></li>
-
-						<li><a href="order.html"><i class="fa fa-list fa-fw"></i><span
-								class="text">List Of Branch Order</span></a></li>
-
-						<li><a href="rider.html"><i
-								class="fa fa-motorcycle fa-fw"></i><span class="text">Rider</span></a></li>
-
-						<li><a href="menu.html"><i class="fa fa-list-alt fa-fw"></i><span
-								class="text">Menu</span></a></li>
-
-						<li><a href="staff.html"><i class="fa fa-user fa-fw"></i><span
-								class="text">Staff</span></a></li>
-
-					</ul>
-				</nav>
-			</div>
-
-		</div>
-		<!-- MAIN CONTENT WRAPPER expanded-->
+                            <div class="btn-group">
+                                <a href="javascript:;" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-power-off"></i>
+                                    <span class="name">
+                                   Logout
+                                    
+                                </a>
+                                
+                            </div>
+                        </div>
+                        <!-- end logged user and the menu -->
+                    </div>
+                    <!-- end top-bar-right -->
+                </div>
+            </div>
+        </div>
+        <!-- /container -->
+        </div>
+        <!-- END TOP BAR -->
+        <!-- LEFT SIDEBAR -->
+        <div id="left-sidebar" class="left-sidebar left_sidebar">
+        <div class="sidebar-minified js-toggle-minified">
+            <i class="fa fa-arrows-h"></i>
+        </div>
+        <!-- main-nav -->
+           
+                <div class="sidebar-scroll">
+                    <nav class="main-nav">
+                        <ul class="main-menu">
+                            <li class="active"><a href="homePage.html"><i class="fa fa-dashboard fa-fw"></i><span class="text">Dashboard</span></a></li>
+                            
+                            <li><a href="customer.html"><i class="fa fa-user-plus fa-fw"></i><span class="text">Customer </span></a></li>
+                            
+                            <li><a href="order_user.html"><i class="fa fa-list"></i><span class="text">List Of End User Order</span></a></li>
+                            
+                            <li ><a href="branch.html"><i class="fa fa-university fa-fw"></i><span class="text">Branch</span></a></li>
+                            
+                             <li ><a href="order.html"><i class="fa fa-list fa-fw"></i><span class="text">List Of Branch Order</span></a> </li>
+                     		
+                             <li><a href="rider.html"><i class="fa fa-motorcycle fa-fw"></i><span class="text">Rider</span></a></li>
+                             
+                             <li ><a href="menu.html"><i class="fa fa-list-alt fa-fw"></i><span class="text">Menu</span></a></li>
+                             
+                             <li ><a href="staff.html"><i class="fa fa-user fa-fw"></i><span class="text">Staff</span></a></li>
+                            
+                        </ul>
+                    </nav>
+                </div>
+               
+            </div>
+		<!-- MAIN CONTENT WRAPPER expanded-->   
 		<div id="main-content-wrapper" class="content-wrapper ">
 			<div class="row">
 				<div class="col-md-4">
@@ -157,484 +141,360 @@ a:focus, a:hover {
 					<h2>DASHBOARD</h2>
 					<em>the first priority information</em>
 				</div>
-				<div class="main-content">
-					<div class="inner-page">
-						<div class="row bottom-30px">
-							<div class="col-lg-5 col-sm-6 col-xs-12">
-								<!-- today sales / invoice / tax / profit / due -->
-								<div class="col-md-12 col-lg-12 widget" style="padding: 0;">
-									<div class="widget-header">
-										<h3>Today Statistics</h3>
-									</div>
-									<div class="col-md-4">
-										<div class="investment-summary text-center">
-											<span class="info-label">Today Orders</span> <strong>
-												25 </strong>
-										</div>
-									</div>
-									<div class="col-md-4">
-										<div class="investment-summary text-center">
-											<span class="info-label">Today Sales</span> <strong>
-												$85 </strong>
-										</div>
-									</div>
-									<div class="col-md-4">
-										<div class="investment-summary text-center">
-											<span class="info-label">Today Paid</span> <span
-												class="inv-green"> <strong> $60 </strong>
-											</span>
-										</div>
-									</div>
-									<div class="col-md-4">
-										<div class="investment-summary text-center">
-											<span class="info-label">Today <br>Due
-											</span> <span class="inv-red"> <strong> $25 </strong>
-											</span>
-										</div>
-									</div>
-									<div class="col-md-4">
-										<div class="investment-summary text-center">
-											<span class="info-label">Today Order <br>Request
-											</span> <span class="inv-red"> <strong> 25 </strong>
-											</span>
-										</div>
-									</div>
-									<div class="col-md-4">
-										<div class="investment-summary text-center">
-											<span class="info-label">Today Purchase Request</span> <span
-												class="inv-red"> <strong> 25 </strong>
-											</span>
-										</div>
-									</div>
-
-
-								</div>
-
-								<div class="col-md-12 col-lg-12 widget" style="padding: 0;">
-									<!-- total sales / invoice / profit / tax / due -->
-									<div class="widget-header">
-										<h3>Overall Statistics</h3>
-									</div>
-									<div class="col-md-4">
-										<div class="investment-summary text-center">
-											<span class="info-label">Total Orders</span> <strong>
-												70 </strong>
-										</div>
-									</div>
-									<div class="col-md-4">
-										<div class="investment-summary text-center">
-											<span class="info-label">Total Sales</span> <strong>
-												$470 </strong>
-										</div>
-									</div>
-									<div class="col-md-4">
-										<div class="investment-summary text-center">
-											<span class="info-label">Total Paid</span> <span
-												class="inv-green"> <strong> $220 </strong>
-											</span>
-										</div>
-									</div>
-									<div class="col-md-4">
-										<div class="investment-summary text-center">
-											<span class="info-label">Total <br>Due
-											</span> <span class="inv-red"> <strong> $250 </strong>
-											</span>
-										</div>
-									</div>
-									<div class="col-md-4">
-										<div class="investment-summary text-center">
-											<span class="info-label">Total Order <br>Request
-											</span> <span class="inv-red"> <strong> 50 </strong>
-											</span>
-										</div>
-									</div>
-									<div class="col-md-4">
-										<div class="investment-summary text-center">
-											<span class="info-label">Total Purchase <br>Request
-											</span> <span class="inv-red"> <strong> 50 </strong>
-											</span>
-										</div>
-									</div>
-								</div>
-
-
-
-
-							</div>
-							<div class="col-lg-7 col-sm-6 col-xs-12">
-								<div class="row">
-									<div class="col-md-3">
-										<div class="bg-white"
-											style="background-color: #fff; border-radius: 5px; border: none; text-align: center; padding: 10px; box-shadow: 0px 5px 7px #b7bbc2;">
-											<!--<i class="glyphicon glyphicon-shopping-cart iconsmenu" style="font-size:18px;"></i>-->
-											<a href="branch.html"> <img
-												src="assets/img/icon/branch.png" alt="" style="width: 65%;">
-												<h5>Branch</h5>
-
-											</a>
-										</div>
-									</div>
-									<div class="col-md-3">
-										<div class="bg-white"
-											style="background-color: #fff; border-radius: 5px; border: none; text-align: center; padding: 10px; box-shadow: 0px 5px 7px #b7bbc2;">
-											<!--<i class="glyphicon glyphicon-shopping-cart iconsmenu" style="font-size:18px;"></i>-->
-											<a href="customer.html"> <img
-												src="assets/img/icon/customer.png" alt=""
-												style="width: 65%;">
-												<h5>Customers</h5>
-
-											</a>
-										</div>
-									</div>
-									<div class="col-md-3">
-										<div class="bg-white"
-											style="background-color: #fff; border-radius: 5px; border: none; text-align: center; padding: 10px; box-shadow: 0px 5px 7px #b7bbc2;">
-											<!--<i class="glyphicon glyphicon-shopping-cart iconsmenu" style="font-size:18px;"></i>-->
-											<a href="order.html"> <img
-												src="assets/img/icon/order.png" alt="" style="width: 65%;">
-												<h5>List of Branch Order</h5>
-
-											</a>
-										</div>
-									</div>
-									<div class="col-md-3">
-										<div class="bg-white"
-											style="background-color: #fff; border-radius: 5px; border: none; text-align: center; padding: 10px; box-shadow: 0px 5px 7px #b7bbc2;">
-											<!--<i class="glyphicon glyphicon-shopping-cart iconsmenu" style="font-size:18px;"></i>-->
-											<a href="rider.html"> <img
-												src="assets/img/icon/delivery.png" alt=""
-												style="width: 65%;">
-												<h5>Rider</h5>
-
-											</a>
-										</div>
-									</div>
-								</div>
-								<div class="row">
-
-									<div class="col-md-3" style="margin: 20px 0 0 0;">
-										<div class="bg-white"
-											style="background-color: #fff; border-radius: 5px; border: none; text-align: center; padding: 10px; box-shadow: 0px 5px 7px #b7bbc2;">
-											<!--<i class="glyphicon glyphicon-shopping-cart iconsmenu" style="font-size:18px;"></i>-->
-											<a href="menu.html"> <img src="assets/img/icon/menu.png"
-												alt="" style="width: 65%;">
-												<h5>Menu</h5>
-
-											</a>
-										</div>
-									</div>
-									<div class="col-md-3" style="margin: 20px 0 0 0;">
-										<div class="bg-white"
-											style="background-color: #fff; border-radius: 5px; border: none; text-align: center; padding: 10px; box-shadow: 0px 5px 7px #b7bbc2;">
-											<!--<i class="glyphicon glyphicon-shopping-cart iconsmenu" style="font-size:18px;"></i>-->
-											<a href="staff.html"> <img
-												src="assets/img/icon/staff.png" alt="" style="width: 65%;">
-												<h5>Staff</h5>
-
-											</a>
-										</div>
-									</div>
-									<div class="col-md-3" style="margin: 20px 0 0 0;">
-										<div class="bg-white"
-											style="background-color: #fff; border-radius: 5px; border: none; text-align: center; padding: 10px; box-shadow: 0px 5px 7px #b7bbc2;">
-											<!--<i class="glyphicon glyphicon-shopping-cart iconsmenu" style="font-size:18px;"></i>-->
-											<a href="#"> <img src="assets/img/icon/settings.png"
-												alt="" style="width: 65%;">
-												<h5>Setting</h5>
-
-											</a>
-										</div>
-									</div>
-									<div class="col-md-3" style="margin: 20px 0 0 0;">
-										<div class="bg-white"
-											style="background-color: #fff; border-radius: 5px; border: none; text-align: center; padding: 10px; box-shadow: 0px 5px 7px #b7bbc2;">
-											<!--<i class="glyphicon glyphicon-shopping-cart iconsmenu" style="font-size:18px;"></i>-->
-											<a href="logout.html"> <img
-												src="assets/img/icon/exit.png" alt="" style="width: 65%;">
-												<h5>Logout</h5>
-
-											</a>
-										</div>
-									</div>
-
-
-
-								</div>
-								<br>
-								<div class="row">
-									<div class="col-md-12 col-lg-12">
-										<div class="widget">
-											<div class="widget-header">
-												<h3>
-													<i class="fa fa-bar-chart-o"></i> Today Order Request
-												</h3>
-												<div class="widget-header-toolbar">
-													<a href="new_notes.php" class="label label-danger">View
-														all</a>
-												</div>
-											</div>
-											<div class="widget-content">
-												<div class="table-responsive">
-													<table class="table table-condensed">
-														<thead>
-															<tr>
-																<th>Date</th>
-																<th>Order No</th>
-																<th>Order Name</th>
-																<th>Branch Code</th>
-																<th>Branch Name</th>
-																<th>Status</th>
-
-															</tr>
-														</thead>
-														<tbody>
-
-														</tbody>
-
-													</table>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div class="col-md-12 col-lg-12">
-								<div class="widget">
-									<div class="widget-header">
-										<h3>
-											<i class="fa fa-bar-chart-o"></i> Recently Delivery Order - <span
-												class="text-muted">(Last 5 Record)</span>
-										</h3>
-										<div class="widget-header-toolbar">
-											<a href="new_notes.php" class="label label-danger">View
-												all</a>
-										</div>
-									</div>
-									<div class="widget-content">
-										<div class="table-responsive">
-											<table id="contacts_list"
-												class="table table-responsive table-hover tablefontsize cell-border">
-												<thead class="table_heading_color">
-													<tr>
-														<th>#</th>
-														<th>Rider Code</th>
-														<th>Customer Name</th>
-														<th>Mobile No</th>
-														<th>Address</th>
-														<th>Name Of Item</th>
-														<th>Qty</th>
-														<th>Department</th>
-														<th>Modify</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr>
-														<td>1</td>
-														<td>ENDRI0001</td>
-														<td>John</td>
-														<td>+63456789</td>
-														<td>No234, Thomas Street,<br>Singapore-600056
-														</td>
-														<td>Chicken Biryani</td>
-														<td>30</td>
-														<td><a class="btn btn-primary btn-xs">End User
-																Rider</a></td>
-														<td><a href="#" class="btn btn-xs btn-default"><i
-																class="fa fa-pencil"></i></a> <a href="#"
-															class="btn btn-xs btn-danger" data-toggle="modal"
-															data-target="#deleteDATA"><i class="fa fa-remove"></i></a>
-															<a href="#" class="btn btn-xs btn-info"><i
-																class="fa fa-eye"></i></a></td>
-													</tr>
-													<tr>
-														<
-														<td>1</td>
-														<td>BRAN0001</td>
-														<td>John</td>
-														<td>+63456789</td>
-														<td>No234, Thomas Street,<br>Singapore-600056
-														</td>
-														<td>Chicken Biryani</td>
-														<td>3</td>
-														<td><a class="btn btn-default btn-xs">Branch
-																Rider</a></td>
-														<td><a href="#" class="btn btn-xs btn-default"><i
-																class="fa fa-pencil"></i></a> <a href="#"
-															class="btn btn-xs btn-danger" data-toggle="modal"
-															data-target="#deleteDATA"><i class="fa fa-remove"></i></a>
-															<a href="#" class="btn btn-xs btn-info"><i
-																class="fa fa-eye"></i></a></td>
-													</tr>
-
-												</tbody>
-											</table>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div class="col-md-12 col-lg-12">
-								<div class="widget">
-									<div class="widget-header">
-										<h3>
-											<i class="fa fa-bar-chart-o"></i> Recently Add Staff - <span
-												class="text-muted">(Last 5 Record)</span>
-										</h3>
-										<div class="widget-header-toolbar">
-											<a href="new_notes.php" class="label label-danger">View
-												all</a>
-										</div>
-									</div>
-									<div class="widget-content">
-										<div class="table-responsive">
-											<table id="contacts_list"
-												class="table table-responsive table-hover tablefontsize cell-border">
-												<thead class="table_heading_color">
-													<tr>
-														<th>#</th>
-														<th>Staff Code</th>
-														<th>Staff Name</th>
-														<th>Address</th>
-														<th>Email Id / User Name</th>
-														<th>Mobile No</th>
-														<th>Gender</th>
-														<th>Joing Date</th>
-														<th>Modify</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr>
-														<td>1</td>
-														<td>STAFF001</td>
-														<td>Thomas</td>
-														<td>No234, Thomas Street,<br>Singapore-600056
-														</td>
-														<td>Thomas@gmail.com</td>
-														<td>9876543210</td>
-														<td>Male</td>
-														<td>2018-06-25</td>
-														<td><a href="#" class="btn btn-xs btn-default"><i
-																class="fa fa-pencil"></i></a> <a href="#"
-															class="btn btn-xs btn-danger" data-toggle="modal"
-															data-target="#deleteDATA"><i class="fa fa-remove"></i></a>
-															<a href="#" class="btn btn-xs btn-info"><i
-																class="fa fa-eye"></i></a></td>
-													</tr>
-												</tbody>
-											</table>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div class="col-md-12 col-lg-12">
-								<div class="widget">
-									<div class="widget-header">
-										<h3>
-											<i class="fa fa-bar-chart-o"></i> Recently Add Rider - <span
-												class="text-muted">(Last 5 Record)</span>
-										</h3>
-										<div class="widget-header-toolbar">
-											<a href="new_notes.php" class="label label-danger">View
-												all</a>
-										</div>
-									</div>
-									<div class="widget-content">
-										<div class="table-responsive">
-											<table id="contacts_list"
-												class="table table-responsive table-hover tablefontsize cell-border">
-												<thead class="table_heading_color">
-													<tr>
-														<th>#</th>
-														<th>Rider Code</th>
-														<th>Rider Name</th>
-														<th>Address</th>
-														<th>Mobile No</th>
-														<th>Gender</th>
-														<th>Joing Date</th>
-														<th>Modify</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr>
-														<td>1</td>
-														<td>STAFF001</td>
-														<td>Thomas</td>
-														<td>No234, Thomas Street,<br>Singapore-600056
-														</td>
-														<td>9876543210</td>
-														<td>Male</td>
-														<td>2018-06-25</td>
-														<td><a href="#" class="btn btn-xs btn-default"><i
-																class="fa fa-pencil"></i></a> <a href="#"
-															class="btn btn-xs btn-danger" data-toggle="modal"
-															data-target="#deleteDATA"><i class="fa fa-remove"></i></a>
-															<a href="#" class="btn btn-xs btn-info"><i
-																class="fa fa-eye"></i></a></td>
-													</tr>
-												</tbody>
-											</table>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div class="col-md-12 col-lg-12">
-								<div class="widget">
-									<div class="widget-header">
-										<h3>
-											<i class="fa fa-bar-chart-o"></i> Recently Add Menu - <span
-												class="text-muted">(Last 5 Record)</span>
-										</h3>
-										<div class="widget-header-toolbar">
-											<a href="new_notes.php" class="label label-danger">View
-												all</a>
-										</div>
-									</div>
-									<div class="widget-content">
-										<div class="table-responsive">
-											<table id="contacts_list"
-												class="table table-responsive table-hover tablefontsize cell-border">
-												<thead class="table_heading_color">
-													<tr>
-														<th>#</th>
-														<th>Menu Code</th>
-														<th>Item Code</th>
-														<th>Menu Name</th>
-														<th>Item Name</th>
-														<th>Price</th>
-														<th>Modify</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr>
-														<td>1</td>
-														<td>STAFF001</td>
-														<td>Thomas</td>
-														<td>No234, Thomas Street,<br>Singapore-600056
-														</td>
-														<td>Thomas@gmail.com</td>
-														<td>9876543210</td>
-
-														<td><a href="#" class="btn btn-xs btn-default"><i
-																class="fa fa-pencil"></i></a> <a href="#"
-															class="btn btn-xs btn-danger" data-toggle="modal"
-															data-target="#deleteDATA"><i class="fa fa-remove"></i></a>
-															<a href="#" class="btn btn-xs btn-info"><i
-																class="fa fa-eye"></i></a></td>
-													</tr>
-												</tbody>
-											</table>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="bottom-30px"></div>
-					</div>
-					<div class="clearfix"></div>
-				</div>
+                <div class="main-content">
+                    <div class="inner-page">
+                        <div class="row bottom-30px">
+                            <div class="col-lg-5 col-sm-6 col-xs-12">
+                                                <!-- today sales / invoice / tax / profit / due -->
+                                                <div class="col-md-12 col-lg-12 widget" style="padding:0;">
+                                                <div class="widget-header">
+                                                    <h3>Today Statistics</h3>
+                                                </div>
+                                                    <div class="col-md-4">
+                                                        <div class="investment-summary text-center">
+                                                            <span class="info-label">Today Orders</span>
+                                                            <span id = 'todayOrders'></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="investment-summary text-center">
+                                                            <span class="info-label">Today Sales</span>
+                                                            <span id = 'todaySales'></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="investment-summary text-center">
+                                                            <span class="info-label">Today Paid</span>
+                                                            <span class="inv-green">
+                                                            <span id = 'todayPaid'></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="investment-summary text-center">
+                                                            <span class="info-label">Today <br>Due</span>
+                                                            <span class="inv-red">
+                                                            <span id = 'todayDue'></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="investment-summary text-center">
+                                                            <span class="info-label">Today Order <br>Request</span>
+                                                            <span class="inv-red">
+                                                            <span id = 'todayOrderRequest'></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="investment-summary text-center">
+                                                            <span class="info-label">Today Purchase Request</span>
+                                                            <span class="inv-red">
+                                                            <span id = 'todayPurchaseRequest'></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                
+                                                
+                                                </div>
+                                                
+                                                <div class="col-md-12 col-lg-12 widget" style="padding:0;">
+                                                <!-- total sales / invoice / profit / tax / due -->
+                                                <div class="widget-header">
+                                                    <h3>Overall Statistics</h3>
+                                                </div>
+                                                    <div class="col-md-4">
+                                                        <div class="investment-summary text-center">
+                                                            <span class="info-label">Total Orders</span>
+                                                            <span id = 'totalOrders'></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="investment-summary text-center">
+                                                            <span class="info-label">Total Sales</span>
+                                                            <span id = 'totalSales'></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="investment-summary text-center">
+                                                            <span class="info-label">Total Paid</span>
+                                                            <span class="inv-green">
+                                                            <span id = 'totalPaid'></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="investment-summary text-center">
+                                                            <span class="info-label">Total <br>Due</span>
+                                                            <span class="inv-red">
+                                                            <span id = 'totalDue'></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="investment-summary text-center">
+                                                            <span class="info-label">Total Order <br>Request</span>
+                                                            <span class="inv-red">
+                                                            <span id = 'totalNumberOfOrders'></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="investment-summary text-center">
+                                                            <span class="info-label">Total Purchase <br>Request</span>
+                                                            <span class="inv-red">
+                                                            <span id = 'totalNumberOfPurchaseRequest'></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> 
+                            <div class="col-lg-7 col-sm-6 col-xs-12">
+                                       <div class="row">
+                                        <div class="col-md-3">
+                                              <div class="bg-white" style="background-color:#fff;border-radius:5px;border:none;text-align:center;padding:10px;box-shadow: 0px 5px 7px #b7bbc2;">
+                                                 <!--<i class="glyphicon glyphicon-shopping-cart iconsmenu" style="font-size:18px;"></i>-->
+                                                 <a href="branch.html">
+                                                     <img src="assets/img/icon/branch.png" alt="" style="width: 65%;">
+                                                     <h5>Branch</h5>
+                                                     
+                                                  </a>
+                                              </div>
+                                           </div>
+                                        <div class="col-md-3">
+                                              <div class="bg-white" style="background-color:#fff;border-radius:5px;border:none;text-align:center;padding:10px;box-shadow: 0px 5px 7px #b7bbc2;">
+                                                 <!--<i class="glyphicon glyphicon-shopping-cart iconsmenu" style="font-size:18px;"></i>-->
+                                                 <a href="customer.html">
+                                                     <img src="assets/img/icon/customer.png" alt="" style="width: 65%;">
+                                                     <h5>Customers</h5>
+                                                     
+                                                  </a>
+                                              </div>
+                                           </div>     
+                                            <div class="col-md-3">
+                                              <div class="bg-white" style="background-color:#fff;border-radius:5px;border:none;text-align:center;padding:10px;box-shadow: 0px 5px 7px #b7bbc2;">
+                                                 <!--<i class="glyphicon glyphicon-shopping-cart iconsmenu" style="font-size:18px;"></i>-->
+                                                 <a href="order.html">
+                                                     <img src="assets/img/icon/order.png" alt="" style="width: 65%;">
+                                                     <h5>List of Branch Order</h5>
+                                                     
+                                                  </a>
+                                              </div>
+                                           </div>
+                                           <div class="col-md-3">
+                                              <div class="bg-white" style="background-color:#fff;border-radius:5px;border:none;text-align:center;padding:10px;box-shadow: 0px 5px 7px #b7bbc2;">
+                                                 <!--<i class="glyphicon glyphicon-shopping-cart iconsmenu" style="font-size:18px;"></i>-->
+                                                 <a href="rider.html">
+                                                     <img src="assets/img/icon/delivery.png" alt="" style="width: 65%;">
+                                                     <h5>Rider</h5>
+                                                     
+                                                  </a>
+                                              </div>
+                                           </div>  
+                                        </div>
+                                        <div class="row">
+                                            
+                                          <div class="col-md-3" style="margin: 20px 0 0 0;">
+                                              <div class="bg-white" style="background-color:#fff;border-radius:5px;border:none;text-align:center;padding:10px;box-shadow: 0px 5px 7px #b7bbc2;">
+                                                 <!--<i class="glyphicon glyphicon-shopping-cart iconsmenu" style="font-size:18px;"></i>-->
+                                                 <a href="menu.html">
+                                                     <img src="assets/img/icon/menu.png" alt="" style="width: 65%;">
+                                                     <h5>Menu</h5>
+                                                     
+                                                  </a>
+                                              </div>
+                                           </div>    
+                                             <div class="col-md-3" style="margin: 20px 0 0 0;">
+                                              <div class="bg-white" style="background-color:#fff;border-radius:5px;border:none;text-align:center;padding:10px;box-shadow: 0px 5px 7px #b7bbc2;">
+                                                 <!--<i class="glyphicon glyphicon-shopping-cart iconsmenu" style="font-size:18px;"></i>-->
+                                                 <a href="staff.html">
+                                                     <img src="assets/img/icon/staff.png" alt="" style="width: 65%;">
+                                                     <h5>Staff</h5>
+                                                     
+                                                  </a>
+                                              </div>
+                                           </div>
+                                           <div class="col-md-3" style="margin: 20px 0 0 0;">
+                                              <div class="bg-white" style="background-color:#fff;border-radius:5px;border:none;text-align:center;padding:10px;box-shadow: 0px 5px 7px #b7bbc2;">
+                                                 <!--<i class="glyphicon glyphicon-shopping-cart iconsmenu" style="font-size:18px;"></i>-->
+                                                 <a href="#">
+                                                     <img src="assets/img/icon/settings.png" alt="" style="width: 65%;">
+                                                     <h5>Setting</h5>
+                                                     
+                                                  </a>
+                                              </div>
+                                           </div>  
+                                           <div class="col-md-3" style="margin: 20px 0 0 0;">
+                                              <div class="bg-white" style="background-color:#fff;border-radius:5px;border:none;text-align:center;padding:10px;box-shadow: 0px 5px 7px #b7bbc2;">
+                                                 <!--<i class="glyphicon glyphicon-shopping-cart iconsmenu" style="font-size:18px;"></i>-->
+                                                 <a href="logout.html">
+                                                     <img src="assets/img/icon/exit.png" alt="" style="width: 65%;">
+                                                     <h5>Logout</h5>
+                                                     
+                                                  </a>
+                                              </div>
+                                           </div>
+                                           
+                                           
+                                           
+                                          </div> 
+                                          <br>
+                                          <div class="row">
+                                    	<div class="col-md-12 col-lg-12">
+                                            <div class="widget">
+                                            <div class="widget-header">
+                                                <h3><i class="fa fa-bar-chart-o"></i> Today Order Request</h3>
+                                                <div class="widget-header-toolbar">
+                                                    <a href="new_notes.php" class="label label-danger">View all</a>
+                                                </div>
+                                            </div>
+                                            <div class="widget-content">
+                                                <div class="table-responsive">
+                                                    <table id = 'today_orders' class="table table-condensed">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Date</th>
+                                                                <th>Order No</th>
+                                                                <th>Order Name</th>
+                                                                <th>Branch Code</th>
+                                                                <th>Branch Name</th>
+                                                                <th>Status</th>
+                                                                
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            
+                                                            </tbody>
+                                                        
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>                        
+                                    </div>
+                                </div>                   
+                             </div> 
+                             
+                             <div class="col-md-12 col-lg-12">
+                                            <div class="widget">
+                                            <div class="widget-header">
+                                                <h3><i class="fa fa-bar-chart-o"></i> Recently Delivery Order - <span class="text-muted">(Last 5 Record)</span></h3>
+                                                <div class="widget-header-toolbar">
+                                                    <a href="new_notes.php" class="label label-danger">View all</a>
+                                                </div>
+                                            </div>
+                                            <div class="widget-content">
+                                                <div class="table-responsive">
+                                                    <table id="order_recent_delivered" class="table table-responsive table-hover tablefontsize cell-border" >
+                          <thead class="table_heading_color">
+                            <tr>
+                                <th>#</th>
+                                <th>Rider Code</th>
+                                <th>Customer Name</th>
+                                <th>Mobile No</th>
+                                <th>Address</th>
+                                <th>Name Of Item</th>
+                                <th>Qty</th>
+                                <th>Department</th>
+                                <th>Modify</th>
+                            </tr>
+                         </thead>
+                        </table>
+                                                </div>
+                                            </div>
+                                        </div>                        
+                                    </div> 
+                                    
+                             <div class="col-md-12 col-lg-12">
+                                <div class="widget">
+                                    <div class="widget-header">
+                                        <h3><i class="fa fa-bar-chart-o"></i> Recently Add Staff - <span class="text-muted">(Last 5 Record)</span></h3>
+                                        <div class="widget-header-toolbar">
+                                            <a href="new_notes.php" class="label label-danger">View all</a>
+                                        </div>
+                                    </div>
+                                    <div class="widget-content">
+                                        <div class="table-responsive">
+                                            <table id="recent_staff_list" class="table table-responsive table-hover tablefontsize cell-border" >
+                                              <thead class="table_heading_color">
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Staff Code</th>
+                                                    <th>Staff Name</th>
+                                                    <th>Address</th>
+                                                    <th>Email Id / User Name</th>
+                                                    <th>Mobile No</th>
+                                                    <th>Gender</th>
+                                                    <th>Joing Date</th>
+                                                    <th>Modify</th>
+                                                </tr>
+                                             </thead>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>                        
+                            </div>
+                            
+                            <div class="col-md-12 col-lg-12">
+                                <div class="widget">
+                                    <div class="widget-header">
+                                        <h3><i class="fa fa-bar-chart-o"></i> Recently Add Rider - <span class="text-muted">(Last 5 Record)</span></h3>
+                                        <div class="widget-header-toolbar">
+                                            <a href="new_notes.php" class="label label-danger">View all</a>
+                                        </div>
+                                    </div>
+                                    <div class="widget-content">
+                                        <div class="table-responsive">
+                                            <table id="recent_rider_list" class="table table-responsive table-hover tablefontsize cell-border" >
+                                              <thead class="table_heading_color">
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Rider Code</th>
+                                                    <th>Rider Name</th>
+                                                    <th>Address</th>
+                                                    <th>Mobile No</th>
+                                                    <th>Gender</th>
+                                                    <th>Joing Date</th>
+                                                    <th>Modify</th>
+                                                </tr>
+                                             </thead>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>                        
+                            </div>
+                            
+                             <div class="col-md-12 col-lg-12">
+                                <div class="widget">
+                                    <div class="widget-header">
+                                        <h3><i class="fa fa-bar-chart-o"></i> Recently Add Menu - <span class="text-muted">(Last 5 Record)</span></h3>
+                                        <div class="widget-header-toolbar">
+                                            <a href="new_notes.php" class="label label-danger">View all</a>
+                                        </div>
+                                    </div>
+                                    <div class="widget-content">
+                                        <div class="table-responsive">
+                                            <table id="items_recent_list" class="table table-responsive table-hover tablefontsize cell-border" >
+                                              <thead class="table_heading_color">
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Menu Code</th>
+                                                <th>Item Code</th>
+                                                <th>Menu Name</th>
+                                                <th>Item Name</th>
+                                                <th>Price</th>
+                                                <th>Modify</th>
+                                            </tr>
+                                             </thead>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>                        
+                            </div>
+                        </div>
+                        <div class="bottom-30px"></div>
+                    </div>
+                        <div class="clearfix"></div>
+                </div>
 			</div>
 			<!-- /main -->
 		</div>
@@ -643,23 +503,25 @@ a:focus, a:hover {
 	<!-- END WRAPPER -->
 
 	<!-- Javascript -->
-	<?php include 'footer.php'; ?>
+    <script src="assets/js/jquery/jquery-2.1.0.min.js"></script>
 	<script src="assets/js/plugins/bootstrap-tour/bootstrap-tour.custom.js"></script>
-	<script src="assets/js/jquery.buttonLoader.js"></script>
+     <script src="assets/js/jquery.buttonLoader.js"></script>
 	<script src="assets/js/plugins/jquery-gritter/jquery.gritter.min.js"></script>
-	<script src="assets/chart/dist/Chart.bundle.js"></script>
-	<script src="assets/chart/dist/utils.js"></script>
-	<script
-		src="assets/js/plugins/bootstrap-datepicker/bootstrap-datepicker.js"></script>
-	<script src="assets/js/common.js"></script>
-	<script src="assets/js/bootstrap-tagsinput.min.js"></script>
-	<script src="assets/js/bootstrap/bootstrapValidator.min.js"></script>
-	<script src="assets/js/validations/notes.js"></script>
-	<script src="assets/js/typeahead.min.js"></script>
-	<script src="assets/js/bootstrap-select.min.js"></script>
-	<script src="assets/js/jquery/autocomplete.js"></script>
-
-	<script type="text/javascript">
+    <script src="assets/chart/dist/Chart.bundle.js"></script>
+    <script src="assets/chart/dist/utils.js"></script>
+     <script src="assets/js/plugins/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+     <script src="assets/js/common.js"></script>
+     <script src="assets/js/bootstrap-tagsinput.min.js"></script>
+     <script src="assets/js/bootstrap/bootstrapValidator.min.js"></script>
+    <script src="assets/js/validations/notes.js"></script>
+    <script src="assets/js/typeahead.min.js"></script>
+    <script src="assets/js/bootstrap-select.min.js"></script>
+    <script src="assets/js/jquery/autocomplete.js"></script>
+     <script src="assets/js/common_function.js"></script>
+    <script src="assets/js/pages/getToken.js"></script>	
+   <script src="assets/js/pages/homePage.js"></script>	
+    
+    <script type="text/javascript">
 					var stock_record = {
 					url: function(phrase) {
 					return "data/JSON_CONTACT_NAMED.php?phrase=" + phrase + "&format=json";
@@ -676,7 +538,7 @@ a:focus, a:hover {
 					},
 					theme: "square"
 					};
-					$("#nte_addnew_id").easyAutocomplete(stock_record);
+					//$("#nte_addnew_id").easyAutocomplete(stock_record);
 					
 					
 					function checkcustomer_List ()
@@ -715,31 +577,6 @@ a:focus, a:hover {
 						  //return false;
 						}
 					});
-			<?php if($_GET['msg'] == 'added') {  ?>
-			$.gritter.add({
-				class_name: 'gritter-success',
-				title: 'Success!',
-				text: '<p style="font-size: 14px;">Your notes has been submitted successfully!</p>',
-			});	
-			
-		<?php } ?>
-		
-		<?php if($_GET['msg'] == 'updated') {  ?>
-			$.gritter.add({
-				class_name: 'gritter-success',
-				title: 'Success!',
-				text: '<p style="font-size: 14px;">Your notes has been submitted successfully!</p>',
-			});	
-		<?php } ?>
-		
-		<?php if(!empty($err)) {  ?>
-			$.gritter.add({
-				class_name: 'gritter-danger',
-				title: 'Error!',
-				text: '<?php foreach ($err as $e) { echo "$e <br>"; } ?>',
-			});	
-		<?php } ?>
-		
 		
 		function  deleteITEM(deleting_id) { 
 		var SELECTED_ID = deleting_id;
@@ -752,35 +589,35 @@ a:focus, a:hover {
 	}
 		
 		</script>
-	<script>
-		$(document).ready(function() {
-			document.getElementById("uploadBtn").onchange = function() {
-				document.getElementById("uploadFile").value = this.value.substring(12);
-			};
+         <script>
+	$(document).ready(function() {
+		//document.getElementById("uploadBtn").onchange = function () {
+    	//	document.getElementById("uploadFile").value = this.value.substring(12);
+		//};
 	
 	
-			$('#data_1').datepicker({
-				autoclose : true,
-				format : "dd/mm/yyyy",
-				todayHighlight : true,
-				startDate : 'today',
-			})
-				.on('changeDate', function(e) {
-					$('#mainform').bootstrapValidator('revalidateField', 'nte_addnotes_reminder');
-				});
+		$('#data_1').datepicker({
+		autoclose: true,
+		format: "dd/mm/yyyy",
+		todayHighlight:true,
+		startDate:'today',
+	})
+	.on('changeDate', function(e) {
+            $('#mainform').bootstrapValidator('revalidateField', 'nte_addnotes_reminder');
+        });
 	
 	
-		});
+	});
 	</script>
 
-	<script>
-	//DATE PICKER	
-	
-		//PAGE REFRESH
-		$('#PageRefresh').click(function() {
-			location.reload();
-		});
-	</script>
+    <script>
+//DATE PICKER	
+			
+//PAGE REFRESH
+$('#PageRefresh').click(function() {
+	location.reload();
+});
+</script>
 
 
 </body>

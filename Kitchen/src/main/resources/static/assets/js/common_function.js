@@ -367,5 +367,13 @@ function nvl(val){
 	if(val == null || val == 'undefined' || val === "null")
 		return '';
 	return val;
+}
 
+if(window.sessionStorage.getItem("name") == null || window.sessionStorage.getItem("name") == 'undefined' || window.sessionStorage.getItem("name") == 'null'){
+	$.gritter.add({
+		class_name : 'gritter-error',
+		title : 'Session Expired!',
+		text : '<p style="font-size: 14px;">Session expired! Please re-login</p>',
+	});
+	window.location.href = "/index.html";
 }

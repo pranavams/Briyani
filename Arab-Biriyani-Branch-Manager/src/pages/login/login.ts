@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, LoadingController, ToastController, NavParams, Events } from 'ionic-angular';
+import { IonicPage, NavController, LoadingController, Loading, ToastController, NavParams, Events } from 'ionic-angular';
 
 import { User } from '../../providers';
 import { MainPage } from '../';
@@ -13,12 +13,12 @@ export class LoginPage {
   // The account fields for the login form.
   // If you're using the username field with or without email, make
   // sure to add it to the type
-  account: User = {
+  account: any = {
 	userName: 'Alex123',
     password: 'password'
   };
 
-  loggedInUser: User = {
+  loggedInUser: any = {
 	userName: 'Alex123',
     password: 'password'
   };
@@ -29,18 +29,11 @@ export class LoginPage {
 
   constructor(public navCtrl: NavController,
     public userService: User,
-    public loadingCtrl: LoadingController,
-    public toastCtrl: ToastController,
+    private loadingCtrl: LoadingController,
+    private toastCtrl: ToastController,
     public navParams: NavParams,
     public events: Events) {
     }
-  showLoading() {
-	    this.loading = this.loadingCtrl.create({
-	      content: 'Please wait...',
-	      dismissOnPageChange: true
-	    });
-	    this.loading.present();
-	  }
   
   doLogin() {
 	  this.showLoading();
@@ -58,31 +51,20 @@ export class LoginPage {
 	      });  
   }
   
-  // Attempt to login in through our User service
-  doLoginLocal() {
-    this.user.login(this.account).subscribe((resp) => {
-      if(this.account.userName[this.account.userName.length-1] == '1'){
-        this.navCtrl.push(MainPage);
-        this.events.publish("menuObject", 'branch', 2);
-      }
-      else if(this.account.userName[this.account.userName.length-1] == '2')
-        this.navCtrl.push('rider-delivery')
-      else if(this.account.userName[this.account.userName.length-1] == '3')
-        this.navCtrl.push('rider-user')
-    }, (err) => {
-      if(this.account.userName[this.account.userName.length-1] == '1')
-        this.navCtrl.push(MainPage);
-      else if(this.account.userName[this.account.userName.length-1] == '2')
-        this.navCtrl.push('rider-delivery')
-      else if(this.account.userName[this.account.userName.length-1] == '3')
-        this.navCtrl.push('rider-user')
-      // Unable to log in
+  showError(text) {
       let toast = this.toastCtrl.create({
-        message: this.loginErrorString,
-        duration: 3000,
-        position: 'top'
-      });
-      toast.present();
-    });
-  }
+          message: text,
+          duration: 3000,
+          position: 'top'
+        });
+        toast.present();
+	  }
+  
+  showLoading() {
+	    this.loading = this.loadingCtrl.create({
+	      content: 'Please wait...',
+	      dismissOnPageChange: true
+	    });
+	    this.loading.present();
+	  }
 }

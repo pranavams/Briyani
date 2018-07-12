@@ -1,5 +1,5 @@
-import {Component, ViewChild, OnInit} from '@angular/core';
-import {IonicPage, Nav, NavController, PopoverController} from 'ionic-angular';
+import {Component, OnInit} from '@angular/core';
+import {IonicPage, NavController, PopoverController} from 'ionic-angular';
 
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {map} from 'rxjs/operators';

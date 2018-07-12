@@ -16,11 +16,11 @@ export class PaymentPage implements OnInit {
   }
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.cartItems = navParams.data.items; 
+    this.cartItems = navParams.data.items;
   }
-
+  
   nextPage() {
-    this.navCtrl.push('CompletePage');
+     this.navCtrl.push('CompletePage', {items: this.cartItems});
   }
 
   backButtonClick() {

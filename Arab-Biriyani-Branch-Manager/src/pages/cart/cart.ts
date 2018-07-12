@@ -130,8 +130,6 @@ export class CartPage {
   nextPage() {
 	let cartDetail = this.buildCartDetails();
 	this.createOrder(cartDetail);
-    this.cartItems.total = this.total;
-    this.navCtrl.push('PaymentPage', {items: this.cartItems});
   }
 
   discount() {
@@ -146,18 +144,21 @@ export class CartPage {
     }
   }
   
-  createOrder(orderDetail): void {
+  createOrder(orderDetail): void  {
 	  console.log("Order Detail");
 	  console.log(orderDetail);
 	    // this.restToken()
 	    // .subscribe(
 	    // (tokenResponse) => {
 	    // this.accessToken = tokenResponse['access_token'];
-	        this.restCreateOrder(orderDetail)
+	      this.restCreateOrder(orderDetail)
 	          .subscribe(
 	          data => {
 	            this.createdOrderDetails = data;
-	            console.log(data);
+              this.cartItems.total = this.total;
+              this.cartItems.orderId = this.createdOrderDetails.orderId;
+              this.cartItems.orderDetail = orderDetail.orderDetails;
+              this.navCtrl.push('PaymentPage', {items: this.cartItems});
 	          }
 	          );
 	    // }

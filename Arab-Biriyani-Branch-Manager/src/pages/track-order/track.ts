@@ -12,8 +12,7 @@ export class TrackPage {
   order: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.order = this.navParams.get('items')
-    console.log(this.order);
+    this.order = this.navParams.data.items;
   }
 
   backButtonClick() {

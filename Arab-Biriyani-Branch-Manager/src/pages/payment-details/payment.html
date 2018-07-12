@@ -11,13 +11,15 @@
         <ion-card-header>
             <h2 class="order-summary-title">Order Summary</h2>
             Purchase Order #
-            <h1 class="orderId">1101110</h1>
+            <h1 class="orderId">{{cartItems?.orderId}}</h1>
         </ion-card-header>
         <ion-card-content>
             <h3 margin-bottom>Items</h3>
-           	<div no-padding class="items" *ngFor="let item of cartItems">
+           	<div no-padding class="items" *ngFor="let item of cartItems"> 
+           		<div  *ngIf="item.quantity>0">
 					<h1>{{item.menuName + " " +item.name}}</h1>
 					<h1 text-right>x {{item.quantity}}</h1>
+				</div>
            	</div>
             <div class="totalAmount" margin-top>
                 <h1>Total</h1>

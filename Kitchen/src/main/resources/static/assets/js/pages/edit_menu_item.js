@@ -26,14 +26,13 @@ function getMenuItemList() {
 }
 
 function displayMenuItem(data){
-	console.log("Data " + JSON.stringify(data));
-	data = data.items[0];	
-	address = data.address;
-	document.getElementById('menu_name').value = data.menuName;
-	document.getElementById('item_name').value = data.name;
-	document.getElementById('item_descri').value = data.description;
-	document.getElementById('item_price').price = data.email;
-	}
+	console.log("Data menu " + JSON.stringify(data));
+		
+	document.getElementById('menu_name').value = nvl(data.menuName);
+	document.getElementById('item_name').value = nvl(data.name);
+	document.getElementById('item_descri').value = nvl(data.description);
+	document.getElementById('item_price').value	 = nvl(data.price);
+}
 
 
 

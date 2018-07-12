@@ -25,46 +25,29 @@ function getStaffList() {
 }
 
 function displayStaff(StaffResult) {
-	var Staff = StaffResult['staff'];
-	var table = document.getElementById("recent_staff_list");
-	for (var i = 0; i < Staff.length; i++) {
-
-		tr = table.insertRow(-1);
-
-		var tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = (i + 1);
-
-		var tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = Staff[i]['id'];
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = (Staff[i]['salutation'] + ' ' + Staff[i]['firstName'] + ' ' + Staff[i]['middleName'] + ' ' + Staff[i]['lastName']).trim();
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = ' ';
-//		(Staff[i]['address']['doorNumber'] + ' ' +
-//		Staff[i]['address']['street'] + ' ' +
-//		Staff[i]['address']['area'] + ' ' +
-//		Staff[i]['address']['city'] + ' ' +
-//		Staff[i]['address']['state'] + ' ' +
-//		Staff[i]['address']['country'] + ' ' +
-//		Staff[i]['address']['zipcode']).trim();
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = Staff[i]['email'];
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = Staff[i]['mobileNumber'];
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = Staff[i]['gender'];
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = dateToFormattedStringWithFormat(Staff[i]['dateOfJoin']);
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = '<a href="#" class="btn btn-xs btn-default"><i class="fa fa-pencil"></i></a> <a href="#" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#deleteDATA"><i class="fa fa-remove"></i></a>';
-	}
+	var rowIndex = 1;
+	$(document).ready(function() {
+	    $('#recent_staff_list').DataTable( {
+	    	"lengthMenu": [[2, 10, 25, 50, 100, -1], [2, 10, 25, 50, 100, "All"]],
+	    	"data" : StaffResult['staff'],
+	        "columns": [
+	        	{ "data" : function (row, x, set) { return rowIndex ++ ;} },
+	        	{ "data": 'id' },
+	        	{ "data": function (row, x, set) { return (row.salutation + ' ' + row.firstName + ' ' + row.middleName + ' ' + row.lastName).trim()} },
+	        	{ "data": function (row, x, set) { return getAddress (row.address);} },
+	        	{ "data": 'email' },
+	        	{ "data": 'mobileNumber' },
+	        	{ "data": 'gender' },
+	            { "data": function (row, x, set) { return dateToFormattedStringWithFormat(row.dateOfJoin) } },
+	            { "data": function (row, x, set) { return '<a href="#" class="btn btn-xs btn-default"><i class="fa fa-pencil"></i></a> <a href="#" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#deleteDATA"><i class="fa fa-remove"></i></a>'}}
+	        ],
+			buttons: [
+				'excelHtml5',
+				'csvHtml5',
+				'pdfHtml5'
+			]	        
+	    } );
+	} );
 }
 
 function getRiderList() {
@@ -90,36 +73,28 @@ function getRiderList() {
 }
 
 function displayRider(riderResult) {
-	var rider = riderResult['rider'];
-	var table = document.getElementById("recent_rider_list");
-	for (var i = 0; i < rider.length; i++) {
-
-		tr = table.insertRow(-1);
-
-		var tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = (i + 1);
-
-		var tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = rider[i]['id'];
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = (rider[i]['riderPersonSalutation'] + ' ' + rider[i]['riderPersonFirstName'] + ' ' + rider[i]['riderPersonMiddleName'] + ' ' + rider[i]['riderPersonLastName']).trim();
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = getAddress((rider[i]['address']));
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = rider[i]['mobileNumber'];
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = rider[i]['gender'];
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = ' ';
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = '<a href="#" class="btn btn-xs btn-default"><i class="fa fa-pencil"></i></a> <a href="#" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#deleteDATA"><i class="fa fa-remove"></i></a> <a href="#" class="btn btn-xs btn-info"><i	class="fa fa-eye"></i></a>';
-	}
+	var rowIndex = 1;
+	$(document).ready(function() {
+	    $('#recent_rider_list').DataTable( {
+	    	"lengthMenu": [[2, 10, 25, 50, 100, -1], [2, 10, 25, 50, 100, "All"]],
+	    	"data" : riderResult['rider'],
+	        "columns": [
+	        	{ "data" : function (row, x, set) { return rowIndex ++ ;} },
+	        	{ "data": 'id' },
+	        	{ "data": function (row, x, set) { return (row.riderPersonSalutation + ' ' + row.riderPersonFirstName + ' ' + row.riderPersonMiddleName + ' ' + row.riderPersonLastName).trim()} },
+	        	{ "data": function (row, x, set) { return getAddress (row.address);} },
+	        	{ "data": 'mobileNumber' },
+	        	{ "data": 'gender' },
+	            { "data": function (row, x, set) { return '' } },
+	            { "data": function (row, x, set) { return '<a href="#" class="btn btn-xs btn-default"><i class="fa fa-pencil"></i></a> <a href="#" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#deleteDATA"><i class="fa fa-remove"></i></a> <a href="#" class="btn btn-xs btn-info"><i	class="fa fa-eye"></i></a>'}}
+	        ],
+			buttons: [
+				'excelHtml5',
+				'csvHtml5',
+				'pdfHtml5'
+			]	        
+	    } );
+	} );
 }
 
 function getMenuList() {
@@ -146,32 +121,27 @@ function getMenuList() {
 
 function displayMenu(MenuResult) {
 	var Menu = MenuResult['items'];
-	var table = document.getElementById("items_recent_list");
-	for (var i = 0; i < Menu.length; i++) {
-
-		tr = table.insertRow(-1);
-
-		var tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = (i + 1);
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = Menu[i]['menuId'];
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = Menu[i]['id'];
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = Menu[i]['menuName'];
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = Menu[i]['name'];
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = '$' + Menu[i]['price'];
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = '<a href="#" class="btn btn-xs btn-default"><i class="fa fa-pencil"></i></a> <a href="#" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#deleteDATA"><i class="fa fa-remove"></i></a> <a href="#" class="btn btn-xs btn-info"><i class="fa fa-eye"></i></a>';
-	}
+	var rowIndex = 1;
+	$(document).ready(function() {
+	    $('#items_recent_list').DataTable( {
+	    	"lengthMenu": [[2, 10, 25, 50, 100, -1], [2, 10, 25, 50, 100, "All"]],
+	    	"data" : MenuResult['items'],
+	        "columns": [
+	        	{ "data" : function (row, x, set) { return rowIndex ++ ;} },
+	        	{ "data": 'menuId' },
+	        	{ "data": 'id' },
+	        	{ "data": 'menuName' },
+	        	{ "data": 'name' },
+	            { "data": function (row, x, set) { return '$' + row.price } },
+	            { "data": function (row, x, set) { return '<a href="#" class="btn btn-xs btn-default"><i class="fa fa-pencil"></i></a> <a href="#" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#deleteDATA"><i class="fa fa-remove"></i></a> <a href="#" class="btn btn-xs btn-info"><i class="fa fa-eye"></i></a>'}}
+	        ],
+			buttons: [
+				'excelHtml5',
+				'csvHtml5',
+				'pdfHtml5'
+			]	        
+	    } );
+	} );
 }
 
 function getStatistics() {
@@ -234,32 +204,26 @@ function getOrderList() {
 	});
 }
 
-function displayOrder(OrderResult) {
-	var Order = OrderResult['order'];
-	var table = document.getElementById("today_orders");
-	for (var i = 0; i < Order.length; i++) {
-
-		tr = table.insertRow(-1);
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = Order[i]['dateAndTime'];
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = Order[i]['orderId'];
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = ' ';
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = Order[i]['branch']['id'];
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = Order[i]['branch']['name'];
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = Order[i]['paymentStatus'];
-
-	}
+function displayOrder(orders){
+	$(document).ready(function() {
+	    $('#today_orders').DataTable( {
+	    	"lengthMenu": [[2, 10, 25, 50, 100, -1], [2, 10, 25, 50, 100, "All"]],
+	    	"data" : orders['order'],
+	        "columns": [
+	            { "data": function (row, x, set) { return dateToFormattedString(row.dateAndTime)} },
+	            { "data": 'orderId' },
+	            { "data": function (row, x, set) { return ''} },
+	            { "data": 'branch.name' },
+	            { "data": 'branch.id' },
+	            { "data": 'orderStatus' }
+	        ],
+			buttons: [
+				'excelHtml5',
+				'csvHtml5',
+				'pdfHtml5'
+			]	        
+	    } );
+	} );
 }
 
 getToken(getStaffList);

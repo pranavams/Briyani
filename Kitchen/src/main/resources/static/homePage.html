@@ -16,6 +16,9 @@
 	<link href="assets/css/style.css" rel="stylesheet" type="text/css">
     <link href="assets/css/bootstrap-tagsinput.css">
     <link href="assets/css/bootstrapValidator.min.css">
+    <link rel="stylesheet" href="assets/js/plugins/export_record/jquery.dataTables.css">
+    <link rel="stylesheet" href="assets/js/plugins/export_record/buttons.dataTables.min.css" /> 
+    
 	<!-- Fav and touch icons -->
 	<link rel="shortcut icon" href="assets/img/notepad.png">
     <link rel="stylesheet" href="assets/css/bootstrap-select.min.css" />
@@ -350,7 +353,7 @@
                                             </div>
                                             <div class="widget-content">
                                                 <div class="table-responsive">
-                                                    <table id = 'today_orders' class="table table-condensed">
+                                                    <table id = 'today_orders' class="table display table-condensed">
                                                         <thead>
                                                             <tr>
                                                                 <th>Date</th>
@@ -505,7 +508,14 @@
 	<!-- Javascript -->
     <script src="assets/js/jquery/jquery-2.1.0.min.js"></script>
 	<script src="assets/js/plugins/bootstrap-tour/bootstrap-tour.custom.js"></script>
-     <script src="assets/js/jquery.buttonLoader.js"></script>
+    <script type="text/javascript" src="assets/js/plugins/export_record/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="assets/js/plugins/export_record/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="assets/js/plugins/export_record/jszip.min.js"></script>
+    <script type="text/javascript" src="assets/js/plugins/export_record/pdfmake.min.js"></script>
+    <script type="text/javascript" src="assets/js/plugins/export_record/vfs_fonts.js"></script>
+    <script type="text/javascript" src="assets/js/plugins/export_record/buttons.html5.min.js"></script>
+    <script src="assets/js/jquery.buttonLoader.js"></script>
 	<script src="assets/js/plugins/jquery-gritter/jquery.gritter.min.js"></script>
     <script src="assets/chart/dist/Chart.bundle.js"></script>
     <script src="assets/chart/dist/utils.js"></script>

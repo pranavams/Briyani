@@ -30,12 +30,13 @@
         <ion-card-header>
             Order Status
         </ion-card-header>
-        <ion-card-content>
+        <ion-card-content  *ngFor="let item of orderStatus">
             <ul>
-                <li class="success">Order Placed</li>
+                <!-- <li class="success">Order Placed</li>
                 <li class="success">Packing</li>
                 <li>Dispatched</li>
-                <li>Delivered</li>
+                <li>Delivered</li> -->
+                <li class="success">{{item.orderStatus}}</li>
             </ul>
         </ion-card-content>
     </ion-card>

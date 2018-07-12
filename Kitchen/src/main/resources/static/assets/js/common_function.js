@@ -1,10 +1,3 @@
-
-$.gritter.add({
-    class_name: 'gritter-success',
-    title: 'Success!',
-    text: '<p style="font-size: 14px;">Your contact has been submitted successfully!</p>',
-});
-
 /// Table And Form Hide Show hide_add
 $(".form_hide").hide();
 $(".hide_add").hide();
@@ -268,6 +261,37 @@ function dateToString(dateobj, format) {
 	return converted_date;
 }
 
+function dateAndTimeToString(dateobj, format) {
+	var year = dateobj.getFullYear();
+	var month = ("0" + (dateobj.getMonth() + 1)).slice(-2);
+	var date = ("0" + dateobj.getDate()).slice(-2);
+	var hours = ("0" + dateobj.getHours()).slice(-2);
+	var minutes = ("0" + dateobj.getMinutes()).slice(-2);
+	var seconds = ("0" + dateobj.getSeconds()).slice(-2);
+	var day = dateobj.getDay();
+	var months = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
+	var dates = [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" ];
+	var converted_date = "";
+
+	switch (format) {
+	case "DDD MMM DD, YYYY":
+		converted_date = dates[parseInt(day)] + " " + months[parseInt(month) - 1] + " " + date + ", " + year;
+		break;
+	case "DD-MM-YYYY HH:MI:SS":
+		converted_date = date + "-" + month + "-" + year + " " + hours + ":" + minutes + ":" + seconds;
+		break;
+	case "DD/MM/YYYY HH:MI:SS":
+		converted_date = date + "/" + month + "/" + year + " " + hours + ":" + minutes + ":" + seconds;
+		break;
+	}
+
+	return converted_date;
+}
+
+function dateAndTimeToDefaultFormat(dateobj) {
+	return (dateAndTimeToString(dateobj.substring(0, 19), "DD-MM-YYYY HH:MI:SS"));
+}
+
 $.urlParam = function(name) {
 	var results = new RegExp('[\?&]' + name + '=([^&#]*)')
 		.exec(window.location.search);
@@ -325,6 +349,12 @@ function dateToFormattedStringWithFormat(dateString, format) {
 		return '';
 
 	return formatDate(dateString, format);
+}
+
+function dateAndTimeToFormattedString(dateString){
+	if(dateString == null || dateString == 'undefined')
+		return '';
+	return formatDateAndTime(dateString, "DDD MMM DD, YYYY");	
 }
 
 function dateToFormattedString(dateString) {

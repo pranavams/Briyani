@@ -35,8 +35,8 @@ public class StatisticsService {
 		List<OrderEntity> todayOrders = this.orderRepository.findTodayOrders();
 		Log.log("StatisticsService", "Get", "Today's Orders " + todayOrders);
 		// statistics.setTodaySales(getTotalSales(overAllOrders));
-		statistics.setTodayNumberOfOrders(overAllOrders.size());
-		statistics.setTodayNumberOfPurchaseRequest(overAllOrders.size());
+		statistics.setTodayNumberOfOrders(todayOrders.size());
+		statistics.setTodayNumberOfPurchaseRequest(todayOrders.size());
 
 		return statistics;
 	}

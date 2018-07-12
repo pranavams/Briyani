@@ -61,7 +61,7 @@ function displayStaff(StaffResult) {
 		tabCell.innerHTML = Staff[i]['gender'];
 
 		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = Staff[i]['dateOfJoin'];
+		tabCell.innerHTML = dateToFormattedStringWithFormat(Staff[i]['dateOfJoin']);
 
 		tabCell = tr.insertCell(-1);
 		tabCell.innerHTML = '<a href="#" class="btn btn-xs btn-default"><i class="fa fa-pencil"></i></a> <a href="#" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#deleteDATA"><i class="fa fa-remove"></i></a>';
@@ -108,14 +108,7 @@ function displayRider(riderResult) {
 		tabCell.innerHTML = (rider[i]['riderPersonSalutation'] + ' ' + rider[i]['riderPersonFirstName'] + ' ' + rider[i]['riderPersonMiddleName'] + ' ' + rider[i]['riderPersonLastName']).trim();
 
 		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = ' ';
-		(rider[i]['address']['doorNumber'] + ' ' +
-				rider[i]['address']['street'] + ' ' +
-				rider[i]['address']['area'] + ' ' +
-				rider[i]['address']['city'] + ' ' +
-				rider[i]['address']['state'] + ' ' +
-				rider[i]['address']['country'] + ' ' +
-				rider[i]['address']['zipcode']).trim();
+		tabCell.innerHTML = getAddress((rider[i]['address']));
 
 		tabCell = tr.insertCell(-1);
 		tabCell.innerHTML = rider[i]['mobileNumber'];

@@ -497,7 +497,6 @@
 	<!-- END WRAPPER -->
 
 	<!-- Javascript -->
-	<?php include 'footer.php'; ?>
     <script src="assets/js/jquery/jquery-2.1.0.min.js"></script>
 	<script src="assets/js/plugins/bootstrap-tour/bootstrap-tour.custom.js"></script>
      <script src="assets/js/jquery.buttonLoader.js"></script>
@@ -533,7 +532,7 @@
 					},
 					theme: "square"
 					};
-					$("#nte_addnew_id").easyAutocomplete(stock_record);
+					//$("#nte_addnew_id").easyAutocomplete(stock_record);
 					
 					
 					function checkcustomer_List ()
@@ -572,31 +571,6 @@
 						  //return false;
 						}
 					});
-			<?php if($_GET['msg'] == 'added') {  ?>
-			$.gritter.add({
-				class_name: 'gritter-success',
-				title: 'Success!',
-				text: '<p style="font-size: 14px;">Your notes has been submitted successfully!</p>',
-			});	
-			
-		<?php } ?>
-		
-		<?php if($_GET['msg'] == 'updated') {  ?>
-			$.gritter.add({
-				class_name: 'gritter-success',
-				title: 'Success!',
-				text: '<p style="font-size: 14px;">Your notes has been submitted successfully!</p>',
-			});	
-		<?php } ?>
-		
-		<?php if(!empty($err)) {  ?>
-			$.gritter.add({
-				class_name: 'gritter-danger',
-				title: 'Error!',
-				text: '<?php foreach ($err as $e) { echo "$e <br>"; } ?>',
-			});	
-		<?php } ?>
-		
 		
 		function  deleteITEM(deleting_id) { 
 		var SELECTED_ID = deleting_id;
@@ -611,9 +585,9 @@
 		</script>
          <script>
 	$(document).ready(function() {
-		document.getElementById("uploadBtn").onchange = function () {
-    document.getElementById("uploadFile").value = this.value.substring(12);
-};
+		//document.getElementById("uploadBtn").onchange = function () {
+    	//	document.getElementById("uploadFile").value = this.value.substring(12);
+		//};
 	
 	
 		$('#data_1').datepicker({

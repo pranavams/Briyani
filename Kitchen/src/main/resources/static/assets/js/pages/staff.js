@@ -56,7 +56,7 @@ function displayStaff(StaffResult) {
 		tabCell.innerHTML = Staff[i]['gender'];
 
 		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = Staff[i]['dateOfJoin'];
+		tabCell.innerHTML = dateToFormattedString(Staff[i]['dateOfJoin']);
 
 		tabCell = tr.insertCell(-1);
 		tabCell.innerHTML = '<a href="edit_staff.html?id=' + Staff[i]['id'] + '" class="btn btn-xs btn-default"><i class="fa fa-eye"></i>Details</a>';

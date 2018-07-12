@@ -41,8 +41,8 @@ public class Staff {
 				.middleName(middleName).mobileNumber(mobileNumber).salutation(salutation).gender(gender).notes(notes)
 				.role(role).lastUpdatedDate(OffsetDateTime.now())
 				.lastUpdatedDate(OffsetDateTime.now())
-				// .dateOfJoin(dateOfJoin)
-				// .address(address.createEntity())
+				.dateOfJoin(dateOfJoin)
+				//.address(address.createEntity())
 				.build();
 	}
 

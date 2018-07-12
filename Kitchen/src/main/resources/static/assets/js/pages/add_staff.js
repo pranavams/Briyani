@@ -18,7 +18,6 @@ function getJSONData() {
 		'notes' : document.getElementById('staff_notes').value,
 	};
 
-	console.log("Inside Get JSON Data " + jsonObject);
 	return jsonObject;
 }
 

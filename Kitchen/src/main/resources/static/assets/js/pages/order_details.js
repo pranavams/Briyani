@@ -29,16 +29,15 @@ function getOrderList() {
 function displayOrder(data){
 	console.log("Data " + JSON.stringify(data));
 	data = data.order[0];
-	console.log("Order Date " + dateToString(new Date(data.dateAndTime), "DDD MMM DD, YYYY"));
+	branch = data.branch;
 
 	address = data.address;
-	document.getElementById('branchName').innerHTML = data.name;
-	document.getElementById('branch_phoneNo').innerHTML = data.telephone;
-	document.getElementById('branch_contactPerson').innerHTML = data.contactPersonFirstName;
-	document.getElementById('branch_contactPersonMob').innerHTML = data.mobileNumber;
+	document.getElementById('branchName').innerHTML = branch.name;
+	document.getElementById('branchCode').innerHTML = branch.id;
+	document.getElementById('orderID').innerHTML = data.orderId;
+	document.getElementById('orderDate').innerHTML = data.dateAndTime;
+	document.getElementById('address').innerHTML = getAddress(branch.address);
 	
-	document.getElementById('branch_address').innerHTML = address.doorNumber+' ' + address.street + ' ' + address.area
-	 + ' ' + address.city +' ' + address.state + ' ' + address.country + ' ' + address.zipcode;
 }
 
 function edit() {

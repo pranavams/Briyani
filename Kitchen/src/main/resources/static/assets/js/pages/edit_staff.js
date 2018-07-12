@@ -34,8 +34,8 @@ function displayStaff(data){
 	document.getElementById('staff_lname').value = nvl(data.lastName);
 	setTheGenderValue(data.gender);
 	document.getElementById('staff_mobile').value = nvl(data.mobileNumber);
-	document.getElementById('staff_dob').value = nvl(formatDateDefault(data.dateOfBirth, 'DD/MM/YYY'));
-	document.getElementById('staff_jod').value = formatDateDefault(data.dateOfBirth, 'DD/MM/YYY');
+	document.getElementById('staff_dob').value = dateToFormattedStringWithFormat(data.dateOfBirth, "DD/MM/YYYY");
+	document.getElementById('staff_jod').value = dateToFormattedStringWithFormat(data.dateOfBirth, "DD/MM/YYYY");
 	document.getElementById('staff_role').value = nvl(data.role);
 	document.getElementById('staff_email').value = nvl(data.email);
 	document.getElementById('staff_notes').value = nvl(data.notes);

@@ -46,14 +46,14 @@ public class OrderController {
 
 	@PostMapping
 	@RequestMapping(path = "/createOrder", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<String> createOrder(@RequestBody CreateOrder object) {
+	public ResponseEntity<Order> createOrder(@RequestBody CreateOrder object) {
 		try {
 			Log.log("OrderController", "createOrder", "Object Received To Save " + object);
-			this.service.createOrder(object);
-			return ResponseEntity.ok("");
+			OrderEntity createdOrder = this.service.createOrder(object);
+			return ResponseEntity.ok(Order.builder().build().transformEntity(createdOrder));
 		} catch (Exception ex) {
 			Log.error("OrderController", "createOrder", "Object Creation Failed ", ex);
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("");
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Order.builder().build());
 		}
 	}
 

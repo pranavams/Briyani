@@ -1,5 +1,5 @@
 applications:
-- name: briyani-services
+- name: biriyani-services-noauth
   services:
   - mysql
   memory: 1024M

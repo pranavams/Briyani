@@ -112,19 +112,20 @@ public class OrderService {
 		order.setTaxAmount(totalPrice * 0.06f);
 		order.setTaxPercentage(6);
 		order.setTotalAmount(totalPrice * 1.06f);
-		repository.saveAndFlush(order);
-
+		OrderEntity createdOrder = repository.saveAndFlush(order);
+		Log.log("OrderService", "CreateOrder", "Order Created " + createdOrder);
+		List<OrderDetailEntity> createdOrderDetails = new ArrayList<>();
 		for (OrderDetail orderDetail : object.getOrderDetails()) {
 			ItemEntity item = iRepository.findById(Item.builder().id(orderDetail.getItem().getId()).build().DBID())
 					.get();
 			totalPrice += item.getPrice() * orderDetail.getQuantity();
-			orderDetailRepository.save(OrderDetailEntity.builder().item(item).quantity(orderDetail.getQuantity())
-					.unitPrice(item.getPrice()).orderId(order.getOrderId()).build());
+			createdOrderDetails.add(orderDetailRepository.save(OrderDetailEntity.builder().item(item).quantity(orderDetail.getQuantity())
+					.unitPrice(item.getPrice()).orderId(createdOrder.getOrderId()).build()));
 		}
-
-		Log.log("OrderService", "CreateOrder", "Order To Create " + order);
-
-		return order;
+		Log.log("OrderService", "CreateOrder", "Order Returning " + createdOrder);
+		createdOrder.setOrderDetails(createdOrderDetails);
+		Log.log("OrderService", "CreateOrder", "Order Returning With Order Detail List" + createdOrder);
+		return createdOrder;
 	}
 
 	private float calculateTotalPriceForAnOrder(CreateOrder object, OrderEntity order,

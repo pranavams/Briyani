@@ -23,25 +23,23 @@ function getMenuList() {
 	});
 }
 
-function displayMenu(MenuResult) {
-	var Menu = MenuResult['items'];
-	var table = document.getElementById("contacts_list");
-	for (var i = 0; i < Menu.length; i++) {
-
-		tr = table.insertRow(-1);
-
-		var tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = (i + 1);
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = Menu[i]['id'];
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = Menu[i]['menuName'] + ' ' + Menu[i]['name'];
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = '<a href="edit_menu_item.html?id=' + Menu[i]['id'] + '" class="btn btn-xs btn-info"><i class="fa fa-pencil"></i>Edit</a> <a href="menu_preview.html" class="btn btn-xs btn-danger"><i class="fa fa-remove"></i>Delete</a> ';
-	}
+function displayMenu(data) {
+	var rowIndex = 1;
+    $('#contacts_list').DataTable( {
+    	"lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+    	"data" : data['items'],
+        "columns": [
+        	{ "data" : function (row, x, set) { return rowIndex ++ ;} },
+        	{ "data": 'id' },
+        	{ "data": function (row, x, set) { return nvl(row.menuName) + ' ' + nvl(row.name); } },
+            { "data": function (row, x, set) { return '<a href="edit_menu_item.html?id=' + row.id + '" class="btn btn-xs btn-info"><i class="fa fa-pencil"></i>Edit</a> <a href="menu_preview.html" class="btn btn-xs btn-danger"><i class="fa fa-remove"></i>Delete</a>' }}
+        ],
+		buttons: [
+			'excelHtml5',
+			'csvHtml5',
+			'pdfHtml5'
+		]	        
+    } );
 }
 
 $(document).on("click", ".btn", function() {

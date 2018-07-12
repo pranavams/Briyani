@@ -23,46 +23,28 @@ function getRiderList() {
 	});
 }
 
-function displayRider(RiderResult) {
-	console.log('Rider Received ' + RiderResult);
-	var Rider = RiderResult['rider'];
-	var table = document.getElementById("contacts_list");
-	for (var i = 0; i < Rider.length; i++) {
-
-		tr = table.insertRow(-1);
-
-		var tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = (i + 1);
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = Rider[i]['id'];
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = Rider[i]['riderPersonSalutation'] + ' ' + Rider[i]['riderPersonFirstName'] + ' ' + Rider[i]['riderPersonMiddleName'] + ' ' + Rider[i]['riderPersonLastName'];
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = Rider[i]['email'];
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = Rider[i]['mobileNumber'];
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = '';
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = getAddress(Rider[i]['address']);
-
-		tabCell = tr.insertCell(-1);
-
-		if ('Branch' === Rider[i]['departmentType']) {
-			tabCell.innerHTML = '<td><a class="btn btn-default btn-xs">Branch Rider</a></td>'
-		} else {
-			tabCell.innerHTML = '<td><a class="btn btn-primary btn-xs">End User Rider</a></td>';
-		}
-
-		tabCell = tr.insertCell(-1);
-		tabCell.innerHTML = '<a href="rider_preview.html?id=' + Rider[i]['id'] + '" class="btn btn-xs btn-default"><i class="fa fa-eye"></i>Details</a>';
-	}
+function displayRider(data) {
+	var rowIndex = 1;
+    $('#contacts_list').DataTable( {
+    	"lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+    	"data" : data['rider'],
+        "columns": [
+        	{ "data" : function (row, x, set) { return rowIndex ++ ;} },
+        	{ "data": 'id' },
+        	{ "data": function (row, x, set) { return (row.riderPersonSalutation + ' ' + row.riderPersonFirstName + ' ' + row.riderPersonMiddleName + ' ' + row.riderPersonLastName).trim()} },
+        	{ "data": 'email' },
+        	{ "data": 'mobileNumber' },
+        	{ "data": function (row, x, set) { return dateToFormattedString(row.dateOfBirth) }  },
+        	{ "data": function (row, x, set) { return getAddress (row.address);} },
+        	{ "data": function (row, x, set) { if(row.departmentType  === "End User" || row.departmentType  === "Branch") return row.departmentType; else return '';} },
+            { "data": function (row, x, set) { return '<a href="rider_preview.html?id=' + row.id + '" class="btn btn-xs btn-default"><i class="fa fa-eye"></i>Details</a>'}}
+        ],
+		buttons: [
+			'excelHtml5',
+			'csvHtml5',
+			'pdfHtml5'
+		]	        
+    } );
 }
 
 function getJSONData() {

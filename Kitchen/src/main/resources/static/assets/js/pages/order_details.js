@@ -34,7 +34,7 @@ function displayOrder(data){
 	document.getElementById('branchCode').innerHTML = branch.id;
 	document.getElementById('orderID').innerHTML = data.orderId;
 	document.getElementById('orderDate').innerHTML = dateToFormattedString(data.dateAndTime);
-	document.getElementById('address').innerHTML = getAddress(branch.address);
+	document.getElementById('address').innerHTML = getAddress(data.deliveryAddress);
 	document.getElementById('taxAmount').innerHTML = data.taxAmount;
 	document.getElementById('orderAmount').innerHTML = data.totalAmount;
 	

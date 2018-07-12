@@ -211,7 +211,6 @@ function formatDate(dateString, format) {
 }
 
 function stringToDate(_date, _format, _delimiter) {
-	console.log("formattedDate"+_date);
 	var formatLowerCase = _format.toLowerCase();
 	var formatItems = formatLowerCase.split(_delimiter);
 	var dateItems = _date.split(_delimiter);
@@ -221,7 +220,6 @@ function stringToDate(_date, _format, _delimiter) {
 	var month = parseInt(dateItems[monthIndex]);
 	month -= 1;
 	var formattedDate = new Date(dateItems[yearIndex], month, dateItems[dayIndex]);
-	console.log("formattedDate"+formattedDate);
 	return formattedDate;
 }
 

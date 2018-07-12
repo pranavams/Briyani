@@ -26,7 +26,6 @@ function getOrderList() {
 }
 
 function displayOrder(data){
-	console.log("Data " + JSON.stringify(data));
 	data = data.order[0];
 	branch = data.branch;
 
@@ -34,8 +33,36 @@ function displayOrder(data){
 	document.getElementById('branchName').innerHTML = branch.name;
 	document.getElementById('branchCode').innerHTML = branch.id;
 	document.getElementById('orderID').innerHTML = data.orderId;
-	document.getElementById('orderDate').innerHTML = data.dateAndTime;
+	document.getElementById('orderDate').innerHTML = dateToFormattedString(data.dateAndTime);
 	document.getElementById('address').innerHTML = getAddress(branch.address);
+	document.getElementById('taxAmount').innerHTML = data.taxAmount;
+	document.getElementById('orderAmount').innerHTML = data.totalAmount;
+	
+	var dd = document.getElementById('orderStatusDropDown');
+	for (var i = 0; i < dd.options.length; i++) {
+	    if (dd.options[i].text.toLowerCase() === data.orderStatus.toLowerCase()) {
+	        dd.selectedIndex = i;
+	        break;
+	    }
+	}
+	
+	var rowIndex = 1;
+    $('#orderDetailsTable').DataTable( {
+    	"lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+    	"data" : data['orderDetails'],
+        "columns": [
+        	{ "data": function (row, x, set) { return rowIndex ++ ;} },
+        	{ "data": function (row, x, set) { return row.item.menuName + ' ' + row.item.name } },
+        	{ "data": function (row, x, set) { return row.quantity } },
+        	{ "data": function (row, x, set) { return row.unitPrice * row.quantity } }
+        ],
+		buttons: [
+			'excelHtml5',
+			'csvHtml5',
+			'pdfHtml5'
+		]	        
+    } );
+
 	
 }
 

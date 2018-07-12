@@ -189,18 +189,26 @@
                                                                     </div>
 
                                                                     <p class="text-uppercase text-400">Branch Details</p>
-                                                                    <p class="text-13">Branch Name: <b> <span id ='branchName'>Briyani Restaurant</b> </span>
-                                                                    <span class="text-13 pull-right">Branch Code:<b> <span id ='branchCode'>BR001</span></b> </span> <br> 
-                                                                    <span class="text-13 pull-right">Order Date:<b><span id ='orderDate'>01/01/2018</span></b>  </span>
+                                                                    <p class="text-13">
+                                                                    	<span class="text-13 pull-left">Branch Code : <b> <span id ='branchCode'></span></b> </span> <br> 
+                                                                    	<span class="text-13 pull-right">Order Date : <b><span id ='orderDate'></span></b>  </span>
                                                                     </p>
-                                                                    <p class="text-13">Address: <br> <b><span id ='address'>No234, Thomas Street</span><br>Singapore-600056</b></p>
-                                                                    <table class="table table-bordered table-striped table-bordered table-dark-header">
+                                                                    <p class="text-13">
+                                                                    	<span class="text-13 pull-left">Branch Name: <b> <span id ='branchName'></b> </span><br>
+                                                                    	<span class="text-13 pull-right">Order Amount : <b><span id ='orderAmount'></span></b>
+                                                                    </p>
+                                                                    
+                                                                    <p class="text-13">
+                                                                    	<span class="text-13 pull-left">Address: <b><span id ='address'></b></span><br>
+                                                                    	<span class="text-13 pull-right">Tax Amount : <b><span id ='taxAmount'></span></b>                                                                    
+                                                                    </p>
+                                                                    <table id = "orderDetailsTable" class="table table-bordered table-striped table-bordered table-dark-header">
                                                                         <thead>
                                                                             <tr>
                                                                                 <th>S.No</th>
-                                                                                <th>Contact Person</th>
                                                                                 <th>Name of the Items</th>
-                                                                                <th>Qty</th>
+                                                                                <th>Quantity</th>
+                                                                                <th>Price</th>
                                                                             </tr>
                                                                         </thead>
                                                                         <tbody>
@@ -265,8 +273,6 @@
                                 </div>
                             </div>
                         </div>
-
-
 
                         <!--Ready to Delivery Popup Form-->
                         <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -385,32 +391,6 @@
                                         });
                         </script>
 
-                        <script type="text/javascript">
-                            $('#contacts_list_preview').DataTable({
-
-                                columns: [{
-                                        data: "sno"
-                                    }, //0-0
-                                    {
-                                        data: "orderno"
-                                    }, //1
-                                    {
-                                        data: "itemdescri"
-                                    }, //2
-                                    {
-                                        data: "orderdate"
-                                    }, //3
-                                    {
-                                        data: "oty"
-                                    }, //2
-                                    {
-                                        data: "amount"
-                                    }, //3
-                                ],
-
-
-                            });
-                        </script>
                         <script type="text/javascript">
                             $(document).ready(function() {
                                 $("#add_notes").hide();

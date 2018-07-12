@@ -24,6 +24,30 @@ function getOrderList() {
 	});
 }
 
+function displayOrders(data) {
+	var rowIndex = 1;
+    $('#contacts_list').DataTable( {
+    	"lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+    	"data" : data['order'],
+        "columns": [
+        	{ "data" : function (row, x, set) { return rowIndex ++ ;} },
+        	{ "data": 'orderId' },
+        	{ "data": 'branch.id' },
+        	{ "data": 'branch.name' },
+        	{ "data": 'orderDetails.0.item.menuName' },
+        	{ "data": 'orderId' },
+        	{ "data": function (row, x, set) { return nvl(row.branch.contactPersonSalutation) + ' ' + nvl(row.branch.contactPersonFirstName) + ' ' + nvl(row.branch.contactPersonMiddleName) + ' ' + nvl(row.branch.contactPersonLastName) ;} },
+        	{ "data": function (row, x, set) { return getAddress(row.branch.address) ;} },
+        	{ "data": function (row, x, set) { return '<a href="order_details.html?id=' + row.orderId + '" class="btn btn-xs btn-default">' + (row.orderStatus == "" ? "OPEN" : row.orderStatus) + '</a>'; } }
+        ],
+		buttons: [
+			'excelHtml5',
+			'csvHtml5',
+			'pdfHtml5'
+		]	        
+    } );	
+}
+
 function displayOrder(OrderResult) {
 	//console.log('Order Received ' + OrderResult);
 	var Order = OrderResult['order'];
@@ -58,7 +82,7 @@ function displayOrder(OrderResult) {
 				tabCell = tr.insertCell(-1);
 				tabCell.innerHTML = getAddress(Order[i]['branch']['address']);
 				tabCell = tr.insertCell(-1);
-				tabCell.innerHTML = '<a href="order_details.html?id=' + Order[i]['orderId'] + '" class="btn btn-xs btn-default">' + Order[i]['orderStatus'] + '</a> ';
+				tabCell.innerHTML = '<a href="order_details.html?id=' + Order[i]['orderId'] + '" class="btn btn-xs btn-default">' + (Order[i]['orderStatus'] == "" ? "OPEN" : Order[i]['orderStatus'])  + '</a> ';
 			} else {
 
 				tabCell = tr.insertCell(-1);
@@ -85,6 +109,20 @@ function displayOrder(OrderResult) {
 			tabCell = tr.insertCell(-1);
 			tabCell.innerHTML = '';
 		}
+		tabCell = tr.insertCell(-1);
+		tabCell.innerHTML = '';
+
+		tabCell = tr.insertCell(-1);
+		tabCell.innerHTML = '';
+
+		tabCell = tr.insertCell(-1);
+		tabCell.innerHTML = '';
+
+		tabCell = tr.insertCell(-1);
+		tabCell.innerHTML = '';
+
+		tabCell = tr.insertCell(-1);
+		tabCell.innerHTML = '';
 	}
 }
 

@@ -16,7 +16,6 @@ function getJSONData() {
 		'notes' : document.getElementById('branch_notes').value
 	};
 
-	console.log("Inside Get JSON Data " + jsonObject);
 	return jsonObject;
 }
 

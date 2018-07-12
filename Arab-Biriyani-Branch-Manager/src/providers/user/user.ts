@@ -25,7 +25,6 @@ import { Api } from '../api/api';
 export class User {
   _user: any;
   constructor(public api: Api) { }
-
   
   /**
 	 * Send a POST request to our login endpoint with the data the user entered
@@ -38,18 +37,21 @@ export class User {
 		    seq.subscribe((res: any) => {
 		        // If the API returned a successful response, mark the user as
 				// logged in
-		  		console.log("Logged In Successfully User Details " + res);
+		    	
 		        observer.next(true);
 		        observer.complete();
 		        this._loggedIn(res);
 		      }, err => {
 		    	observer.next(false);
-		        console.error('ERROR', err);
 		      });
 
 	      });
   }
 
+  public getUserInfo() : any {
+	  return this._user;
+  }
+  
   /**
 	 * Send a POST request to our signup endpoint with the data the user entered
 	 * on the form.
@@ -80,6 +82,7 @@ export class User {
 	 * Process a login/signup response to store user data
 	 */
   _loggedIn(resp) {
-    this._user = resp.user;
+    this._user = resp;
+    console.log("User Set " + JSON.stringify(this._user));
   }
 }

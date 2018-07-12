@@ -17,9 +17,8 @@ function getStatisticsList() {
 		},
 		'error' : function(XMLHttpRequest, textStatus, errorThrown) {
 			//Process error actions
-			console.log('getStatistics - Error: ' + errorThrown);
-			console.log(XMLHttpRequest.status + ' ' +
-				XMLHttpRequest.statusText);
+			//console.log('getStatistics - Error: ' + errorThrown);
+			//console.log(XMLHttpRequest.status + ' ' + XMLHttpRequest.statusText);
 			return false;
 		}
 	});

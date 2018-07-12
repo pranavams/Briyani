@@ -1,3 +1,4 @@
+
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {IonicPage, NavController} from 'ionic-angular';
 
@@ -6,6 +7,7 @@ import {map} from 'rxjs/operators';
 
 import { Api } from '../../providers/api/api';
 import { Items } from '../../providers/items/items';
+import { User } from '../../providers/';
 
 export interface CountdownTimer {
   seconds: number;
@@ -37,6 +39,9 @@ export class MenuPage implements OnInit {
   accessToken: string;
 
   ngOnInit() {
+	if(this.userService.getUserInfo() == null || this.userService.getUserInfo() == undefined ){
+		this.navCtrl.push('LoginPage');
+	}
     this.getData();
   }
 
@@ -85,7 +90,7 @@ export class MenuPage implements OnInit {
       .pipe(map(token => token));
   }
 
-  constructor(public api: Api, public navCtrl: NavController, private http: HttpClient) {
+  constructor(public api: Api, public navCtrl: NavController, private http: HttpClient, private userService: User) {
 
   }
 

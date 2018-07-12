@@ -52,9 +52,8 @@ function saveBranch(toClose) {
 		},
 		'error' : function(XMLHttpRequest, textStatus, errorThrown) {
 			//Process error actions
-			console.log('getMenu - Error: ' + errorThrown + " - " + textStatus);
-			console.log(XMLHttpRequest.status + ' ' +
-				XMLHttpRequest.statusText);
+			//console.log('getMenu - Error: ' + errorThrown + " - " + textStatus);
+			//console.log(XMLHttpRequest.status + ' ' + XMLHttpRequest.statusText);
 			$.gritter.add({
 				class_name : 'gritter-error',
 				title : 'Success!',

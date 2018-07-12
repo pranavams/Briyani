@@ -17,9 +17,8 @@ function getBranchList() {
 		},
 		'error' : function(XMLHttpRequest, textStatus, errorThrown) {
 			//Process error actions
-			console.log('getCustomer - Error: ' + errorThrown);
-			console.log(XMLHttpRequest.status + ' ' +
-				XMLHttpRequest.statusText);
+			//console.log('getCustomer - Error: ' + errorThrown);
+			//console.log(XMLHttpRequest.status + ' ' + XMLHttpRequest.statusText);
 			return false;
 		}
 	});
@@ -52,9 +51,8 @@ function getBranchOrdersList() {
 		},
 		'error' : function(XMLHttpRequest, textStatus, errorThrown) {
 			//Process error actions
-			console.log('getCustomer - Error: ' + errorThrown);
-			console.log(XMLHttpRequest.status + ' ' +
-				XMLHttpRequest.statusText);
+			//console.log('getCustomer - Error: ' + errorThrown);
+			//console.log(XMLHttpRequest.status + ' ' + XMLHttpRequest.statusText);
 			return false;
 		}
 	});

@@ -17,9 +17,8 @@ function getOrderList() {
 		},
 		'error' : function(XMLHttpRequest, textStatus, errorThrown) {
 			//Process error actions
-			console.log('getCustomer - Error: ' + errorThrown);
-			console.log(XMLHttpRequest.status + ' ' +
-				XMLHttpRequest.statusText);
+			//console.log('getCustomer - Error: ' + errorThrown);
+			//console.log(XMLHttpRequest.status + ' ' + XMLHttpRequest.statusText);
 			return false;
 		}
 		
@@ -71,9 +70,8 @@ function updateOrderStatus() {
 		},
 		'error' : function(XMLHttpRequest, textStatus, errorThrown) {
 			//Process error actions
-			console.log('Error: ' + errorThrown + " - " + textStatus);
-			console.log(XMLHttpRequest.status + ' ' +
-				XMLHttpRequest.statusText);
+			//console.log('Error: ' + errorThrown + " - " + textStatus);
+			//console.log(XMLHttpRequest.status + ' ' + XMLHttpRequest.statusText);
 			$.gritter.add({
 				class_name : 'gritter-error',
 				title : 'Success!',

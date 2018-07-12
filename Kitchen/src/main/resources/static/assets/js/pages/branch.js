@@ -19,9 +19,8 @@ function getBranchList() {
 		},
 		'error' : function(XMLHttpRequest, textStatus, errorThrown) {
 			//Process error actions
-			console.log('getBranch - Error: ' + errorThrown);
-			console.log(XMLHttpRequest.status + ' ' +
-				XMLHttpRequest.statusText);
+			//console.log('getBranch - Error: ' + errorThrown);
+			//console.log(XMLHttpRequest.status + ' ' + XMLHttpRequest.statusText);
 			return false;
 		}
 	});
@@ -126,9 +125,8 @@ function saveBranch() {
 		},
 		'error' : function(XMLHttpRequest, textStatus, errorThrown) {
 			//Process error actions
-			console.log('getMenu - Error: ' + errorThrown + " - " + textStatus);
-			console.log(XMLHttpRequest.status + ' ' +
-				XMLHttpRequest.statusText);
+			//console.log('getMenu - Error: ' + errorThrown + " - " + textStatus);
+			//console.log(XMLHttpRequest.status + ' ' + XMLHttpRequest.statusText);
 			$.gritter.add({
 				class_name: 'gritter-error',
 				title: 'Success!',

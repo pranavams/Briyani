@@ -17,9 +17,8 @@ function getBranchList() {
 		},
 		'error' : function(XMLHttpRequest, textStatus, errorThrown) {
 			//Process error actions
-			console.log('getCustomer - Error: ' + errorThrown);
-			console.log(XMLHttpRequest.status + ' ' +
-				XMLHttpRequest.statusText);
+			//console.log('getCustomer - Error: ' + errorThrown);
+			//console.log(XMLHttpRequest.status + ' ' + XMLHttpRequest.statusText);
 			return false;
 		}
 	});
@@ -111,9 +110,8 @@ function update() {
 		},
 		'error' : function(XMLHttpRequest, textStatus, errorThrown) {
 			//Process error actions
-			console.log('Branch Update  - Error: ' + errorThrown + " - " + textStatus);
-			console.log(XMLHttpRequest.status + ' ' +
-				XMLHttpRequest.statusText);
+			//console.log('Branch Update  - Error: ' + errorThrown + " - " + textStatus);
+			//console.log(XMLHttpRequest.status + ' ' + XMLHttpRequest.statusText);
 			$.gritter.add({
 				class_name : 'gritter-error',
 				title : 'Success!',
@@ -124,8 +122,5 @@ function update() {
 	});
 
 }
-
-
-
 
 getToken(getBranchList);

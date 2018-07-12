@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, PopoverController, Events } from 'ionic-angular';
 
 @IonicPage()

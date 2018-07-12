@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, ToastController, NavParams, Events } from 'ionic-angular';
 
 import { User } from '../../providers';

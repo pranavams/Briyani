@@ -41,10 +41,11 @@ function displayRider(data){
 	document.getElementById('license_exp_date').value = data.licenseExpiryDate;
 	document.getElementById('vehicle_type').value = data.vehicleType;
 	document.getElementById('vehicle_model').value = data.vehicleModel;
+	document.getElementById('license_issue_date').value = nvl(formatDateDefault(data.licenseIssueDate,'DD/MM/YYY'));
+	document.getElementById('license_exp_date').value = nvl(formatDateDefault(data.licenseExpiryDate,'DD/MM/YYY'));
 
 	setTheGenderValue(data.gender);
-	document.getElementById('rider_address').innerHTML = address.doorNumber +' ' + address.street + ' ' + address.area
-	 + ' ' + address.city+' ' + address.state+'  ' + address.country + ' ' + address.zipcode;
+	document.getElementById('rider_address').innerHTML = getAddress(data.address);
 }
 
 function setTheGenderValue(gender) {

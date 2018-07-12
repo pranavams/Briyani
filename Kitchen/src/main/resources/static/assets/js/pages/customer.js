@@ -29,10 +29,10 @@ function displayCustomer(data){
 	$.each(data.customer, function(i, data) {
         var body = "<tr>";
         body    += "<td>" + (i + 1) + "</td>";
-        body    += "<td>" + data.salutation + ' ' + data.firstName + ' ' + data.middleName + ' ' + data.lastName + "</td>";
+        body    += "<td>" + nvl(data.salutation) + ' ' + data.firstName + ' ' + data.middleName + ' ' + data.lastName + "</td>";
         body    += "<td>" + data.email + "</td>";
         body    += "<td>" + data.mobileNumber + "</td>";
-        body    += "<td>" + formatDateDefault(data.dateOfBirth) + "</td>";
+        body    += "<td>" + nvl(formatDateDefault(data.dateOfBirth)) + "</td>";
         body    += "<td>" + getAddress(data.address) + "</td>";
         body    += '<td><a href="customer_preview.html?id=' + data.id + '" class="btn btn-xs btn-default"><i class="fa fa-eye"></i>Details</a></td>';
         body    += "</tr>";

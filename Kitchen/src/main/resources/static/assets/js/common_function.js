@@ -157,7 +157,9 @@ $("select").change(function() {
 
 
 function formatDateDefault(dateString) {
-	return formatDate(dateString, "DDD MMM DD, YYYY");
+	if (dateString!=null)
+		return formatDate(dateString, "DDD MMM DD, YYYY");
+	
 }
 
 function formatDate(dateString, format) {

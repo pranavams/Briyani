@@ -102,7 +102,7 @@ public class OrderService {
 		} catch (Exception ex) {
 
 		}
-		OrderEntity order = OrderEntity.builder().branch(branch).customer(customer).couponCode(object.getCouponCode())
+		OrderEntity order = OrderEntity.builder().branch(branch).customer(customer).couponCode(object.getCouponCode()).orderStatus("Open")
 				.dateAndTime(OffsetDateTime.now()).deliveryAddress(object.getDeliveryAddress().createEntity()).build();
 
 		List<OrderDetailEntity> orderDetails = new ArrayList<>(object.getOrderDetails().size());

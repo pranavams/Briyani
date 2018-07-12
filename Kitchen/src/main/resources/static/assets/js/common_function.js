@@ -1,47 +1,4 @@
 
-
-  More 
-17 of 807
- 
-Fwd: Date Error - Fixed 
-Inbox
-x 
-
-Subburaj Thangappalam
-Attachments2:56 PM (19 hours ago)
-to me, Nk.karthick 
-FYI
-
-
-add_rider.html 
-Line No: 333 
-
-<div class="input-group date cal_width" id="data_1">
-
-Line No: 347
- <div class="input-group date cal_width" id="data_11">
-
-Line No: 520
-<div class="input-group date cal_width" id="data_2">
-
-Line No: 534
-<div class="input-group date cal_width" id="data_22">
-
-add_staff.html
-Line No: 258
-<div class="input-group date cal_width" id="data_11">
-
-Please Replace common_function.js, add_rider.html
-
-3 Attachments
-	
-Click here to Reply, Reply to all, or Forward
-14.57 GB (97%) of 15 GB used
-Manage
-Terms · Privacy · Program Policies
-Last account activity: 1 minute ago
-Details
-
 $.gritter.add({
     class_name: 'gritter-success',
     title: 'Success!',

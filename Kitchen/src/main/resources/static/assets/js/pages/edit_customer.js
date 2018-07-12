@@ -29,18 +29,14 @@ function displayCustomer(data) {
 	console.log("Data " + JSON.stringify(data));
 	data = data.customer[0];
 	address = data.address;
-	document.getElementById('customer_fname').value = data.firstName;
-	document.getElementById('customer_mname').value = data.middleName;
-	document.getElementById('customer_lname').value = data.lastName;
-	document.getElementById('customer_email').value = data.email;
-	if (data.telephoneNumber != null) {
-		document.getElementById('customer_telephone_no').value = data.telephoneNumber;
-	} else {
-		document.getElementById('customer_telephone_no').value = "";
-	}
+	document.getElementById('customer_fname').value = nvl(data.firstName);
+	document.getElementById('customer_mname').value = nvl(data.middleName);
+	document.getElementById('customer_lname').value = nvl(data.lastName);
+	document.getElementById('customer_email').value = nvl(data.email);
+	document.getElementById('customer_telephone_no').value = nvl(data.telephoneNumber);
 	setTheGenderValue(data.gender);
-	document.getElementById('customer_mobile_no').value = data.mobileNumber;
-	document.getElementById('customer_dob').value = stringToDate(data.dateOfBirth, 'dd/mm/yyyy', '-')	;
+	document.getElementById('customer_mobile_no').value = nvl(data.mobileNumber);
+	document.getElementById('customer_dob').value = formatDateDefault(data.dateOfBirth, 'DD/MM/YYY')	;
 	document.getElementById('cust_delivery_address').innerHTML = address.doorNumber + ' ' + address.street + ' ' + address.area
 	+ ' ' + address.city + ' ' + address.state + ' ' + address.country + ' ' + address.zipcode;
 }

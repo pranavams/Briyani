@@ -68,16 +68,17 @@ function deleteData() {
 function getJSONUpdateData() {
 	jsonObject = {
 		'id' : $.urlParam('id'),
-		'firstName' : document.getElementById('customer_fname').value,
-		'middleName' : document.getElementById('customer_mname').value,
-		'lastName' : document.getElementById('customer_lname').value,
-		'telephoneNumber' : document.getElementById('customer_telephone_no').value,
-		'mobileNumber' : document.getElementById('customer_mobile_no').value,
-		'email' : document.getElementById('customer_email').value,
-		'gender' : $('input[name=customRadioInline1]:checked').val(),
-		'dateOfBirth' : stringToDate(document.getElementById('customer_dob').value, 'dd/mm/yyyy', '/'),
+		'name' : document.getElementById('branch_name').value,
+		'telephone' : document.getElementById('branch_contact_no').value,
+		'email' : document.getElementById('branch_email').value,
+		'notes' : document.getElementById('branch_notes').value,
+		'contactPersonFirstName' : document.getElementById('branch_contact_person').value,
+		'email' : document.getElementById('branch_email').value,
+		'latitude' : document.getElementById('branch_latitude_no').value,
+		'longitude' : document.getElementById('branch_longitude_no').value,
+		'contactPersonNumber' :document.getElementById('branch_contact_person_no').value,
 		'address' : {
-			'area' : document.getElementById('cust_delivery_address').value
+			'area' : document.getElementById('branch_address').value
 		}
 	};
 
@@ -85,6 +86,26 @@ function getJSONUpdateData() {
 	return jsonObject;
 }
 
+/*Data {"branch":[{"id":"BRAN1","name":"ECR Branch","email":"prabhas.roy@gmail.com","latitude":"234234",
+	"longitude":"234234","notes":"Branch in EC","address":{"doorNumber":"5","street":"x Street","area":
+		"new jersey","city":"dearborn","state":"Michigan","country":"United States","zipcode":"42186"},"" +
+				"contactPersonFirstName":"Prabhas","contactPersonLastName":"Roy","contactPersonMiddleName":"M",
+				"contactPersonSalutation":"Mr.","mobileNumber":"123234234","telephone":"323234234","contactPersonNumber":"123455"}]}
+
+document.getElementById('branch_name').value = data.name;
+document.getElementById('branch_contact_no').value = data.telephone;
+document.getElementById('branch_email').value = data.email;
+
+document.getElementById('branch_contact_person').value = data.contactPersonFirstName + ' ' + data.contactPersonFirstName + ' ' + data.contactPersonLastName;
+document.getElementById('branch_latitude_no').value = data.latitude;
+document.getElementById('branch_longitude_no').value = data.longitude;
+document.getElementById('branch_notes').value = data.notes;
+
+document.getElementById('branch_contact_person_no').value = data.contactPersonNumber;
+document.getElementById('branch_address').innerHTML = address.doorNumber +' ' + address.street + ' ' + address.area
+ + ' ' + address.city+' ' + address.state+' ' + address.country + ' ' + address.zipcode;
+
+*/
 function update() {
 	console.log("Inside Update Order");
 
@@ -105,7 +126,7 @@ function update() {
 				title : 'Success!',
 				text : '<p style="font-size: 14px;">Branch Saved successfully!</p>',
 			});
-			clearItem();
+			//clearItem();
 			return result;
 		},
 		'error' : function(XMLHttpRequest, textStatus, errorThrown) {

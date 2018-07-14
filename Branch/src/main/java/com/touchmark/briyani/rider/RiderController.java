@@ -54,11 +54,11 @@ public class RiderController {
 	public ResponseEntity<RiderResponse> get(@PathVariable("id") String id) {
 		return ResponseEntity.ok(RiderResponse.builder().rider(Arrays.asList(this.service.get(id))).build());
 	}
-/*	
+	
 	@PostMapping
 	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE, path = "/update", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Rider> update(@RequestBody Rider object) {
 		Rider update = this.service.update(object);
 		return ResponseEntity.ok(update);
-	}*/
+	}
 }

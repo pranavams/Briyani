@@ -98,15 +98,22 @@ public class RiderEntity implements Serializable {
 	@Column(name = "licenseExpiryDate")
 	private OffsetDateTime licenseExpiryDate;
 	
+	
+	
 	public void updateWith(Rider object) {
 		this.departmentType = object.getDepartmentType();
+		this.riderPersonFirstName = object.getRiderPersonFirstName();
+		this.riderPersonMiddleName = object.getRiderPersonMiddleName();
+		this.riderPersonLastName = object.getRiderPersonLastName();
 		this.mobileNumber = object.getMobileNumber();
-		//this.contactPersonNumber = object.getContactPersonNumber();
+		this.riderPersonNumber =object.getRiderPersonNumber();
 		this.email = object.getEmail();
 		this.address.updateWith(object.getAddress());
 		this.lastUpdatedDate = OffsetDateTime.now();
-		//this.name = object.getName();
-		//this.longitude = object.getLongitude();
+		this.riderIdCardNo = object.getRiderIdCardNo();
+		this.vehicleType = object.getVehicleType();
+		this.vehicleModel = object.getVehicleModel();
+		this.vehicleNumber = object.getVehicleNumber();
 		this.licenseType = object.getLicenseType();
 		this.licenseIssueDate= object.getLicenseIssueDate();
 		this.licenseExpiryDate = object.getLicenseExpiryDate();

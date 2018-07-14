@@ -47,6 +47,7 @@ public class OrderController {
 	@PostMapping
 	@RequestMapping(path = "/createOrder", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Order> createOrder(@RequestBody CreateOrder object) {
+		object.validateForCreation();
 		try {
 			Log.log("OrderController", "createOrder", "Object Received To Save " + object);
 			OrderEntity createdOrder = this.service.createOrder(object);

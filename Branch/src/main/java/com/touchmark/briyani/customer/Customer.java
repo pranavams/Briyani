@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.touchmark.briyani.commons.Address;
-import com.touchmark.briyani.commons.ValidationException;
 import com.touchmark.briyani.commons.Validator;
 
 import lombok.AllArgsConstructor;
@@ -91,7 +90,7 @@ public class Customer {
 		if (Validator.isInValidDateOfBirth(this.dateOfBirth))
 			errors.add("Invalid Date Of Birth");
 
-		Validator.throwExcceptionWhenNotEmpty(errors);
+		Validator.throwExceptionWhenNotEmpty(errors);
 	}
 
 	private void validateForCustomerID() {
@@ -99,7 +98,7 @@ public class Customer {
 		if (Validator.isStringWithOutValue(this.id))
 			errors.add("Invalid Customer ID");
 
-		Validator.throwExcceptionWhenNotEmpty(errors);
+		Validator.throwExceptionWhenNotEmpty(errors);
 	}
 
 }

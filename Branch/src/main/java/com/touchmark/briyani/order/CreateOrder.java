@@ -24,6 +24,7 @@ public class CreateOrder {
 	private List<OrderDetail> orderDetails;
 
 	void validateForCreation() {
+		
 	}
 
 }

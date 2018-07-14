@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 
 public class Validator {
 
-	public static void throwExcceptionWhenNotEmpty(List<String> errors) {
+	public static void throwExceptionWhenNotEmpty(List<String> errors) {
 		if (errors.isEmpty() == false)
 			throw new ValidationException(errors);
 	}

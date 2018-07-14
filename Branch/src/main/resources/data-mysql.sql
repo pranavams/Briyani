@@ -181,7 +181,7 @@ VALUES (4, 10,
 INSERT INTO ORDER_INFO (NUMBER_OF_VESSELS, VESSEL_STATUS, ORDER_STATUS, CUSTOMER_ID, COUPON_CODE,  DATE_AND_TIME,  	PAYMENT_STATUS,  	TAX_AMOUNT,  	TAX_PERCENTAGE,  	TOTAL_AMOUNT,  	USER_NAME, ADDRESS_ID, BRANCH_ID)
 values (13, 'NOT_RETURNED', 'DELIVERED', 
 (select id from customer where first_name = 'Karthick' LIMIT 1),
- '', '2018-07-01 00:00:00', 'COMPLETED', 6, 6, 106, 'Alex123', (select address_id from address where area = 'los angels' LIMIT 1), 
+ '', '2018-07-01 00:00:00', 'PAID', 6, 6, 106, 'Alex123', (select address_id from address where area = 'los angels' LIMIT 1), 
  (select id from branch where CONTACT_PERSON_FIRST_NAME = 'Prabhas' LIMIT 1));
 
 INSERT INTO ORDER_DETAIL (QUANTITY,  	UNIT_PRICE,  	ITEM_ID,  	ORDER_ID)
@@ -199,7 +199,7 @@ VALUES (4, 10,
 INSERT INTO ORDER_INFO (NUMBER_OF_VESSELS, VESSEL_STATUS, ORDER_STATUS, CUSTOMER_ID, COUPON_CODE,  DATE_AND_TIME,  	PAYMENT_STATUS,  	TAX_AMOUNT,  	TAX_PERCENTAGE,  	TOTAL_AMOUNT,  	USER_NAME, ADDRESS_ID, BRANCH_ID)
 values (14, 'NOT_RETURNED', 'COMPLETED', 
 (select id from customer where first_name = 'Karthick' LIMIT 1),
- '', '2018-07-01 00:00:00', 'COMPLETED', 70, 10, 770, 'Alex123', (select address_id from address where area = 'salt lakes' LIMIT 1), 
+ '', '2018-07-01 00:00:00', 'PAID', 70, 10, 770, 'Alex123', (select address_id from address where area = 'salt lakes' LIMIT 1), 
 (select id from branch where CONTACT_PERSON_FIRST_NAME = 'Ajith' LIMIT 1));
 
 INSERT INTO ORDER_DETAIL (QUANTITY,  	UNIT_PRICE,  	ITEM_ID,  	ORDER_ID)
@@ -223,7 +223,7 @@ VALUES (60, 10,
 INSERT INTO ORDER_INFO (NUMBER_OF_VESSELS, VESSEL_STATUS, ORDER_STATUS, CUSTOMER_ID, COUPON_CODE,  DATE_AND_TIME,  	PAYMENT_STATUS,  	TAX_AMOUNT,  	TAX_PERCENTAGE,  	TOTAL_AMOUNT,  	USER_NAME, ADDRESS_ID, BRANCH_ID)
 values (14, 'NOT_RETURNED', 'COMPLETED', 
 (select id from customer where first_name = 'Karthick' LIMIT 1),
- '', '2018-07-01 00:00:00', 'COMPLETED', 70, 10, 770, 'Alex123', (select address_id from address where area = 'pa' LIMIT 1), 
+ '', '2018-07-01 00:00:00', 'PAID', 70, 10, 770, 'Alex123', (select address_id from address where area = 'pa' LIMIT 1), 
 (select id from branch where CONTACT_PERSON_FIRST_NAME = 'Ajith' LIMIT 1));
 
 INSERT INTO ORDER_DETAIL (QUANTITY,  	UNIT_PRICE,  	ITEM_ID,  	ORDER_ID)

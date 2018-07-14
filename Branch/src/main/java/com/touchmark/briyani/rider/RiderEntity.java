@@ -117,5 +117,6 @@ public class RiderEntity implements Serializable {
 		this.licenseType = object.getLicenseType();
 		this.licenseIssueDate= object.getLicenseIssueDate();
 		this.licenseExpiryDate = object.getLicenseExpiryDate();
+		this.licenseNumber = object.getLicenseNumber();
 	}
 }

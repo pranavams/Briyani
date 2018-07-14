@@ -3,10 +3,16 @@ package com.touchmark.briyani.commons;
 import java.time.OffsetDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Validator {
+
+	public static void throwExcceptionWhenNotEmpty(List<String> errors) {
+		if (errors.isEmpty() == false)
+			throw new ValidationException(errors);
+	}
 
 	public static boolean isInValidDateOfBirth(OffsetDateTime dateOfBirth) {
 		if (dateOfBirth == null)

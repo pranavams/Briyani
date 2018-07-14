@@ -91,7 +91,7 @@ public class Customer {
 		if (Validator.isInValidDateOfBirth(this.dateOfBirth))
 			errors.add("Invalid Date Of Birth");
 
-		throwExcceptionWhenNotEmpty(errors);
+		Validator.throwExcceptionWhenNotEmpty(errors);
 	}
 
 	private void validateForCustomerID() {
@@ -99,11 +99,7 @@ public class Customer {
 		if (Validator.isStringWithOutValue(this.id))
 			errors.add("Invalid Customer ID");
 
-		throwExcceptionWhenNotEmpty(errors);
+		Validator.throwExcceptionWhenNotEmpty(errors);
 	}
 
-	private void throwExcceptionWhenNotEmpty(List<String> errors) {
-		if (errors.isEmpty() == false)
-			throw new ValidationException(errors);
-	}
 }

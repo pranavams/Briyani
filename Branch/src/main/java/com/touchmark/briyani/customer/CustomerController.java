@@ -47,6 +47,7 @@ public class CustomerController {
 	@GetMapping
 	@RequestMapping(path = "/delete", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<String> delete(@RequestParam(name = "id") String id) {
+		Customer.builder().id(id).build().validateForDeletion();
 		return ResponseEntity.ok(this.service.delete(id));
 	}
 
@@ -59,6 +60,7 @@ public class CustomerController {
 	@PostMapping
 	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE, path = "/update", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Customer> update(@RequestBody Customer object) {
+		object.validateForUpdation();
 		Customer update = this.service.update(object);
 		return ResponseEntity.ok(update);
 	}

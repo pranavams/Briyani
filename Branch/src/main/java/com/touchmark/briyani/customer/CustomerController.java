@@ -39,6 +39,7 @@ public class CustomerController {
 	@PostMapping
 	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE, path = "/save", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Customer> save(@RequestBody Customer object) {
+		object.validateForCreation();
 		Customer created = this.service.save(object);
 		return ResponseEntity.ok(created);
 	}

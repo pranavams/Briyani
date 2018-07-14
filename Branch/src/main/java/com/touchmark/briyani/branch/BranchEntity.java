@@ -77,9 +77,8 @@ public class BranchEntity implements Serializable {
 	private OffsetDateTime lastUpdatedDate;
 	
 	public void updateWith(Branch object) {
+		System.out.println("object.getContactPersonNumber()"+object.getContactPersonNumber());
 		this.contactPersonFirstName = object.getContactPersonFirstName();
-		this.contactPersonLastName = object.getContactPersonLastName();
-		this.contactPersonMiddleName = object.getContactPersonMiddleName();
 		this.mobileNumber = object.getMobileNumber();
 		this.contactPersonNumber = object.getContactPersonNumber();
 		this.email = object.getEmail();
@@ -88,5 +87,7 @@ public class BranchEntity implements Serializable {
 		this.name = object.getName();
 		this.longitude = object.getLongitude();
 		this.latitude = object.getLatitude();
+		this.telephone= object.getTelephone();
+		this.notes = object.getNotes();
 	}
 }

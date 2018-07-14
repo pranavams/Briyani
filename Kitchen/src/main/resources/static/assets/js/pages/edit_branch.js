@@ -68,22 +68,24 @@ function deleteData() {
 function getJSONUpdateData() {
 	jsonObject = {
 		'id' : $.urlParam('id'),
-		'firstName' : document.getElementById('customer_fname').value,
-		'middleName' : document.getElementById('customer_mname').value,
-		'lastName' : document.getElementById('customer_lname').value,
-		'telephoneNumber' : document.getElementById('customer_telephone_no').value,
-		'mobileNumber' : document.getElementById('customer_mobile_no').value,
-		'email' : document.getElementById('customer_email').value,
-		'gender' : $('input[name=customRadioInline1]:checked').val(),
-		'dateOfBirth' : stringToDate(document.getElementById('customer_dob').value, 'dd/mm/yyyy', '/'),
+		'name' : document.getElementById('branch_name').value,
+		'telephone' : document.getElementById('branch_contact_no').value,
+		'email' : document.getElementById('branch_email').value,
+		'notes' : document.getElementById('branch_notes').value,
+		'contactPersonFirstName' : document.getElementById('branch_contact_person').value,
+		'email' : document.getElementById('branch_email').value,
+		'latitude' : document.getElementById('branch_latitude_no').value,
+		'longitude' : document.getElementById('branch_longitude_no').value,
+		'contactPersonNumber' :document.getElementById('branch_contact_person_no').value,
 		'address' : {
-			'area' : document.getElementById('cust_delivery_address').value
+			'area' : document.getElementById('branch_address').value
 		}
 	};
 
 	console.log("Inside Get JSON Data " + jsonObject);
 	return jsonObject;
 }
+
 
 function update() {
 	console.log("Inside Update Order");
@@ -105,7 +107,7 @@ function update() {
 				title : 'Success!',
 				text : '<p style="font-size: 14px;">Branch Saved successfully!</p>',
 			});
-			clearItem();
+			//clearItem();
 			return result;
 		},
 		'error' : function(XMLHttpRequest, textStatus, errorThrown) {

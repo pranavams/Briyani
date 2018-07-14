@@ -33,6 +33,7 @@ public class RiderController {
 	@PostMapping
 	@RequestMapping("/save")
 	public ResponseEntity<Rider> save(@RequestBody Rider object) {
+		object.validateForCreation();
 		Rider created = this.service.save(object);
 		return ResponseEntity.ok(created);
 	}

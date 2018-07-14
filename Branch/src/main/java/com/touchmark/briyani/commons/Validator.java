@@ -52,4 +52,16 @@ public class Validator {
 	public static boolean isInValidAddress(Address address) {
 		return false;
 	}
+	
+	public static boolean isInValidLicenseIssueDate(OffsetDateTime licenceIssueDate) {
+		if (licenceIssueDate == null)
+			return true;
+		return licenceIssueDate.isAfter(OffsetDateTime.now());
+	}
+	
+	public static boolean isInValidLicenseExpiryDate(OffsetDateTime licenceExpiryDate,OffsetDateTime licenceIssueDate) {
+		if (licenceExpiryDate == null || licenceIssueDate ==null)
+			return true;
+		return licenceExpiryDate.isBefore(licenceIssueDate);
+	}
 }

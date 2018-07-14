@@ -7,6 +7,8 @@ import java.util.List;
 
 import com.touchmark.briyani.commons.Address;
 import com.touchmark.briyani.commons.AddressEntity;
+import com.touchmark.briyani.commons.EmailValidator;
+import com.touchmark.briyani.commons.Validator;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -96,4 +98,56 @@ public class Rider implements Serializable{
 			return 0L;
 
 	}
+	void validateForUpdation() {
+		validateForCreation();
+		validateStaffID();
+	}
+
+	void validateForDeletion() {
+		validateStaffID();
+	}
+
+	void validateForCreation() {
+		List<String> errors = new ArrayList<>();
+
+		if (Validator.isStringWithOutValue(this.riderPersonFirstName))
+			errors.add("Invalid First Name");
+
+		if (Validator.isStringWithOutValue(this.riderPersonLastName))
+			errors.add("Invalid Last Name");
+
+		if (Validator.isInValidMobileNumber(this.mobileNumber))
+			errors.add("Invalid MobileNumber");
+
+		if (Validator.isInValidGender(this.gender))
+			errors.add("Invalid Gender");
+
+		if (Validator.isInValidAddress(this.address))
+			errors.add("Invalid Address");
+		
+		if (Validator.isStringWithOutValue(this.vehicleNumber))
+			errors.add("Invalid Vehicle Number");
+		
+		if (Validator.isStringWithOutValue(this.licenseNumber))
+			errors.add("Invalid license Number");
+
+		if (Validator.isInValidLicenseIssueDate(this.licenseIssueDate))
+			errors.add("Invalid license Issue Date");
+		
+		if (Validator.isInValidLicenseExpiryDate(this.licenseExpiryDate, this.licenseIssueDate))
+			errors.add("Invalid Exipiry Date");
+
+		
+		Validator.throwExceptionWhenNotEmpty(errors);
+	}
+
+	private void validateStaffID() {
+		List<String> errors = new ArrayList<>();
+		if (Validator.isStringWithOutValue(this.id))
+			errors.add("Invalid Staff ID");
+		Validator.throwExceptionWhenNotEmpty(errors);
+	}
+
+	
+
 }

@@ -37,4 +37,8 @@ public class Validator {
 	public static boolean isStringWithOutValue(String value) {
 		return value == null || value.trim().equals("");
 	}
+
+	public static boolean isInValidAddress(Address address) {
+		return false;
+	}
 }

@@ -65,11 +65,11 @@ public class Customer {
 
 	void validateForUpdation() {
 		validateForCreation();
-		validateForCustomerID();
+		validateForID();
 	}
 
 	void validateForDeletion() {
-		validateForCustomerID();
+		validateForID();
 	}
 
 	void validateForCreation() {
@@ -93,7 +93,7 @@ public class Customer {
 		Validator.throwExceptionWhenNotEmpty(errors);
 	}
 
-	private void validateForCustomerID() {
+	private void validateForID() {
 		List<String> errors = new ArrayList<>();
 		if (Validator.isStringWithOutValue(this.id))
 			errors.add("Invalid Customer ID");

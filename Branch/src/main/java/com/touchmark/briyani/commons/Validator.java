@@ -49,4 +49,7 @@ public class Validator {
 			return true;
 		return !(Arrays.asList("Admin", "Kitchen", "Staff").contains(role));
 	}
+	public static boolean isInValidAddress(Address address) {
+		return false;
+	}
 }

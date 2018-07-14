@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.touchmark.briyani.commons.Log;
-import com.touchmark.briyani.customer.Customer;
-import com.touchmark.briyani.customer.CustomerEntity;
 
 @RestController
 @RequestMapping(path = "/api/v1/branch/")
@@ -47,6 +45,7 @@ public class BranchController {
 	@PostMapping
 	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE, path = "/save", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Branch> saveBranch(@RequestBody Branch branch) {
+		branch.validateForCreation();
 		Branch createdBranch = this.branchService.saveBranch(branch);
 		return ResponseEntity.ok(createdBranch);
 	}
@@ -54,6 +53,7 @@ public class BranchController {
 	@PostMapping
 	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE, path = "/update", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Branch> update(@RequestBody Branch object) {
+		object.validateForUpdation();
 		Branch update = this.branchService.update(object);
 		return ResponseEntity.ok(update);
 	}

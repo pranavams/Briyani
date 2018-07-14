@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.touchmark.briyani.branch.Branch;
 import com.touchmark.briyani.commons.AddressEntity;
 
 import lombok.AllArgsConstructor;
@@ -96,4 +97,18 @@ public class RiderEntity implements Serializable {
 	
 	@Column(name = "licenseExpiryDate")
 	private OffsetDateTime licenseExpiryDate;
+	
+	public void updateWith(Rider object) {
+		this.departmentType = object.getDepartmentType();
+		this.mobileNumber = object.getMobileNumber();
+		//this.contactPersonNumber = object.getContactPersonNumber();
+		this.email = object.getEmail();
+		this.address.updateWith(object.getAddress());
+		this.lastUpdatedDate = OffsetDateTime.now();
+		//this.name = object.getName();
+		//this.longitude = object.getLongitude();
+		this.licenseType = object.getLicenseType();
+		this.licenseIssueDate= object.getLicenseIssueDate();
+		this.licenseExpiryDate = object.getLicenseExpiryDate();
+	}
 }

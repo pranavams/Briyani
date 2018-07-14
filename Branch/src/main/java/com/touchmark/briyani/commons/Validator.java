@@ -37,4 +37,16 @@ public class Validator {
 	public static boolean isStringWithOutValue(String value) {
 		return value == null || value.trim().equals("");
 	}
+	
+	public static boolean isInValidDateOfJoin(OffsetDateTime dateOfJoin) {
+		if (dateOfJoin == null)
+			return true;
+		return dateOfJoin.isAfter(OffsetDateTime.now());
+	}
+	
+	public static boolean isInValidRole(String role) {
+		if (isStringWithOutValue(role))
+			return true;
+		return !(Arrays.asList("Admin", "Kitchen", "Staff").contains(role));
+	}
 }

@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.touchmark.briyani.commons.Address;
+import com.touchmark.briyani.commons.EmailValidator;
+import com.touchmark.briyani.commons.ValidationException;
+import com.touchmark.briyani.commons.Validator;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -98,4 +101,53 @@ public class Staff {
 	public String getNotes() {
 		return notes == null ? "" : notes;
 	}
+	
+	void validateForUpdation() {
+		validateForCreation();
+		validateStaffID();
+	}
+
+	void validateForDeletion() {
+		validateStaffID();
+	}
+
+	void validateForCreation() {
+		List<String> errors = new ArrayList<>();
+
+		if (Validator.isStringWithOutValue(this.firstName))
+			errors.add("Invalid First Name");
+
+		if (Validator.isStringWithOutValue(this.lastName))
+			errors.add("Invalid Last Name");
+
+		if (Validator.isInValidMobileNumber(this.mobileNumber))
+			errors.add("Invalid MobileNumber");
+
+		if (Validator.isInValidGender(this.gender))
+			errors.add("Invalid Gender");
+
+		if (Validator.isInValidDateOfBirth(this.dateOfBirth))
+			errors.add("Invalid Date Of Birth");
+		
+		if (Validator.isInValidRole(this.role))
+			errors.add("Invalid Role");
+		
+		if (Validator.isInValidDateOfJoin(this.dateOfJoin))
+			errors.add("Invalid Date Of Join");
+		
+		if (new EmailValidator().isInValidEmail(this.email))
+			errors.add("Invalid Email Address");
+		
+		Validator.throwExceptionWhenNotEmpty(errors);
+	}
+
+	private void validateStaffID() {
+		List<String> errors = new ArrayList<>();
+		if (Validator.isStringWithOutValue(this.id))
+			errors.add("Invalid Staff ID");
+		Validator.throwExceptionWhenNotEmpty(errors);
+	}
+
+	
+
 }

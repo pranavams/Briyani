@@ -39,6 +39,7 @@ public class StaffController {
 	@PostMapping
 	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE, path = "/save", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Staff> save(@RequestBody Staff object) {
+		object.validateForCreation();
 		Staff created = this.service.save(object);
 		return ResponseEntity.ok(created);
 	}

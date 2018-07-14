@@ -43,5 +43,10 @@ public class RiderService {
 	public Rider get(String id) {
 		return Rider.builder().build().transformEntities(repository.findById(Rider.builder().id(id).build().DBID()).get());
 	}
+	/*public Rider update(Rider object) {
+		RiderEntity entity = getByID(object);
+		entity.updateWith(object);
+		return Rider.builder().build().transformEntities(this.repository.saveAndFlush(entity));
+	}*/
 
 }

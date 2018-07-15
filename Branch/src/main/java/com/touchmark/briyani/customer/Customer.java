@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.touchmark.briyani.commons.Address;
-import com.touchmark.briyani.commons.Validator;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,7 +31,8 @@ public class Customer {
 
 	public CustomerEntity createEntity() {
 		return CustomerEntity.builder().address(address.createEntity()).dateOfBirth(dateOfBirth).firstName(firstName)
-				.email(email).telephoneNumber(telephoneNumber).lastName(lastName).middleName(middleName).gender(gender)
+				.email(email).telephoneNumber(telephoneNumber).lastName(lastName).middleName(middleName)
+				.gender(gender)
 				.lastUpdatedDate(OffsetDateTime.now()).mobileNumber(mobileNumber).salutation(salutation).build();
 	}
 
@@ -53,52 +53,14 @@ public class Customer {
 	}
 
 	public Customer transformEntities(CustomerEntity customerEntity) {
-		if (customerEntity == null)
+		if(customerEntity == null)
 			return Customer.builder().build();
 		return Customer.builder().id(transformId(customerEntity.getId())).email(customerEntity.getEmail())
-				.telephoneNumber(customerEntity.getTelephoneNumber()).gender(customerEntity.getGender())
+				.telephoneNumber(customerEntity.getTelephoneNumber())
+				.gender(customerEntity.getGender())
 				.address(Address.builder().build().transform(customerEntity.getAddress()))
 				.dateOfBirth(customerEntity.getDateOfBirth()).firstName(customerEntity.getFirstName())
 				.lastName(customerEntity.getLastName()).middleName(customerEntity.getMiddleName())
 				.mobileNumber(customerEntity.getMobileNumber()).salutation(customerEntity.getSalutation()).build();
 	}
-
-	void validateForUpdation() {
-		validateForCreation();
-		validateForID();
-	}
-
-	void validateForDeletion() {
-		validateForID();
-	}
-
-	void validateForCreation() {
-		List<String> errors = new ArrayList<>();
-
-		if (Validator.isStringWithOutValue(this.firstName))
-			errors.add("Invalid First Name");
-
-		if (Validator.isStringWithOutValue(this.lastName))
-			errors.add("Invalid Last Name");
-
-		if (Validator.isInValidMobileNumber(this.mobileNumber))
-			errors.add("Invalid MobileNumber");
-
-		if (Validator.isInValidGender(this.gender))
-			errors.add("Invalid Gender");
-
-		if (Validator.isInValidDateOfBirth(this.dateOfBirth))
-			errors.add("Invalid Date Of Birth");
-
-		Validator.throwExceptionWhenNotEmpty(errors);
-	}
-
-	private void validateForID() {
-		List<String> errors = new ArrayList<>();
-		if (Validator.isStringWithOutValue(this.id))
-			errors.add("Invalid Customer ID");
-
-		Validator.throwExceptionWhenNotEmpty(errors);
-	}
-
 }

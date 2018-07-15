@@ -1,3 +1,4 @@
+
 buildscript {
 	ext {
 		springBootVersion = '2.0.3.RELEASE'
@@ -41,12 +42,13 @@ dependencies {
 	//Security
 	compile('org.springframework.boot:spring-boot-starter-actuator')
 	compile('org.springframework.boot:spring-boot-starter-data-rest')
-
-	compile 'org.springframework.security:spring-security-crypto'
+	compile('org.springframework.boot:spring-boot-starter-security')
+	compile('org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.0.0.RELEASE')
+	compile('org.springframework.security:spring-security-core')
 	
 	//Corss
 	
-	// Database *
+	// Database ***
 	compile 'org.springframework.boot:spring-boot-starter-data-jpa'
 	compile 'org.hibernate:hibernate-java8'
 	compile 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
@@ -57,7 +59,7 @@ dependencies {
 
 	//other
 	compileOnly 'org.projectlombok:lombok'
-	/**** TEST ****/
+	/*********** TEST ***********/
 
 	testCompile 'org.springframework.boot:spring-boot-starter-test'
 	testCompile 'junit:junit'
@@ -68,3 +70,5 @@ dependencyManagement {
 		//compile group: 'org.springframework.cloud', name: 'spring-cloud-dependencies', version: 'Finchley.RELEASE', ext: 'pom'
 	}
 }
+
+

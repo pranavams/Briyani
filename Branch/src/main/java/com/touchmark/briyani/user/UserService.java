@@ -1,19 +1,47 @@
 package com.touchmark.briyani.user;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
+import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.touchmark.briyani.commons.Log;
 
 @Service(value = "userService")
-public class UserService{
+public class UserService implements UserDetailsService {
 
 	@Autowired
 	private UserRepository userRepository;
+
+	private List<SimpleGrantedAuthority> getAuthority(String roles) {
+		List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+		for (String roleEntity : roles.split(",")) {
+			authorities.add(new SimpleGrantedAuthority(roleEntity));
+		}
+		return authorities;
+	}
+
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		try {
+			Log.log("UserService", "LoadUser", "User Name " + username);
+			List<UserEntity> findByUserName = userRepository.findByUserName(username);
+			UserEntity user = findByUserName.get(0);
+			User retrievedUser = new User(user.getUserName(), user.getPassword(), getAuthority(user.getRoles()));
+			Log.log("UserService", "LoadUser", "User details " + retrievedUser);
+			return retrievedUser;
+		} catch (Exception ex) {
+			Log.error("UserService", "loadUserByUserName", "Exception while Fetching User Details", ex);
+			throw new UsernameNotFoundException("User Not Found");
+		}
+	}
 
 	public com.touchmark.briyani.user.User findByUsername(String username) {
 		try {
@@ -46,12 +74,13 @@ public class UserService{
 		return com.touchmark.briyani.user.User.builder().build().transformEntity(userRepository.findByUserType(type));
 	}
 
-	public User authenticate(User user) {
+	public com.touchmark.briyani.user.User authenticate(com.touchmark.briyani.user.User user) {
 		List<UserEntity> users = this.userRepository.findByUserName(user.getUserName());
 		if(users == null || users.isEmpty())
 			throw new RuntimeException("User Not Found");
+		Log.log("UserService", "Authenticate", "User Found");
 		Optional<UserEntity> foundUser = users.stream().filter(x -> BCrypt.checkpw(user.getPassword(), x.getPassword())).findFirst();
-		return User.builder().build().transformEntity(foundUser.get());
+		return com.touchmark.briyani.user.User.builder().build().transformEntity(foundUser.get());
 	}
 
 }

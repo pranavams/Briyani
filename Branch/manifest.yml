@@ -1,8 +1,9 @@
 applications:
-- name: biriyani-services-noauth
+- name: biriyani-services
+  path: build/libs/arab-biriyani-0.1.0.jar
   services:
   - mysql
   memory: 1024M
   buildpack: java_buildpack
   routes:
-  - route: briyani-services.cfapps.io
+  - route: biriyani-services.cfapps.io

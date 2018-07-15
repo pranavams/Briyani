@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,7 @@ import com.touchmark.briyani.commons.Log;
 
 @RestController
 @RequestMapping(path = "/api/v1/order/")
+@PreAuthorize("hasAuthority('BRANCH_USER')")
 public class OrderController {
 
 	private OrderService service;
@@ -47,7 +49,6 @@ public class OrderController {
 	@PostMapping
 	@RequestMapping(path = "/createOrder", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Order> createOrder(@RequestBody CreateOrder object) {
-		object.validateForCreation();
 		try {
 			Log.log("OrderController", "createOrder", "Object Received To Save " + object);
 			OrderEntity createdOrder = this.service.createOrder(object);

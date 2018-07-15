@@ -93,6 +93,7 @@ public class OrderService {
 	}
 
 	public OrderEntity createOrder(CreateOrder object) {
+		Log.log("OrderService", "CreateOrder", "Order To Create " + object);
 		BranchEntity branch = this.branchRepository.findById(Branch.builder().id(object.getBranchID()).build().DBID())
 				.get();
 		CustomerEntity customer = null;
@@ -103,10 +104,11 @@ public class OrderService {
 
 		}
 		OrderEntity order = OrderEntity.builder().branch(branch).customer(customer).couponCode(object.getCouponCode())
-				.orderStatus("Open").paymentStatus("PAID").dateAndTime(OffsetDateTime.now())
-				.deliveryAddress(object.getDeliveryAddress().createEntity()).build();
+				.dateAndTime(OffsetDateTime.now()).deliveryAddress(object.getDeliveryAddress().createEntity()).build();
 
-		float totalPrice = calculateTotalPriceForAnOrder(object, order);
+		List<OrderDetailEntity> orderDetails = new ArrayList<>(object.getOrderDetails().size());
+
+		float totalPrice = calculateTotalPriceForAnOrder(object, order, orderDetails);
 
 		order.setTaxAmount(totalPrice * 0.06f);
 		order.setTaxPercentage(6);
@@ -117,9 +119,9 @@ public class OrderService {
 		for (OrderDetail orderDetail : object.getOrderDetails()) {
 			ItemEntity item = iRepository.findById(Item.builder().id(orderDetail.getItem().getId()).build().DBID())
 					.get();
-			createdOrderDetails.add(orderDetailRepository
-					.save(OrderDetailEntity.builder().item(item).quantity(orderDetail.getQuantity())
-							.unitPrice(item.getPrice()).orderId(createdOrder.getOrderId()).build()));
+			totalPrice += item.getPrice() * orderDetail.getQuantity();
+			createdOrderDetails.add(orderDetailRepository.save(OrderDetailEntity.builder().item(item).quantity(orderDetail.getQuantity())
+					.unitPrice(item.getPrice()).orderId(createdOrder.getOrderId()).build()));
 		}
 		Log.log("OrderService", "CreateOrder", "Order Returning " + createdOrder);
 		createdOrder.setOrderDetails(createdOrderDetails);
@@ -127,12 +129,15 @@ public class OrderService {
 		return createdOrder;
 	}
 
-	private float calculateTotalPriceForAnOrder(CreateOrder object, OrderEntity order) {
+	private float calculateTotalPriceForAnOrder(CreateOrder object, OrderEntity order,
+			List<OrderDetailEntity> orderDetails) {
 		float totalPrice = 0;
 		for (OrderDetail orderDetail : object.getOrderDetails()) {
 			ItemEntity item = iRepository.findById(Item.builder().id(orderDetail.getItem().getId()).build().DBID())
 					.get();
 			totalPrice += item.getPrice() * orderDetail.getQuantity();
+			orderDetails.add(OrderDetailEntity.builder().item(item).quantity(orderDetail.getQuantity())
+					.unitPrice(item.getPrice()).orderId(order.getOrderId()).build());
 		}
 		return totalPrice;
 	}

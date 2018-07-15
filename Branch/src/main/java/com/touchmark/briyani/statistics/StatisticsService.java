@@ -31,41 +31,14 @@ public class StatisticsService {
 		statistics.setOverallOrders(overAllOrders.size());
 		statistics.setOverallNumberOfOrders(overAllOrders.size());
 		statistics.setOverallNumberOfPurchaseRequest(overAllOrders.size());
-		statistics.setOverallDue(getTotalDue(overAllOrders));
-		statistics.setOverallPaid(countPaidOrders(overAllOrders));
 
 		List<OrderEntity> todayOrders = this.orderRepository.findTodayOrders();
 		Log.log("StatisticsService", "Get", "Today's Orders " + todayOrders);
-		statistics.setTodayOrders(todayOrders.size());
-		statistics.setTodaySales(getTotalSales(todayOrders));
-		statistics.setTodayDue(getTotalDue(todayOrders));
-		statistics.setTodayPaid(countPaidOrders(todayOrders));
-		statistics.setTodayNumberOfOrders(todayOrders.size());
-		statistics.setTodayNumberOfPurchaseRequest(todayOrders.size());
+		// statistics.setTodaySales(getTotalSales(overAllOrders));
+		statistics.setTodayNumberOfOrders(overAllOrders.size());
+		statistics.setTodayNumberOfPurchaseRequest(overAllOrders.size());
 
 		return statistics;
-	}
-
-	private float getTotalDue(List<OrderEntity> orders) {
-		return orders.stream()
-				.filter(x -> isDueOrder(x))
-				.map(x -> x.getTotalAmount()).collect(Collectors.summingDouble(Float::floatValue))
-				.floatValue();
-	}
-
-	private boolean isDueOrder(OrderEntity x) {
-		return !"PAID".equalsIgnoreCase(nvl(x.getPaymentStatus())) && !"REFUNDED".equalsIgnoreCase(nvl(x.getPaymentStatus()));
-	}
-
-	private float countPaidOrders(List<OrderEntity> todayOrders) {
-		return todayOrders.stream().filter(x -> "PAID".equalsIgnoreCase(nvl(x.getPaymentStatus()))).count();
-	}
-
-	private String nvl(String value) {
-		if(value == null)
-			return "";
-		else
-			return value;
 	}
 
 	private float getTotalSales(List<OrderEntity> orders) {

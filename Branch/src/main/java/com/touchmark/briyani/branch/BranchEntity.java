@@ -31,7 +31,6 @@ import lombok.ToString;
 @Entity
 @Table(name = "branch")
 public class BranchEntity implements Serializable {
-	private static final long serialVersionUID = 1L;
 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
@@ -76,19 +75,4 @@ public class BranchEntity implements Serializable {
 	
 	@Column(name = "lastUpdatedDate")
 	private OffsetDateTime lastUpdatedDate;
-	
-	public void updateWith(Branch object) {
-		System.out.println("object.getContactPersonNumber()"+object.getContactPersonNumber());
-		this.contactPersonFirstName = object.getContactPersonFirstName();
-		this.mobileNumber = object.getMobileNumber();
-		this.contactPersonNumber = object.getContactPersonNumber();
-		this.email = object.getEmail();
-		this.address.updateWith(object.getAddress());
-		this.lastUpdatedDate = OffsetDateTime.now();
-		this.name = object.getName();
-		this.longitude = object.getLongitude();
-		this.latitude = object.getLatitude();
-		this.telephone= object.getTelephone();
-		this.notes = object.getNotes();
-	}
 }

@@ -46,13 +46,8 @@ public class CustomerService {
 	}
 
 	public Customer update(Customer object) {
-		try {
-			CustomerEntity entity = getByID(object);
-			entity.updateWith(object);
-			return Customer.builder().build().transformEntities(this.repository.saveAndFlush(entity));
-		} catch (Exception ex) {
-			throw new RuntimeException("Customer " + object.getId() + " Not Found to update");
-		}
+		CustomerEntity entity = getByID(object);
+		return Customer.builder().build().transformEntities(this.repository.saveAndFlush(entity));
 	}
 
 	private CustomerEntity getByID(Customer object) {

@@ -2,6 +2,7 @@ package com.touchmark.briyani.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -31,7 +32,7 @@ public class BriyaniApplication {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/api/**")
-                .allowedOrigins("https://briyani-web-ui.touchmarkmedia.in", "https://biriyani-web-ui.cfapps.io/", "http://localhost:36363", "http://localhost", "http://localhost:8100")
+                .allowedOrigins("https://mobile-branch-manager-auth.cfapps.io", "https://mobile-branch-manager.cfapps.io", "https://briyani-web-ui-auth.cfapps.io", "http://localhost:36363", "http://localhost", "http://localhost:8100")
 				.allowedMethods("HEAD", "GET", "PUT", "POST", "DELETE", "PATCH", "OPTONS");
 			}
 		};

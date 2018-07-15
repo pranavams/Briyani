@@ -23,8 +23,4 @@ public class CreateOrder {
 	private Address deliveryAddress;
 	private List<OrderDetail> orderDetails;
 
-	void validateForCreation() {
-		
-	}
-
 }

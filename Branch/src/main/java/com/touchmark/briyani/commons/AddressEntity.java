@@ -55,18 +55,4 @@ public class AddressEntity implements Serializable {
 
 	@Column(name = "lastUpdatedDate")
 	private OffsetDateTime lastUpdatedDate;
-
-	public void updateWith(Address object) {
-		if (object == null)
-			return;
-
-		this.doorNumber = object.getDoorNumber();
-		this.street = object.getStreet();
-		this.area = object.getArea();
-		this.city = object.getCity();
-		this.state = object.getState();
-		this.country = object.getCountry();
-		this.zipcode = object.getZipcode();
-		this.lastUpdatedDate = OffsetDateTime.now();
-	}
 }

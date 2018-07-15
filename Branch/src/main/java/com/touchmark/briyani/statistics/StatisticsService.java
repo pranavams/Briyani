@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.touchmark.briyani.branch.Branch;
-import com.touchmark.briyani.commons.Log;
 import com.touchmark.briyani.order.OrderEntity;
 import com.touchmark.briyani.order.OrderRepository;
 
@@ -27,18 +26,53 @@ public class StatisticsService {
 	public Statistics get() {
 		Statistics statistics = Statistics.builder().build();
 		List<OrderEntity> overAllOrders = this.orderRepository.findAll();
+		statistics.setOverallDue(getDueAmount(overAllOrders));
+		statistics.setOverallPaid(getPaidAmount(overAllOrders));
 		statistics.setOverallSales(getTotalSales(overAllOrders));
 		statistics.setOverallOrders(overAllOrders.size());
+		statistics.setOverallSales(getTotalSales(overAllOrders));
 		statistics.setOverallNumberOfOrders(overAllOrders.size());
 		statistics.setOverallNumberOfPurchaseRequest(overAllOrders.size());
 
 		List<OrderEntity> todayOrders = this.orderRepository.findTodayOrders();
-		Log.log("StatisticsService", "Get", "Today's Orders " + todayOrders);
-		// statistics.setTodaySales(getTotalSales(overAllOrders));
-		statistics.setTodayNumberOfOrders(overAllOrders.size());
-		statistics.setTodayNumberOfPurchaseRequest(overAllOrders.size());
+		statistics.setTodayDue(getDueAmount(todayOrders));
+		statistics.setTodayOrders(todayOrders.size());
+		statistics.setTodayPaid(getPaidAmount(todayOrders));
+		statistics.setTodaySales(getTotalSales(todayOrders));
+		statistics.setTodayNumberOfOrders(todayOrders.size());
+		statistics.setTodayNumberOfPurchaseRequest(todayOrders.size());
 
 		return statistics;
+	}
+
+	private float getPaidAmount(List<OrderEntity> todayOrders) {
+		return todayOrders
+		.stream()
+		.filter(x -> isPaid(x.getPaymentStatus()))
+		.map(x -> x.getTotalAmount())
+		.collect(Collectors.summingDouble(Float::floatValue))
+		.floatValue();
+	}
+
+	private boolean isPaid(String paymentStatus) {
+		if(paymentStatus == null)
+			return false;
+		return "PAID".equalsIgnoreCase(paymentStatus);
+	}
+
+	private float getDueAmount(List<OrderEntity> todayOrders) {
+		return todayOrders
+		.stream()
+		.filter(x -> isDue(x.getPaymentStatus()))
+		.map(x -> x.getTotalAmount())
+		.collect(Collectors.summingDouble(Float::floatValue))
+		.floatValue();
+	}
+
+	private boolean isDue(String paymentStatus) {
+		if(paymentStatus == null)
+			return false;
+		return !"PAID".equalsIgnoreCase(paymentStatus);
 	}
 
 	private float getTotalSales(List<OrderEntity> orders) {

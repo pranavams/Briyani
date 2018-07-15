@@ -108,18 +108,16 @@ public class OrderController {
 		return ResponseEntity.ok(OrderResponse.builder().order(Arrays.asList(this.service.get(id))).build());
 	}
 
-	@GetMapping
-	@RequestMapping("/updateOrderStatus/{id}/{orderStatus}")
+	@PostMapping
+	@RequestMapping("/updateOrderStatus/")
 	@PreAuthorize("hasAuthority('BRANCH_USER')")
-	public ResponseEntity<String> updateOrderStatus(@PathVariable("id") String id,
-			@PathVariable("orderStatus") String orderStatus) {
+	public ResponseEntity<OrderEntity> updateOrderStatus(@RequestBody UpdateOrder order){
 		try {
-			Log.log("OrderController", "updateOrderStatus", "Object Received To Update " + id + ", " + orderStatus);
-			this.service.updateOrderStatus(id, orderStatus);
-			return ResponseEntity.ok("");
+			Log.log("OrderController", "updateOrderStatus", "Object Received To Update " + order);
+			return ResponseEntity.ok(this.service.updateOrderStatus(order));
 		} catch (Exception ex) {
 			Log.error("OrderController", "updateOrderStatus", "Order Status Update Failed", ex);
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("");
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(OrderEntity.builder().build());
 		}
 	}
 

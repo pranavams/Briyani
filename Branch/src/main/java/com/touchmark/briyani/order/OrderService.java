@@ -190,4 +190,11 @@ public class OrderService {
 		return Order.builder().build().transformEntities(getItemsInOrders(repository.findByVesselStatus(status)));
 	}
 
+	public OrderEntity updateOrderStatus(UpdateOrder order) {
+		OrderEntity orderEntity = this.repository.findById(Order.builder().orderId(order.getId()).build().DBID()).get();
+		orderEntity.setOrderStatus(Case.upper(order.getOrderStatus()));
+		orderEntity.setNumberOfVessels(order.getNumberOfVessels());
+		return this.repository.saveAndFlush(orderEntity);
+	}
+
 }

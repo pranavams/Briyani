@@ -75,10 +75,10 @@ VALUES ('Chennai', 'Chennai', 'India', '5', 'Tamil Nadu', 'x Street', '42186', N
 ###Rider
 
 INSERT INTO RIDER (DEPARTMENT_TYPE, DATE_OF_BIRTH, EMAIL, GENDER, MOBILE_NUMBER, RIDER_ID_CARD_NO, RIDER_PERSON_FIRST_NAME, RIDER_PERSON_MIDDLE_NAME, RIDER_PERSON_LAST_NAME, RIDER_PERSON_NUMBER, RIDER_PERSON_SALUTATION, ZONE, ADDRESS_ID)
-VALUES ('Branch', '1981-10-27 00:00:00', 'ryder@gmail.com', 'Male', '234234', 'IDCARD', 'John', 'R', 'Smith', '23423423', 'Mr.', 'ZoneA', (select address_id from address where area = 'dunton'));
+VALUES ('Branch Rider', '1981-10-27 00:00:00', 'ryder@gmail.com', 'Male', '234234', 'IDCARD', 'John', 'R', 'Smith', '23423423', 'Mr.', 'ZoneA', (select address_id from address where area = 'dunton'));
 
 INSERT INTO RIDER (DEPARTMENT_TYPE, DATE_OF_BIRTH, EMAIL, GENDER, MOBILE_NUMBER, RIDER_ID_CARD_NO, RIDER_PERSON_FIRST_NAME, RIDER_PERSON_MIDDLE_NAME, RIDER_PERSON_LAST_NAME, RIDER_PERSON_NUMBER, RIDER_PERSON_SALUTATION, ZONE, ADDRESS_ID)
-VALUES ('End User', '1991-11-19 00:00:00', 'ed@gmail.com', 'Female', '234234', 'IDCARD', 'Lyla', 'James', 'Fitter', '23423423', 'Miss.', 'ZoneB', (select address_id from address where area = 'dearborn'));
+VALUES ('Rider', '1991-11-19 00:00:00', 'ed@gmail.com', 'Female', '234234', 'IDCARD', 'Lyla', 'James', 'Fitter', '23423423', 'Miss.', 'ZoneB', (select address_id from address where area = 'dearborn'));
 
 ###Branch
 INSERT INTO BRANCH (CONTACT_PERSON_FIRST_NAME, CONTACT_PERSON_MIDDLE_NAME, CONTACT_PERSON_LAST_NAME, CONTACT_PERSON_NUMBER, CONTACT_PERSON_SALUTATION, EMAIL, LATITUDE, LONGITUDE, MOBILE_NUMBER, NAME, NOTES, TELEPHONE, ADDRESS_ID)

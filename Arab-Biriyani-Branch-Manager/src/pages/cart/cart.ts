@@ -24,7 +24,6 @@ export class CartPage {
   orderDetails: any = [];
   order: any = [];
   counter: number = 0;
-  accessToken: string;
   createdOrderDetails : any;
   
   Address: any = {doorNumber : 'No 1',
@@ -37,10 +36,6 @@ export class CartPage {
 
   constructor(public api: Api, public navParams: NavParams, public navCtrl: NavController, private http: HttpClient) {
     this.cartItems = navParams.data.items;
-    this.accessToken = navParams.data.accessToken;
-    this.cartItems.forEach((element, index) => {
-      console.log(this.cartItems[index]);
-    })
     if (this.cartItems.length > 0)
       this.cartCount();
   }
@@ -59,7 +54,6 @@ export class CartPage {
   }
 
   add(item) {
-    console.log("item :" + item);
     this.cartItems.forEach((element, index) => {
       if (item === element.menuName) {
         this.cartItems[index].quantity++;
@@ -144,58 +138,14 @@ export class CartPage {
     }
   }
   
-  createOrder(orderDetail): void  {
-	  console.log("Order Detail");
-	  console.log(orderDetail);
-	    // this.restToken()
-	    // .subscribe(
-	    // (tokenResponse) => {
-	    // this.accessToken = tokenResponse['access_token'];
-	      this.restCreateOrder(orderDetail)
-	          .subscribe(
-	          data => {
-	            this.createdOrderDetails = data;
-              this.cartItems.total = this.total;
-              this.cartItems.orderId = this.createdOrderDetails.orderId;
-              this.cartItems.orderDetail = orderDetail.orderDetails;
-              this.navCtrl.push('PaymentPage', {items: this.cartItems});
-	          }
-	          );
-	    // }
-	    // );
-	  }
-	  
-  	  restCreateOrder(orderDetail) {
-  		const createOrderHeaders = new HttpHeaders().set('Content-Type', 'application/json')
-	    return this.http
-	      .post<any[]>(this.api.url + "/api/v1/order/createOrder?access_token=" + this.accessToken,
-	    		  JSON.stringify(orderDetail),  {
-	    	  		headers: createOrderHeaders
-	    		  }
-	      ).pipe(map(data => data));
-	  }
-
-	  getAuthToken() {
-	    return "Basic " + btoa('arab-briyani-client:devglan-secret');;
-	  }
-
-	  getAuthTokenParameters() {
-	    return new HttpParams()
-	      .set('username', 'Alex123')
-	      .set('password', 'password')
-	      .set('grant_type', 'password');
-	  }
-
-	  restToken() {
-	    return this.http
-	      .post<any[]>("/oauth/token",
-	      this.getAuthTokenParameters().toString(), {
-	        headers: new HttpHeaders().set('content-type', 'application/x-www-form-urlencoded')
-	          .set('authorization', this.getAuthToken())
-	          .set('cache-control', 'no-cache')
-	      })
-	      .pipe(map(token => token));
-	  }
-
-  
+  createOrder(orderDetail) : void {
+	  this.api.postData("api/v1/order/createOrder", orderDetail)
+	  	.subscribe(data => {
+          this.createdOrderDetails = data;
+          this.cartItems.total = this.total;
+          this.cartItems.orderId = this.createdOrderDetails.orderId;
+          this.cartItems.orderDetail = orderDetail.orderDetails;
+          this.navCtrl.push('PaymentPage', {items: this.cartItems});
+		});
+  }
 }

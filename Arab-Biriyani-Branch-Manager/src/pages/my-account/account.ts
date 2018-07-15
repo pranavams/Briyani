@@ -13,65 +13,29 @@ import { Api } from '../../providers/api/api';
 
 export class AccountPage {
   notification: any = 4;
-  serviceUrl = this.api.url + "/api/v1/branch/get/";
-  accessToken: string;
 
-  details: any = {}
+  details: any = {};
 
   constructor(public api: Api, public navCtrl: NavController, public alertCtrl: AlertController, public http: HttpClient) {}
 
   ngOnInit() {
-    this.getData("BRAN1");
+    this.getData("BRAN2");
   }
 
   getData(data: string): void {
-    //this.restToken()
-    //  .subscribe(
-    //  (tokenResponse) => {
-    //    this.accessToken = tokenResponse['access_token'];//ignore
-        this.dataRetrival(data)
-          .subscribe(
-          responseData => {
-            this.details = responseData['branch'][0];//ignore
-            console.log(responseData);
-          }
-          );
-     // });
+    this.api.getData("api/v1/branch/get/" + data, 'branch')
+	  .subscribe(dataFromService => {
+		this.details = dataFromService[0];
+	  });
   }
 
-  dataRetrival(data: string) {
-    return this.http
-      .get<any[]>(this.serviceUrl + data + "?access_token=" + this.accessToken)
-      .pipe(map(data => data));
+  getDisplayableAddress(address: any){
+	  return ''; //(address); 
   }
-
-  getAuthToken() {
-    return "Basic " + btoa('arab-briyani-client:devglan-secret');
-  }
-
-  getAuthTokenParameters() {
-    return new HttpParams()
-      .set('username', 'Alex123')
-      .set('password', 'password')
-      .set('grant_type', 'password');
-  }
-
-  restToken() {
-    return this.http
-      .post<any[]>("/oauth/token",
-      this.getAuthTokenParameters().toString(), {
-        headers: new HttpHeaders().set('content-type', 'application/x-www-form-urlencoded')
-          .set('authorization', this.getAuthToken())
-          .set('cache-control', 'no-cache')
-      })
-      .pipe(map(token => token));
-  }
-
-
+  
   backButtonClick() {
     this.navCtrl.pop();
   }
-
 
   showPrompt() {
     let prompt = this.alertCtrl.create({

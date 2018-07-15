@@ -28,7 +28,7 @@
             <ion-label no-margin>Contact Number</ion-label>
             <h1>{{details.telephone}}</h1>
             <ion-label no-margin>Location</ion-label>
-            <h1>{{details.address | json}}</h1>
+            <h1>{{getDisplayableAddress(details.address)}}</h1>
         </ion-card-content>
     </ion-card>
 </ion-content>

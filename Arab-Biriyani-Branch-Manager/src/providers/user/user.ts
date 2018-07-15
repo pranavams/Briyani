@@ -83,6 +83,8 @@ export class User {
 	 */
   _loggedIn(resp) {
     this._user = resp;
-    console.log("User Set " + JSON.stringify(this._user));
+    this.api.loggedInUser = resp;
+    //this.api.loggedInUser['branchId'] = 'BRAN2';
+    console.log("User Set " + JSON.stringify(this.api.loggedInUser));
   }
 }

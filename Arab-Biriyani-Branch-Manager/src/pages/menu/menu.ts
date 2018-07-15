@@ -32,71 +32,25 @@ export class MenuPage implements OnInit {
   hours: number;
   cart: any = 0;
   notification: any = 4;
-  menuItemsUrl = this.api.url + "/api/v1/item/listAll";
   menuItems: any = [];
-  data: any = {
-  };
-  accessToken: string;
 
   ngOnInit() {
 	if(this.userService.getUserInfo() == null || this.userService.getUserInfo() == undefined ){
 		this.navCtrl.push('LoginPage');
 	}
-    this.getData();
+    this.api.getData("api/v1/item/listAll", 'items')
+	  .subscribe(dataFromService => {
+		this.menuItems = dataFromService;
+	  });
   }
 
-  getData(): void {
-    //this.restToken()
-    //  .subscribe(
-    //  (tokenResponse) => {
-    //    this.accessToken = tokenResponse['access_token'];
-        this.restItemsServiceGetMenuItems()
-          .subscribe(
-          menuItems => {
-            this.menuItems = menuItems['items'];
-            console.log(menuItems);
-          }
-          );
-    //  }
-    //  );
+  ionViewDidLoad(){
+    this.initTimer();
+	this.cartCount();
   }
   
-  // Rest Items Service: Read all MENU Items
-  restItemsServiceGetMenuItems() {
-    return this.http
-      .get<any[]>(this.menuItemsUrl + "?access_token=" + this.accessToken)
-      .pipe(map(data => data));
-  }
-
-  getAuthToken() {
-    return "Basic " + btoa('arab-briyani-client:devglan-secret');;
-  }
-
-  getAuthTokenParameters() {
-    return new HttpParams()
-      .set('username', 'Alex123')
-      .set('password', 'password')
-      .set('grant_type', 'password');
-  }
-
-  restToken() {
-    return this.http
-      .post<any[]>("/oauth/token",
-      this.getAuthTokenParameters().toString(), {
-        headers: new HttpHeaders().set('content-type', 'application/x-www-form-urlencoded')
-          .set('authorization', this.getAuthToken())
-          .set('cache-control', 'no-cache')
-      })
-      .pipe(map(token => token));
-  }
-
   constructor(public api: Api, public navCtrl: NavController, private http: HttpClient, private userService: User) {
 
-  }
-
-  ionViewDidLoad() {
-    this.initTimer();
-    this.cartCount();
   }
 
   hasFinished() {
@@ -174,6 +128,6 @@ export class MenuPage implements OnInit {
   }
 
   placeOrder(menu) {
-    this.navCtrl.push('CartPage', {items: this.menuItems, accessToken: this.accessToken});
+    this.navCtrl.push('CartPage', {items: this.menuItems});
   }
 }

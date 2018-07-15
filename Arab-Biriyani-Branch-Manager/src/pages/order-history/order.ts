@@ -15,11 +15,7 @@ export class OrderPage implements OnInit {
   order: any = 'ongoing';
   notification: any = 4;
   completedOrders: any = [];
-  completedOrdersURL = this.api.url + "/api/v1/order/listOrders/completed";
-
   pendingOrders: any = [];
-  pendingOrdersURL = this.api.url + "/api/v1/order/listOrdersOngoing/completed";
-  accessToken: string;
 
   constructor(public api: Api, public navCtrl: NavController, public popup: PopoverController, private http: HttpClient) {}
 
@@ -43,69 +39,17 @@ export class OrderPage implements OnInit {
   }
 
   getCompletedOrders(): void {
-    //this.restToken()
-    //  .subscribe(
-    //  (tokenResponse) => {
-    //   this.accessToken = tokenResponse['access_token'];
-        this.restOrdersGetCompletedOrders()
-          .subscribe(
-          completedOrderList => {
-            console.log(completedOrderList);
-            this.completedOrders = completedOrderList['order'];
-          }
-          );
-     // }
-     // );
+    this.api.getData("api/v1/order/listOrders/completed", 'order')
+	  .subscribe(dataFromService => {
+		this.completedOrders = dataFromService;
+	  });
   }
 
   getPendingOrders(): void {
-    //this.restToken()
-    //  .subscribe(
-    //  (tokenResponse) => {
-    //    this.accessToken = tokenResponse['access_token'];
-        this.restOrdersGetPendingOrders()
-          .subscribe(
-          pendingOrderList => {
-            console.log(pendingOrderList);
-            this.pendingOrders = pendingOrderList['order'];
-          }
-          );
-      //}
-      //);
-  }
-
-  restOrdersGetCompletedOrders() {
-    return this.http
-      .get<any[]>(this.completedOrdersURL + "?access_token=" + this.accessToken)
-      .pipe(map(data => data));
-  }
-
-  restOrdersGetPendingOrders() {
-    return this.http
-      .get<any[]>(this.pendingOrdersURL + "?access_token=" + this.accessToken)
-      .pipe(map(data => data));
-  }
-
-  getAuthToken() {
-    return "Basic " + btoa('arab-briyani-client:devglan-secret');;
-  }
-
-  getAuthTokenParameters() {
-    return new HttpParams()
-      .set('username', 'Alex123')
-      .set('password', 'password')
-      .set('grant_type', 'password');
-  }
-
-  restToken() {
-    return this.http
-      .post<any[]>("/oauth/token",
-      this.getAuthTokenParameters().toString(), {
-        headers: new HttpHeaders().set('content-type', 'application/x-www-form-urlencoded')
-          .set('authorization', this.getAuthToken())
-          .set('cache-control', 'no-cache')
-      })
-      .pipe(map(token => token));
+    this.api.getData("api/v1/order/listOrdersOngoing/completed", 'order')
+	  .subscribe(dataFromService => {
+		this.pendingOrders = dataFromService;
+	  });
   }
 
   backButtonClick() {

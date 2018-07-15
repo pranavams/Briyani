@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +29,7 @@ public class ImageController {
 
 	@PostMapping
 	@RequestMapping(path =  "/imageUpload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	@PreAuthorize("hasAuthority('BRANCH_USER')")
 	public ResponseEntity<String> upload(@RequestParam("entityType") String type, @RequestParam("entityId") String id,
 			@RequestParam("entityImage") MultipartFile uploadfile) {
 		try {
@@ -41,6 +43,7 @@ public class ImageController {
 	}
 
 	@RequestMapping("/imageDownload/{id}/{type}")
+	@PreAuthorize("hasAuthority('BRANCH_USER')")
 	public ResponseEntity<byte[]> downloadFile(@PathVariable String id, @PathVariable String type) throws IOException {
 		try {
 			Log.log("ImageController", "Upload", "Parameters " + id + " - " + type);

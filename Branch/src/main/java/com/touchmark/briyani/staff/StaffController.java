@@ -28,12 +28,14 @@ public class StaffController {
 
 	@GetMapping
 	@RequestMapping("/listAll")
+	@PreAuthorize("hasAuthority('BRANCH_USER')")
 	public ResponseEntity<StaffResponse> getAll() {
 		return ResponseEntity.ok(StaffResponse.builder().staff(this.service.getAll()).build());
 	}
 
 	@GetMapping
 	@RequestMapping("/listRecent")
+	@PreAuthorize("hasAuthority('BRANCH_USER')")
 	public ResponseEntity<StaffResponse> getRecent() {
 		return ResponseEntity.ok(StaffResponse.builder().staff(this.service.getRecent()).build());
 	}
@@ -56,12 +58,14 @@ public class StaffController {
 
 	@GetMapping
 	@RequestMapping("/get/{id}")
+	@PreAuthorize("hasAuthority('BRANCH_USER')")
 	public ResponseEntity<StaffResponse> get(@PathVariable("id") String id) {
 		return ResponseEntity.ok(StaffResponse.builder().staff(Arrays.asList(this.service.get(id))).build());
 	}
 	
 	@PostMapping
 	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE, path = "/update", produces = MediaType.APPLICATION_JSON_VALUE)
+	@PreAuthorize("hasAuthority('BRANCH_MANAGER')")
 	public ResponseEntity<Staff> update(@RequestBody Staff object) {
 		object.validateForUpdation();
 		Staff update = this.service.update(object);

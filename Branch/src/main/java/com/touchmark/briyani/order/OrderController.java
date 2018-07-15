@@ -30,24 +30,28 @@ public class OrderController {
 
 	@GetMapping
 	@RequestMapping("/listAll")
+	@PreAuthorize("hasAuthority('BRANCH_USER')")
 	public ResponseEntity<OrderResponse> getAll() {
 		return ResponseEntity.ok(OrderResponse.builder().order(this.service.getAll()).build());
 	}
 
 	@GetMapping
 	@RequestMapping("/listForCustomer/{id}")
+	@PreAuthorize("hasAuthority('BRANCH_USER')")
 	public ResponseEntity<OrderResponse> getOrdersForCustomer(@PathVariable("id") String id) {
 		return ResponseEntity.ok(OrderResponse.builder().order(this.service.getOrdersForCustomer(id)).build());
 	}
 
 	@GetMapping
 	@RequestMapping("/listForBranch/{id}")
+	@PreAuthorize("hasAuthority('BRANCH_USER')")
 	public ResponseEntity<OrderResponse> getOrdersForBranch(@PathVariable("id") String id) {
 		return ResponseEntity.ok(OrderResponse.builder().order(this.service.getOrdersForBranch(id)).build());
 	}
 
 	@PostMapping
 	@RequestMapping(path = "/createOrder", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PreAuthorize("hasAuthority('BRANCH_USER')")
 	public ResponseEntity<Order> createOrder(@RequestBody CreateOrder object) {
 		try {
 			Log.log("OrderController", "createOrder", "Object Received To Save " + object);
@@ -61,24 +65,28 @@ public class OrderController {
 
 	@GetMapping
 	@RequestMapping("/listRecent")
+	@PreAuthorize("hasAuthority('BRANCH_USER')")
 	public ResponseEntity<OrderResponse> getRecent() {
 		return ResponseEntity.ok(OrderResponse.builder().order(this.service.getRecent()).build());
 	}
 
 	@GetMapping
 	@RequestMapping("/listTodayOrders")
+	@PreAuthorize("hasAuthority('BRANCH_USER')")
 	public ResponseEntity<OrderResponse> getTodayOrders() {
 		return ResponseEntity.ok(OrderResponse.builder().order(this.service.getTodayOrders()).build());
 	}
 
 	@GetMapping
 	@RequestMapping("/listOrders/{status}")
+	@PreAuthorize("hasAuthority('BRANCH_USER')")
 	public ResponseEntity<OrderResponse> getOrders(@PathVariable("status") String status) {
 		return ResponseEntity.ok(OrderResponse.builder().order(this.service.getOrders(status.toUpperCase())).build());
 	}
 
 	@GetMapping
 	@RequestMapping("/listOrdersOngoing/{status}")
+	@PreAuthorize("hasAuthority('BRANCH_USER')")
 	public ResponseEntity<OrderResponse> getOrdersOngoing(@PathVariable("status") String status) {
 		return ResponseEntity
 				.ok(OrderResponse.builder().order(this.service.getOrdersOnGoing(status.toUpperCase())).build());
@@ -86,6 +94,7 @@ public class OrderController {
 
 	@GetMapping
 	@RequestMapping("/listOrdersByPaymentStatus/{status}")
+	@PreAuthorize("hasAuthority('BRANCH_USER')")
 	public ResponseEntity<OrderResponse> getOrdersByPaymentStatus(@PathVariable("status") String status) {
 		return ResponseEntity
 				.ok(OrderResponse.builder().order(this.service.getOrdersByPaymentStatus(status.toUpperCase())).build());
@@ -93,6 +102,7 @@ public class OrderController {
 
 	@GetMapping
 	@RequestMapping("/get/{id}")
+	@PreAuthorize("hasAuthority('BRANCH_USER')")
 	public ResponseEntity<OrderResponse> get(@PathVariable("id") String id) {
 		Log.log("OrderController", "get", "Parameter Received " + id);
 		return ResponseEntity.ok(OrderResponse.builder().order(Arrays.asList(this.service.get(id))).build());
@@ -100,6 +110,7 @@ public class OrderController {
 
 	@GetMapping
 	@RequestMapping("/updateOrderStatus/{id}/{orderStatus}")
+	@PreAuthorize("hasAuthority('BRANCH_USER')")
 	public ResponseEntity<String> updateOrderStatus(@PathVariable("id") String id,
 			@PathVariable("orderStatus") String orderStatus) {
 		try {
@@ -114,6 +125,7 @@ public class OrderController {
 
 	@GetMapping
 	@RequestMapping("/updatePaymentStatus/{id}/{paymentStatus}")
+	@PreAuthorize("hasAuthority('BRANCH_USER')")
 	public ResponseEntity<String> updatePaymentStatus(@PathVariable("id") String id,
 			@PathVariable("paymentStatus") String paymentStatus) {
 		try {
@@ -128,6 +140,7 @@ public class OrderController {
 
 	@GetMapping
 	@RequestMapping("/updateVesselStatus/{id}/{vesselStatus}")
+	@PreAuthorize("hasAuthority('BRANCH_USER')")
 	public ResponseEntity<String> updateVesselStatus(@PathVariable("id") String id,
 			@PathVariable("vesselStatus") String vesselStatus) {
 		try {
@@ -143,6 +156,7 @@ public class OrderController {
 
 	@GetMapping
 	@RequestMapping("/listOrdersByVesselStatus/{status}")
+	@PreAuthorize("hasAuthority('BRANCH_USER')")
 	public ResponseEntity<OrderResponse> getOrdersByVesselStatus(@PathVariable("status") String status) {
 		return ResponseEntity
 				.ok(OrderResponse.builder().order(this.service.getOrdersByVesselStatus(status.toUpperCase())).build());

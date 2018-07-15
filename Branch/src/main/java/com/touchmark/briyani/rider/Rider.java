@@ -7,7 +7,6 @@ import java.util.List;
 
 import com.touchmark.briyani.commons.Address;
 import com.touchmark.briyani.commons.AddressEntity;
-import com.touchmark.briyani.commons.EmailValidator;
 import com.touchmark.briyani.commons.Validator;
 
 import lombok.AllArgsConstructor;

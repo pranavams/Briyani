@@ -24,7 +24,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.touchmark.briyani.JSONConvertor;
 import com.touchmark.briyani.app.BriyaniApplication;
-import com.touchmark.briyani.item.ItemResponse;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(value = BranchController.class, secure = false)

@@ -24,8 +24,8 @@ public class StatisticsController {
 	}
 
 	@GetMapping
-	@PreAuthorize("hasAuthority('BRANCH_USER')")
 	@RequestMapping("/get")
+	@PreAuthorize("hasAuthority('BRANCH_USER')")
 	public ResponseEntity<Statistics> get() {
 		return ResponseEntity.ok(this.service.get());
 	}

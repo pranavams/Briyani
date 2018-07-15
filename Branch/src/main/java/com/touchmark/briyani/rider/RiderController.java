@@ -35,6 +35,7 @@ public class RiderController {
 
 	@PostMapping
 	@RequestMapping("/save")
+	@PreAuthorize("hasAuthority('BRANCH_MANAGER')")
 	public ResponseEntity<Rider> save(@RequestBody Rider object) {
 		object.validateForCreation();
 		Rider created = this.service.save(object);
@@ -43,6 +44,7 @@ public class RiderController {
 
 	@GetMapping
 	@RequestMapping(path = "/delete", produces = MediaType.APPLICATION_JSON_VALUE)
+	@PreAuthorize("hasAuthority('BRANCH_MANAGER')")
 	public ResponseEntity<String> delete(@RequestParam(name = "id") String id) {
 		return ResponseEntity.ok(this.service.delete(id));
 	}
@@ -63,6 +65,7 @@ public class RiderController {
 
 	@PostMapping
 	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE, path = "/update", produces = MediaType.APPLICATION_JSON_VALUE)
+	@PreAuthorize("hasAuthority('BRANCH_MANAGER')")
 	public ResponseEntity<Rider> update(@RequestBody Rider object) {
 		object.validateForUpdation();
 		Rider update = this.service.update(object);

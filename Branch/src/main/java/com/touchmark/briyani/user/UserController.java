@@ -5,6 +5,7 @@ import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,6 +27,7 @@ public class UserController {
 
 	@GetMapping
 	@RequestMapping("/listAll")
+	@PreAuthorize("hasAuthority('BRANCH_USER')")
 	public ResponseEntity<UserResponse> getAll() {
 		UserResponse users = UserResponse.builder().users(this.service.getAll()).build();
 		Log.log("UserController", "getAll", "User To Send " + users);
@@ -34,6 +36,7 @@ public class UserController {
 
 	@GetMapping
 	@RequestMapping("/get/{id}")
+	@PreAuthorize("hasAuthority('BRANCH_USER')")
 	public ResponseEntity<UserResponse> get(@PathVariable("id") String id) {
 		Log.log("UserController", "get", "Parameter Received " + id);
 		UserResponse user = UserResponse.builder().users(Arrays.asList(this.service.get(id))).build();
@@ -43,6 +46,7 @@ public class UserController {
 
 	@GetMapping
 	@RequestMapping("/getByUserName/{userName}")
+	@PreAuthorize("hasAuthority('BRANCH_USER')")
 	public ResponseEntity<UserResponse> getByUserName(@PathVariable("userName") String userName) {
 		Log.log("UserController", "get", "Parameter Received " + userName);
 		UserResponse user = UserResponse.builder().users(Arrays.asList(this.service.findByUsername(userName))).build();
@@ -59,6 +63,7 @@ public class UserController {
 
 	@GetMapping
 	@RequestMapping("/getAllByType/{type}")
+	@PreAuthorize("hasAuthority('BRANCH_USER')")
 	public ResponseEntity<UserResponse> getByType(@PathVariable("type") String type) {
 		Log.log("UserController", "get", "Parameter Received " + type);
 		UserResponse user = UserResponse.builder().users(this.service.getAllByUserType(type)).build();
@@ -68,6 +73,7 @@ public class UserController {
 
 	@PostMapping
 	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE, path = "/save", produces = MediaType.APPLICATION_JSON_VALUE)
+	@PreAuthorize("hasAuthority('BRANCH_ADMIN')")
 	public ResponseEntity<UserEntity> save(@RequestBody User user) {
 		UserEntity created = this.service.save(user);
 		return ResponseEntity.ok(created);

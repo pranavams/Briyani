@@ -28,18 +28,21 @@ public class CustomerController {
 
 	@GetMapping
 	@RequestMapping("/listAll")
+	@PreAuthorize("hasAuthority('BRANCH_USER')")
 	public ResponseEntity<CustomerResponse> getAll() {
 		return ResponseEntity.ok(CustomerResponse.builder().customer(this.service.getAll()).build());
 	}
 
 	@GetMapping
 	@RequestMapping("/get/{id}")
+	@PreAuthorize("hasAuthority('BRANCH_USER')")
 	public ResponseEntity<CustomerResponse> get(@PathVariable("id") String id) {
 		return ResponseEntity.ok(CustomerResponse.builder().customer(Arrays.asList(this.service.get(id))).build());
 	}
 
 	@PostMapping
 	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE, path = "/save", produces = MediaType.APPLICATION_JSON_VALUE)
+	@PreAuthorize("hasAuthority('BRANCH_MANAGER')")
 	public ResponseEntity<Customer> save(@RequestBody Customer object) {
 		Customer created = this.service.save(object);
 		return ResponseEntity.ok(created);
@@ -54,12 +57,14 @@ public class CustomerController {
 
 	@GetMapping
 	@RequestMapping("/listRecent")
+	@PreAuthorize("hasAuthority('BRANCH_USER')")
 	public ResponseEntity<CustomerResponse> getRecent() {
 		return ResponseEntity.ok(CustomerResponse.builder().customer(this.service.getRecent()).build());
 	}
 	
 	@PostMapping
 	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE, path = "/update", produces = MediaType.APPLICATION_JSON_VALUE)
+	@PreAuthorize("hasAuthority('BRANCH_MANAGER')")
 	public ResponseEntity<Customer> update(@RequestBody Customer object) {
 		Customer update = this.service.update(object);
 		return ResponseEntity.ok(update);

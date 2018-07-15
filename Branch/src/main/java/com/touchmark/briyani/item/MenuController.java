@@ -24,6 +24,7 @@ public class MenuController {
 
 	@GetMapping
 	@RequestMapping("/listAll")
+	@PreAuthorize("hasAuthority('BRANCH_USER')")
 	public ResponseEntity<MenuResponse> getAll() {
 		return ResponseEntity.ok(MenuResponse.builder().menu(this.service.getAll()).build());
 	}
@@ -38,6 +39,7 @@ public class MenuController {
 
 	@GetMapping
 	@RequestMapping("/listRecent")
+	@PreAuthorize("hasAuthority('BRANCH_USER')")
 	public ResponseEntity<MenuResponse> getRecent() {
 		return ResponseEntity.ok(MenuResponse.builder().menu(this.service.getRecent()).build());
 	}

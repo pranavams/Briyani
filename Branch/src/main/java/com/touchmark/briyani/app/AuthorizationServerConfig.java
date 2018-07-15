@@ -59,6 +59,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 				.authenticationManager(authenticationManager);
 	}
 	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Bean
 	public FilterRegistrationBean corsFilter() {
 		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

@@ -1,7 +1,6 @@
 package com.touchmark.briyani.user;
 
 import java.time.OffsetDateTime;
-import java.util.Base64;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

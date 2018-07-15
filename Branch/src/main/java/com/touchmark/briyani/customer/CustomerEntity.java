@@ -31,6 +31,7 @@ import lombok.ToString;
 @Entity
 @Table(name = "customer")
 public class CustomerEntity implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id

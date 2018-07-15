@@ -15,7 +15,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.touchmark.briyani.commons.AddressEntity;
-import com.touchmark.briyani.rider.Rider;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -30,6 +29,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "staff")
 public class StaffEntity implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id

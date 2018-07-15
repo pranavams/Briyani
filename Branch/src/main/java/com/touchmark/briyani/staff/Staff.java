@@ -135,7 +135,7 @@ public class Staff {
 		if (Validator.isInValidDateOfJoin(this.dateOfJoin))
 			errors.add("Invalid Date Of Join");
 		
-		if (new EmailValidator().isInValidEmail(this.email))
+		if (Validator.isStringWithOutValue(this.email))
 			errors.add("Invalid Email Address");
 		
 		Validator.throwExceptionWhenNotEmpty(errors);

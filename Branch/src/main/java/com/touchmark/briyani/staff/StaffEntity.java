@@ -15,6 +15,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.touchmark.briyani.commons.AddressEntity;
+import com.touchmark.briyani.rider.Rider;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -44,19 +45,19 @@ public class StaffEntity implements Serializable {
 	private String middleName;
 	@Column(name = "salutation")
 	private String salutation;
-	
+
 	@Column(name = "mobileNumber")
 	private String mobileNumber;
 
 	@Column(name = "gender")
 	private String gender;
-	
+
 	@Column(name = "email")
 	private String email;
-	
+
 	@Column(name = "dateOfBirth")
 	private OffsetDateTime dateOfBirth;
-	
+
 	@Column(name = "dateOfJoin")
 	private OffsetDateTime dateOfJoin;
 
@@ -72,7 +73,23 @@ public class StaffEntity implements Serializable {
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "address_id")
 	private AddressEntity address;
-	
+
 	@Column(name = "lastUpdatedDate")
 	private OffsetDateTime lastUpdatedDate;
+
+	public void updateWith(Staff object) {
+		this.firstName = object.getFirstName();
+		this.lastName = object.getLastName();
+		this.middleName = object.getMiddleName();
+		this.salutation = object.getSalutation();
+		this.dateOfBirth = object.getDateOfBirth();
+		this.dateOfJoin = object.getDateOfJoin();
+		this.role = object.getRole();
+		this.password = object.getPassword();
+		this.notes = object.getNotes();
+		this.mobileNumber = object.getMobileNumber();
+		this.email = object.getEmail();
+		this.lastUpdatedDate = OffsetDateTime.now();
+		this.gender = object.getGender();
+	}
 }

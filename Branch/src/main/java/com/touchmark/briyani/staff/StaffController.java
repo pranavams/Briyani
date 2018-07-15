@@ -55,5 +55,13 @@ public class StaffController {
 	public ResponseEntity<StaffResponse> get(@PathVariable("id") String id) {
 		return ResponseEntity.ok(StaffResponse.builder().staff(Arrays.asList(this.service.get(id))).build());
 	}
+	
+	@PostMapping
+	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE, path = "/update", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Staff> update(@RequestBody Staff object) {
+		object.validateForUpdation();
+		Staff update = this.service.update(object);
+		return ResponseEntity.ok(update);
+	}
 
 }

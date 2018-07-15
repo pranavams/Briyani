@@ -42,6 +42,7 @@ public class StaffController {
 	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE, path = "/save", produces = MediaType.APPLICATION_JSON_VALUE)
 	@PreAuthorize("hasAuthority('BRANCH_MANAGER')")
 	public ResponseEntity<Staff> save(@RequestBody Staff object) {
+		object.validateForCreation();
 		Staff created = this.service.save(object);
 		return ResponseEntity.ok(created);
 	}
@@ -57,6 +58,14 @@ public class StaffController {
 	@RequestMapping("/get/{id}")
 	public ResponseEntity<StaffResponse> get(@PathVariable("id") String id) {
 		return ResponseEntity.ok(StaffResponse.builder().staff(Arrays.asList(this.service.get(id))).build());
+	}
+	
+	@PostMapping
+	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE, path = "/update", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Staff> update(@RequestBody Staff object) {
+		object.validateForUpdation();
+		Staff update = this.service.update(object);
+		return ResponseEntity.ok(update);
 	}
 
 }

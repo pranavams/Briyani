@@ -43,5 +43,19 @@ public class StaffService {
 	public Staff get(String id) {
 		return Staff.builder().build().transformEntities(repository.findById(Staff.builder().id(id).build().DBID()).get());
 	}
+	
+	public Staff update(Staff object) {
+		StaffEntity entity = getByID(object);
+		entity.updateWith(object);
+		return Staff.builder().build().transformEntities(this.repository.saveAndFlush(entity));
+	}
+	
+	private StaffEntity getByID(Staff object) {
+		try {
+			return repository.findById(Staff.builder().id(object.getId()).build().DBID()).get();
+		} catch (Exception ex) {
+			throw new RuntimeException("Staff Not Found");
+		}
+	}
 
 }

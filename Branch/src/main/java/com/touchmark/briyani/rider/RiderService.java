@@ -43,5 +43,19 @@ public class RiderService {
 	public Rider get(String id) {
 		return Rider.builder().build().transformEntities(repository.findById(Rider.builder().id(id).build().DBID()).get());
 	}
+	
+	public Rider update(Rider object) {
+		RiderEntity entity = getByID(object);
+		entity.updateWith(object);
+		return Rider.builder().build().transformEntities(this.repository.saveAndFlush(entity));
+	}
+	
+	private RiderEntity getByID(Rider object) {
+		try {
+			return repository.findById(Rider.builder().id(object.getId()).build().DBID()).get();
+		} catch (Exception ex) {
+			throw new RuntimeException("Rider Not Found");
+		}
+	}
 
 }

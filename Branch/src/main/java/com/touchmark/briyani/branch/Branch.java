@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.touchmark.briyani.commons.Address;
 import com.touchmark.briyani.commons.AddressEntity;
+import com.touchmark.briyani.commons.Validator;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -87,5 +88,49 @@ public class Branch {
 
 	public String getContactPersonLastName() {
 		return this.contactPersonLastName == null ? "" : this.contactPersonLastName;
+	}
+
+	void validateForUpdation() {
+		validateForCreation();
+		validateForID();
+	}
+
+	void validateForDeletion() {
+		validateForID();
+	}
+
+	void validateForCreation() {
+		List<String> errors = new ArrayList<>();
+
+		if (Validator.isStringWithOutValue(this.name))
+			errors.add("Invalid Branch Name");
+
+		if (Validator.isStringWithOutValue(this.telephone))
+			errors.add("Invalid Telephone Number");
+
+		if (Validator.isInValidAddress(this.address))
+			errors.add("Invalid Address");
+
+		if (Validator.isStringWithOutValue(this.contactPersonFirstName))
+			errors.add("Invalid Contact Person Name");
+
+		if (Validator.isStringWithOutValue(this.latitude))
+			errors.add("Invalid Latitude");
+
+		if (Validator.isStringWithOutValue(this.longitude))
+			errors.add("Invalid Longitude");
+
+		if (Validator.isStringWithOutValue(this.notes))
+			errors.add("Invalid Notes");
+
+		Validator.throwExceptionWhenNotEmpty(errors);
+	}
+
+	private void validateForID() {
+		List<String> errors = new ArrayList<>();
+		if (Validator.isStringWithOutValue(this.id))
+			errors.add("Invalid Branch ID");
+
+		Validator.throwExceptionWhenNotEmpty(errors);
 	}
 }

@@ -37,8 +37,31 @@ public class Validator {
 	public static boolean isStringWithOutValue(String value) {
 		return value == null || value.trim().equals("");
 	}
-
+	
+	public static boolean isInValidDateOfJoin(OffsetDateTime dateOfJoin) {
+		if (dateOfJoin == null)
+			return true;
+		return dateOfJoin.isAfter(OffsetDateTime.now());
+	}
+	
+	public static boolean isInValidRole(String role) {
+		if (isStringWithOutValue(role))
+			return true;
+		return !(Arrays.asList("Admin", "Kitchen", "Staff").contains(role));
+	}
 	public static boolean isInValidAddress(Address address) {
 		return false;
+	}
+	
+	public static boolean isInValidLicenseIssueDate(OffsetDateTime licenceIssueDate) {
+		if (licenceIssueDate == null)
+			return true;
+		return licenceIssueDate.isAfter(OffsetDateTime.now());
+	}
+	
+	public static boolean isInValidLicenseExpiryDate(OffsetDateTime licenceExpiryDate,OffsetDateTime licenceIssueDate) {
+		if (licenceExpiryDate == null || licenceIssueDate ==null)
+			return true;
+		return licenceExpiryDate.isBefore(licenceIssueDate);
 	}
 }

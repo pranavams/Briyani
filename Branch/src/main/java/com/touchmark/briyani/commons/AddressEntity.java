@@ -55,4 +55,8 @@ public class AddressEntity implements Serializable {
 
 	@Column(name = "lastUpdatedDate")
 	private OffsetDateTime lastUpdatedDate;
+
+	public void updateWith(Address address) {
+		
+	}
 }

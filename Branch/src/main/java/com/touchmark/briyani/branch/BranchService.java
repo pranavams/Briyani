@@ -5,6 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.touchmark.briyani.commons.Log;
+import com.touchmark.briyani.customer.Customer;
+
 @Service
 public class BranchService {
 	private BranchRepository branchRepository;
@@ -37,6 +40,18 @@ public class BranchService {
 			return branchRepository.findById(Branch.builder().id(object.getId()).build().DBID()).get();
 		} catch (Exception ex) {
 			throw new RuntimeException("Branch Not Found");
+		}
+	}
+
+	public String delete(String id) {
+		try {
+			Long idToDelete = Branch.builder().id(id).build().DBID();
+			Log.log("BranchService", "delete", "Customer ID to Delete " + idToDelete + ", " + id);
+			this.branchRepository.deleteById(idToDelete);
+			return "Branch " + id + " deleted Successfully";
+		} catch (Exception ex) {
+			Log.error("BranchService", "Delete", "Customer Not Deleted " + ex, ex);
+			return "Failure - Branch Not Deleted";
 		}
 	}
 }

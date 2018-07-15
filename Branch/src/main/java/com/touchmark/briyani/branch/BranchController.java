@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.touchmark.briyani.commons.Log;
@@ -61,6 +62,13 @@ public class BranchController {
 		object.validateForUpdation();
 		Branch update = this.branchService.update(object);
 		return ResponseEntity.ok(update);
+	}
+	
+	@GetMapping
+	@RequestMapping(path = "/delete", produces = MediaType.APPLICATION_JSON_VALUE)
+	@PreAuthorize("hasAuthority('BRANCH_MANAGER')")
+	public ResponseEntity<String> delete(@RequestParam(name = "id") String id) {
+		return ResponseEntity.ok(this.branchService.delete(id));
 	}
 
 }

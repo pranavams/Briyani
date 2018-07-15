@@ -7,10 +7,8 @@ import {Observable} from 'rxjs/Observable';
  * Api is a generic REST Api handler. Set your API url first.
  */
 @Injectable()
-export class Api {
-  
+export class Api {  
    url: string = 'https://biriyani-services.cfapps.io';
-// url: string = 'http://localhost:18181';
 
   loggedInUser : any;
   accessToken: string;
@@ -30,7 +28,7 @@ export class Api {
 	}
 	
 	restToken() {
-	  return this.post<any[]>("oauth/token",
+	  return this.http.post<any[]>(this.url + "/" + "oauth/token",
 	    this.getAuthTokenParameters().toString(), {
 	      headers: new HttpHeaders().set('content-type', 'application/x-www-form-urlencoded')
 	        .set('authorization', this.getAuthToken())
@@ -41,8 +39,8 @@ export class Api {
 	
     // Rest Items Service: Read all MENU Items
     getDataFromRest(dataUrl: string) {
-      return this
-        .get<any[]>(dataUrl + "?access_token=" + this.accessToken)
+      return this.http
+        .get<any[]>(this.url + "/" + dataUrl + "?access_token=" + this.accessToken)
         .pipe(map(data => data));
     }
 

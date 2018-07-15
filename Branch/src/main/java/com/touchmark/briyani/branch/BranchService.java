@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.touchmark.briyani.commons.Log;
-import com.touchmark.briyani.customer.Customer;
 
 @Service
 public class BranchService {

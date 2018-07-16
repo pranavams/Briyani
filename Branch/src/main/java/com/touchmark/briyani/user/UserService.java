@@ -31,11 +31,9 @@ public class UserService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		try {
-			Log.log("UserService", "LoadUser", "User Name " + username);
 			List<UserEntity> findByUserName = userRepository.findByUserName(username);
 			UserEntity user = findByUserName.get(0);
 			User retrievedUser = new User(user.getUserName(), user.getPassword(), getAuthority(user.getRoles()));
-			Log.log("UserService", "LoadUser", "User details " + retrievedUser);
 			return retrievedUser;
 		} catch (Exception ex) {
 			Log.error("UserService", "loadUserByUserName", "Exception while Fetching User Details", ex);
@@ -45,11 +43,9 @@ public class UserService implements UserDetailsService {
 
 	public com.touchmark.briyani.user.User findByUsername(String username) {
 		try {
-			Log.log("UserService", "LoadUser", "User Name " + username);
 			List<UserEntity> findByUserName = userRepository.findByUserName(username);
 			UserEntity user = findByUserName.get(0);
 			com.touchmark.briyani.user.User retrievedUser = com.touchmark.briyani.user.User.builder().build().transformEntity(user);
-			Log.log("UserService", "LoadUser", "User details " + retrievedUser);
 			return retrievedUser;
 		} catch (Exception ex) {
 			Log.error("UserService", "findByUserName", "Exception while Fetching User Details", ex);
@@ -78,7 +74,6 @@ public class UserService implements UserDetailsService {
 		List<UserEntity> users = this.userRepository.findByUserName(user.getUserName());
 		if(users == null || users.isEmpty())
 			throw new RuntimeException("User Not Found");
-		Log.log("UserService", "Authenticate", "User Found");
 		Optional<UserEntity> foundUser = users.stream().filter(x -> BCrypt.checkpw(user.getPassword(), x.getPassword())).findFirst();
 		return com.touchmark.briyani.user.User.builder().build().transformEntity(foundUser.get());
 	}

@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.touchmark.briyani.commons.Log;
-
 @RestController
 @RequestMapping(path = "/api/v1/branch/")
 public class BranchController {
@@ -32,7 +30,6 @@ public class BranchController {
 	@PreAuthorize("hasAuthority('BRANCH_USER')")
 	public ResponseEntity<BranchResponse> getAllBranch() {
 		BranchResponse branches = BranchResponse.builder().branch(this.branchService.getAllBranch()).build();
-		Log.log("BranchController", "getAllBranch", "Branch To Send " + branches);
 		return ResponseEntity.ok(branches);
 	}
 
@@ -40,9 +37,7 @@ public class BranchController {
 	@RequestMapping("/get/{id}")
 	@PreAuthorize("hasAuthority('BRANCH_USER')")
 	public ResponseEntity<BranchResponse> get(@PathVariable("id") String id) {
-		Log.log("BranchController", "get", "Parameter Received " + id);
 		BranchResponse branches = BranchResponse.builder().branch(Arrays.asList(this.branchService.get(id))).build();
-		Log.log("BranchController", "get", "Branch To Send " + branches);
 		return ResponseEntity.ok(branches);
 	}
 

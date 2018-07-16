@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.touchmark.briyani.commons.Address;
 import com.touchmark.briyani.commons.AddressEntity;
+import com.touchmark.briyani.commons.Log;
 import com.touchmark.briyani.commons.Validator;
 
 import lombok.AllArgsConstructor;
@@ -18,7 +19,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Rider implements Serializable{
+public class Rider implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String id;
 	private String departmentType;
@@ -51,26 +52,31 @@ public class Rider implements Serializable{
 				.riderPersonLastName(riderPersonLastName).riderPersonMiddleName(riderPersonMiddleName)
 				.riderPersonNumber(riderPersonNumber).riderPersonSalutation(riderPersonSalutation).email(email)
 				.vehicleModel(vehicleModel).vehicleNumber(vehicleNumber).vehicleType(vehicleType)
-				.licenseExpiryDate(licenseExpiryDate).licenseIssueDate(licenseIssueDate).licenseNumber(licenseNumber).licenseType(licenseType)
-				.mobileNumber(mobileNumber).address(addressEntity).build();
+				.licenseExpiryDate(licenseExpiryDate).licenseIssueDate(licenseIssueDate).licenseNumber(licenseNumber)
+				.licenseType(licenseType).mobileNumber(mobileNumber).address(addressEntity).build();
 	}
 
 	public Rider transformEntities(RiderEntity entity) {
-		if(entity == null)
+		if (entity == null)
 			Rider.builder().build();
-		
-		return Rider.builder().id(transformId(entity.getId(), entity.getDepartmentType())).email(entity.getEmail())
-				.dateOfBirth(entity.getDateOfBirth()).riderPersonSalutation(entity.getRiderPersonSalutation())
-				.riderPersonFirstName(entity.getRiderPersonFirstName())
-				.riderPersonLastName(entity.getRiderPersonLastName())
-				.riderPersonMiddleName(entity.getRiderPersonMiddleName())
-				.riderPersonNumber(entity.getRiderPersonNumber()).departmentType(entity.getDepartmentType())
-				.gender(entity.getGender()).mobileNumber(entity.getMobileNumber())
-				.riderIdCardNo(entity.getRiderIdCardNo()).zone(entity.getZone())
-				.vehicleModel(entity.getVehicleModel()).vehicleNumber(entity.getVehicleNumber()).vehicleType(entity.getVehicleType())
-				.licenseExpiryDate(entity.getLicenseExpiryDate()).licenseIssueDate(entity.getLicenseIssueDate()).licenseNumber(entity.getLicenseNumber()).licenseType(entity.getLicenseType())
-				.address(Address.builder().build().transform(entity.getAddress()))
-				.build();
+		try {
+			return Rider.builder().id(transformId(entity.getId(), entity.getDepartmentType())).email(entity.getEmail())
+					.dateOfBirth(entity.getDateOfBirth()).riderPersonSalutation(entity.getRiderPersonSalutation())
+					.riderPersonFirstName(entity.getRiderPersonFirstName())
+					.riderPersonLastName(entity.getRiderPersonLastName())
+					.riderPersonMiddleName(entity.getRiderPersonMiddleName())
+					.riderPersonNumber(entity.getRiderPersonNumber()).departmentType(entity.getDepartmentType())
+					.gender(entity.getGender()).mobileNumber(entity.getMobileNumber())
+					.riderIdCardNo(entity.getRiderIdCardNo()).zone(entity.getZone())
+					.vehicleModel(entity.getVehicleModel()).vehicleNumber(entity.getVehicleNumber())
+					.vehicleType(entity.getVehicleType()).licenseExpiryDate(entity.getLicenseExpiryDate())
+					.licenseIssueDate(entity.getLicenseIssueDate()).licenseNumber(entity.getLicenseNumber())
+					.licenseType(entity.getLicenseType())
+					.address(Address.builder().build().transform(entity.getAddress())).build();
+		} catch (Exception ex) {
+			Log.log("Rider", "Transform", "Exception " + ex, ex);
+			return Rider.builder().build();
+		}
 	}
 
 	private String transformId(long id, String departmentType) {
@@ -97,6 +103,7 @@ public class Rider implements Serializable{
 			return 0L;
 
 	}
+
 	void validateForUpdation() {
 		validateForCreation();
 		validateStaffID();
@@ -123,20 +130,19 @@ public class Rider implements Serializable{
 
 		if (Validator.isInValidAddress(this.address))
 			errors.add("Invalid Address");
-		
+
 		if (Validator.isStringWithOutValue(this.vehicleNumber))
 			errors.add("Invalid Vehicle Number");
-		
+
 		if (Validator.isStringWithOutValue(this.licenseNumber))
 			errors.add("Invalid license Number");
 
 		if (Validator.isInValidLicenseIssueDate(this.licenseIssueDate))
 			errors.add("Invalid license Issue Date");
-		
+
 		if (Validator.isInValidLicenseExpiryDate(this.licenseExpiryDate, this.licenseIssueDate))
 			errors.add("Invalid Exipiry Date");
 
-		
 		Validator.throwExceptionWhenNotEmpty(errors);
 	}
 
@@ -146,7 +152,5 @@ public class Rider implements Serializable{
 			errors.add("Invalid Staff ID");
 		Validator.throwExceptionWhenNotEmpty(errors);
 	}
-
-	
 
 }

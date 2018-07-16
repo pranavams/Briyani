@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.touchmark.briyani.commons.Address;
+import com.touchmark.briyani.commons.Log;
 import com.touchmark.briyani.commons.Validator;
 
 import lombok.AllArgsConstructor;
@@ -57,13 +58,18 @@ public class Staff {
 	Staff transformEntities(StaffEntity staffEntity) {
 		if (staffEntity == null)
 			return Staff.builder().build();
-		return Staff.builder().id(transformId(staffEntity.getId())).email(staffEntity.getEmail())
-				.gender(staffEntity.getGender()).dateOfJoin(staffEntity.getDateOfJoin()).role(staffEntity.getRole())
-				.notes(staffEntity.getNotes()).dateOfBirth(staffEntity.getDateOfBirth())
-				.firstName(staffEntity.getFirstName()).lastName(staffEntity.getLastName())
-				.middleName(staffEntity.getMiddleName()).mobileNumber(staffEntity.getMobileNumber())
-				.salutation(staffEntity.getSalutation())
-				.address(Address.builder().build().transform(staffEntity.getAddress())).build();
+		try {
+			return Staff.builder().id(transformId(staffEntity.getId())).email(staffEntity.getEmail())
+					.gender(staffEntity.getGender()).dateOfJoin(staffEntity.getDateOfJoin()).role(staffEntity.getRole())
+					.notes(staffEntity.getNotes()).dateOfBirth(staffEntity.getDateOfBirth())
+					.firstName(staffEntity.getFirstName()).lastName(staffEntity.getLastName())
+					.middleName(staffEntity.getMiddleName()).mobileNumber(staffEntity.getMobileNumber())
+					.salutation(staffEntity.getSalutation())
+					.address(Address.builder().build().transform(staffEntity.getAddress())).build();
+		} catch (Exception ex) {
+			Log.log("Staff", "Transform", "Exception " + ex, ex);
+			return Staff.builder().build();
+		}
 	}
 
 	private String transformId(long id) {

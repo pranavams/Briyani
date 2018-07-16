@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
+import com.touchmark.briyani.commons.Log;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -35,9 +37,14 @@ public class User {
 	public User transformEntity(UserEntity entity) {
 		if (entity == null)
 			return User.builder().build();
-		return User.builder().firstName(entity.getFirstName()).id(transformId(entity.getActorId()))
-				.lastName(entity.getLastName()).middleName(entity.getMiddleName()).roles(entity.getRoles())
-				.userType(entity.getUserType()).userName(entity.getUserName()).build();
+		try {
+			return User.builder().firstName(entity.getFirstName()).id(transformId(entity.getActorId()))
+					.lastName(entity.getLastName()).middleName(entity.getMiddleName()).roles(entity.getRoles())
+					.userType(entity.getUserType()).userName(entity.getUserName()).build();
+		} catch (Exception ex) {
+			Log.log("User", "Transform", "Exception " + ex, ex);
+			return User.builder().build();
+		}
 	}
 
 	private String transformId(Long actorId) {

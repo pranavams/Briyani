@@ -47,15 +47,19 @@ public class Branch {
 	public Branch transformEntities(BranchEntity entity) {
 		if (entity == null)
 			return Branch.builder().build();
-		return Branch.builder().id(transformID(entity.getId())).name(entity.getName()).email(entity.getEmail())
-				.latitude(entity.getLatitude()).longitude(entity.getLongitude()).notes(entity.getNotes())
-				.contactPersonFirstName(entity.getContactPersonFirstName())
-				.contactPersonLastName(entity.getContactPersonLastName())
-				.contactPersonMiddleName(entity.getContactPersonMiddleName())
-				.contactPersonNumber(entity.getContactPersonNumber())
-				.contactPersonSalutation(entity.getContactPersonSalutation()).mobileNumber(entity.getMobileNumber())
-				.telephone(entity.getTelephone()).address(Address.builder().build().transform(entity.getAddress()))
-				.build();
+		try {
+			return Branch.builder().id(transformID(entity.getId())).name(entity.getName()).email(entity.getEmail())
+					.latitude(entity.getLatitude()).longitude(entity.getLongitude()).notes(entity.getNotes())
+					.contactPersonFirstName(entity.getContactPersonFirstName())
+					.contactPersonLastName(entity.getContactPersonLastName())
+					.contactPersonMiddleName(entity.getContactPersonMiddleName())
+					.contactPersonNumber(entity.getContactPersonNumber())
+					.contactPersonSalutation(entity.getContactPersonSalutation()).mobileNumber(entity.getMobileNumber())
+					.telephone(entity.getTelephone()).address(Address.builder().build().transform(entity.getAddress()))
+					.build();
+		} catch (Exception ex) {
+			return Branch.builder().build();
+		}
 	}
 
 	private String transformID(long id) {

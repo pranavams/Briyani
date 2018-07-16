@@ -4,6 +4,8 @@ import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.touchmark.briyani.commons.Log;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,15 +26,21 @@ public class Item {
 	private int quantity;
 
 	public ItemEntity createEntity() {
-		return ItemEntity.builder().description(description).name(name).price(price).lastUpdatedDate(OffsetDateTime.now()).build();
+		return ItemEntity.builder().description(description).name(name).price(price)
+				.lastUpdatedDate(OffsetDateTime.now()).build();
 	}
 
 	public Item transformEntity(ItemEntity entity) {
-		if(entity == null)
+		if (entity == null)
 			return Item.builder().build();
-		return Item.builder().id(transformId(entity.getId())).name(entity.getName())
-				.description(entity.getDescription()).price(entity.getPrice()).menuName(entity.getMenu().getName())
-				.menuId(transformMenuId(entity.getMenu().getId())).build();
+		try {
+			return Item.builder().id(transformId(entity.getId())).name(entity.getName())
+					.description(entity.getDescription()).price(entity.getPrice()).menuName(entity.getMenu().getName())
+					.menuId(transformMenuId(entity.getMenu().getId())).build();
+		} catch (Exception ex) {
+			Log.log("Item", "Transform", "Exception " + ex, ex);
+			return Item.builder().build();
+		}
 	}
 
 	private String transformMenuId(long id) {

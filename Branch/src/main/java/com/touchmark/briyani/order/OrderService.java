@@ -11,7 +11,6 @@ import com.touchmark.briyani.branch.Branch;
 import com.touchmark.briyani.branch.BranchEntity;
 import com.touchmark.briyani.branch.BranchRepository;
 import com.touchmark.briyani.commons.Case;
-import com.touchmark.briyani.commons.Log;
 import com.touchmark.briyani.customer.Customer;
 import com.touchmark.briyani.customer.CustomerEntity;
 import com.touchmark.briyani.customer.CustomerRepository;
@@ -54,8 +53,6 @@ public class OrderService {
 
 	private OrderEntity getItemsInOrders(OrderEntity tempOrder) {
 		List<OrderDetailEntity> orderDetails = orderDetailRepository.findByOrderId(tempOrder.getOrderId());
-		Log.log("OrderService", "getAll", "Order ID " + tempOrder.getOrderId());
-		Log.log("OrderService", "getAll", "Order details " + orderDetails);
 		tempOrder.setOrderDetails(orderDetails);
 		return tempOrder;
 	}
@@ -93,7 +90,6 @@ public class OrderService {
 	}
 
 	public OrderEntity createOrder(CreateOrder object) {
-		Log.log("OrderService", "CreateOrder", "Order To Create " + object);
 		BranchEntity branch = this.branchRepository.findById(Branch.builder().id(object.getBranchID()).build().DBID())
 				.get();
 		CustomerEntity customer = null;
@@ -114,7 +110,6 @@ public class OrderService {
 		order.setTaxPercentage(6);
 		order.setTotalAmount(totalPrice * 1.06f);
 		OrderEntity createdOrder = repository.saveAndFlush(order);
-		Log.log("OrderService", "CreateOrder", "Order Created " + createdOrder);
 		List<OrderDetailEntity> createdOrderDetails = new ArrayList<>();
 		for (OrderDetail orderDetail : object.getOrderDetails()) {
 			ItemEntity item = iRepository.findById(Item.builder().id(orderDetail.getItem().getId()).build().DBID())
@@ -123,9 +118,7 @@ public class OrderService {
 			createdOrderDetails.add(orderDetailRepository.save(OrderDetailEntity.builder().item(item).quantity(orderDetail.getQuantity())
 					.unitPrice(item.getPrice()).orderId(createdOrder.getOrderId()).build()));
 		}
-		Log.log("OrderService", "CreateOrder", "Order Returning " + createdOrder);
 		createdOrder.setOrderDetails(createdOrderDetails);
-		Log.log("OrderService", "CreateOrder", "Order Returning With Order Detail List" + createdOrder);
 		return createdOrder;
 	}
 

@@ -1,17 +1,3 @@
-###INSERT INTO role (role_id, name, description) VALUES (0, 'DUMMY_USER', 'Dummy User - Has no rights');
-###INSERT INTO role (role_id, name, description) VALUES (1, 'STANDARD_USER', 'Standard User - Has no admin rights');
-
-###INSERT INTO role (role_id, name, description) VALUES (2, 'ADMIN_USER', 'Admin User - Has permission to perform admin tasks');
-### USER
-
-###INSERT INTO actor_role(actor_id, role_id) VALUES(1, 1);
-###INSERT INTO actor_role(actor_id, role_id) VALUES(2, 1);
-###INSERT INTO actor_role(actor_id, role_id) VALUES(2, 2);
-###INSERT INTO actor_role(actor_id, role_id) VALUES(3, 2);
-
-
-###DELETE
-
 TRUNCATE TABLE CUSTOMER;
 TRUNCATE TABLE STAFF;
 TRUNCATE TABLE ORDER_DETAIL;
@@ -248,3 +234,6 @@ VALUES (60, 10,
 (select id from item where menu_id = (select id from menu where name = 'Mutton' LIMIT 1)),   
 (select order_id from order_info where address_id = (select address_id from address where area = 'pa' LIMIT 1))
 );
+
+COMMIT;
+

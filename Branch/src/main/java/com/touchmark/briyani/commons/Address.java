@@ -25,12 +25,16 @@ public class Address {
 	private String zipcode;
 
 	public Address transform(AddressEntity entity) {
-		if(entity == null)
+		if (entity == null)
 			return Address.builder().build();
-		
-		return Address.builder().area(entity.getArea()).city(entity.getCity()).country(entity.getCountry())
-				.doorNumber(entity.getDoorNumber()).state(entity.getState()).street(entity.getStreet())
-				.zipcode(entity.getZipcode()).build();
+		try {
+			return Address.builder().area(entity.getArea()).city(entity.getCity()).country(entity.getCountry())
+					.doorNumber(entity.getDoorNumber()).state(entity.getState()).street(entity.getStreet())
+					.zipcode(entity.getZipcode()).build();
+		} catch (Exception ex) {
+			Log.log("Address", "Transform", "Exception " + ex, ex);
+			return Address.builder().build();
+		}
 	}
 
 	public AddressEntity createEntity() {

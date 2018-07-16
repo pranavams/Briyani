@@ -17,11 +17,19 @@ public class CustomerService {
 	}
 
 	public List<Customer> getAll() {
-		return Customer.builder().build().transformEntities(repository.findAll());
+		try {
+			return Customer.builder().build().transformEntities(repository.findAll());
+		} catch (Exception ex) {
+			throw new RuntimeException("Customer Not Found", ex);
+		}
 	}
 
 	public Customer save(Customer object) {
-		return Customer.builder().build().transformEntities(this.repository.save(object.createEntity()));
+		try {
+			return Customer.builder().build().transformEntities(this.repository.save(object.createEntity()));
+		} catch (Exception ex) {
+			throw new RuntimeException("Customer Not Saved", ex);
+		}
 	}
 
 	public String delete(String id) {
@@ -37,25 +45,32 @@ public class CustomerService {
 	}
 
 	public List<Customer> getRecent() {
-		return Customer.builder().build().transformEntities(repository.findRecent());
+		try {
+			return Customer.builder().build().transformEntities(repository.findRecent());
+		} catch (Exception ex) {
+			throw new RuntimeException("Customer Not Found", ex);
+		}
 	}
 
 	public Customer get(String id) {
-		return Customer.builder().build()
-				.transformEntities(repository.findById(Customer.builder().id(id).build().DBID()).get());
+		try {
+			return Customer.builder().build()
+					.transformEntities(repository.findById(Customer.builder().id(id).build().DBID()).get());
+		} catch (Exception ex) {
+			throw new RuntimeException("Customer Not Found", ex);
+		}
 	}
 
 	public Customer update(Customer object) {
-		CustomerEntity entity = getByID(object);
-		return Customer.builder().build().transformEntities(this.repository.saveAndFlush(entity));
+		try {
+			return Customer.builder().build().transformEntities(this.repository.saveAndFlush(getByID(object)));
+		} catch (Exception ex) {
+			throw new RuntimeException("Customer Not Found", ex);
+		}
 	}
 
 	private CustomerEntity getByID(Customer object) {
-		try {
-			return repository.findById(Customer.builder().id(object.getId()).build().DBID()).get();
-		} catch (Exception ex) {
-			throw new RuntimeException("Customer Not Found");
-		}
+		return repository.findById(Customer.builder().id(object.getId()).build().DBID()).get();
 	}
 
 }

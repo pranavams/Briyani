@@ -4,6 +4,8 @@ import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.touchmark.briyani.commons.Log;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,20 +25,24 @@ public class Menu {
 	}
 
 	public Menu transformEntity(MenuEntity entity) {
-		if(entity == null)
+		if (entity == null)
 			return Menu.builder().build();
-		return Menu.builder().id(transformId(entity.getId())).name(entity.getName())
-				.build();
+		try {
+			return Menu.builder().id(transformId(entity.getId())).name(entity.getName()).build();
+		} catch (Exception ex) {
+			Log.log("Menu", "Transform", "Exception " + ex, ex);
+			return Menu.builder().build();
+		}
 	}
 
 	private String transformId(long id) {
 		return "CHBI" + id;
 	}
 
-	Long DBID(String id){
-		return Long.parseLong(id.substring(4)); 
+	Long DBID(String id) {
+		return Long.parseLong(id.substring(4));
 	}
-	
+
 	public List<Menu> transformEntities(List<MenuEntity> entities) {
 		List<Menu> menus = new ArrayList<>(entities.size());
 		for (MenuEntity menuEntity : entities) {

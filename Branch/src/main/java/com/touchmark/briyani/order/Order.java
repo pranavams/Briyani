@@ -8,6 +8,7 @@ import com.touchmark.briyani.branch.Branch;
 import com.touchmark.briyani.commons.Address;
 import com.touchmark.briyani.commons.AddressEntity;
 import com.touchmark.briyani.commons.Case;
+import com.touchmark.briyani.commons.Log;
 import com.touchmark.briyani.customer.Customer;
 import com.touchmark.briyani.item.Item;
 
@@ -49,18 +50,17 @@ public class Order {
 
 		for (OrderDetail orderDetail : orderDetails) {
 			orders.add(OrderDetailEntity.builder().quantity(orderDetail.getQuantity())
-					.lastUpdatedDate(OffsetDateTime.now())
-					.unitPrice(orderDetail.getUnitPrice()).build());
+					.lastUpdatedDate(OffsetDateTime.now()).unitPrice(orderDetail.getUnitPrice()).build());
 		}
 		return OrderEntity.builder().couponCode(couponCode).dateAndTime(dateAndTime).deliveryAddress(addressEntity)
-				.lastUpdatedDate(OffsetDateTime.now())
-				.paymentStatus(Case.upper(paymentStatus)).taxPercentage(taxPercentage).taxAmount(taxAmount).totalAmount(totalAmount)
-				.orderStatus(Case.upper(orderStatus)).numberOfVessels(numberOfVessels).vesselStatus(Case.upper(vesselStatus)).userName(userName)
-				.orderDetails(orders).build();
+				.lastUpdatedDate(OffsetDateTime.now()).paymentStatus(Case.upper(paymentStatus))
+				.taxPercentage(taxPercentage).taxAmount(taxAmount).totalAmount(totalAmount)
+				.orderStatus(Case.upper(orderStatus)).numberOfVessels(numberOfVessels)
+				.vesselStatus(Case.upper(vesselStatus)).userName(userName).orderDetails(orders).build();
 	}
 
 	public Order transformEntity(OrderEntity entity) {
-		if(entity == null)
+		if (entity == null)
 			return Order.builder().build();
 
 		List<OrderDetail> orderDetails = new ArrayList<>();
@@ -68,16 +68,20 @@ public class Order {
 			orderDetails.add(OrderDetail.builder().item(Item.builder().build().transformEntity(orderDetail.getItem()))
 					.quantity(orderDetail.getQuantity()).unitPrice(orderDetail.getUnitPrice()).build());
 		}
-		return Order.builder().branch(Branch.builder().build().transformEntities(entity.getBranch()))
-				.deliveryAddress(Address.builder().build().transform(entity.getDeliveryAddress()))
-				.customer(Customer.builder().build().transformEntities(entity.getCustomer()))
-				.couponCode(entity.getCouponCode())
-				.dateAndTime(entity.getDateAndTime()).orderId(transformId(entity.getOrderId()))
-				.paymentStatus(Case.upper(entity.getPaymentStatus())).taxAmount(entity.getTaxAmount())
-				.orderStatus(Case.upper(entity.getOrderStatus())).numberOfVessels(entity.getNumberOfVessels())
-				.vesselStatus(Case.upper(entity.getVesselStatus())).taxPercentage(entity.getTaxPercentage())
-				.totalAmount(entity.getTotalAmount()).userName(entity.getUserName())
-				.orderDetails(orderDetails).build();
+		try {
+			return Order.builder().branch(Branch.builder().build().transformEntities(entity.getBranch()))
+					.deliveryAddress(Address.builder().build().transform(entity.getDeliveryAddress()))
+					.customer(Customer.builder().build().transformEntities(entity.getCustomer()))
+					.couponCode(entity.getCouponCode()).dateAndTime(entity.getDateAndTime())
+					.orderId(transformId(entity.getOrderId())).paymentStatus(Case.upper(entity.getPaymentStatus()))
+					.taxAmount(entity.getTaxAmount()).orderStatus(Case.upper(entity.getOrderStatus()))
+					.numberOfVessels(entity.getNumberOfVessels()).vesselStatus(Case.upper(entity.getVesselStatus()))
+					.taxPercentage(entity.getTaxPercentage()).totalAmount(entity.getTotalAmount())
+					.userName(entity.getUserName()).orderDetails(orderDetails).build();
+		} catch (Exception ex) {
+			Log.log("Order", "Transform", "Exception " + ex, ex);
+			return Order.builder().build();
+		}
 	}
 
 	private String transformId(long orderId) {

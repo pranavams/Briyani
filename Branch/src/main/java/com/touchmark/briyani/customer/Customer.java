@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.touchmark.briyani.commons.Address;
+import com.touchmark.briyani.commons.Log;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,8 +32,7 @@ public class Customer {
 
 	public CustomerEntity createEntity() {
 		return CustomerEntity.builder().address(address.createEntity()).dateOfBirth(dateOfBirth).firstName(firstName)
-				.email(email).telephoneNumber(telephoneNumber).lastName(lastName).middleName(middleName)
-				.gender(gender)
+				.email(email).telephoneNumber(telephoneNumber).lastName(lastName).middleName(middleName).gender(gender)
 				.lastUpdatedDate(OffsetDateTime.now()).mobileNumber(mobileNumber).salutation(salutation).build();
 	}
 
@@ -44,23 +44,29 @@ public class Customer {
 		return responseCustomers;
 	}
 
-	private String transformId(long id) {
+	String transformId(long id) {
 		return "CUST" + id;
 	}
 
 	public Long DBID() {
 		return Long.parseLong(id.substring(4));
 	}
-
-	public Customer transformEntities(CustomerEntity customerEntity) {
-		if(customerEntity == null)
+	
+	public Customer transformEntities(CustomerEntity customer) {
+		if (customer == null)
 			return Customer.builder().build();
-		return Customer.builder().id(transformId(customerEntity.getId())).email(customerEntity.getEmail())
-				.telephoneNumber(customerEntity.getTelephoneNumber())
-				.gender(customerEntity.getGender())
-				.address(Address.builder().build().transform(customerEntity.getAddress()))
-				.dateOfBirth(customerEntity.getDateOfBirth()).firstName(customerEntity.getFirstName())
-				.lastName(customerEntity.getLastName()).middleName(customerEntity.getMiddleName())
-				.mobileNumber(customerEntity.getMobileNumber()).salutation(customerEntity.getSalutation()).build();
+		try {
+			return Customer.builder().id(transformId(customer.getId())).email(customer.getEmail())
+					.telephoneNumber(customer.getTelephoneNumber()).gender(customer.getGender())
+					.address(Address.builder().build().transform(customer.getAddress()))
+					.dateOfBirth(customer.getDateOfBirth()).firstName(customer.getFirstName())
+					.lastName(customer.getLastName()).middleName(customer.getMiddleName())
+					.mobileNumber(customer.getMobileNumber()).salutation(customer.getSalutation()).build();
+		} catch (RuntimeException ex) {
+			Log.log("Customer", "transformIndividualEntity", "Exception " + ex, ex);
+			return Customer.builder().build();
+		}
 	}
+
+
 }

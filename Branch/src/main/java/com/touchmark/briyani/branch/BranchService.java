@@ -49,7 +49,7 @@ public class BranchService {
 			this.branchRepository.deleteById(idToDelete);
 			return "Branch " + id + " deleted Successfully";
 		} catch (Exception ex) {
-			Log.error("BranchService", "Delete", "Customer Not Deleted " + ex, ex);
+			Log.error("BranchService", "Delete", "Branch Not Deleted " + ex, ex);
 			return "Failure - Branch Not Deleted";
 		}
 	}

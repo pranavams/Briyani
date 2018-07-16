@@ -43,12 +43,12 @@ public class RiderController {
 	}
 
 	@GetMapping
-	@RequestMapping(path = "/delete", produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(path = "/delete/{id}")
 	@PreAuthorize("hasAuthority('BRANCH_MANAGER')")
-	public ResponseEntity<String> delete(@RequestParam(name = "id") String id) {
+	public ResponseEntity<String> delete(@PathVariable("id") String id) {
 		return ResponseEntity.ok(this.service.delete(id));
-	}
-
+	
+	}	
 	@GetMapping
 	@RequestMapping("/listRecent")
 	@PreAuthorize("hasAuthority('BRANCH_USER')")

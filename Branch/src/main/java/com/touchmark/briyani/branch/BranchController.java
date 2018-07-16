@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -60,10 +59,12 @@ public class BranchController {
 	}
 	
 	@GetMapping
-	@RequestMapping(path = "/delete", produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(path = "/delete/{id}")
 	@PreAuthorize("hasAuthority('BRANCH_MANAGER')")
-	public ResponseEntity<String> delete(@RequestParam(name = "id") String id) {
+	public ResponseEntity<String> delete(@PathVariable("id") String id) {
 		return ResponseEntity.ok(this.branchService.delete(id));
+	
 	}
+	
 
 }

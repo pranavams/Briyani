@@ -44,6 +44,7 @@ public class CustomerController {
 	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE, path = "/save", produces = MediaType.APPLICATION_JSON_VALUE)
 	@PreAuthorize("hasAuthority('BRANCH_MANAGER')")
 	public ResponseEntity<Customer> save(@RequestBody Customer object) {
+		object.validateForCreation();
 		Customer created = this.service.save(object);
 		return ResponseEntity.ok(created);
 	}
@@ -66,6 +67,7 @@ public class CustomerController {
 	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE, path = "/update", produces = MediaType.APPLICATION_JSON_VALUE)
 	@PreAuthorize("hasAuthority('BRANCH_MANAGER')")
 	public ResponseEntity<Customer> update(@RequestBody Customer object) {
+		object.validateForUpdation();
 		Customer update = this.service.update(object);
 		return ResponseEntity.ok(update);
 	}

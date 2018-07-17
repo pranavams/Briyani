@@ -11,12 +11,16 @@ import com.touchmark.briyani.branch.Branch;
 import com.touchmark.briyani.branch.BranchEntity;
 import com.touchmark.briyani.branch.BranchRepository;
 import com.touchmark.briyani.commons.Case;
+import com.touchmark.briyani.commons.Log;
 import com.touchmark.briyani.customer.Customer;
 import com.touchmark.briyani.customer.CustomerEntity;
 import com.touchmark.briyani.customer.CustomerRepository;
 import com.touchmark.briyani.item.Item;
 import com.touchmark.briyani.item.ItemEntity;
 import com.touchmark.briyani.item.ItemRepository;
+import com.touchmark.briyani.rider.Rider;
+import com.touchmark.briyani.rider.RiderEntity;
+import com.touchmark.briyani.rider.RiderRepository;
 
 @Service
 public class OrderService {
@@ -25,16 +29,18 @@ public class OrderService {
 	private OrderDetailRepository orderDetailRepository;
 	private BranchRepository branchRepository;
 	private CustomerRepository customerRepository;
+	private RiderRepository riderRepository;
 
 	@Autowired
 	public OrderService(OrderRepository repository, ItemRepository iRepository,
 			OrderDetailRepository orderDetailRepository, BranchRepository branchRepository,
-			CustomerRepository customerRepository) {
+			CustomerRepository customerRepository, RiderRepository riderRepository) {
 		this.repository = repository;
 		this.iRepository = iRepository;
 		this.orderDetailRepository = orderDetailRepository;
 		this.branchRepository = branchRepository;
 		this.customerRepository = customerRepository;
+		this.riderRepository = riderRepository;
 	}
 
 	public List<Order> getAll() {
@@ -115,8 +121,9 @@ public class OrderService {
 			ItemEntity item = iRepository.findById(Item.builder().id(orderDetail.getItem().getId()).build().DBID())
 					.get();
 			totalPrice += item.getPrice() * orderDetail.getQuantity();
-			createdOrderDetails.add(orderDetailRepository.save(OrderDetailEntity.builder().item(item).quantity(orderDetail.getQuantity())
-					.unitPrice(item.getPrice()).orderId(createdOrder.getOrderId()).build()));
+			createdOrderDetails.add(orderDetailRepository
+					.save(OrderDetailEntity.builder().item(item).quantity(orderDetail.getQuantity())
+							.unitPrice(item.getPrice()).orderId(createdOrder.getOrderId()).build()));
 		}
 		createdOrder.setOrderDetails(createdOrderDetails);
 		return createdOrder;
@@ -184,10 +191,57 @@ public class OrderService {
 	}
 
 	public OrderEntity updateOrderStatus(UpdateOrder order) {
-		OrderEntity orderEntity = this.repository.findById(Order.builder().orderId(order.getId()).build().DBID()).get();
+		RiderEntity riderEntity = getRider(order.getRiderId());
+		OrderEntity orderEntity = getOrder(order.getId());
+		orderEntity = updateOrderInfo(order, riderEntity, orderEntity);
+		return updateOrder(orderEntity);
+	}
+
+	private OrderEntity updateOrderInfo(UpdateOrder order, RiderEntity riderEntity, OrderEntity orderEntity) {
 		orderEntity.setOrderStatus(Case.upper(order.getOrderStatus()));
-		orderEntity.setNumberOfVessels(order.getNumberOfVessels());
-		return this.repository.saveAndFlush(orderEntity);
+		if (isOrderNotAssignedToRider(riderEntity))
+			orderEntity.setNumberOfVessels(order.getNumberOfVessels());
+		orderEntity.setRider(riderEntity);
+		return orderEntity;
+	}
+
+	private OrderEntity updateOrder(OrderEntity orderEntity) {
+		try {
+			return this.repository.saveAndFlush(orderEntity);
+		} catch (Exception ex) {
+			Log.error("OrderService", "updateOrder", "Error While updating Order " + ex, ex);
+			throw new RuntimeException("Order Not Updated, Order ");
+		}
+	}
+
+	private OrderEntity getOrder(String orderId) {
+		try {
+			return repository.findById(Order.builder().orderId(orderId).build().DBID()).get();
+		} catch (Exception ex) {
+			Log.error("OrderService", "getOrder", "Error While getting Order " + ex, ex);
+			throw new RuntimeException("Order Not Updated, Order Not Found [ " + orderId + "]");
+		}
+	}
+
+	private RiderEntity getRider(String riderId) {
+		try {
+			RiderEntity riderEntity = null;
+			if (isValidRider(riderId)) {
+				riderEntity = riderRepository.findById(Rider.builder().id(riderId).build().DBID()).get();
+			}
+			return riderEntity;
+		} catch (Exception ex) {
+			Log.error("OrderService", "getRider", "Error While getting rider " + ex, ex);
+			throw new RuntimeException("Order Not Updated, Rider Not Found [ " + riderId + "]");
+		}
+	}
+
+	private boolean isValidRider(String riderId) {
+		return riderId != null && riderId.trim().length() > 0;
+	}
+
+	private boolean isOrderNotAssignedToRider(RiderEntity riderEntity) {
+		return riderEntity == null;
 	}
 
 }

@@ -14,6 +14,7 @@ import lombok.ToString;
 public class UpdateOrder {
 	private String id;
 	private String orderStatus;
+	private String riderId;
 	private int numberOfVessels;
 	private String vesselDescription;
 }

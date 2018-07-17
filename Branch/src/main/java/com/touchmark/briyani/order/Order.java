@@ -11,6 +11,7 @@ import com.touchmark.briyani.commons.Case;
 import com.touchmark.briyani.commons.Log;
 import com.touchmark.briyani.customer.Customer;
 import com.touchmark.briyani.item.Item;
+import com.touchmark.briyani.rider.Rider;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -37,6 +38,7 @@ public class Order {
 	private Address deliveryAddress;
 	private int numberOfVessels;
 	private String vesselStatus;
+	private Rider rider;
 
 	private List<OrderDetail> orderDetails;
 
@@ -72,6 +74,7 @@ public class Order {
 			return Order.builder().branch(Branch.builder().build().transformEntities(entity.getBranch()))
 					.deliveryAddress(Address.builder().build().transform(entity.getDeliveryAddress()))
 					.customer(Customer.builder().build().transformEntities(entity.getCustomer()))
+					.rider(Rider.builder().build().transformEntities(entity.getRider()))
 					.couponCode(entity.getCouponCode()).dateAndTime(entity.getDateAndTime())
 					.orderId(transformId(entity.getOrderId())).paymentStatus(Case.upper(entity.getPaymentStatus()))
 					.taxAmount(entity.getTaxAmount()).orderStatus(Case.upper(entity.getOrderStatus()))

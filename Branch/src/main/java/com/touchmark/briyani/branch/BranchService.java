@@ -31,6 +31,7 @@ public class BranchService {
 
 	public Branch update(Branch object) {
 		BranchEntity entity = getByID(object);
+		entity.updateWith(object);
 		return Branch.builder().build().transformEntities(this.branchRepository.saveAndFlush(entity));
 	}
 

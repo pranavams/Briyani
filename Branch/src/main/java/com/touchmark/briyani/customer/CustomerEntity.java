@@ -69,4 +69,17 @@ public class CustomerEntity implements Serializable {
 	@Column(name = "gender")
 	private String gender;
 
+	public void updateWith(Customer object) {
+		this.firstName = object.getFirstName();
+		this.lastName = object.getLastName();
+		this.middleName = object.getMiddleName();
+		this.salutation = object.getSalutation();
+		this.dateOfBirth = object.getDateOfBirth();
+		this.mobileNumber = object.getMobileNumber();
+		this.telephoneNumber = object.getTelephoneNumber();
+		this.email = object.getEmail();
+		this.lastUpdatedDate = OffsetDateTime.now();
+		this.gender = object.getGender();
+	}
+
 }

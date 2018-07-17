@@ -67,6 +67,7 @@ public class CustomerController {
 	@PreAuthorize("hasAuthority('BRANCH_MANAGER')")
 	public ResponseEntity<Customer> update(@RequestBody Customer object) {
 		object.validateForUpdation();
+		System.out.println("Inside update");
 		Customer update = this.service.update(object);
 		return ResponseEntity.ok(update);
 	}

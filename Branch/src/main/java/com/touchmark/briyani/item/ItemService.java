@@ -22,7 +22,7 @@ public class ItemService {
 
 	public Item save(Item object) {
 		MenuEntity menuEntity = null;
-		List<MenuEntity> menuNames = mRepository.findByName(object.getMenuName());
+		List<MenuEntity> menuNames = mRepository.findByNameIgnoreCase(object.getMenuName().trim());
 		if (menuNames == null || menuNames.size() == 0) {
 			menuEntity = mRepository.save(MenuEntity.builder().name(object.getMenuName()).build());
 		} else {

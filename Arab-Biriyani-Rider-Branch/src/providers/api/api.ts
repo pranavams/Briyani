@@ -8,8 +8,8 @@ import {Observable} from 'rxjs/Observable';
  */
 @Injectable()
 export class Api {
-
-	url: string = 'http://localhost:18181';
+	url: string = 'https://biriyani-services.cfapps.io';
+	//url: string = 'http://localhost:18181';
 	loggedInUser : any;
 	accessToken: string;
 

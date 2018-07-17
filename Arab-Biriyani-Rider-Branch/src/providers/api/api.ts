@@ -1,17 +1,107 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import {map} from 'rxjs/operators';
+import {Observable} from 'rxjs/Observable';
 
 /**
  * Api is a generic REST Api handler. Set your API url first.
  */
 @Injectable()
 export class Api {
-  url: string = 'https://example.com/api/v1';
+
+	url: string = 'http://localhost:18181';
+	loggedInUser : any;
+	accessToken: string;
 
   constructor(public http: HttpClient) {
   }
 
-  get(endpoint: string, params?: any, reqOpts?: any) {
+	getAuthToken() {
+		return "Basic " + btoa('arab-briyani-client:devglan-secret');;
+	}
+	
+	getAuthTokenParameters() {
+	  return new HttpParams()
+	    .set('username', 'Alex123')
+	    .set('password', 'password')
+	    .set('grant_type', 'password');
+	}
+	
+	restToken() {
+	  return this.http.post<any[]>(this.url + "/" + "oauth/token",
+	    this.getAuthTokenParameters().toString(), {
+	      headers: new HttpHeaders().set('content-type', 'application/x-www-form-urlencoded')
+	        .set('authorization', this.getAuthToken())
+	        .set('cache-control', 'no-cache')
+	    })
+	    .pipe(map(token => token));
+	}
+	
+    // Rest Items Service: Read all MENU Items
+    getDataFromRest(dataUrl: string) {
+      return this.http
+        .get<any[]>(this.url + "/" + dataUrl + "?access_token=" + this.accessToken)
+        .pipe(map(data => data));
+    }
+
+    restPostData(dataUrl : string, payLoad: any, accessToken: string) {
+    	const postHeaders = new HttpHeaders().set('Content-Type', 'application/json')
+        return this.http
+          .post<any[]>(this.url + "/" + dataUrl + "?access_token=" + this.accessToken,
+    		  JSON.stringify(payLoad),  {
+    	  		headers: postHeaders
+    		  }
+          ).pipe(map(data => data));
+    }
+    
+    postData(dataUrl: string, payLoad: any){
+		return Observable.create(observer => {
+		  this.restToken()
+		  .subscribe(
+		    (tokenResponse) => {
+		      this.restPostData(dataUrl, payLoad, tokenResponse['access_token'])
+		          .subscribe(
+		          data => {
+		 		    observer.next(data);
+		 		    observer.complete();
+		          });
+		     });
+		});
+	}
+	
+	getData(dataUrl: string, dataName: string){
+		return Observable.create(observer => {
+		    this.restToken()
+		      .subscribe(
+		      (tokenResponse) => {
+		        this.accessToken = tokenResponse['access_token'];
+		        this.getDataFromRest(dataUrl)
+		          .subscribe(
+		          dataSet => {
+			        observer.next(dataSet[dataName]);
+			        observer.complete();
+		          });
+		      });
+		});
+	}
+  
+  get(dataUrl: string){
+	return Observable.create(observer => {
+	    this.restToken()
+	      .subscribe(
+	      (tokenResponse) => {
+	        this.accessToken = tokenResponse['access_token'];
+	        this.getDataFromRest(dataUrl)
+	          .subscribe(
+	          dataSet => {
+		        observer.next(dataSet);
+		        observer.complete();
+	          });
+	      });
+	});
+  }
+  
+  getWithParam(endpoint: string, params?: any, reqOpts?: any) {
     if (!reqOpts) {
       reqOpts = {
         params: new HttpParams()
@@ -28,6 +118,7 @@ export class Api {
 
     return this.http.get(this.url + '/' + endpoint, reqOpts);
   }
+
 
   post(endpoint: string, body: any, reqOpts?: any) {
     return this.http.post(this.url + '/' + endpoint, body, reqOpts);

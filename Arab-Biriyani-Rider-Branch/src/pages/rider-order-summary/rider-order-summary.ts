@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams ToastController } from 'ionic-angular';
+import { Api } from '../../providers/api/api';
 
 @IonicPage()
 @Component({
@@ -8,32 +9,41 @@ import { IonicPage, NavController, ToastController } from 'ionic-angular';
 })
 
 export class RiderOrderSummaryPage {
-    item: any = {
-        order: 'PO# 1100012',
-        branch: 'Pasiris',
-        quantity: '280',
-        vessels: '9',
-        phone: '+65 6589 5489',
-        address: '414 Baleser Road Singapore 329806'
+    item: any = {};
+	slider(type){
+	    if(this.item.sliderMargin == undefined || this.item.sliderMargin == '-130px -16px 0'){
+	        this.item.sliderContent = true;
+	        this.item.sliderMargin = '0 -16px 0';
+	        this.item.sliderType = type;
+	    }
+	    else{
+	        this.item.sliderMargin = '-130px -16px 0';
+	    }
+	}
+
+
+    constructor(public navCtrl: NavController, public toast: ToastController, public navParams: NavParams, private api: Api){
+    	this.item = navParams.data.order;
     }
-    constructor(public navCtrl: NavController, public toast: ToastController){}
-    slider(type){
-        if(this.item.sliderMargin == undefined || this.item.sliderMargin == '-130px -16px 0'){
-            this.item.sliderContent = true;
-            this.item.sliderMargin = '0 -16px 0';
-            this.item.sliderType = type;
-        }
-        else{
-            this.item.sliderMargin = '-130px -16px 0';
-        }
+    
+    getQuantity() {
+        return this.item.orderDetails
+        .map(x => x.quantity)
+        .reduce((sum, current) => sum + current, 0);
     }
-    presentToast() {
-        let toast = this.toast.create({
-          message: 'Delivery successfully',
-          duration: 3000,
-          position: 'top'
-        });
-        toast.present();
-        this.navCtrl.push('RiderDeliveryPage');
-      }
+    
+    markAsDelivered () {
+  	  this.api.get("api/v1/order/updateVesselStatus/" + this.item.orderId + "/DELIVERED")
+	  	.subscribe(data => {
+	  		let orderUpdate : any = {
+	  			id: this.item.orderId,
+	  			orderStatus: 'DELIVERED',
+	  			riderId: 'ENDRI2'
+	  		};
+	  		this.api.postData("api/v1/order/updateOrderStatus/", orderUpdate)
+	  	  		.subscribe(data => {
+	  	  			this.navCtrl.push('RiderDeliveryPage');
+			});
+		});
+    }
 }

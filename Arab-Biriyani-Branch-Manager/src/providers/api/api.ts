@@ -7,6 +7,7 @@ import {Observable} from 'rxjs/Observable';
  * Api is a generic REST Api handler. Set your API url first.
  */
 @Injectable()
+
 export class Api {  
    url: string = 'https://biriyani-services.cfapps.io';
 

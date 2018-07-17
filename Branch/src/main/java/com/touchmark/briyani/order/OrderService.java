@@ -244,4 +244,8 @@ public class OrderService {
 		return riderEntity == null;
 	}
 
+	public List<OrderEntity> getOrdersByRider(String id) {
+		return this.repository.findByRiderId(Rider.builder().id(id).build().DBID());
+	}
+
 }

@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavController, PopoverController, Popover} from 'ionic-angular';
+import {IonicPage, NavController, PopoverController} from 'ionic-angular';
 
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import {map} from 'rxjs/operators';
+import {HttpClient} from '@angular/common/http';
+import {Api } from '../../providers/';
+
 
 @IonicPage()
 @Component({ 
@@ -13,59 +14,16 @@ import {map} from 'rxjs/operators';
 export class VesselsPage {
   displayType: any = 'today';
 
-  serviceUrl = "http://localhost:63636/api/v1/order/listAll";
-  accessToken: string;
-
   today: any = [];
   completed: any = [];
-  constructor(public navCtrl: NavController, public popoverCtrl: PopoverController, public http: HttpClient) {}
+  constructor(public navCtrl: NavController, public popoverCtrl: PopoverController, public http: HttpClient, private api: Api) {}
 
   ngOnInit() {
-    this.getData();
-  }
-
-  getData(): void {
-    this.restToken()
-      .subscribe(
-      (tokenResponse) => {
-        this.accessToken = tokenResponse.access_token;//ignore
-        this.dataRetrival()
-          .subscribe(
-          responseData => {
-            this.today = responseData.order.filter(x => x.vesselStatus.toUpperCase() !== 'RETURNED');
-            this.completed = responseData.order.filter(x => x.vesselStatus.toUpperCase() === 'RETURNED');
-            console.log(responseData);
-          }
-          )
-      });
-  }
-
-  dataRetrival() {
-    return this.http
-      .get<any[]>(this.serviceUrl + "?access_token=" + this.accessToken)
-      .pipe(map(data => data));
-  }
-
-  getAuthToken() {
-    return "Basic " + btoa('arab-briyani-client:devglan-secret');
-  }
-
-  getAuthTokenParameters() {
-    return new HttpParams()
-      .set('username', 'Alex123')
-      .set('password', 'password')
-      .set('grant_type', 'password');
-  }
-
-  restToken() {
-    return this.http
-      .post<any[]>("http://localhost:63636/oauth/token",
-      this.getAuthTokenParameters().toString(), {
-        headers: new HttpHeaders().set('content-type', 'application/x-www-form-urlencoded')
-          .set('authorization', this.getAuthToken())
-          .set('cache-control', 'no-cache')
-      })
-      .pipe(map(token => token));
+	   this.api.getData("api/v1/order/listAll", 'order')
+		  .subscribe(dataFromService => {
+			this.today = dataFromService;
+			this.completed = dataFromService;
+		  });
   }
 
   slider(item, type) {

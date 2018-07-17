@@ -2,8 +2,9 @@ import {Component} from '@angular/core';
 import {IonicPage, NavController, PopoverController} from 'ionic-angular';
 import {RiderPopPage} from '../rider-pop/rider-pop';
 
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import {map} from 'rxjs/operators';
+import {HttpClient} from '@angular/common/http';
+
+import { Api } from '../../providers/';
 
 @IonicPage()
 @Component({
@@ -14,60 +15,16 @@ import {map} from 'rxjs/operators';
 
 export class RiderDeliveryPage {
   displayType: any = 'today';
-
-  serviceUrl = "http://localhost:63636/api/v1/order/listTodayOrders";
-  accessToken: string;
-
   today: any = [];
   completed: any = [];
-  constructor(public navCtrl: NavController, public popoverCtrl: PopoverController, public http: HttpClient) {}
+  constructor(public navCtrl: NavController, public popoverCtrl: PopoverController, public http: HttpClient, private api: Api) {}
 
    ngOnInit() {
-    this.getData();
-  }
-
-  getData(): void {
-    this.restToken()
-      .subscribe(
-      (tokenResponse) => {
-        this.accessToken = tokenResponse.access_token;//ignore
-        this.dataRetrival()
-          .subscribe(
-          responseData => {
-            this.today = responseData.order.filter(x => x.orderStatus.toUpperCase() !== 'COMPLETED');
-            this.completed = responseData.order.filter(x => x.orderStatus.toUpperCase() === 'COMPLETED');
-            console.log(responseData);
-          }
-          )
-      });
-  }
-
-  dataRetrival() {
-    return this.http
-      .get<any[]>(this.serviceUrl + "?access_token=" + this.accessToken)
-      .pipe(map(data => data));
-  }
-  
-  getAuthToken() {
-    return "Basic " + btoa('arab-briyani-client:devglan-secret');
-  }
-
-  getAuthTokenParameters() {
-    return new HttpParams()
-      .set('username', 'Alex123')
-      .set('password', 'password')
-      .set('grant_type', 'password');
-  }
-
-  restToken() {
-    return this.http
-      .post<any[]>("http://localhost:63636/oauth/token",
-      this.getAuthTokenParameters().toString(), {
-        headers: new HttpHeaders().set('content-type', 'application/x-www-form-urlencoded')
-          .set('authorization', this.getAuthToken())
-          .set('cache-control', 'no-cache')
-      })
-      .pipe(map(token => token));
+	 this.api.getData("api/v1/order/listOrdersByRider/ENDRI2", 'order')
+	   .subscribe(dataFromService => {
+            this.today = dataFromService.filter(x => x.orderStatus.toUpperCase() !== 'DELIVERED');
+            this.completed = dataFromService.filter(x => x.orderStatus.toUpperCase() === 'DELIVERED');
+	  });
   }
 
   slider(item, type) {
@@ -87,15 +44,15 @@ export class RiderDeliveryPage {
       ev: myEvent
     });
   }
-  openPage(page) {
-    console.log("Open Page");
-    this.navCtrl.push(page);
+  openPage(page, index: number) {
+    console.log("Open Page " + index);
+    console.log(this.today[index]);
+    this.navCtrl.push(page, {order: this.today[index]});
   }
   
   filterNonCompletedOrders (allOrders){
     return 
   }
-  
   
  getQuantity(item) {
     let orderQuantity = item.orderDetails
@@ -103,9 +60,4 @@ export class RiderDeliveryPage {
       .reduce((sum, current) => sum + current, 0);
     return orderQuantity;
   }
-  
-  
-  
-  
-  
 }

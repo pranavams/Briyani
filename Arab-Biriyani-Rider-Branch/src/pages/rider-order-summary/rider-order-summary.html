@@ -10,7 +10,7 @@
     <ion-card no-margin>
         <ion-card-header>
             <h1 class="orderId">{{item.order}}</h1>
-            <ion-badge item-end class="ready">OUT FOR DELIVERY</ion-badge>
+            <ion-badge item-end class="ready">{{item.orderStatus}}</ion-badge>
         </ion-card-header>
         <ion-card-content>
             <div class="slideHeader">
@@ -24,9 +24,9 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{{item.branch}}</td>
-                            <td>{{item.quantity}}</td>
-                            <td>{{item.vessels}}</td>
+                            <td>{{item.branch.name}}</td>
+                            <td>{{getQuantity()}}</td>
+                            <td>{{item.numberOfVessels}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -57,19 +57,15 @@
             </div>
             <div class="items" padding-vertical>
                 <h3>Items</h3>
+                <ion-list>
+    			<ion-item no-padding class="menuItem" *ngFor="let itemDetail of item.orderDetails; index as i">
+                
                 <div>
-                    <h1>Chicken Biriyani</h1>
-                    <h1 text-right>x 100</h1>
+                    <h1>{{itemDetail.item.menuName}} {{itemDetail.item.name}}</h1>
+                    <h1 text-right>x {{itemDetail.quantity}}</h1>
                 </div>
-                <div>
-                    <h1>Mutton Biriyani</h1>
-                    <h1 text-right>x 100</h1>
-                </div>
-                <div>
-                    <h1>Egg Biriyani</h1>
-                    <h1 text-right>x 80</h1>
-                </div>
-                <table>
+                </ion-item></ion-list>
+<!--                 <table>
                     <thead>
                         <tr>
                             <th>Vessel</th>
@@ -91,7 +87,7 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
+ -->            </div>
             <ion-item>
                 <ion-label>Returned Vessels</ion-label>
                 <ion-checkbox></ion-checkbox>
@@ -101,6 +97,6 @@
 </ion-content>
 <ion-footer>
     <ion-toolbar>
-        <button ion-button block (click)="presentToast()">Mark as Delivered</button>
+        <button ion-button block (click)="markAsDelivered()">Mark as Delivered</button>
     </ion-toolbar>
 </ion-footer>

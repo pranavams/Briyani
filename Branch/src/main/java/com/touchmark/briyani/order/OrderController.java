@@ -111,7 +111,7 @@ public class OrderController {
 	@PostMapping
 	@RequestMapping("/updateOrderStatus/")
 	@PreAuthorize("hasAuthority('BRANCH_USER')")
-	public ResponseEntity<OrderEntity> updateOrderStatus(@RequestBody UpdateOrder order){
+	public ResponseEntity<OrderEntity> updateOrderStatus(@RequestBody UpdateOrder order) {
 		try {
 			Log.log("OrderController", "updateOrderStatus", "Object Received To Update " + order);
 			return ResponseEntity.ok(this.service.updateOrderStatus(order));
@@ -158,5 +158,13 @@ public class OrderController {
 	public ResponseEntity<OrderResponse> getOrdersByVesselStatus(@PathVariable("status") String status) {
 		return ResponseEntity
 				.ok(OrderResponse.builder().order(this.service.getOrdersByVesselStatus(status.toUpperCase())).build());
+	}
+
+	@GetMapping
+	@RequestMapping("/listOrdersByRider/{id}")
+	@PreAuthorize("hasAuthority('BRANCH_USER')")
+	public ResponseEntity<OrderResponse> getOrdersByRider(@PathVariable("id") String id) {
+		return ResponseEntity.ok(OrderResponse.builder()
+				.order(Order.builder().build().transformEntities(this.service.getOrdersByRider(id))).build());
 	}
 }

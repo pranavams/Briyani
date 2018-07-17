@@ -25,4 +25,6 @@ public interface OrderRepository extends JpaRepository<OrderEntity, Long> {
 
 	public List<OrderEntity> findByBranchId(Long branchId);
 
+	public List<OrderEntity> findByRiderId(Long riderId);
+
 }

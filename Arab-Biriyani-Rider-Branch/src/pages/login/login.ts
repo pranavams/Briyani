@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, ToastController, NavParams, Events } from 'ionic-angular';
+import { IonicPage, NavController, LoadingController, Loading, ToastController, NavParams, Events } from 'ionic-angular';
 
 import { User } from '../../providers';
 import { MainPage } from '../';
@@ -13,46 +13,61 @@ export class LoginPage {
   // The account fields for the login form.
   // If you're using the username field with or without email, make
   // sure to add it to the type
-  account: { number: string, password: string } = {
-    number: '+65 652431',
-    password: 'test'
+  account: any = {
+	userName: 'Alex123',
+    password: 'password'
   };
 
-  // Our translated text strings
-  private loginErrorString: string;
+  loggedInUser: any = {
+	userName: 'Alex123',
+    password: 'password'
+  };
+  loading: Loading;
 
   constructor(public navCtrl: NavController,
-    public user: User,
+    public userService: User,
+    private loadingCtrl: LoadingController,
     public toastCtrl: ToastController,
     public navParams: NavParams,
     public events: Events) {
-    }
+  }
 
   // Attempt to login in through our User service
   doLogin() {
-    this.user.login(this.account).subscribe((resp) => {
-      if(this.account.number[this.account.number.length-1] == '1'){
-        this.navCtrl.push(MainPage);
-        this.events.publish("menuObject", 'branch', 2);
-      }
-      else if(this.account.number[this.account.number.length-1] == '2')
-        this.navCtrl.push('rider-delivery')
-      else if(this.account.number[this.account.number.length-1] == '3')
-        this.navCtrl.push('rider-user')
-    }, (err) => {
-      if(this.account.number[this.account.number.length-1] == '1')
-        this.navCtrl.push(MainPage);
-      else if(this.account.number[this.account.number.length-1] == '2')
-        this.navCtrl.push('rider-delivery')
-      else if(this.account.number[this.account.number.length-1] == '3')
-        this.navCtrl.push('rider-user')
-      // Unable to log in
-      let toast = this.toastCtrl.create({
-        message: this.loginErrorString,
-        duration: 3000,
-        position: 'top'
-      });
-      toast.present();
-    });
-  }
+	  this.showLoading();
+	  console.log("Loading Displayed");
+	  this.account.password = btoa(this.account.password);
+	    this.userService.login(this.account).subscribe(allowed => {
+	      if (allowed) {        
+	          this.navCtrl.push(MainPage);
+	          this.events.publish("menuObject", 'branch', 2);
+	      } else {
+	    	  this.showError("Access Denied");
+	      }
+	    },
+	      error => {
+	    	  this.showError(error);
+	      });  
+ }
+  showError(text) {
+	  this.loading.present().then(() => {
+		  this.loading.dismiss();
+		});
+
+	  let toast = this.toastCtrl.create({
+          message: text,
+          duration: 3000,
+          position: 'top'
+        });
+        toast.present();
+	  }
+  
+  showLoading() {
+	    this.loading = this.loadingCtrl.create({
+	      content: 'Please wait...',
+	      dismissOnPageChange: true
+	    });
+	    this.loading.present();
+	  }
+  
 }

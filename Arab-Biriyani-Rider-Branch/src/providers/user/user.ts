@@ -1,6 +1,7 @@
 import 'rxjs/add/operator/toPromise';
 
 import { Injectable } from '@angular/core';
+import {Observable} from 'rxjs/Observable';
 
 import { Api } from '../api/api';
 
@@ -18,7 +19,7 @@ import { Api } from '../api/api';
  *   user: {
  *     // User fields your app needs, like "id", "name", "email", etc.
  *   }
- * }Ø
+ * }Ã˜
  * ```
  *
  * If the `status` field is not `success`, then an error is detected and returned.
@@ -34,19 +35,21 @@ export class User {
    * the user entered on the form.
    */
   login(accountInfo: any) {
-    let seq = this.api.post('login', accountInfo).share();
+	  return Observable.create(observer => {
+		  	let headers = new Headers({'Content-Type': 'application/json'});
+		    let seq = this.api.post('api/v1/user/authenticate/', accountInfo, headers).share();
+		    seq.subscribe((res: any) => {
+		        // If the API returned a successful response, mark the user as
+				// logged in
+		    	
+		        observer.next(true);
+		        observer.complete();
+		        this._loggedIn(res);
+		      }, err => {
+		    	observer.next(false);
+		      });
 
-    seq.subscribe((res: any) => {
-      // If the API returned a successful response, mark the user as logged in
-      if (res.status == 'success') {
-        this._loggedIn(res);
-      } else {
-      }
-    }, err => {
-      console.error('ERROR', err);
-    });
-
-    return seq;
+	      });
   }
 
   /**
@@ -79,6 +82,9 @@ export class User {
    * Process a login/signup response to store user data
    */
   _loggedIn(resp) {
-    this._user = resp.user;
+	    this._user = resp;
+	    this.api.loggedInUser = resp;
+	    //this.api.loggedInUser['branchId'] = 'BRAN2';
+	    console.log("User Set " + JSON.stringify(this.api.loggedInUser));
   }
 }

@@ -15,15 +15,15 @@
 	value="completed"> Completed </ion-segment-button> </ion-segment>
 <div [ngSwitch]="displayType">
 	<div class="today" *ngSwitchCase="'today'">
-		<ion-card no-margin *ngFor="let item of today"> <ion-card-header
-			(click)="openPage('RiderOrderSummaryPage')">
+		<ion-card no-margin *ngFor="let item of today; index as i"> <ion-card-header
+			(click)="openPage('RiderOrderSummaryPage', i)">
 		<h1 class="orderId">{{item.orderId}}</h1>
 		<ion-badge item-end *ngIf="item.status == 'ready'" class="ready">READY</ion-badge>
 		<ion-badge item-end *ngIf="item.status == 'packing'" class="packing">PACKING</ion-badge>
 		</ion-card-header> <ion-card-content>
 		<div class="slideHeader">
 			<table width="100%" margin-bottom
-				(click)="openPage('RiderOrderSummaryPage')">
+				(click)="openPage('RiderOrderSummaryPage', i)">
 				<thead>
 					<tr>
 						<th>Branch</th>

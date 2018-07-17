@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +26,13 @@ public class ItemController {
 	@PreAuthorize("hasAuthority('BRANCH_USER')")
 	public ResponseEntity<ItemResponse> getAll() {
 		return ResponseEntity.ok(ItemResponse.builder().items(this.service.getAll()).build());
+	}
+
+	@GetMapping
+	@RequestMapping("/get/{id}")
+	@PreAuthorize("hasAuthority('BRANCH_USER')")
+	public ResponseEntity<Item> getAll(@PathVariable("id") String id) {
+		return ResponseEntity.ok(this.service.get(id));
 	}
 
 	@PostMapping

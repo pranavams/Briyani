@@ -63,7 +63,9 @@ public class CustomerService {
 
 	public Customer update(Customer object) {
 		try {
-			return Customer.builder().build().transformEntities(this.repository.saveAndFlush(getByID(object)));
+			CustomerEntity customerEntity = getByID(object);
+			customerEntity.updateWith(object);
+			return Customer.builder().build().transformEntities(this.repository.saveAndFlush(customerEntity));
 		} catch (Exception ex) {
 			throw new RuntimeException("Customer Not Found", ex);
 		}

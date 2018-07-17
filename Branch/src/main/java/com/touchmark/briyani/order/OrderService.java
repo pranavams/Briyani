@@ -248,4 +248,8 @@ public class OrderService {
 		return this.repository.findByRiderId(Rider.builder().id(id).build().DBID());
 	}
 
+	public List<Order> getOrdersByVesselStatusAndRiderId(String vesselStatus, String id) {
+		return Order.builder().build().transformEntities(getItemsInOrders(repository.findByVesselStatusAndRiderId(vesselStatus, Rider.builder().id(id).build().DBID())));
+	}
+
 }

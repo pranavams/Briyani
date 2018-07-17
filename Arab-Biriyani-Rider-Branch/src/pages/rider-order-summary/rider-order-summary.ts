@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { Api } from '../../providers/api/api';
 
 @IonicPage()
@@ -33,17 +33,14 @@ export class RiderOrderSummaryPage {
     }
     
     markAsDelivered () {
-  	  this.api.get("api/v1/order/updateVesselStatus/" + this.item.orderId + "/DELIVERED")
-	  	.subscribe(data => {
-	  		let orderUpdate : any = {
-	  			id: this.item.orderId,
-	  			orderStatus: 'DELIVERED',
-	  			riderId: 'ENDRI2'
-	  		};
-	  		this.api.postData("api/v1/order/updateOrderStatus/", orderUpdate)
-	  	  		.subscribe(data => {
-	  	  			this.navCtrl.push('RiderDeliveryPage');
-			});
+  		let orderUpdate : any = {
+  			id: this.item.orderId,
+  			orderStatus: 'DELIVERED',
+  			riderId: 'ENDRI2'
+  		};
+  		this.api.postData("api/v1/order/updateOrderStatus/", orderUpdate)
+  	  		.subscribe(data => {
+  	  			this.navCtrl.push('RiderDeliveryPage');
 		});
     }
 }

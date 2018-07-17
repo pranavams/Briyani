@@ -19,7 +19,7 @@ export class VesselsPage {
   constructor(public navCtrl: NavController, public popoverCtrl: PopoverController, public http: HttpClient, private api: Api) {}
 
   ngOnInit() {
-	   this.api.getData("api/v1/order/listAll", 'order')
+	   this.api.getData("api/v1/order/listOrdersByVesselStatusAndRider/RETURNED/ENDRI2", 'order')
 		  .subscribe(dataFromService => {
 			this.today = dataFromService;
 			this.completed = dataFromService;
@@ -28,14 +28,17 @@ export class VesselsPage {
 
   slider(item, type) {
     let index = this.today.indexOf(item);
-    if (this.today[index].sliderMargin == undefined || this.today[index].sliderMargin == '-130px -16px 0') {
-      this.today[index].sliderContent = true;
-      this.today[index].sliderMargin = '0 -16px 0';
-      this.today[index].sliderType = type;
-    }
-    else {
-      this.today[index].sliderMargin = '-130px -16px 0';
-    }
+	   this.api.get("api/v1/order/updateVesselStatus/" + item.orderId + "/RETURNED")
+		  .subscribe(dataFromService => {
+		    if (this.today[index].sliderMargin == undefined || this.today[index].sliderMargin == '-130px -16px 0') {
+		      this.today[index].sliderContent = true;
+		      this.today[index].sliderMargin = '0 -16px 0';
+		      this.today[index].sliderType = type;
+		    }
+		    else {
+		      this.today[index].sliderMargin = '-130px -16px 0';
+		    }
+	  });
   }
 
   getQuantity(item) {

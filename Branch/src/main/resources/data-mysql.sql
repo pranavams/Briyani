@@ -1,3 +1,5 @@
+### npm install ws@3.3.2 --save-dev --save-exact
+
 TRUNCATE TABLE CUSTOMER;
 TRUNCATE TABLE STAFF;
 TRUNCATE TABLE ORDER_DETAIL;

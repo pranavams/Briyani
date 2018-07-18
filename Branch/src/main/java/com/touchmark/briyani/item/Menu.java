@@ -29,7 +29,7 @@ public class Menu {
 		if (entity == null)
 			return Menu.builder().build();
 		try {
-			return Menu.builder().id(transformId(entity.getId())).name(entity.getName()).build();
+			return Menu.builder().id(transformId(entity.getId())).name(entity.getName().toUpperCase()).build();
 		} catch (Exception ex) {
 			Log.log("Menu", "Transform", "Exception " + ex, ex);
 			return Menu.builder().build();

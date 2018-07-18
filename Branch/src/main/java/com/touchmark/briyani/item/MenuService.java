@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.touchmark.briyani.commons.Validator;
+
 @Service
 public class MenuService {
 	private MenuRepository mRepository;
@@ -19,7 +21,20 @@ public class MenuService {
 	}
 
 	public MenuEntity save(Menu object) {
-		return mRepository.save(MenuEntity.builder().name(object.getName()).build());
+		MenuEntity entity = null;
+		entity = getOrCreateMenu(object);
+		return mRepository.save(entity);
+	}
+
+	private MenuEntity getOrCreateMenu(Menu object) {
+		MenuEntity entity;
+		if(Validator.isStringWithOutValue(object.getId()))
+			entity = MenuEntity.builder().name(object.getName().toUpperCase()).build();
+		else {
+			entity = mRepository.findById(object.DBID(object.getId())).get();
+			entity.setName(object.getName().toUpperCase());
+		}
+		return entity;
 	}
 
 	public List<Menu> getRecent() {

@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.touchmark.briyani.commons.Log;
+
 @RestController
 @RequestMapping(path = "/api/v1/menu/")
 @PreAuthorize("hasAuthority('BRANCH_USER')")
@@ -33,6 +35,7 @@ public class MenuController {
 	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE, path = "/save", produces = MediaType.APPLICATION_JSON_VALUE)
 	@PreAuthorize("hasAuthority('BRANCH_MANAGER')")
 	public ResponseEntity<MenuEntity> saveMenu(@RequestBody Menu object) {
+		Log.log("MenuController", "Save", "Object " + object);
 		object.validateForCreation();		
 		MenuEntity created = this.service.save(object);
 		return ResponseEntity.ok(created);

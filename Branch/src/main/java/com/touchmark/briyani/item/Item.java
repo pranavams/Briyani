@@ -35,8 +35,8 @@ public class Item {
 		if (entity == null)
 			return Item.builder().build();
 		try {
-			return Item.builder().id(transformId(entity.getId())).name(entity.getName())
-					.description(entity.getDescription()).price(entity.getPrice()).menuName(entity.getMenu().getName())
+			return Item.builder().id(transformId(entity.getId())).name(entity.getName().toUpperCase())
+					.description(entity.getDescription()).price(entity.getPrice()).menuName(entity.getMenu().getName().toUpperCase())
 					.menuId(transformMenuId(entity.getMenu().getId())).build();
 		} catch (Exception ex) {
 			Log.log("Item", "Transform", "Exception " + ex, ex);

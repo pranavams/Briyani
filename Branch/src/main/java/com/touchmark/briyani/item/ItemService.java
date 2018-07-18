@@ -24,7 +24,7 @@ public class ItemService {
 		MenuEntity menuEntity = null;
 		List<MenuEntity> menuNames = mRepository.findByNameIgnoreCase(object.getMenuName().trim());
 		if (menuNames == null || menuNames.size() == 0) {
-			menuEntity = mRepository.save(MenuEntity.builder().name(object.getMenuName()).build());
+			menuEntity = mRepository.save(MenuEntity.builder().name(object.getMenuName().toUpperCase()).build());
 		} else {
 			menuEntity = menuNames.get(0);
 		}

@@ -24,6 +24,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 		String name = authentication.getName();
 		String password = authentication.getCredentials().toString();
+		Log.log("CustomAuthProvider", "Authenticate", "User Name " + name);
 		try {
 			com.touchmark.briyani.user.User user = userService.authenticate(com.touchmark.briyani.user.User.builder().userName(name).password(password).build());
 			return new UsernamePasswordAuthenticationToken(user.getUserName(), user.getPassword(), getAuthority(user.getRoles()));

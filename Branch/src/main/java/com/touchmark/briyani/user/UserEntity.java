@@ -49,6 +49,9 @@ public class UserEntity {
 	@Column(name = "userType")
 	private String userType;
 
+	@Column(name = "userTypeId")
+	private Long userTypeId;
+	
 	@Column(name = "lastUpdatedDate")
 	private OffsetDateTime lastUpdatedDate;
 

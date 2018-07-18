@@ -9,6 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import com.touchmark.briyani.branch.Branch;
 import com.touchmark.briyani.commons.Log;
+import com.touchmark.briyani.commons.ValueObject;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,6 +32,8 @@ public class User {
 	private String password;
 	private String roles;
 	private String userType;
+	private String userTypeId;
+	private ValueObject valueObject;
 
 	public UserEntity createEntity() {
 		return UserEntity.builder().firstName(firstName).lastName(lastName).middleName(middleName).password(password)
@@ -43,11 +46,21 @@ public class User {
 		try {
 			return User.builder().firstName(entity.getFirstName()).id(transformId(entity.getActorId()))
 					.lastName(entity.getLastName()).middleName(entity.getMiddleName()).roles(entity.getRoles())
-					.userType(entity.getUserType()).userName(entity.getUserName()).build();
+					.userType(entity.getUserType()).userName(entity.getUserName())
+					.userTypeId(transformId(entity.getUserTypeId(), entity.getUserType()))
+					.build();
 		} catch (Exception ex) {
 			Log.log("User", "Transform", "Exception " + ex, ex);
 			return User.builder().build();
 		}
+	}
+
+	private String transformId(Long userTypeId, String userType) {
+		switch(userType.toLowerCase()) {
+		case "branch":
+			return Branch.builder().build().transformID(userTypeId);
+		}
+		return "";
 	}
 
 	private String transformId(Long actorId) {

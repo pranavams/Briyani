@@ -15,7 +15,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.touchmark.briyani.commons.AddressEntity;
-import com.touchmark.briyani.staff.Staff;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

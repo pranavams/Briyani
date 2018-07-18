@@ -7,6 +7,7 @@ import java.util.List;
 import com.touchmark.briyani.commons.Address;
 import com.touchmark.briyani.commons.AddressEntity;
 import com.touchmark.briyani.commons.Validator;
+import com.touchmark.briyani.commons.ValueObject;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,7 +18,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Branch {
+public class Branch implements ValueObject {
 	private String id;
 	private String name;
 	private String email;
@@ -63,7 +64,7 @@ public class Branch {
 		}
 	}
 
-	private String transformID(long id) {
+	public String transformID(long id) {
 		return "BRAN" + id;
 	}
 

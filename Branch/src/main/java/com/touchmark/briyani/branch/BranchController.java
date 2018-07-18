@@ -13,15 +13,21 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.touchmark.briyani.commons.Log;
+import com.touchmark.briyani.user.User;
+import com.touchmark.briyani.user.UserService;
+
 @RestController
 @RequestMapping(path = "/api/v1/branch/")
 public class BranchController {
 
 	private BranchService branchService;
+	private UserService userService;
 
 	@Autowired
-	public BranchController(BranchService branchService) {
+	public BranchController(BranchService branchService, UserService userService) {
 		this.branchService = branchService;
+		this.userService = userService;
 	}
 
 	@GetMapping
@@ -45,8 +51,15 @@ public class BranchController {
 	@PreAuthorize("hasAuthority('BRANCH_MANAGER')")
 	public ResponseEntity<Branch> saveBranch(@RequestBody Branch branch) {
 		branch.validateForCreation();
-		Branch createdBranch = this.branchService.saveBranch(branch);
-		return ResponseEntity.ok(createdBranch);
+		try {
+			Branch createdBranch = this.branchService.saveBranch(branch);
+			User user = User.builder().build().createBranchUser(branch);
+			this.userService.save(user);
+			return ResponseEntity.ok(createdBranch);
+		} catch (Exception ex) {
+			Log.error("BranchController", "saveBranch", "Branch Creation Failed " + ex, ex);
+			throw new RuntimeException("Branch Not Created");
+		}
 	}
 
 	@PostMapping
@@ -54,17 +67,23 @@ public class BranchController {
 	@PreAuthorize("hasAuthority('BRANCH_MANAGER')")
 	public ResponseEntity<Branch> update(@RequestBody Branch object) {
 		object.validateForUpdation();
-		Branch update = this.branchService.update(object);
-		return ResponseEntity.ok(update);
+		try {
+			Branch update = this.branchService.update(object);
+			User user = User.builder().build().createBranchUser(object);
+			this.userService.update(user);
+			return ResponseEntity.ok(update);
+		} catch (Exception ex) {
+			Log.error("BranchController", "saveBranch", "Branch Updation Failed " + ex, ex);
+			throw new RuntimeException("Branch Not Updated");
+		}
 	}
-	
+
 	@GetMapping
 	@RequestMapping(path = "/delete/{id}")
 	@PreAuthorize("hasAuthority('BRANCH_MANAGER')")
 	public ResponseEntity<String> delete(@PathVariable("id") String id) {
 		return ResponseEntity.ok(this.branchService.delete(id));
-	
+
 	}
-	
 
 }

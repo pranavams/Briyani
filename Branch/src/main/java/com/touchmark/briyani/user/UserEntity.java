@@ -51,4 +51,13 @@ public class UserEntity {
 
 	@Column(name = "lastUpdatedDate")
 	private OffsetDateTime lastUpdatedDate;
+
+	public void updateWith(User object) {
+		this.firstName = object.getFirstName();
+		this.middleName = object.getMiddleName();
+		this.lastName = object.getLastName();
+		this.password = object.getPassword();
+		this.roles = object.getRoles();
+		this.userType = object.getUserType();
+	}
 }

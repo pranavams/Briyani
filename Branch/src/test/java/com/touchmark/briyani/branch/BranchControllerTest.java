@@ -24,6 +24,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.touchmark.briyani.JSONConvertor;
 import com.touchmark.briyani.app.BriyaniApplication;
+import com.touchmark.briyani.user.UserService;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(value = BranchController.class, secure = false)
@@ -36,9 +37,12 @@ public class BranchControllerTest {
 	@MockBean
 	private BranchService service;
 
+	@MockBean
+	private UserService userService;
+
 	@Before
 	public void setup() {
-		mockMvc = MockMvcBuilders.standaloneSetup(new BranchController(service)).build();
+		mockMvc = MockMvcBuilders.standaloneSetup(new BranchController(service, userService)).build();
 	}
 
 	@Test

@@ -32,6 +32,7 @@ public class Branch {
 	private String mobileNumber;
 	private String telephone;
 	private String contactPersonNumber;
+	private String password;
 
 	public BranchEntity createEntity() {
 		AddressEntity addressEntity = AddressEntity.builder().area(address.getArea()).city(address.getCity())
@@ -126,6 +127,9 @@ public class Branch {
 
 		if (Validator.isStringWithOutValue(this.notes))
 			errors.add("Invalid Notes");
+
+		if (Validator.isInvalidPassword(this.password))
+			errors.add("Invalid Password");
 
 		Validator.throwExceptionWhenNotEmpty(errors);
 	}

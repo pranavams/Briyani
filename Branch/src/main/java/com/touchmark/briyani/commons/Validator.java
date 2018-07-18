@@ -72,4 +72,9 @@ public class Validator {
 			return true;
 		return false;
 	}
+
+	public static boolean isInvalidPassword(String password) {
+		return !(Pattern.compile("((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{12,32})").matcher(password).matches());
+	}
+
 }

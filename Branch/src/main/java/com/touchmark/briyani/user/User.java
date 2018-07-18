@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
+import org.springframework.security.crypto.bcrypt.BCrypt;
+
+import com.touchmark.briyani.branch.Branch;
 import com.touchmark.briyani.commons.Log;
 
 import lombok.AllArgsConstructor;
@@ -69,5 +72,17 @@ public class User {
 
 	public void getPassword(String password) {
 		this.password = new String(Base64.getDecoder().decode(password));
+	}
+
+	public User createBranchUser(Branch branch) {
+		setFirstName(branch.getContactPersonFirstName());
+
+		setLastName(branch.getContactPersonLastName());
+		setMiddleName(branch.getContactPersonMiddleName());
+		this.password = (BCrypt.hashpw(branch.getPassword(), BCrypt.gensalt(4)));
+		setRoles("BRANCH_USER");
+		setUserName(branch.getTelephone());
+		setUserType("BRANCH");
+		return this;
 	}
 }

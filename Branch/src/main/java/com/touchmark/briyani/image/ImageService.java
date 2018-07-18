@@ -1,6 +1,7 @@
 package com.touchmark.briyani.image;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.touchmark.briyani.branch.Branch;
 import com.touchmark.briyani.branch.BranchRepository;
+import com.touchmark.briyani.commons.Log;
 import com.touchmark.briyani.customer.Customer;
 import com.touchmark.briyani.customer.CustomerRepository;
 import com.touchmark.briyani.item.ImageEntity;
@@ -65,10 +67,32 @@ public class ImageService {
 
 	private void saveImage(Long id, String type, MultipartFile file) {
 		try {
-			this.imageRepository.save(ImageEntity.builder().typeId(id).image(file.getBytes()).type(type.toLowerCase())
-					.size(file.getSize()).fileName(file.getOriginalFilename()).build());
+			this.imageRepository.saveAndFlush(getOrCreateImage(id, type, file));
 		} catch (IOException e) {
 			throw new RuntimeException("Unable to process the image");
+		}
+	}
+
+	private ImageEntity getOrCreateImage(Long id, String type, MultipartFile file) throws IOException {
+		List<ImageEntity> images = getImageFromRepository(id, type);
+
+		if (images.isEmpty())
+			return createImageEntity(id, type, file);
+		else
+			return images.get(0);
+	}
+
+	private ImageEntity createImageEntity(Long id, String type, MultipartFile file) throws IOException {
+		return ImageEntity.builder().typeId(id).image(file.getBytes()).type(type.toLowerCase())
+				.size(file.getSize()).fileName(file.getOriginalFilename()).build();
+	}
+
+	private List<ImageEntity> getImageFromRepository(Long id, String type) {
+		try {
+			return this.imageRepository.findByTypeAndTypeId(type, id);
+		} catch (Exception ex) {
+			Log.error("ImageService", "getOrCreateImage", "Image Not Found Need to create", ex);
+			return Collections.emptyList();
 		}
 	}
 

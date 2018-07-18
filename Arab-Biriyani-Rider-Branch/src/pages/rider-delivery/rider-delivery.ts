@@ -60,4 +60,18 @@ export class RiderDeliveryPage {
       .reduce((sum, current) => sum + current, 0);
     return orderQuantity;
   }
+
+ deliverTheOrder(item, index){
+	let orderUpdate : any = {
+		id: item.orderId,
+		orderStatus: 'DELIVERED',
+		riderId: 'ENDRI2'
+	};	 
+	this.api.postData("api/v1/order/updateOrderStatus/", orderUpdate)
+	  	.subscribe(data => {
+	  		this.today = this.today
+	  			.filter(x => x.orderId !== item.orderId);
+	});
+ }
+ 
 }

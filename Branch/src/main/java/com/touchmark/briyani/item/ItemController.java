@@ -39,6 +39,7 @@ public class ItemController {
 	@RequestMapping("/save")
 	@PreAuthorize("hasAuthority('BRANCH_MANAGER')")
 	public ResponseEntity<Item> save(@RequestBody Item object) {
+		object.validateForCreation();		
 		Item created = this.service.save(object);
 		return ResponseEntity.ok(created);
 	}

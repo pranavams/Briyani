@@ -33,6 +33,7 @@ public class MenuController {
 	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE, path = "/save", produces = MediaType.APPLICATION_JSON_VALUE)
 	@PreAuthorize("hasAuthority('BRANCH_MANAGER')")
 	public ResponseEntity<MenuEntity> saveMenu(@RequestBody Menu object) {
+		object.validateForCreation();		
 		MenuEntity created = this.service.save(object);
 		return ResponseEntity.ok(created);
 	}

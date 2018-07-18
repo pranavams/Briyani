@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.touchmark.briyani.commons.Log;
+import com.touchmark.briyani.commons.Validator;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -49,5 +50,13 @@ public class Menu {
 			menus.add(transformEntity(menuEntity));
 		}
 		return menus;
+	}
+
+	public void validateForCreation() {
+		List<String> errors = new ArrayList<>();
+		if (Validator.isStringWithOutValue(this.name))
+			errors.add("Invalid Category Name");
+
+		Validator.throwExceptionWhenNotEmpty(errors);
 	}
 }

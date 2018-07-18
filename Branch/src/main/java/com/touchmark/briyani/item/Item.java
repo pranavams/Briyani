@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.touchmark.briyani.commons.Log;
+import com.touchmark.briyani.commons.Validator;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -61,5 +62,22 @@ public class Item {
 
 	public Long DBID() {
 		return Long.parseLong(id.substring(5));
+	}
+
+	public void validateForCreation() {
+		List<String> errors = new ArrayList<>();
+		if (Validator.isStringWithOutValue(this.menuName))
+			errors.add("Invalid Category Name");
+
+		if (Validator.isStringWithOutValue(this.name))
+			errors.add("Invalid Menu Name");
+
+		if (Validator.isStringWithOutValue(this.description))
+			errors.add("Invalid Description");
+
+		if (Validator.isInvalidPrice(this.price))
+			errors.add("Invalid Price");
+		
+		Validator.throwExceptionWhenNotEmpty(errors);
 	}
 }

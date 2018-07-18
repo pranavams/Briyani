@@ -19,11 +19,11 @@ export class VesselsPage {
   constructor(public navCtrl: NavController, public popoverCtrl: PopoverController, public http: HttpClient, private api: Api) {}
 
   ngOnInit() {
-	   this.api.getData("api/v1/order/listOrdersByVesselStatusAndRider/RETURNED/ENDRI2", 'order')
-		  .subscribe(dataFromService => {
-			this.today = dataFromService;
-			this.completed = dataFromService;
-		  });
+     this.api.getData("api/v1/order/listOrdersByVesselStatusAndRider/RETURNED/ENDRI2", 'order')
+	  .subscribe(dataFromService => {
+		this.today = dataFromService;
+		this.completed = dataFromService;
+	 });
   }
 
   slider(item, type) {

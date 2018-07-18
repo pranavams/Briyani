@@ -105,6 +105,7 @@ export class CartPage {
     cartDetails.userName = this.user;
     cartDetails.branchID = 'BRAN2';
     cartDetails.customerID = '';
+    cartDetails.orderStatus = 'NEW';
     cartDetails.deliveryAddress = this.Address;
     cartDetails.orderDetails = this.buildOrderDetails();
     return cartDetails;

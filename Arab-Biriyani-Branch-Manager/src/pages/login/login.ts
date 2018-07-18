@@ -14,14 +14,10 @@ export class LoginPage {
   // If you're using the username field with or without email, make
   // sure to add it to the type
   account: any = {
-	userName: 'Alex123',
-    password: 'password'
+	userName: '',
+    password: ''
   };
 
-  loggedInUser: any = {
-	userName: 'Alex123',
-    password: 'password'
-  };
   loading: Loading;
 
 // Our translated text strings
@@ -37,7 +33,6 @@ export class LoginPage {
   
   doLogin() {
 	  this.showLoading();
-	  console.log("Loading Displayed");
 	  this.account.password = btoa(this.account.password);
 	    this.userService.login(this.account).subscribe(allowed => {
 	      if (allowed) {        

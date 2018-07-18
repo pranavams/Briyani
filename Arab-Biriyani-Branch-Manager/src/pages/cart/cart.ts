@@ -102,8 +102,8 @@ export class CartPage {
   buildCartDetails(){
 	let cartDetails : any = {};
     cartDetails.couponCode = '10percent';
-    cartDetails.userName = this.user;
-    cartDetails.branchID = 'BRAN2';
+    cartDetails.userName = this.api.loggedInUser['userName'];
+    cartDetails.branchID = this.api.loggedInUser['valueObject']['id'];
     cartDetails.customerID = '';
     cartDetails.orderStatus = 'NEW';
     cartDetails.deliveryAddress = this.Address;

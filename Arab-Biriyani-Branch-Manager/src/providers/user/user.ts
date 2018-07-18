@@ -32,20 +32,19 @@ export class User {
 	 */
   login(accountInfo: User) {
 	  return Observable.create(observer => {
-		  	let headers = new Headers({'Content-Type': 'application/json'});
-		    let seq = this.api.post('api/v1/user/authenticate/', accountInfo, headers).share();
-		    seq.subscribe((res: any) => {
-		        // If the API returned a successful response, mark the user as
-				// logged in
-		    	
-		        observer.next(true);
-		        observer.complete();
-		        this._loggedIn(res);
-		      }, err => {
-		    	observer.next(false);
-		      });
-
+	  	let headers = new Headers({'Content-Type': 'application/json'});
+	    let seq = this.api.post('api/v1/user/authenticate/', accountInfo, headers).share();
+	    seq.subscribe((res: any) => {
+	        // If the API returned a successful response, mark the user as
+			// logged in
+	        observer.next(true);
+	        observer.complete();
+	        this._loggedIn(res, accountInfo['password']);
+	      }, err => {
+	    	observer.next(false);
 	      });
+
+	   });
   }
 
   public getUserInfo() : any {
@@ -62,7 +61,7 @@ export class User {
     seq.subscribe((res: any) => {
       // If the API returned a successful response, mark the user as logged in
       if (res.status == 'success') {
-        this._loggedIn(res);
+        this._loggedIn(res, 'password');
       }
     }, err => {
       console.error('ERROR', err);
@@ -81,10 +80,9 @@ export class User {
   /**
 	 * Process a login/signup response to store user data
 	 */
-  _loggedIn(resp) {
+  _loggedIn(resp, password: string) {
     this._user = resp;
     this.api.loggedInUser = resp;
-    //this.api.loggedInUser['branchId'] = 'BRAN2';
-    console.log("User Set " + JSON.stringify(this.api.loggedInUser));
+    this.api.loggedInUser['password'] = password;
   }
 }

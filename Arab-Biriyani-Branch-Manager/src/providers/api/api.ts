@@ -9,22 +9,25 @@ import {Observable} from 'rxjs/Observable';
 @Injectable()
 
 export class Api {  
-   url: string = 'https://biriyani-services.cfapps.io';
-
+  
+  //
+	
+  url: string = 'https://biriyani-services.cfapps.io';
   loggedInUser : any;
   accessToken: string;
   
   constructor(public http: HttpClient) {
   }
-  
+
 	getAuthToken() {
 		return "Basic " + btoa('arab-briyani-client:devglan-secret');;
 	}
 	
 	getAuthTokenParameters() {
+	  console.log("Auth Token Params" + this.loggedInUser['userName'] + ", " + this.loggedInUser['password']);
 	  return new HttpParams()
-	    .set('username', 'Alex123')
-	    .set('password', 'password')
+	    .set('username', this.loggedInUser['userName'])
+	    .set('password', atob(this.loggedInUser['password']))
 	    .set('grant_type', 'password');
 	}
 	

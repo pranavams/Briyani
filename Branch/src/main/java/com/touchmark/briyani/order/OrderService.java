@@ -115,6 +115,7 @@ public class OrderService {
 		order.setTaxAmount(totalPrice * 0.06f);
 		order.setTaxPercentage(6);
 		order.setTotalAmount(totalPrice * 1.06f);
+		order.setOrderStatus("NEW");
 		OrderEntity createdOrder = repository.saveAndFlush(order);
 		List<OrderDetailEntity> createdOrderDetails = new ArrayList<>();
 		for (OrderDetail orderDetail : object.getOrderDetails()) {

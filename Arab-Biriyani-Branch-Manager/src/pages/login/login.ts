@@ -30,7 +30,7 @@ export class LoginPage {
     public navParams: NavParams,
     public events: Events) {
     }
-  
+
   doLogin() {
 	  this.showLoading();
 	  this.account.password = btoa(this.account.password);

@@ -53,7 +53,8 @@ public class BranchController {
 		branch.validateForCreation();
 		try {
 			Branch createdBranch = this.branchService.saveBranch(branch);
-			User user = User.builder().build().createBranchUser(branch);
+			createdBranch.setPassword(branch.getPassword());
+			User user = User.builder().build().createBranchUser(createdBranch);
 			this.userService.save(user);
 			return ResponseEntity.ok(createdBranch);
 		} catch (Exception ex) {

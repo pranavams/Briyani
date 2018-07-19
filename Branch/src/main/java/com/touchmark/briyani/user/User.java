@@ -37,7 +37,20 @@ public class User {
 
 	public UserEntity createEntity() {
 		return UserEntity.builder().firstName(firstName).lastName(lastName).middleName(middleName).password(password)
+				.userTypeId(DBID(userType, userTypeId))
 				.userType(userType).lastUpdatedDate(OffsetDateTime.now()).roles(roles).userName(userName).build();
+	}
+
+	private Long DBID(String userType, String userTypeId) {
+		if (userType == null || userTypeId == null) {
+			Log.log("User", "transformId id, type ", "Invalid Values " + userType + ", " + userTypeId);
+			return null;
+		}
+		switch (userType.toLowerCase()) {
+		case "branch":
+			return Branch.builder().id(userTypeId).build().DBID();
+		}
+		return null;
 	}
 
 	public User transformEntity(UserEntity entity) {
@@ -47,8 +60,7 @@ public class User {
 			return User.builder().firstName(entity.getFirstName()).id(transformId(entity.getActorId()))
 					.lastName(entity.getLastName()).middleName(entity.getMiddleName()).roles(entity.getRoles())
 					.userType(entity.getUserType()).userName(entity.getUserName())
-					.userTypeId(transformId(entity.getUserTypeId(), entity.getUserType()))
-					.build();
+					.userTypeId(transformId(entity.getUserTypeId(), entity.getUserType())).build();
 		} catch (Exception ex) {
 			Log.log("User", "Transform", "Exception " + ex, ex);
 			return User.builder().build();
@@ -56,7 +68,11 @@ public class User {
 	}
 
 	private String transformId(Long userTypeId, String userType) {
-		switch(userType.toLowerCase()) {
+		if (userType == null || userTypeId == null) {
+			Log.log("User", "transformId id, type ", "Invalid Values " + userType + ", " + userTypeId);
+			return "";
+		}
+		switch (userType.toLowerCase()) {
 		case "branch":
 			return Branch.builder().build().transformID(userTypeId);
 		}
@@ -89,13 +105,13 @@ public class User {
 
 	public User createBranchUser(Branch branch) {
 		setFirstName(branch.getContactPersonFirstName());
-
 		setLastName(branch.getContactPersonLastName());
 		setMiddleName(branch.getContactPersonMiddleName());
-		this.password = (BCrypt.hashpw(branch.getPassword(), BCrypt.gensalt(4)));
+		this.password = (BCrypt.hashpw(branch.getPassword(), BCrypt.gensalt()));
 		setRoles("BRANCH_USER");
 		setUserName(branch.getTelephone());
 		setUserType("BRANCH");
+		setUserTypeId(branch.getId());
 		return this;
 	}
 }

@@ -59,14 +59,10 @@ export class CartPage {
         this.cartItems[index].quantity++;
       }
     });
-    this.cartItems.forEach((element, index) => {
-      console.log(this.cartItems[index]);
-    })
     this.cartCount();
   }
 
   remove(item) {
-    console.log("item :" + item);
     this.cartItems.forEach((element, index) => {
       if (item === element.menuName && element.quantity > 0) {
         this.cartItems[index].quantity--;

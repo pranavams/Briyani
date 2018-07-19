@@ -24,7 +24,6 @@ export class Api {
 	}
 	
 	getAuthTokenParameters() {
-	  console.log("Auth Token Params" + this.loggedInUser['userName'] + ", " + this.loggedInUser['password']);
 	  return new HttpParams()
 	    .set('username', this.loggedInUser['userName'])
 	    .set('password', atob(this.loggedInUser['password']))

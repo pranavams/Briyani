@@ -8,17 +8,16 @@ import org.springframework.data.jpa.repository.Query;
 public interface OrderRepository extends JpaRepository<OrderEntity, Long> {
 	public List<OrderEntity> findByCustomerId(Long customerId);
 
-	@Query(value = "SELECT * FROM ORDER_INFO p WHERE ADDRESS_ID = 1? ORDER BY LAST_UPDATED_DATE DESC LIMIT 2",  nativeQuery = true)
+	@Query(value = "SELECT * FROM ORDER_INFO p WHERE ADDRESS_ID = 1? ORDER BY LAST_UPDATED_DATE DESC LIMIT 2", nativeQuery = true)
 	List<OrderEntity> findRecent(Long branchId);
 
-	@Query (value = "SELECT * FROM ORDER_INFO WHERE WHERE ADDRESS_ID = 1? AND DATE(date_and_time) = DATE(now())", nativeQuery = true)
+	@Query(value = "SELECT * FROM ORDER_INFO WHERE ADDRESS_ID = 1? AND DATE(date_and_time) = DATE(now())", nativeQuery = true)
 	public List<OrderEntity> findTodayOrders(Long branchId);
-	
-	
+
 	public List<OrderEntity> findByPaymentStatus(String paymentStatus);
-	
+
 	public List<OrderEntity> findByOrderStatus(String orderStatus);
-	
+
 	public List<OrderEntity> findByOrderStatusNot(String orderStatus);
 
 	public List<OrderEntity> findByVesselStatus(String status);

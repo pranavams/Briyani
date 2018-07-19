@@ -24,7 +24,7 @@ constructor(public api: Api, public navCtrl: NavController, private http: HttpCl
   }
 
   getData(paymentStatus: string): void {
-    this.api.getData("api/v1/order/listAll/", 'order')
+	 this.api.getData("api/v1/order/listForBranch/" + this.api.loggedInUser['valueObject']['id'], 'order')
 	  .subscribe(dataFromService => {
             this.paymentHistory = dataFromService;
             this.tempArr = dataFromService;
@@ -36,7 +36,7 @@ constructor(public api: Api, public navCtrl: NavController, private http: HttpCl
     if (this.category == 'all')
       this.tempArr = this.paymentHistory;
     else {
-      this.tempArr = this.paymentHistory.filter(element => element.paymentStatus === this.category.toUpperCase());
+      this.tempArr = this.paymentHistory.filter(element => element.paymentStatus.toUpperCase() === this.category.toUpperCase());
     }
   }
 

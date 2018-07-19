@@ -64,32 +64,26 @@ public class OrderController {
 	}
 
 	@GetMapping
-	@RequestMapping("/listRecent")
+	@RequestMapping("/listRecent/{branchId}")
 	@PreAuthorize("hasAuthority('BRANCH_USER')")
-	public ResponseEntity<OrderResponse> getRecent() {
-		return ResponseEntity.ok(OrderResponse.builder().order(this.service.getRecent()).build());
+	public ResponseEntity<OrderResponse> getRecent(@PathVariable("branchId") String branchId) {
+		return ResponseEntity.ok(OrderResponse.builder().order(this.service.getRecent(branchId)).build());
 	}
 
 	@GetMapping
-	@RequestMapping("/listTodayOrders")
+	@RequestMapping("/listTodayOrders/{branchId}")
 	@PreAuthorize("hasAuthority('BRANCH_USER')")
-	public ResponseEntity<OrderResponse> getTodayOrders() {
-		return ResponseEntity.ok(OrderResponse.builder().order(this.service.getTodayOrders()).build());
+	public ResponseEntity<OrderResponse> getTodayOrders(@PathVariable("branchId") String branchId) {
+		return ResponseEntity.ok(OrderResponse.builder().order(this.service.getTodayOrders(branchId)).build());
 	}
 
 	@GetMapping
-	@RequestMapping("/listOrders/{status}")
+	@RequestMapping("/listOrders/{status}/{branchId}")
 	@PreAuthorize("hasAuthority('BRANCH_USER')")
-	public ResponseEntity<OrderResponse> getOrders(@PathVariable("status") String status) {
-		return ResponseEntity.ok(OrderResponse.builder().order(this.service.getOrders(status.toUpperCase())).build());
-	}
-
-	@GetMapping
-	@RequestMapping("/listOrdersOngoing/{status}")
-	@PreAuthorize("hasAuthority('BRANCH_USER')")
-	public ResponseEntity<OrderResponse> getOrdersOngoing(@PathVariable("status") String status) {
-		return ResponseEntity
-				.ok(OrderResponse.builder().order(this.service.getOrdersOnGoing(status.toUpperCase())).build());
+	public ResponseEntity<OrderResponse> getOrders(@PathVariable("status") String status,
+			@PathVariable("branchId") String branchId) {
+		return ResponseEntity.ok(
+				OrderResponse.builder().order(this.service.getOrdersForBranch(status.toUpperCase(), branchId)).build());
 	}
 
 	@GetMapping
@@ -163,9 +157,10 @@ public class OrderController {
 	@GetMapping
 	@RequestMapping("/listOrdersByVesselStatusAndRider/{status}/{id}")
 	@PreAuthorize("hasAuthority('BRANCH_USER')")
-	public ResponseEntity<OrderResponse> getOrdersByVesselStatusForRider(@PathVariable("status") String status, @PathVariable("id") String id) {
-		return ResponseEntity
-				.ok(OrderResponse.builder().order(this.service.getOrdersByVesselStatusAndRiderId(status.toUpperCase(), id)).build());
+	public ResponseEntity<OrderResponse> getOrdersByVesselStatusForRider(@PathVariable("status") String status,
+			@PathVariable("id") String id) {
+		return ResponseEntity.ok(OrderResponse.builder()
+				.order(this.service.getOrdersByVesselStatusAndRiderId(status.toUpperCase(), id)).build());
 	}
 
 	@GetMapping

@@ -116,6 +116,7 @@ public class OrderService {
 		order.setTaxPercentage(6);
 		order.setTotalAmount(totalPrice * 1.06f);
 		order.setOrderStatus("NEW");
+		order.setPaymentStatus("PENDING");
 		OrderEntity createdOrder = repository.saveAndFlush(order);
 		List<OrderDetailEntity> createdOrderDetails = new ArrayList<>();
 		for (OrderDetail orderDetail : object.getOrderDetails()) {
@@ -143,20 +144,16 @@ public class OrderService {
 		return totalPrice;
 	}
 
-	public List<Order> getRecent() {
-		return Order.builder().build().transformEntities(repository.findRecent());
+	public List<Order> getRecent(String branchId) {
+		return Order.builder().build().transformEntities(repository.findRecent(Branch.builder().id(branchId).build().DBID()));
 	}
 
-	public List<Order> getTodayOrders() {
-		return Order.builder().build().transformEntities(getItemsInOrders(repository.findTodayOrders()));
+	public List<Order> getTodayOrders(String branchId) {
+		return Order.builder().build().transformEntities(getItemsInOrders(repository.findTodayOrders(Branch.builder().id(branchId).build().DBID())));
 	}
 
 	public List<Order> getOrders(String orderStatus) {
 		return Order.builder().build().transformEntities(getItemsInOrders(repository.findByOrderStatus(orderStatus)));
-	}
-
-	public List<Order> getOrdersOnGoing(String status) {
-		return Order.builder().build().transformEntities(getItemsInOrders(repository.findByOrderStatusNot(status)));
 	}
 
 	public List<Order> getOrdersByPaymentStatus(String paymentStatus) {
@@ -250,7 +247,13 @@ public class OrderService {
 	}
 
 	public List<Order> getOrdersByVesselStatusAndRiderId(String vesselStatus, String id) {
-		return Order.builder().build().transformEntities(getItemsInOrders(repository.findByVesselStatusAndRiderId(vesselStatus, Rider.builder().id(id).build().DBID())));
+		return Order.builder().build().transformEntities(getItemsInOrders(
+				repository.findByVesselStatusAndRiderId(vesselStatus, Rider.builder().id(id).build().DBID())));
+	}
+
+	public List<Order> getOrdersForBranch(String status, String branchId) {
+		return Order.builder().build().transformEntities(getItemsInOrders(
+				repository.findByOrderStatusAndBranchId(status, Branch.builder().id(branchId).build().DBID())));
 	}
 
 }

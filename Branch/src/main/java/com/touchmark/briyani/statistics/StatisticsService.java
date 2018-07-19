@@ -23,9 +23,9 @@ public class StatisticsService {
 		this.orderRepository = orderRepository;
 	}
 
-	public Statistics get() {
+	public Statistics get(String branchId) {
 		Statistics statistics = Statistics.builder().build();
-		List<OrderEntity> overAllOrders = this.orderRepository.findAll();
+		List<OrderEntity> overAllOrders = this.orderRepository.findByBranchId(Branch.builder().id(branchId).build().DBID());
 		statistics.setOverallDue(getDueAmount(overAllOrders));
 		statistics.setOverallPaid(getPaidAmount(overAllOrders));
 		statistics.setOverallSales(getTotalSales(overAllOrders));
@@ -34,7 +34,7 @@ public class StatisticsService {
 		statistics.setOverallNumberOfOrders(overAllOrders.size());
 		statistics.setOverallNumberOfPurchaseRequest(overAllOrders.size());
 
-		List<OrderEntity> todayOrders = this.orderRepository.findTodayOrders();
+		List<OrderEntity> todayOrders = this.orderRepository.findTodayOrders(Branch.builder().id(branchId).build().DBID());
 		statistics.setTodayDue(getDueAmount(todayOrders));
 		statistics.setTodayOrders(todayOrders.size());
 		statistics.setTodayPaid(getPaidAmount(todayOrders));

@@ -12,7 +12,10 @@ export class Api {
   
   //
 	
+  //url: string = 'http://localhost:18181';
+	
   url: string = 'https://biriyani-services.cfapps.io';
+  
   loggedInUser : any;
   accessToken: string;
   

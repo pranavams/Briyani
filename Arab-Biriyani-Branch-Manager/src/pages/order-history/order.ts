@@ -21,7 +21,6 @@ export class OrderPage implements OnInit {
 
   ngOnInit() {
     this.getCompletedOrders();
-    this.getPendingOrders();
   }
 
   calculateQuantity(id: string, status: string) {
@@ -39,16 +38,10 @@ export class OrderPage implements OnInit {
   }
 
   getCompletedOrders(): void {
-    this.api.getData("api/v1/order/listOrders/completed", 'order')
+    this.api.getData("api/v1/order/listForBranch/" + this.api.loggedInUser['valueObject']['id'], 'order')
 	  .subscribe(dataFromService => {
-		this.completedOrders = dataFromService;
-	  });
-  }
-
-  getPendingOrders(): void {
-    this.api.getData("api/v1/order/listOrdersOngoing/completed", 'order')
-	  .subscribe(dataFromService => {
-		this.pendingOrders = dataFromService;
+		this.completedOrders = dataFromService.filter(x => x.orderStatus.toUpperCase() === 'COMPLETED');
+		this.pendingOrders = dataFromService.filter(x => x.orderStatus.toUpperCase() !== 'COMPLETED');
 	  });
   }
 

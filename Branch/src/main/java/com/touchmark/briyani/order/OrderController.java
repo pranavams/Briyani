@@ -167,7 +167,14 @@ public class OrderController {
 	@RequestMapping("/listOrdersByRider/{id}")
 	@PreAuthorize("hasAuthority('BRANCH_USER')")
 	public ResponseEntity<OrderResponse> getOrdersByRider(@PathVariable("id") String id) {
-		return ResponseEntity.ok(OrderResponse.builder()
-				.order(Order.builder().build().transformEntities(this.service.getOrdersByRider(id))).build());
+		return ResponseEntity.ok(OrderResponse.builder().order(this.service.getOrdersByRider(id)).build());
+	}
+
+
+	@GetMapping
+	@RequestMapping("/listTodayOrdersByRider/{id}")
+	@PreAuthorize("hasAuthority('BRANCH_USER')")
+	public ResponseEntity<OrderResponse> getTodayOrdersByRider(@PathVariable("id") String id) {
+		return ResponseEntity.ok(OrderResponse.builder().order(this.service.getTodayOrdersByRider(id)).build());
 	}
 }

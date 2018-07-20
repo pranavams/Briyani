@@ -242,8 +242,9 @@ public class OrderService {
 		return riderEntity == null;
 	}
 
-	public List<OrderEntity> getOrdersByRider(String id) {
-		return this.repository.findByRiderId(Rider.builder().id(id).build().DBID());
+	public List<Order> getOrdersByRider(String id) {
+		return Order.builder().build()
+				.transformEntities(getItemsInOrders(this.repository.findByRiderId(Rider.builder().id(id).build().DBID())));
 	}
 
 	public List<Order> getOrdersByVesselStatusAndRiderId(String vesselStatus, String id) {
@@ -254,6 +255,10 @@ public class OrderService {
 	public List<Order> getOrdersForBranch(String status, String branchId) {
 		return Order.builder().build().transformEntities(getItemsInOrders(
 				repository.findByOrderStatusAndBranchId(status, Branch.builder().id(branchId).build().DBID())));
+	}
+
+	public List<Order> getTodayOrdersByRider(String id) {
+		return Order.builder().build().transformEntities(getItemsInOrders(repository.findTodayOrdersByRiderId(Rider.builder().id(id).build().DBID())));
 	}
 
 }

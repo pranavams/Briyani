@@ -13,14 +13,11 @@ import { Api } from '../../providers/';
 
 export class NotificationPage {
   details: any = []
-  accessToken: string;
 
- // details: any = {}
-  
   constructor(public navCtrl: NavController, public http: HttpClient, private api: Api) {}
   
    ngOnInit() {
-	   this.api.getData("api/v1/order/listTodayOrders", 'order')
+	   this.api.getData("api/v1/order/listTodayOrdersByRider/ENDRI2", 'order')
 		  .subscribe(dataFromService => {
 			this.details = dataFromService;
 		  });

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavController, PopoverController} from 'ionic-angular';
+import {IonicPage, NavController, PopoverController, ToastController} from 'ionic-angular';
 
 import {HttpClient} from '@angular/common/http';
 import {Api } from '../../providers/';
@@ -14,30 +14,27 @@ import {Api } from '../../providers/';
 export class VesselsPage {
   displayType: any = 'today';
 
-  today: any = [];
-  completed: any = [];
-  constructor(public navCtrl: NavController, public popoverCtrl: PopoverController, public http: HttpClient, private api: Api) {}
+  returned: any = [];
+  notReturned: any = [];
+  constructor(public navCtrl: NavController, public popoverCtrl: PopoverController, public http: HttpClient, private api: Api, private toastCtrl: ToastController) {}
 
   ngOnInit() {
-     this.api.getData("api/v1/order/listOrdersByVesselStatusAndRider/RETURNED/ENDRI2", 'order')
+     this.api.getData("api/v1/order/listOrdersByRider/ENDRI2", 'order')
 	  .subscribe(dataFromService => {
-		this.today = dataFromService;
-		this.completed = dataFromService;
+		this.returned = dataFromService.filter(x => x.vesselStatus.toUpperCase() === 'RETURNED');
+		this.notReturned = dataFromService.filter(x => x.vesselStatus.toUpperCase() !== 'RETURNED');
 	 });
   }
 
   slider(item, type) {
-    let index = this.today.indexOf(item);
+    let index = this.returned.indexOf(item);
 	   this.api.get("api/v1/order/updateVesselStatus/" + item.orderId + "/RETURNED")
 		  .subscribe(dataFromService => {
-		    if (this.today[index].sliderMargin == undefined || this.today[index].sliderMargin == '-130px -16px 0') {
-		      this.today[index].sliderContent = true;
-		      this.today[index].sliderMargin = '0 -16px 0';
-		      this.today[index].sliderType = type;
-		    }
-		    else {
-		      this.today[index].sliderMargin = '-130px -16px 0';
-		    }
+			  this.returned.push(item);
+			  this.notReturned = this.notReturned.filter(x => x.orderId !== item.orderId);
+			  this.showToast('Vessels Returned');
+	  }, error => {
+		  this.showToast("Vessel Status not Updated");
 	  });
   }
 
@@ -53,5 +50,14 @@ export class VesselsPage {
     popover.present({
       ev: myEvent
     });
+  }
+  
+  showToast(message){
+	let toast = this.toastCtrl.create({
+      message: message,
+      duration: 3000,
+      position: 'top'
+    });
+    toast.present();
   }
 }

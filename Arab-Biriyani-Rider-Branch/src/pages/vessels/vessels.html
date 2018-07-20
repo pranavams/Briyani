@@ -15,7 +15,7 @@
 	value="completed"> Returned </ion-segment-button> </ion-segment>
 <div [ngSwitch]="displayType">
 	<div class="today" *ngSwitchCase="'today'">
-		<ion-card no-margin *ngFor="let item of today"> <ion-card-header
+		<ion-card no-margin *ngFor="let item of notReturned"> <ion-card-header
 			(click)="slider(item,'vessels')">
 		<h1 class="orderId">{{item.orderId}}</h1>
 		<!-- <ion-badge item-end *ngIf="item.status == 'ready'" class="ready">READY</ion-badge>
@@ -71,7 +71,7 @@
 		</ion-card-content> </ion-card>
 	</div>
 	<div class="completed" *ngSwitchCase="'completed'">
-		<ion-card no-margin *ngFor="let item of completed"> <ion-card-header>
+		<ion-card no-margin *ngFor="let item of returned"> <ion-card-header>
 		<h1 class="orderId">{{item.orderId}}</h1>
 		<!-- <ion-badge item-end class="completed">COMPLETED</ion-badge> --> </ion-card-header>
 		<ion-card-content>

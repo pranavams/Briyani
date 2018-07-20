@@ -16,17 +16,20 @@ import org.springframework.web.bind.annotation.RestController;
 import com.touchmark.briyani.branch.BranchService;
 import com.touchmark.briyani.commons.Log;
 import com.touchmark.briyani.commons.ValueObject;
+import com.touchmark.briyani.rider.RiderService;
 
 @RestController
 @RequestMapping(path = "/api/v1/user/")
 public class UserController {
 	private UserService service;
 	private BranchService branchService;
+	private RiderService riderService;
 
 	@Autowired
-	public UserController(UserService service, BranchService branchService) {
+	public UserController(UserService service, BranchService branchService, RiderService riderService) {
 		this.service = service;
 		this.branchService = branchService;
+		this.riderService = riderService;
 	}
 
 	@GetMapping
@@ -70,6 +73,8 @@ public class UserController {
 		switch (userType.toLowerCase()) {
 		case "branch":
 			return this.branchService.get(userTypeId);
+		case "rider":
+			return this.riderService.get(userTypeId);
 		}
 		throw new RuntimeException("Invalid User Type");
 	}

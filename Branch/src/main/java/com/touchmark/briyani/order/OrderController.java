@@ -71,10 +71,10 @@ public class OrderController {
 	}
 
 	@GetMapping
-	@RequestMapping("/listTodayOrders/{branchId}")
+	@RequestMapping("/listTodayOrders/")
 	@PreAuthorize("hasAuthority('BRANCH_USER')")
-	public ResponseEntity<OrderResponse> getTodayOrders(@PathVariable("branchId") String branchId) {
-		return ResponseEntity.ok(OrderResponse.builder().order(this.service.getTodayOrders(branchId)).build());
+	public ResponseEntity<OrderResponse> getTodayOrders() {
+		return ResponseEntity.ok(OrderResponse.builder().order(this.service.getTodayOrders()).build());
 	}
 
 	@GetMapping

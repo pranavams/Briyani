@@ -78,6 +78,8 @@ public class User {
 		switch (userType.toLowerCase()) {
 		case "branch":
 			return Branch.builder().build().transformID(userTypeId);
+		case "rider":
+			return Rider.builder().build().transformId(userTypeId, "Branch Rider");
 		}
 		return "";
 	}

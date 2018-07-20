@@ -9,6 +9,7 @@ import com.touchmark.briyani.commons.Address;
 import com.touchmark.briyani.commons.AddressEntity;
 import com.touchmark.briyani.commons.Log;
 import com.touchmark.briyani.commons.Validator;
+import com.touchmark.briyani.commons.ValueObject;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,7 +20,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Rider implements Serializable {
+public class Rider implements Serializable, ValueObject {
 	private static final long serialVersionUID = 1L;
 	private String id;
 	private String departmentType;
@@ -80,7 +81,7 @@ public class Rider implements Serializable {
 		}
 	}
 
-	private String transformId(long id, String departmentType) {
+	public String transformId(long id, String departmentType) {
 		if ("Branch Rider".equalsIgnoreCase(departmentType))
 			return "BRRI" + id;
 		else

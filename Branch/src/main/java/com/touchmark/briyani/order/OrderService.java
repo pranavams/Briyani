@@ -148,8 +148,8 @@ public class OrderService {
 		return Order.builder().build().transformEntities(repository.findRecent(Branch.builder().id(branchId).build().DBID()));
 	}
 
-	public List<Order> getTodayOrders(String branchId) {
-		return Order.builder().build().transformEntities(getItemsInOrders(repository.findTodayOrders(Branch.builder().id(branchId).build().DBID())));
+	public List<Order> getTodayOrders() {
+		return Order.builder().build().transformEntities(getItemsInOrders(repository.findTodayOrders()));
 	}
 
 	public List<Order> getOrders(String orderStatus) {

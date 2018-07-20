@@ -41,7 +41,9 @@ public class RiderService {
 	}
 
 	public Rider get(String id) {
-		return Rider.builder().build().transformEntities(repository.findById(Rider.builder().id(id).build().DBID()).get());
+		Long riderId = Rider.builder().id(id).build().DBID();
+		Log.log("RiderService", "get", "Rider ID [" + riderId + "] Display Id [" + id + "]");
+		return Rider.builder().build().transformEntities(repository.findById(riderId).get());
 	}
 	
 	public Rider update(Rider object) {

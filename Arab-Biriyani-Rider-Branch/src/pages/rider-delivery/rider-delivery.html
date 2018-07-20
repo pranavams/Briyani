@@ -12,12 +12,12 @@
 <ion-content> <!-- Segment in content --> <ion-segment
 	[(ngModel)]="displayType"> <ion-segment-button
 	value="today"> Today </ion-segment-button> <ion-segment-button
-	value="completed"> Completed </ion-segment-button> </ion-segment>
+	value="completed"> Delivered </ion-segment-button> </ion-segment>
 <div [ngSwitch]="displayType">
 	<div class="today" *ngSwitchCase="'today'">
 		<ion-card no-margin *ngFor="let item of today; index as i">
 		<ion-card-header>
-		<h1 class="orderId">{{item.orderId}}</h1>
+		<h1 class="orderId">{{item.orderId}} - {{item.orderStatus}}</h1>
 		<ion-badge item-end class="completed">
 		<button ion-button small round class="ready disable-hover"
 			(click)="deliverTheOrder(item)">Mark as
@@ -27,7 +27,11 @@
 		<!--  <ion-badge item-end *ngIf="item.status == 'ready'" class="ready">READY</ion-badge>
 		<ion-badge item-end *ngIf="item.status == 'packing'" class="packing">PACKING</ion-badge>
 		-->
-		<ion-badge item-end class="ready">{{item.orderStatus}}</ion-badge>
+		<ion-badge item-end class="ready">
+			<button ion-button small round class="ready disable-hover"
+				(click)="deliverTheOrder(item, index)">Mark as
+				Delivered</button>
+		</ion-badge>
 		</ion-card-header> <ion-card-content>
 		<div class="slideHeader">
 			<table width="100%" margin-bottom

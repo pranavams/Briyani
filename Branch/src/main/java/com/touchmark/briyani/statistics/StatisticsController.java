@@ -24,10 +24,10 @@ public class StatisticsController {
 	}
 
 	@GetMapping
-	@RequestMapping("/get/{branchId}")
+	@RequestMapping("/get/")
 	@PreAuthorize("hasAuthority('BRANCH_USER')")
-	public ResponseEntity<Statistics> get(@PathVariable("branchId") String branchId) {
-		return ResponseEntity.ok(this.service.get(branchId));
+	public ResponseEntity<Statistics> get() {
+		return ResponseEntity.ok(this.service.get());
 	}
 	
 	@GetMapping

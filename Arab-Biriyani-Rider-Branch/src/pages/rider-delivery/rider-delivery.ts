@@ -65,7 +65,7 @@ export class RiderDeliveryPage {
 	let orderUpdate : any = {
 		id: item.orderId,
 		orderStatus: 'DELIVERED',
-		riderId: 'ENDRI2'
+		riderId: this.api.loggedInUser['valueObject']['id']
 	};	 
 	this.api.postData("api/v1/order/updateOrderStatus/", orderUpdate)
 	  	.subscribe(data => {

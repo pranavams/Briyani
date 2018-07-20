@@ -14,14 +14,10 @@ export class LoginPage {
   // If you're using the username field with or without email, make
   // sure to add it to the type
   account: any = {
-	userName: 'Alex123',
-    password: 'password'
+	userName: '',
+    password: ''
   };
 
-  loggedInUser: any = {
-	userName: 'Alex123',
-    password: 'password'
-  };
   loading: Loading;
 
   constructor(public navCtrl: NavController,
@@ -35,7 +31,6 @@ export class LoginPage {
   // Attempt to login in through our User service
   doLogin() {
 	  this.showLoading();
-	  console.log("Loading Displayed");
 	  this.account.password = btoa(this.account.password);
 	    this.userService.login(this.account).subscribe(allowed => {
 	      if (allowed) {        
@@ -44,12 +39,12 @@ export class LoginPage {
 	      } else {
 	    	  this.showError("Access Denied");
 	      }
-	    },
-	      error => {
+	    }, error => {
 	    	  this.showError(error);
-	      });  
- }
-  showError(text) {
+	    });  
+   }
+   
+   showError(text) {
 	  this.loading.present().then(() => {
 		  this.loading.dismiss();
 		});

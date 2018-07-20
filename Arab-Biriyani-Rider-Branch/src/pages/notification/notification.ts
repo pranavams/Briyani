@@ -17,7 +17,7 @@ export class NotificationPage {
   constructor(public navCtrl: NavController, public http: HttpClient, private api: Api) {}
   
    ngOnInit() {
-	   this.api.getData("api/v1/order/listTodayOrdersByRider/ENDRI2", 'order')
+	   this.api.getData("api/v1/order/listTodayOrdersByRider/" + this.api.loggedInUser['valueObject']['id'], 'order')
 		  .subscribe(dataFromService => {
 			this.details = dataFromService;
 		  });

@@ -19,7 +19,7 @@ export class VesselsPage {
   constructor(public navCtrl: NavController, public popoverCtrl: PopoverController, public http: HttpClient, private api: Api, private toastCtrl: ToastController) {}
 
   ngOnInit() {
-     this.api.getData("api/v1/order/listOrdersByRider/ENDRI2", 'order')
+     this.api.getData("api/v1/order/listOrdersByRider/" + this.api.loggedInUser['valueObject']['id'], 'order')
 	  .subscribe(dataFromService => {
 		this.returned = dataFromService.filter(x => x.vesselStatus.toUpperCase() === 'RETURNED');
 		this.notReturned = dataFromService.filter(x => x.vesselStatus.toUpperCase() !== 'RETURNED');

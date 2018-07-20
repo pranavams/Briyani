@@ -44,7 +44,7 @@ export class User {
 		    	
 		        observer.next(true);
 		        observer.complete();
-		        this._loggedIn(res);
+		        this._loggedIn(res, accountInfo['password']);
 		      }, err => {
 		    	observer.next(false);
 		      });
@@ -62,7 +62,7 @@ export class User {
     seq.subscribe((res: any) => {
       // If the API returned a successful response, mark the user as logged in
       if (res.status == 'success') {
-        this._loggedIn(res);
+        this._loggedIn(res, 'password');
       }
     }, err => {
       console.error('ERROR', err);
@@ -81,10 +81,9 @@ export class User {
   /**
    * Process a login/signup response to store user data
    */
-  _loggedIn(resp) {
-	    this._user = resp;
-	    this.api.loggedInUser = resp;
-	    //this.api.loggedInUser['branchId'] = 'BRAN2';
-	    console.log("User Set " + JSON.stringify(this.api.loggedInUser));
+  _loggedIn(resp, password: string) {
+    this._user = resp;
+    this.api.loggedInUser = resp;
+    this.api.loggedInUser['password'] = password;
   }
 }

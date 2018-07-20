@@ -22,8 +22,8 @@ export class Api {
 	
 	getAuthTokenParameters() {
 	  return new HttpParams()
-	    .set('username', 'Alex123')
-	    .set('password', 'password')
+	    .set('username', this.loggedInUser['userName'])
+	    .set('password', atob(this.loggedInUser['password']))
 	    .set('grant_type', 'password');
 	}
 	

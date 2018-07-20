@@ -69,6 +69,8 @@ export class RiderDeliveryPage {
 	};	 
 	this.api.postData("api/v1/order/updateOrderStatus/", orderUpdate)
 	  	.subscribe(data => {
+	  		item.orderStatus = 'DELIVERED';
+	  		this.completed.push(item);
 	  		this.today = this.today
 	  			.filter(x => x.orderId !== item.orderId);
 	});

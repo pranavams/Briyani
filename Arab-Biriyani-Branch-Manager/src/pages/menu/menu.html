@@ -18,7 +18,7 @@
   <ion-list>
     <ion-item no-padding class="menuItem" *ngFor="let item of menuItems; index as i">
       <ion-card>
-        <img src="https://biriyani-services.cfapps.io/api/v1/image/imageDownload/{{item.id}}/item/?access_token={{api.accessToken}}"  />
+        <img src="{{api.url}}/api/v1/image/imageDownload/{{item.id}}/item/?access_token={{api.accessToken}}"  />
         <ion-card-content>
           <ion-card-title>
             {{item.menuName}} {{item.name}}
@@ -30,7 +30,7 @@
             <button ion-button icon-only (click)="add(i)" class="add-btn">
               <ion-icon name="add"></ion-icon>
             </button>
-            <input type="number" [(ngModel)]="item.quantity" class="quantity" (change)="cartCount()">
+            <input type="number" [(ngModel)]="item.quantity" class="quantity" (change)="cartCount()" [readonly] = "true">
             <button ion-button icon-only (click)="remove(i)" class="remove-btn">
               <ion-icon name="md-remove"></ion-icon>
             </button>

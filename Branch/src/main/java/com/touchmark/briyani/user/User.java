@@ -10,6 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
 import com.touchmark.briyani.branch.Branch;
 import com.touchmark.briyani.commons.Log;
 import com.touchmark.briyani.commons.ValueObject;
+import com.touchmark.briyani.rider.Rider;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -49,6 +50,8 @@ public class User {
 		switch (userType.toLowerCase()) {
 		case "branch":
 			return Branch.builder().id(userTypeId).build().DBID();
+		case "rider":
+			return Rider.builder().id(userTypeId).build().DBID();
 		}
 		return null;
 	}
@@ -112,6 +115,18 @@ public class User {
 		setUserName(branch.getTelephone());
 		setUserType("BRANCH");
 		setUserTypeId(branch.getId());
+		return this;
+	}
+
+	public User createRiderUser(Rider object) {
+		setFirstName(object.getRiderPersonFirstName());
+		setLastName(object.getRiderPersonLastName());
+		setMiddleName(object.getRiderPersonMiddleName());
+		this.password = (BCrypt.hashpw(object.getPassword(), BCrypt.gensalt()));
+		setRoles("BRANCH_USER");
+		setUserName(object.getMobileNumber());
+		setUserType("RIDER");
+		setUserTypeId(object.getId());
 		return this;
 	}
 }

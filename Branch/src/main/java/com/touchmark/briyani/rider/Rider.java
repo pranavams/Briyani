@@ -42,6 +42,7 @@ public class Rider implements Serializable {
 	private String licenseType;
 	private OffsetDateTime licenseIssueDate;
 	private OffsetDateTime licenseExpiryDate;
+	private String password;
 
 	public RiderEntity createEntity() {
 		AddressEntity addressEntity = AddressEntity.builder().area(address.getArea()).city(address.getCity())
@@ -142,6 +143,9 @@ public class Rider implements Serializable {
 
 		if (Validator.isInValidLicenseExpiryDate(this.licenseExpiryDate, this.licenseIssueDate))
 			errors.add("Invalid Exipiry Date");
+
+		if (Validator.isInvalidPassword(this.password))
+			errors.add("Invalid Password");
 
 		Validator.throwExceptionWhenNotEmpty(errors);
 	}

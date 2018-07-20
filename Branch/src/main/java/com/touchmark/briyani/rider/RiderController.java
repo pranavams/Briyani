@@ -13,16 +13,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.touchmark.briyani.commons.Log;
+import com.touchmark.briyani.user.User;
+import com.touchmark.briyani.user.UserService;
+
 @RestController
 @RequestMapping(path = "/api/v1/rider/")
 @PreAuthorize("hasAuthority('BRANCH_USER')")
 public class RiderController {
 
 	private RiderService service;
+	private UserService userService;
 
 	@Autowired
-	public RiderController(RiderService service) {
+	public RiderController(RiderService service, UserService userService) {
 		this.service = service;
+		this.userService = userService;
 	}
 
 	@GetMapping
@@ -35,10 +41,18 @@ public class RiderController {
 	@PostMapping
 	@RequestMapping("/save")
 	@PreAuthorize("hasAuthority('BRANCH_MANAGER')")
-	public ResponseEntity<Rider> save(@RequestBody Rider object) {
-		object.validateForCreation();
-		Rider created = this.service.save(object);
-		return ResponseEntity.ok(created);
+	public ResponseEntity<Rider> save(@RequestBody Rider rider) {
+		rider.validateForCreation();
+		try {
+			Rider createdRider = this.service.save(rider);
+			createdRider.setPassword(rider.getPassword());
+			User user = User.builder().build().createRiderUser(createdRider);
+			this.userService.save(user);
+			return ResponseEntity.ok(createdRider);
+		} catch (Exception ex) {
+			Log.error("RiderController", "save", "Rider Creation Failed " + ex, ex);
+			throw new RuntimeException("Rider Not Created");
+		}
 	}
 
 	@GetMapping
@@ -46,8 +60,9 @@ public class RiderController {
 	@PreAuthorize("hasAuthority('BRANCH_MANAGER')")
 	public ResponseEntity<String> delete(@PathVariable("id") String id) {
 		return ResponseEntity.ok(this.service.delete(id));
-	
-	}	
+
+	}
+
 	@GetMapping
 	@RequestMapping("/listRecent")
 	@PreAuthorize("hasAuthority('BRANCH_USER')")

@@ -24,6 +24,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.touchmark.briyani.JSONConvertor;
 import com.touchmark.briyani.app.BriyaniApplication;
+import com.touchmark.briyani.user.UserService;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(value = RiderController.class, secure = false)
@@ -36,9 +37,11 @@ public class RiderControllerTest {
 	@MockBean
 	private RiderService service;
 
+	@MockBean
+	private UserService userService;
 	@Before
 	public void setup() {
-		mockMvc = MockMvcBuilders.standaloneSetup(new RiderController(service)).build();
+		mockMvc = MockMvcBuilders.standaloneSetup(new RiderController(service, userService)).build();
 	}
 
 	@Test
